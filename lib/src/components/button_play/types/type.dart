@@ -1,0 +1,1 @@
+enum MudeButtonPlayType { play, pause }

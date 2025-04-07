@@ -1,0 +1,1 @@
+enum MudeBadgeSize { sm, lg }

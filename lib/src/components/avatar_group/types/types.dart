@@ -1,0 +1,1 @@
+enum MudeAvatarGroupSize { sm, lg }

@@ -1,0 +1,1 @@
+enum MudeChipType { select, filter }

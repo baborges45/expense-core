@@ -1,0 +1,1 @@
+enum PromotionPageType { slotContainer, imageFull }

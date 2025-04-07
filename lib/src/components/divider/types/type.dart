@@ -1,0 +1,1 @@
+enum MudeDividerSize { thin }

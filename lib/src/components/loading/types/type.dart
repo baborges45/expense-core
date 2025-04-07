@@ -1,0 +1,1 @@
+enum MudeLoadingSize { sm, lg }

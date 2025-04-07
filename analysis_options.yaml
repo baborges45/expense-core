@@ -1,0 +1,34 @@
+include: package:flutter_lints/flutter.yaml
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+analyzer:
+  errors:
+    unused_element: ignore
+  plugins:
+    - dart_code_metrics
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 100
+    number-of-parameters: 7
+    maximum-nesting-level: 5
+    lines-of-code: 100
+    number-of-methods: 10
+    weight-of-class: 0.33
+  metrics-exclude:
+    - test/**
+  rules:
+    - avoid-passing-async-when-sync-expected
+    - avoid-redundant-async
+    - avoid-unnecessary-type-assertions
+    - avoid-unnecessary-type-casts
+    - avoid-unrelated-type-assertions
+    - avoid-unused-parameters
+    - newline-before-return
+    - no-boolean-literal-compare
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else
+    - prefer-moving-to-variable

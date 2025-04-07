@@ -1,0 +1,1 @@
+enum MudeDropDownType { container, ghost }

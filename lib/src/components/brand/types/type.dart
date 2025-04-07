@@ -1,0 +1,1 @@
+enum MudeBrandType { logo, symbol }
