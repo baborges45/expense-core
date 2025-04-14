@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class InputPasswordSupportTextWidget extends StatelessWidget {
@@ -18,7 +18,7 @@ class InputPasswordSupportTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (text == null || text!.isEmpty) return const SizedBox(height: 20);
 
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -27,9 +27,7 @@ class InputPasswordSupportTextWidget extends StatelessWidget {
         return aliasTokens.color.disabled.supportTextColor;
       }
 
-      return hasError
-          ? aliasTokens.color.negative.supportTextColor
-          : aliasTokens.color.text.supportTextColor;
+      return hasError ? aliasTokens.color.negative.supportTextColor : aliasTokens.color.text.supportTextColor;
     }
 
     final newText = hasError ? 'Erro, ${text!}' : text!;

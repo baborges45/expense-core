@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutImage(
+              child: ExpenseShortcutImage(
                 label: text,
                 description: text,
                 onPressed: () => debugPrint(''),
@@ -38,7 +38,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutImage(
+              child: ExpenseShortcutImage(
                 key: key,
                 source: 'test/assets/image.png',
                 label: text,
@@ -64,7 +64,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutImage(
+              child: ExpenseShortcutImage(
                 key: key,
                 source: 'test/assets/image.png',
                 label: text,
@@ -90,7 +90,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutImage(
+              child: ExpenseShortcutImage(
                 label: text,
                 source: 'test/assets/image.png',
                 description: text,
@@ -124,7 +124,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeShortcutImage(
+            child: ExpenseShortcutImage(
               label: text,
               description: text,
               source: 'test/assets/image.png',

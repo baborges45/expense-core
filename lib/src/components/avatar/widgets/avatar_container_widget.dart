@@ -1,20 +1,20 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
 class AvatarContainerWidget extends StatelessWidget {
   final Widget child;
-  final MudeAvatarSize size;
+  final ExpenseAvatarSize size;
   final bool showNotification;
   final bool inverse;
   final String? source;
   final bool isAvatarBusiness;
   final Offset dotDistance;
 
-  late MudeAvatarSourceLoad? sourceLoad;
+  late ExpenseAvatarSourceLoad? sourceLoad;
 
   AvatarContainerWidget({
     super.key,
@@ -23,28 +23,28 @@ class AvatarContainerWidget extends StatelessWidget {
     this.showNotification = false,
     this.isAvatarBusiness = false,
     this.inverse = false,
-    this.sourceLoad = MudeAvatarSourceLoad.asset,
+    this.sourceLoad = ExpenseAvatarSourceLoad.asset,
     this.source,
     required this.dotDistance,
   }) {
     if (sourceLoad == null && source != null) {
-      sourceLoad = urlIsvalid(source!) ? MudeAvatarSourceLoad.network : MudeAvatarSourceLoad.asset;
+      sourceLoad = urlIsvalid(source!) ? ExpenseAvatarSourceLoad.network : ExpenseAvatarSourceLoad.asset;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     double getSizeAvatar() {
       switch (size) {
-        case MudeAvatarSize.sm:
+        case ExpenseAvatarSize.sm:
           return globalTokens.shapes.size.s3x;
-        case MudeAvatarSize.md:
+        case ExpenseAvatarSize.md:
           return globalTokens.shapes.size.s6x;
-        case MudeAvatarSize.lg:
+        case ExpenseAvatarSize.lg:
           return globalTokens.shapes.size.s12x;
       }
     }
@@ -55,11 +55,11 @@ class AvatarContainerWidget extends StatelessWidget {
       }
 
       switch (size) {
-        case MudeAvatarSize.sm:
+        case ExpenseAvatarSize.sm:
           return globalTokens.shapes.border.radiusSm;
-        case MudeAvatarSize.md:
+        case ExpenseAvatarSize.md:
           return globalTokens.shapes.border.radiusMd;
-        case MudeAvatarSize.lg:
+        case ExpenseAvatarSize.lg:
           return globalTokens.shapes.border.radiusLg;
       }
     }
@@ -99,7 +99,7 @@ class AvatarContainerWidget extends StatelessWidget {
 
 class _AvatarFilled extends StatelessWidget {
   final String? source;
-  final MudeAvatarSourceLoad? sourceLoad;
+  final ExpenseAvatarSourceLoad? sourceLoad;
   final double size;
   final double borderRadius;
 
@@ -116,7 +116,7 @@ class _AvatarFilled extends StatelessWidget {
       return const SizedBox();
     }
 
-    var sourceLoad = urlIsvalid(source!) ? MudeImage.network : MudeImage.asset;
+    var sourceLoad = urlIsvalid(source!) ? ExpenseImage.network : ExpenseImage.asset;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
@@ -131,7 +131,7 @@ class _AvatarFilled extends StatelessWidget {
 
 class _AvatarNotification extends StatelessWidget {
   final Offset distance;
-  final MudeAvatarSize size;
+  final ExpenseAvatarSize size;
   final bool show;
 
   const _AvatarNotification({
@@ -146,18 +146,18 @@ class _AvatarNotification extends StatelessWidget {
       return const SizedBox();
     }
 
-    MudeBadgeSize getBadgeSize() {
-      if (size == MudeAvatarSize.lg) {
-        return MudeBadgeSize.lg;
+    ExpenseBadgeSize getBadgeSize() {
+      if (size == ExpenseAvatarSize.lg) {
+        return ExpenseBadgeSize.lg;
       }
 
-      return MudeBadgeSize.sm;
+      return ExpenseBadgeSize.sm;
     }
 
     return Positioned(
       top: distance.dy,
       right: distance.dx,
-      child: MudeBadge(
+      child: ExpenseBadge(
         size: getBadgeSize(),
       ),
     );

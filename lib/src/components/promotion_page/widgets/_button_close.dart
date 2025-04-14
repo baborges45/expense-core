@@ -5,7 +5,7 @@ class _ButtonClose extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
     var spacing = globalTokens.shapes.spacing;
 
     return Padding(
@@ -15,9 +15,9 @@ class _ButtonClose extends StatelessWidget {
       ),
       child: Align(
         alignment: Alignment.topRight,
-        child: MudeButtonIcon(
+        child: ExpenseButtonIcon(
           key: const Key('promotion-page.button-close'),
-          icon: MudeIcons.closeLine,
+          icon: ExpenseIcons.closeLine,
           onPressed: () {
             Navigator.pop(context);
           },

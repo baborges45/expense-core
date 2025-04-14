@@ -1,3 +1,3 @@
-enum MudeAvatarSize { md, sm, lg }
+enum ExpenseAvatarSize { md, sm, lg }
 
-enum MudeAvatarSourceLoad { asset, network }
+enum ExpenseAvatarSourceLoad { asset, network }

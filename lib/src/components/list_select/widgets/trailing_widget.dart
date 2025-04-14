@@ -3,10 +3,10 @@ import 'package:flutter/semantics.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class TrailingWidget<T> extends StatelessWidget {
-  final MudeListSelectType type;
+  final ExpenseListSelectType type;
   final ValueChanged<T?> onChanged;
   final T? value;
   final bool disabled;
@@ -24,22 +24,22 @@ class TrailingWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     onChangeValue(T? v) {
       onChanged(v);
 
       if (v is bool) {
         switch (type) {
-          case MudeListSelectType.checkbox:
+          case ExpenseListSelectType.checkbox:
             String message = v ? 'Selecionado' : 'Não selecionado';
             SemanticsService.announce(message, TextDirection.ltr);
             break;
-          case MudeListSelectType.radiobutton:
+          case ExpenseListSelectType.radiobutton:
             String message = v ? 'Selecionado' : 'Não selecionado';
             SemanticsService.announce(message, TextDirection.ltr);
             break;
-          case MudeListSelectType.switcher:
+          case ExpenseListSelectType.switcher:
             String message = v ? 'Ativado' : 'Desativado';
             SemanticsService.announce(message, TextDirection.ltr);
             break;
@@ -49,22 +49,22 @@ class TrailingWidget<T> extends StatelessWidget {
 
     Widget getWidgetType() {
       switch (type) {
-        case MudeListSelectType.checkbox:
-          return MudeCheckbox(
+        case ExpenseListSelectType.checkbox:
+          return ExpenseCheckbox(
             value: value != null ? value as bool : null,
             onChanged: (v) => onChangeValue(v as T),
             disabled: disabled,
             semanticsLabel: semanticsTrailling,
           );
-        case MudeListSelectType.switcher:
-          return MudeSwitch(
+        case ExpenseListSelectType.switcher:
+          return ExpenseSwitch(
             value: value != null ? value as bool : false,
             onChanged: (v) => onChangeValue(v as T),
             disabled: disabled,
             semanticsLabel: semanticsTrailling,
           );
-        case MudeListSelectType.radiobutton:
-          return MudeRadioButton<T>(
+        case ExpenseListSelectType.radiobutton:
+          return ExpenseRadioButton<T>(
             value: value as T,
             groupValue: groupValue,
             onChanged: onChanged,

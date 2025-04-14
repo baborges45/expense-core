@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -19,12 +19,12 @@ void main() {
           final firstDate = DateTime.now();
           final lastDate = DateTime.now().add(const Duration(days: 365 * 10));
           List<DateTime?> value = [];
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputDateLine(
+              child: ExpenseInputDateLine(
                 key: key,
                 label: label,
                 supportText: supportText,
@@ -53,12 +53,12 @@ void main() {
           final firstDate = DateTime.now();
           final lastDate = DateTime.now().add(const Duration(days: 365 * 10));
           List<DateTime?> value = [];
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputDateLine(
+              child: ExpenseInputDateLine(
                 key: key,
                 label: label,
                 supportText: supportText,
@@ -91,12 +91,12 @@ void main() {
           final firstDate = DateTime.now();
           final lastDate = DateTime.now().add(const Duration(days: 365 * 10));
           List<DateTime?> value = [];
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputDateLine(
+              child: ExpenseInputDateLine(
                 key: key,
                 label: label,
                 supportText: supportText,
@@ -118,8 +118,7 @@ void main() {
           final style = text.style as TextStyle;
           expect(style.color, tokens!.alias.color.negative.placeholderColor);
 
-          final icon =
-              widgetTester.widget<MudeIcon>(find.byType(MudeIcon).first);
+          final icon = widgetTester.widget<ExpenseIcon>(find.byType(ExpenseIcon).first);
           expect(icon.color, tokens!.alias.color.negative.iconColor);
 
           final support = widgetTester.widget<Text>(find.text(supportText));
@@ -139,12 +138,12 @@ void main() {
           final firstDate = DateTime.now();
           final lastDate = DateTime.now().add(const Duration(days: 365 * 10));
           List<DateTime?> value = [DateTime.now()];
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputDateLine(
+              child: ExpenseInputDateLine(
                 key: key,
                 label: label,
                 firstDate: firstDate,
@@ -182,9 +181,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputDateLine(
+              child: ExpenseInputDateLine(
                 key: key,
-                type: MudeInputDateType.single,
+                type: ExpenseInputDateType.single,
                 label: label,
                 firstDate: firstDate,
                 lastDate: lastDate,
@@ -198,7 +197,7 @@ void main() {
           await widgetTester.tap(find.text(label));
           await widgetTester.pumpAndSettle();
 
-          final calendar = find.byType(MudeDatePicker);
+          final calendar = find.byType(ExpenseDatePicker);
           expect(calendar, findsOneWidget);
 
           // Select date
@@ -214,7 +213,7 @@ void main() {
           await widgetTester.pumpAndSettle();
 
           // Pressed confirm button
-          final button = find.byType(MudeButton);
+          final button = find.byType(ExpenseButton);
 
           await widgetTester.tap(button);
           await widgetTester.pumpAndSettle();
@@ -239,7 +238,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeInputDateLine(
+            child: ExpenseInputDateLine(
               key: key,
               label: label,
               firstDate: firstDate,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MudeFlagHyperLink {
+class ExpenseFlagHyperLink {
   final String text;
   final VoidCallback onPressed;
 
-  MudeFlagHyperLink({
+  ExpenseFlagHyperLink({
     required this.text,
     required this.onPressed,
   });

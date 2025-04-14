@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
               ),
@@ -37,7 +37,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -55,12 +55,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -84,12 +84,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -115,12 +115,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -144,12 +144,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputTextLine(
+              child: ExpenseInputTextLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -177,7 +177,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeInputTextLine(
+            child: ExpenseInputTextLine(
               label: 'Label',
               semanticsLabel: 'Label',
             ),

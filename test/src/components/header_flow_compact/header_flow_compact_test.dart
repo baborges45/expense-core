@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
               ),
@@ -35,7 +35,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
                 showProgress: true,
@@ -45,7 +45,7 @@ void main() {
             ),
           );
 
-          expect(find.byType(MudeProgressLine), findsOneWidget);
+          expect(find.byType(ExpenseProgressLine), findsOneWidget);
         },
       );
 
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
                 showProgress: true,
@@ -80,7 +80,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
                 showProgress: true,
@@ -91,7 +91,7 @@ void main() {
             ),
           );
 
-          expect(find.byType(MudeProgressLine), findsOneWidget);
+          expect(find.byType(ExpenseProgressLine), findsOneWidget);
         },
       );
 
@@ -104,7 +104,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
                 showProgress: true,
@@ -116,7 +116,7 @@ void main() {
             ),
           );
 
-          final buttons = find.byType(MudeButtonIcon);
+          final buttons = find.byType(ExpenseButtonIcon);
           await widgetTester.tap(buttons.first);
           await widgetTester.pumpAndSettle();
 
@@ -133,7 +133,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowCompact(
+              child: ExpenseHeaderFlowCompact(
                 key: key,
                 title: title,
                 showProgress: true,
@@ -146,7 +146,7 @@ void main() {
             ),
           );
 
-          final buttons = find.byType(MudeButtonIcon);
+          final buttons = find.byType(ExpenseButtonIcon);
           await widgetTester.tap(buttons.last);
           await widgetTester.pumpAndSettle();
 
@@ -166,7 +166,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeHeaderFlowCompact(title: title),
+            child: ExpenseHeaderFlowCompact(title: title),
           ),
         );
 

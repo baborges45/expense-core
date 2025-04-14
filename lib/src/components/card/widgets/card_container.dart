@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class CardContainer extends StatefulWidget {
@@ -9,7 +9,7 @@ class CardContainer extends StatefulWidget {
   final bool noPadding;
   final bool noBorder;
   final bool fixedSize;
-  final MudeCardContainerType type;
+  final ExpenseCardContainerType type;
 
   const CardContainer({
     super.key,
@@ -49,7 +49,7 @@ class _CardContainerState extends State<CardContainer> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var durations = globalTokens.motions.durations;
@@ -79,17 +79,17 @@ class _CardContainerState extends State<CardContainer> {
     getDecoration() {
       final elements = aliasTokens.color.elements;
       final color = switch (widget.type) {
-        MudeCardContainerType.card => elements.bgColor02,
-        MudeCardContainerType.cardAlternative => elements.bgColor03,
-        MudeCardContainerType.inverse => aliasTokens.color.inverse.bgColor,
-        MudeCardContainerType.active => elements.bgColor06,
-        MudeCardContainerType.gradient => Colors.white,
+        ExpenseCardContainerType.card => elements.bgColor02,
+        ExpenseCardContainerType.cardAlternative => elements.bgColor03,
+        ExpenseCardContainerType.inverse => aliasTokens.color.inverse.bgColor,
+        ExpenseCardContainerType.active => elements.bgColor06,
+        ExpenseCardContainerType.gradient => Colors.white,
       };
 
       return BoxDecoration(
         color: color,
         border: getBorder(),
-        gradient: widget.type == MudeCardContainerType.gradient
+        gradient: widget.type == ExpenseCardContainerType.gradient
             ? LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,

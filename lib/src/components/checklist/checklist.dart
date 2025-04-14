@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeChecklist extends StatelessWidget {
-  final List<MudeCheckbox> checkboxList;
+class ExpenseChecklist extends StatelessWidget {
+  final List<ExpenseCheckbox> checkboxList;
 
   ///A string value that indicates if you add more information from accessibility
   ///The default value is null
@@ -17,7 +17,7 @@ class MudeChecklist extends StatelessWidget {
   ///The default value is false
   final bool excludeSemantics;
 
-  const MudeChecklist({
+  const ExpenseChecklist({
     super.key,
     required this.checkboxList,
     this.semanticsLabel,
@@ -27,7 +27,7 @@ class MudeChecklist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var size = globalTokens.shapes.size.s2_5x;
 

@@ -1,9 +1,9 @@
-import 'package:mude_core/src/components/list_select/widgets/trailing_widget.dart';
+import 'package:expense_core/src/components/list_select/widgets/trailing_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import 'label_widget.dart';
 import 'description_widget.dart';
@@ -13,7 +13,7 @@ class ContentWidget<T> extends StatelessWidget {
   final String label;
   final String? description;
   final dynamic leading;
-  final MudeListSelectType type;
+  final ExpenseListSelectType type;
   final T? value;
   final ValueChanged<T?> onChanged;
   final bool disabled;
@@ -28,7 +28,7 @@ class ContentWidget<T> extends StatelessWidget {
     required this.label,
     this.description,
     this.leading,
-    this.type = MudeListSelectType.checkbox,
+    this.type = ExpenseListSelectType.checkbox,
     required this.onChanged,
     required this.value,
     this.groupValue,
@@ -41,7 +41,7 @@ class ContentWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_body_custom.dart';
 part 'widgets/_line_drawer.dart';
 
-class MudeDrawer {
+class ExpenseDrawer {
   // coverage:ignore-start
-  const MudeDrawer._();
+  const ExpenseDrawer._();
   // coverage:ignore-end
 
   static Future<void> show(
@@ -17,7 +17,7 @@ class MudeDrawer {
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
     double maxHeight = double.infinity,
   }) async {
-    var tokens = context.read<MudeThemeManager>();
+    var tokens = context.read<ExpenseThemeManager>();
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 

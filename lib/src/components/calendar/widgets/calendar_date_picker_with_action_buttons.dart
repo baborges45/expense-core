@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../date_picker.dart';
 import '../models/calendar_date_picker_config.dart';
 
-class MudeDatePickerWithActionButtons extends StatefulWidget {
-  const MudeDatePickerWithActionButtons({
+class ExpenseDatePickerWithActionButtons extends StatefulWidget {
+  const ExpenseDatePickerWithActionButtons({
     required this.value,
     required this.config,
     this.onValueChanged,
@@ -24,7 +24,7 @@ class MudeDatePickerWithActionButtons extends StatefulWidget {
   final ValueChanged<DateTime>? onDisplayedMonthChanged;
 
   /// The calendar configurations including action buttons
-  final MudeDatePickerWithActionButtonsConfig config;
+  final ExpenseDatePickerWithActionButtonsConfig config;
 
   /// The callback when cancel button is tapped
   final Function? onCancelTapped;
@@ -33,12 +33,10 @@ class MudeDatePickerWithActionButtons extends StatefulWidget {
   final Function? onOkTapped;
 
   @override
-  State<MudeDatePickerWithActionButtons> createState() =>
-      _CalendarDatePickerWithActionButtonsState();
+  State<ExpenseDatePickerWithActionButtons> createState() => _CalendarDatePickerWithActionButtonsState();
 }
 
-class _CalendarDatePickerWithActionButtonsState
-    extends State<MudeDatePickerWithActionButtons> {
+class _CalendarDatePickerWithActionButtonsState extends State<ExpenseDatePickerWithActionButtons> {
   List<DateTime?> _values = [];
   List<DateTime?> _editCache = [];
 
@@ -51,14 +49,13 @@ class _CalendarDatePickerWithActionButtonsState
 
   @override
   void didUpdateWidget(
-    covariant MudeDatePickerWithActionButtons oldWidget,
+    covariant ExpenseDatePickerWithActionButtons oldWidget,
   ) {
     var isValueSame = oldWidget.value.length == widget.value.length;
 
     if (isValueSame) {
       for (var i = 0; i < oldWidget.value.length; i++) {
-        var isSame = (oldWidget.value[i] == null && widget.value[i] == null) ||
-            DateUtils.isSameDay(oldWidget.value[i], widget.value[i]);
+        var isSame = (oldWidget.value[i] == null && widget.value[i] == null) || DateUtils.isSameDay(oldWidget.value[i], widget.value[i]);
         if (!isSame) {
           isValueSame = false;
           break;
@@ -76,11 +73,9 @@ class _CalendarDatePickerWithActionButtonsState
 
   @override
   Widget build(BuildContext context) {
-    final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
 
-    final gapBetweenCalendarAndButtons =
-        widget.config.gapBetweenCalendarAndButtons;
+    final gapBetweenCalendarAndButtons = widget.config.gapBetweenCalendarAndButtons;
 
     final colorTheme = Theme.of(context).colorScheme;
 
@@ -89,7 +84,7 @@ class _CalendarDatePickerWithActionButtonsState
       children: [
         MediaQuery.removePadding(
           context: context,
-          child: MudeDatePicker(
+          child: ExpenseDatePicker(
             value: [..._editCache],
             onValueChanged: (values) => _editCache = values,
             onDisplayedMonthChanged: widget.onDisplayedMonthChanged,
@@ -100,8 +95,7 @@ class _CalendarDatePickerWithActionButtonsState
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             _buildCancelButton(colorTheme, localizations),
-            if ((gapBetweenCalendarAndButtons ?? 0) > 0)
-              SizedBox(width: gapBetweenCalendarAndButtons),
+            if ((gapBetweenCalendarAndButtons ?? 0) > 0) SizedBox(width: gapBetweenCalendarAndButtons),
             _buildOkButton(colorTheme, localizations),
           ],
         ),
@@ -118,21 +112,18 @@ class _CalendarDatePickerWithActionButtonsState
       onTap: () => setState(() {
         _editCache = _values;
         widget.onCancelTapped?.call();
-        if ((widget.config.openedFromDialog ?? false) &&
-            (widget.config.closeDialogOnCancelTapped ?? true)) {
+        if ((widget.config.openedFromDialog ?? false) && (widget.config.closeDialogOnCancelTapped ?? true)) {
           Navigator.pop(context);
         }
       }),
       child: Container(
-        padding: widget.config.buttonPadding ??
-            const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: widget.config.buttonPadding ?? const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: widget.config.cancelButton ??
             Text(
               localizations.cancelButtonLabel.toUpperCase(),
               style: widget.config.cancelButtonTextStyle ??
                   TextStyle(
-                    color: widget.config.selectedDayHighlightColor ??
-                        colorScheme.primary,
+                    color: widget.config.selectedDayHighlightColor ?? colorScheme.primary,
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
                   ),
@@ -151,21 +142,18 @@ class _CalendarDatePickerWithActionButtonsState
         _values = _editCache;
         widget.onValueChanged?.call(_values);
         widget.onOkTapped?.call();
-        if ((widget.config.openedFromDialog ?? false) &&
-            (widget.config.closeDialogOnOkTapped ?? true)) {
+        if ((widget.config.openedFromDialog ?? false) && (widget.config.closeDialogOnOkTapped ?? true)) {
           Navigator.pop(context, _values);
         }
       }),
       child: Container(
-        padding: widget.config.buttonPadding ??
-            const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: widget.config.buttonPadding ?? const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: widget.config.okButton ??
             Text(
               localizations.okButtonLabel.toUpperCase(),
               style: widget.config.okButtonTextStyle ??
                   TextStyle(
-                    color: widget.config.selectedDayHighlightColor ??
-                        colorScheme.primary,
+                    color: widget.config.selectedDayHighlightColor ?? colorScheme.primary,
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
                   ),

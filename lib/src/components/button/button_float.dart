@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import 'widgets/container_widget.dart';
 
-class MudeButtonFloat extends StatelessWidget {
+class ExpenseButtonFloat extends StatelessWidget {
   ///A string representing the label or text of the button.
   final String label;
 
   ///A callback function that will be invoked when the button is pressed.
   final VoidCallback onPressed;
 
-  /// (Optional) A [MudeIconData] object representing the icon to be displayed on the button.
-  final MudeIconData? icon;
+  /// (Optional) A [ExpenseIconData] object representing the icon to be displayed on the button.
+  final ExpenseIconData? icon;
 
   ///(Optional) A boolean indicating whether the button should be disabled. The default value is false.
   final bool disabled;
@@ -37,7 +37,7 @@ class MudeButtonFloat extends StatelessWidget {
   ///A boolean value that indicates whether the button should be displayed as a floating button.
   final bool isFloat;
 
-  const MudeButtonFloat({
+  const ExpenseButtonFloat({
     super.key,
     required this.label,
     required this.onPressed,
@@ -52,7 +52,7 @@ class MudeButtonFloat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return ContainerButtonWidget(
       label: label,

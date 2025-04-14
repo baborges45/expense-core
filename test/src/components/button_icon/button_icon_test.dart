@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -13,8 +13,8 @@ void main() {
         (widgetTester) async {
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonIcon(
-                icon: MudeIcons.userLine,
+              child: ExpenseButtonIcon(
+                icon: ExpenseIcons.userLine,
                 onPressed: () => debugPrint(''),
               ),
             ),
@@ -33,9 +33,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.userLine,
+                icon: ExpenseIcons.userLine,
                 onPressed: () => press = true,
               ),
             ),
@@ -51,14 +51,14 @@ void main() {
         (widgetTester) async {
           bool press = false;
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.userLine,
+                icon: ExpenseIcons.userLine,
                 disabled: true,
                 onPressed: () => press = true,
               ),
@@ -83,20 +83,20 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.userLine,
-                size: MudeButtonIconSize.sm,
+                icon: ExpenseIcons.userLine,
+                size: ExpenseButtonIconSize.sm,
                 onPressed: () => debugPrint(''),
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(
+          final icon = widgetTester.widget<ExpenseIcon>(
             find.byKey(const Key('button-icon.icon')),
           );
 
-          expect(icon.size, MudeIconSize.sm);
+          expect(icon.size, ExpenseIconSize.sm);
         },
       );
 
@@ -104,15 +104,15 @@ void main() {
         'Should button icon change opacity with pressed',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.userLine,
-                size: MudeButtonIconSize.sm,
+                icon: ExpenseIcons.userLine,
+                size: ExpenseButtonIconSize.sm,
                 onPressed: () => debugPrint(''),
               ),
             ),
@@ -133,14 +133,14 @@ void main() {
         'Should button icon inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 onPressed: () => debugPrint(''),
                 inverse: true,
               ),
@@ -166,9 +166,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 onPressed: () => debugPrint(''),
                 inverse: true,
                 backgroundColor: Colors.amber,
@@ -196,9 +196,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 onPressed: () => press = true,
               ),
             ),
@@ -227,8 +227,8 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeButtonIcon(
-              icon: MudeIcons.userLine,
+            child: ExpenseButtonIcon(
+              icon: ExpenseIcons.userLine,
               onPressed: () => debugPrint(''),
               semanticsLabel: 'Button icon label',
               semanticsHint: 'Button icon hint',

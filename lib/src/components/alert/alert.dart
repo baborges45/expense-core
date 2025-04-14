@@ -1,18 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import './mixins/properties_mixin.dart';
 import './widgets/alert_description.dart';
 
-class MudeAlert extends StatefulWidget {
+class ExpenseAlert extends StatefulWidget {
   ///A string that represents the text inside the alert.
   final String message;
 
-  ///A value of type [MudeAlertType] indicating the type of alert (informative, positive, negative, etc.).
-  final MudeAlertType type;
+  ///A value of type [ExpenseAlertType] indicating the type of alert (informative, positive, negative, etc.).
+  final ExpenseAlertType type;
 
   ///(Optional) An object of type [AlertHyperLink] that represents a hyperlink in the widget.
   ///It will be displayed in the end of the text.
@@ -32,10 +32,10 @@ class MudeAlert extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeAlert({
+  const ExpenseAlert({
     super.key,
     required this.message,
-    this.type = MudeAlertType.informative,
+    this.type = ExpenseAlertType.informative,
     this.open = true,
     this.hyperlink,
     this.onClose,
@@ -44,10 +44,10 @@ class MudeAlert extends StatefulWidget {
   });
 
   @override
-  State<MudeAlert> createState() => MudeAlertState();
+  State<ExpenseAlert> createState() => ExpenseAlertState();
 }
 
-class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
+class ExpenseAlertState extends State<ExpenseAlert> with PropertiesMixin {
   late double _height;
   late Timer _timer;
 
@@ -59,7 +59,7 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
   }
 
   _openAlert() {
-    var globalTokens = context.read<MudeThemeManager>().globals;
+    var globalTokens = context.read<ExpenseThemeManager>().globals;
     setState(() => _height = 0);
 
     _timer = Timer(const Duration(milliseconds: 1), () {
@@ -76,7 +76,7 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -91,35 +91,35 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
       alertColor: widget.type,
     );
 
-    MudeIcon getMudeIcon() {
+    ExpenseIcon getExpenseIcon() {
       switch (widget.type) {
-        case MudeAlertType.positive:
-          return MudeIcon(
-            icon: MudeIcons.positiveLine,
+        case ExpenseAlertType.positive:
+          return ExpenseIcon(
+            icon: ExpenseIcons.positiveLine,
             color: iconColor,
           );
 
-        case MudeAlertType.negative:
-          return MudeIcon(
-            icon: MudeIcons.negativeLine,
+        case ExpenseAlertType.negative:
+          return ExpenseIcon(
+            icon: ExpenseIcons.negativeLine,
             color: iconColor,
           );
 
-        case MudeAlertType.informative:
-          return MudeIcon(
-            icon: MudeIcons.informationLine,
+        case ExpenseAlertType.informative:
+          return ExpenseIcon(
+            icon: ExpenseIcons.informationLine,
             color: iconColor,
           );
 
-        case MudeAlertType.warning:
-          return MudeIcon(
-            icon: MudeIcons.warningLine,
+        case ExpenseAlertType.warning:
+          return ExpenseIcon(
+            icon: ExpenseIcons.warningLine,
             color: iconColor,
           );
 
-        case MudeAlertType.promote:
-          return MudeIcon(
-            icon: MudeIcons.promoteLine,
+        case ExpenseAlertType.promote:
+          return ExpenseIcon(
+            icon: ExpenseIcons.promoteLine,
             color: iconColor,
           );
       }
@@ -137,15 +137,15 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
       final labelSemantics = widget.semanticsLabel ?? widget.message;
 
       switch (widget.type) {
-        case MudeAlertType.positive:
+        case ExpenseAlertType.positive:
           return 'positivo: $labelSemantics';
-        case MudeAlertType.negative:
+        case ExpenseAlertType.negative:
           return 'negativo: $labelSemantics';
-        case MudeAlertType.informative:
+        case ExpenseAlertType.informative:
           return 'informativo: $labelSemantics';
-        case MudeAlertType.warning:
+        case ExpenseAlertType.warning:
           return 'atenção: $labelSemantics';
-        case MudeAlertType.promote:
+        case ExpenseAlertType.promote:
           return 'promoção: $labelSemantics';
       }
     }
@@ -165,7 +165,7 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
       child: Row(
         children: [
           ExcludeSemantics(
-            child: getMudeIcon(),
+            child: getExpenseIcon(),
           ),
           SizedBox(
             width: spacing.s1x,
@@ -185,12 +185,12 @@ class MudeAlertState extends State<MudeAlert> with PropertiesMixin {
           SizedBox(
             width: spacing.s1x,
           ),
-          MudeButtonIcon(
-            icon: MudeIcons.closeLine,
+          ExpenseButtonIcon(
+            icon: ExpenseIcons.closeLine,
             iconColor: iconColor,
             onPressed: onCloseAlert,
             backgroundColor: aliasTokens.mixin.onPressedOutline,
-            size: MudeButtonIconSize.sm,
+            size: ExpenseButtonIconSize.sm,
             semanticsLabel: 'Fechar alert',
           ),
         ],

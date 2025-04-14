@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class InputLabelWidget extends StatelessWidget {
   final String text;
@@ -18,7 +18,7 @@ class InputLabelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -27,9 +27,7 @@ class InputLabelWidget extends StatelessWidget {
         return aliasTokens.color.disabled.labelColor;
       }
 
-      return hasError
-          ? aliasTokens.color.negative.labelColor
-          : aliasTokens.color.text.labelColor;
+      return hasError ? aliasTokens.color.negative.labelColor : aliasTokens.color.text.labelColor;
     }
 
     return Column(

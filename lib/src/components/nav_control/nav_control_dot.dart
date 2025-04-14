@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeNavControlDot extends StatelessWidget {
+class ExpenseNavControlDot extends StatelessWidget {
   ///An integer representing the number of items to be displayed in the row.
   final int length;
 
@@ -24,7 +24,7 @@ class MudeNavControlDot extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeNavControlDot({
+  const ExpenseNavControlDot({
     super.key,
     required this.length,
     this.indexSelected = 0,
@@ -46,7 +46,7 @@ class MudeNavControlDot extends StatelessWidget {
           ...List.generate(
             length,
             (index) {
-              return _MudeNav(
+              return _ExpenseNav(
                 active: index == indexSelected,
                 inverse: inverse,
               );
@@ -58,18 +58,18 @@ class MudeNavControlDot extends StatelessWidget {
   }
 }
 
-class _MudeNav extends StatelessWidget {
+class _ExpenseNav extends StatelessWidget {
   final bool active;
   final bool inverse;
 
-  const _MudeNav({
+  const _ExpenseNav({
     required this.inverse,
     this.active = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
@@ -79,9 +79,7 @@ class _MudeNav extends StatelessWidget {
     }
 
     Color getBackgroundColor() {
-      return active
-          ? aliasTokens.color.selected.iconColor
-          : aliasTokens.color.elements.bgColor05;
+      return active ? aliasTokens.color.selected.iconColor : aliasTokens.color.elements.bgColor05;
     }
 
     double sizes = getSizeDot();

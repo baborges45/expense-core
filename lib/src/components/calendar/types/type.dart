@@ -1,3 +1,3 @@
-enum MudeDatePickerType { single, range, multi }
+enum ExpenseDatePickerType { single, range, multi }
 
-enum MudeDatePickerMode { day, year }
+enum ExpenseDatePickerMode { day, year }

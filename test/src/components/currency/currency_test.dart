@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 key: key,
                 price: price,
               ),
@@ -35,16 +35,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 key: key,
                 price: price,
-                type: MudeCurrencyType.income,
+                type: ExpenseCurrencyType.income,
               ),
             ),
           );
 
           expect(find.byKey(key), findsOneWidget);
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -56,16 +56,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 key: key,
                 price: price,
-                type: MudeCurrencyType.outcome,
+                type: ExpenseCurrencyType.outcome,
               ),
             ),
           );
 
           expect(find.byKey(key), findsOneWidget);
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -77,17 +77,17 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 key: key,
                 price: price,
-                type: MudeCurrencyType.outcome,
-                size: MudeCurrencySize.lg,
+                type: ExpenseCurrencyType.outcome,
+                size: ExpenseCurrencySize.lg,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(find.byType(MudeIcon));
-          expect(icon.size, MudeIconSize.lg);
+          final icon = widgetTester.widget<ExpenseIcon>(find.byType(ExpenseIcon));
+          expect(icon.size, ExpenseIconSize.lg);
         },
       );
 
@@ -100,11 +100,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 key: key,
                 price: price,
                 priceOut: priceOut,
-                type: MudeCurrencyType.sale,
+                type: ExpenseCurrencyType.sale,
               ),
             ),
           );
@@ -124,11 +124,11 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeCurrency(
+            child: ExpenseCurrency(
               key: key,
               price: price,
-              type: MudeCurrencyType.outcome,
-              size: MudeCurrencySize.lg,
+              type: ExpenseCurrencyType.outcome,
+              size: ExpenseCurrencySize.lg,
               hide: true,
             ),
           ),
@@ -150,7 +150,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeCurrency(
+              child: ExpenseCurrency(
                 price: 111,
               ),
             ),

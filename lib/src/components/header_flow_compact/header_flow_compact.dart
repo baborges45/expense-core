@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 part 'widgets/_header.dart';
 
-class MudeHeaderFlowCompact extends StatelessWidget {
+class ExpenseHeaderFlowCompact extends StatelessWidget {
   ///A string representing the title of the header.
   final String title;
 
@@ -47,7 +47,7 @@ class MudeHeaderFlowCompact extends StatelessWidget {
   ///The default value is null in button close
   final String? semanticsButtonCloseHint;
 
-  const MudeHeaderFlowCompact({
+  const ExpenseHeaderFlowCompact({
     super.key,
     required this.title,
     this.description,
@@ -65,7 +65,7 @@ class MudeHeaderFlowCompact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     Widget getProgreeLine() {
       if (!showProgress) {
@@ -89,7 +89,7 @@ class MudeHeaderFlowCompact extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: globalTokens.shapes.size.s3x,
           ),
-          child: MudeProgressCircular(progress: progress),
+          child: ExpenseProgressCircular(progress: progress),
         ),
       );
     }

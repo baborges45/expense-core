@@ -1,11 +1,11 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeBottomBarItem {
+class ExpenseBottomBarItem {
   /// Set a text to displayed on label
   final String label;
 
-  /// Set icon [MudeIconData] to displayed
-  final MudeIconData icon;
+  /// Set icon [ExpenseIconData] to displayed
+  final ExpenseIconData icon;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -15,7 +15,7 @@ class MudeBottomBarItem {
   ///The default value is null
   final String? semanticsHint;
 
-  MudeBottomBarItem({
+  ExpenseBottomBarItem({
     required this.label,
     required this.icon,
     this.semanticsLabel,

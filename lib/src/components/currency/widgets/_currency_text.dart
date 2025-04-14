@@ -2,12 +2,12 @@
 
 part of '../currency.dart';
 
-class _MudePriceText extends StatelessWidget {
+class _ExpensePriceText extends StatelessWidget {
   final String price;
   final TextStyle defaultStyle;
   final bool hide;
 
-  const _MudePriceText({
+  const _ExpensePriceText({
     required this.price,
     required this.defaultStyle,
     required this.hide,
@@ -15,7 +15,7 @@ class _MudePriceText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     String priceShowValidation = hide ? 'R\$' : 'R\$$price';
@@ -29,7 +29,7 @@ class _MudePriceText extends StatelessWidget {
             color: aliasTokens.color.text.labelColor,
           )),
         ),
-        _MudeHideDot(
+        _ExpenseHideDot(
           price: price,
           hide: hide,
         ),

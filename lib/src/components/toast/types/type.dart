@@ -1,3 +1,3 @@
-enum MudeToastType { positive, negative }
+enum ExpenseToastType { positive, negative }
 
-enum MudeToastColor { positive, negative, black }
+enum ExpenseToastColor { positive, negative, black }

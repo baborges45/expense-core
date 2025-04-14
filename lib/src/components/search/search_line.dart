@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 import 'widgets/input_widget.dart';
 
-class MudeSearchLine extends StatefulWidget {
+class ExpenseSearchLine extends StatefulWidget {
   ///(Optional) A TextEditingController that controls the text being edited in the search bar.
   final TextEditingController? controller;
 
@@ -56,7 +56,7 @@ class MudeSearchLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeSearchLine({
+  const ExpenseSearchLine({
     super.key,
     this.controller,
     this.focusNode,
@@ -76,10 +76,10 @@ class MudeSearchLine extends StatefulWidget {
   });
 
   @override
-  State<MudeSearchLine> createState() => _MudeSearchLineState();
+  State<ExpenseSearchLine> createState() => _ExpenseSearchLineState();
 }
 
-class _MudeSearchLineState extends State<MudeSearchLine> with PropertiesMixin {
+class _ExpenseSearchLineState extends State<ExpenseSearchLine> with PropertiesMixin {
   late FocusNode _focusNode;
   late TextEditingController _controller;
 
@@ -116,20 +116,16 @@ class _MudeSearchLineState extends State<MudeSearchLine> with PropertiesMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     Color getBackgroundColor() {
-      return _isPressed && !_isFocussed && !_isFilled
-          ? aliasTokens.mixin.pressedOutline
-          : aliasTokens.color.elements.bgColor01;
+      return _isPressed && !_isFocussed && !_isFilled ? aliasTokens.mixin.pressedOutline : aliasTokens.color.elements.bgColor01;
     }
 
     Color getBorderColor() {
-      return _isFocussed
-          ? aliasTokens.color.active.borderColor
-          : aliasTokens.color.elements.borderColor;
+      return _isFocussed ? aliasTokens.color.active.borderColor : aliasTokens.color.elements.borderColor;
     }
 
     return GestureDetector(

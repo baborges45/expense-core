@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -17,7 +17,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
               ),
@@ -38,7 +38,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -56,12 +56,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -87,12 +87,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -118,12 +118,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -149,12 +149,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -183,11 +183,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
-                type: MudeInputCardType.card,
+                type: ExpenseInputCardType.card,
               ),
             ),
           );
@@ -198,8 +198,7 @@ void main() {
           final widget = widgetTester.widget<TextField>(find.byType(TextField));
 
           final formatter = widget.inputFormatters as List<TextInputFormatter>;
-          final formatterLenght =
-              formatter[2] as LengthLimitingTextInputFormatter;
+          final formatterLenght = formatter[2] as LengthLimitingTextInputFormatter;
 
           expect(formatterLenght.maxLength, 19);
           expect(widget.controller!.text, valueCorrect);
@@ -217,11 +216,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
-                type: MudeInputCardType.validate,
+                type: ExpenseInputCardType.validate,
               ),
             ),
           );
@@ -232,8 +231,7 @@ void main() {
           final widget = widgetTester.widget<TextField>(find.byType(TextField));
 
           final formatter = widget.inputFormatters as List<TextInputFormatter>;
-          final formatterLenght =
-              formatter[2] as LengthLimitingTextInputFormatter;
+          final formatterLenght = formatter[2] as LengthLimitingTextInputFormatter;
 
           expect(formatterLenght.maxLength, 5);
           expect(widget.controller!.text, valueCorrect);
@@ -250,11 +248,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCardLine(
+              child: ExpenseInputCardLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
-                type: MudeInputCardType.cvv,
+                type: ExpenseInputCardType.cvv,
               ),
             ),
           );
@@ -265,8 +263,7 @@ void main() {
           final widget = widgetTester.widget<TextField>(find.byType(TextField));
 
           final formatter = widget.inputFormatters as List<TextInputFormatter>;
-          final formatterLenght =
-              formatter[1] as LengthLimitingTextInputFormatter;
+          final formatterLenght = formatter[1] as LengthLimitingTextInputFormatter;
 
           expect(formatterLenght.maxLength, 3);
           expect(widget.controller!.text, value);
@@ -283,7 +280,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeInputCardLine(
+            child: ExpenseInputCardLine(
               label: 'Label',
               semanticsLabel: 'Label',
             ),

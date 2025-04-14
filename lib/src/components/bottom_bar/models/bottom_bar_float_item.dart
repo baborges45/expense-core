@@ -1,11 +1,11 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeBottomBarFloatItem {
+class ExpenseBottomBarFloatItem {
   /// Set a text to displayed on label
   final String label;
 
-  /// Set a icon [MudeIconData] to displayed
-  final MudeIconData icon;
+  /// Set a icon [ExpenseIconData] to displayed
+  final ExpenseIconData icon;
 
   /// Set true if displayed a symbol notification
   final bool showNotification;
@@ -18,7 +18,7 @@ class MudeBottomBarFloatItem {
   ///The default value is null
   final String? semanticsHint;
 
-  MudeBottomBarFloatItem({
+  ExpenseBottomBarFloatItem({
     required this.label,
     required this.icon,
     this.showNotification = false,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeAccordionJourney extends StatefulWidget {
+class ExpenseAccordionJourney extends StatefulWidget {
   /// A [Widget] that will be the expanded child.
   final Widget child;
 
@@ -22,7 +22,7 @@ class MudeAccordionJourney extends StatefulWidget {
   final String paragraph;
 
   // The text value of the description
-  final MudeIconData? leadingIcon;
+  final ExpenseIconData? leadingIcon;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -32,7 +32,7 @@ class MudeAccordionJourney extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeAccordionJourney({
+  const ExpenseAccordionJourney({
     super.key,
     required this.tag,
     this.semanticsLabel,
@@ -46,16 +46,16 @@ class MudeAccordionJourney extends StatefulWidget {
   });
 
   @override
-  State<MudeAccordionJourney> createState() => _MudeAccordionJourneyState();
+  State<ExpenseAccordionJourney> createState() => _ExpenseAccordionJourneyState();
 }
 
-class _MudeAccordionJourneyState extends State<MudeAccordionJourney> {
+class _ExpenseAccordionJourneyState extends State<ExpenseAccordionJourney> {
   bool expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
     final curve = globalTokens.motions.curves;
     final spacing = globalTokens.shapes.spacing;
 
@@ -87,7 +87,7 @@ class _MudeAccordionJourneyState extends State<MudeAccordionJourney> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  MudeTagContainer(widget.tag),
+                  ExpenseTagContainer(widget.tag),
                   widget.trailing,
                 ],
               ),
@@ -98,7 +98,7 @@ class _MudeAccordionJourneyState extends State<MudeAccordionJourney> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   if (widget.leadingIcon != null) ...[
-                    MudeIcon(
+                    ExpenseIcon(
                       icon: widget.leadingIcon!,
                     ),
                     SizedBox(
@@ -109,19 +109,19 @@ class _MudeAccordionJourneyState extends State<MudeAccordionJourney> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MudeParagraph(widget.title),
+                        ExpenseParagraph(widget.title),
                         SizedBox(
                           height: spacing.s1x,
                         ),
-                        MudeDescription(widget.description),
+                        ExpenseDescription(widget.description),
                       ],
                     ),
                   ),
                   SizedBox(
                     width: spacing.s2x,
                   ),
-                  MudeButtonIcon(
-                    icon: expanded ? MudeIcons.dropdownCloseLine : MudeIcons.dropdownOpenLine,
+                  ExpenseButtonIcon(
+                    icon: expanded ? ExpenseIcons.dropdownCloseLine : ExpenseIcons.dropdownOpenLine,
                     onPressed: changeState,
                   ),
                 ],
@@ -130,9 +130,9 @@ class _MudeAccordionJourneyState extends State<MudeAccordionJourney> {
                 SizedBox(
                   height: spacing.s4x,
                 ),
-                MudeParagraph(
+                ExpenseParagraph(
                   widget.paragraph,
-                  size: MudeParagraphSize.sm,
+                  size: ExpenseParagraphSize.sm,
                 ),
                 SizedBox(
                   height: spacing.s4x,

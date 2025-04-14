@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeParagraph extends StatelessWidget {
+class ExpenseParagraph extends StatelessWidget {
   /// Set a text to display in the paragraph.
   final String text;
 
-  /// Set a size, you get all options in [MudeHeadingSize].
-  /// If you don't he will assume [MudeHeadingSize.lg].
-  final MudeParagraphSize size;
+  /// Set a size, you get all options in [ExpenseHeadingSize].
+  /// If you don't he will assume [ExpenseHeadingSize.lg].
+  final ExpenseParagraphSize size;
 
   /// Set true to displayed heading inverse.
   final bool inverse;
@@ -28,10 +28,10 @@ class MudeParagraph extends StatelessWidget {
   /// Set the maximum number of lines for the text.
   final int? maxLines;
 
-  const MudeParagraph(
+  const ExpenseParagraph(
     this.text, {
     super.key,
-    this.size = MudeParagraphSize.lg,
+    this.size = ExpenseParagraphSize.lg,
     this.inverse = false,
     this.semanticsHint,
     this.isExpanded = false,
@@ -41,15 +41,15 @@ class MudeParagraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
-    double getSize(MudeParagraphSize size) {
+    double getSize(ExpenseParagraphSize size) {
       switch (size) {
-        case MudeParagraphSize.lg:
+        case ExpenseParagraphSize.lg:
           return globalTokens.typographys.fontSizeXs;
-        case MudeParagraphSize.sm:
+        case ExpenseParagraphSize.sm:
           return globalTokens.typographys.fontSize2xs;
       }
     }

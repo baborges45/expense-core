@@ -25,15 +25,15 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     Widget getOnBack() {
       if (onBack == null) return const SizedBox(width: 48);
 
-      return MudeButtonIcon(
-        icon: MudeIcons.backLine,
+      return ExpenseButtonIcon(
+        icon: ExpenseIcons.backLine,
         onPressed: onBack!,
         semanticsHint: semanticsButtonBackHint ?? 'Voltar',
       );
@@ -42,8 +42,8 @@ class _Header extends StatelessWidget {
     Widget getOnClose() {
       if (onClose == null) return const SizedBox(width: 48);
 
-      return MudeButtonIcon(
-        icon: MudeIcons.closeLine,
+      return ExpenseButtonIcon(
+        icon: ExpenseIcons.closeLine,
         onPressed: onClose!,
         semanticsHint: semanticsButtonCloseHint ?? 'Fechar',
       );
@@ -65,10 +65,10 @@ class _Header extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                MudeHeading(title, size: MudeHeadingSize.xs),
+                ExpenseHeading(title, size: ExpenseHeadingSize.xs),
                 if (description != null && description!.isNotEmpty) ...[
                   SizedBox(height: shapes.spacing.half),
-                  MudeDescription(description!),
+                  ExpenseDescription(description!),
                 ],
               ],
             ),

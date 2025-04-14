@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_init_to_null
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -17,7 +17,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 label: 'label',
                 value: false,
                 onChanged: (e) => debugPrint(''),
@@ -62,7 +62,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: null,
@@ -80,7 +80,7 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: null,
@@ -105,7 +105,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: onChanged,
                 value: value,
@@ -130,7 +130,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: onChanged,
                 value: value,
@@ -150,7 +150,7 @@ void main() {
         'Should be disabled checked',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           bool value = true;
           const label = 'checkbox';
@@ -162,7 +162,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 label: label,
                 onChanged: onChanged,
@@ -195,7 +195,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: onChanged,
                 value: value,
@@ -226,7 +226,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: onChanged,
                 value: value,
@@ -250,7 +250,7 @@ void main() {
         'Should be inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           bool value = true;
           const label = 'Checkbox';
@@ -262,7 +262,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 label: label,
                 onChanged: onChanged,
@@ -299,7 +299,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCheckbox(
+              child: ExpenseCheckbox(
                 key: key,
                 onChanged: onChanged,
                 value: value,

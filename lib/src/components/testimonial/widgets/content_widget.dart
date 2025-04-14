@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/components/testimonial/widgets/label_description_widget.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/components/testimonial/widgets/label_description_widget.dart';
 
 import 'label_widget.dart';
 import 'leading_widget.dart';
@@ -10,7 +10,7 @@ class ContentWidget extends StatelessWidget {
   final String label;
 
   final dynamic leading;
-  final MudeButtonIcon? trailingButton;
+  final ExpenseButtonIcon? trailingButton;
   final bool isLayoutContainer;
   final bool inverse;
   final String description;

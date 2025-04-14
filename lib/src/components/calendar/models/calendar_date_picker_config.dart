@@ -29,13 +29,13 @@ typedef CalendarModePickerTextHandler = String? Function({
   required DateTime monthDate,
 });
 
-class MudeDatePickerConfig {
-  MudeDatePickerConfig({
-    MudeDatePickerType? calendarType,
+class ExpenseDatePickerConfig {
+  ExpenseDatePickerConfig({
+    ExpenseDatePickerType? calendarType,
     DateTime? firstDate,
     DateTime? lastDate,
     DateTime? currentDate,
-    MudeDatePickerMode? calendarViewMode,
+    ExpenseDatePickerMode? calendarViewMode,
     this.weekdayLabels,
     this.weekdayLabelTextStyle,
     this.firstDayOfWeek,
@@ -62,15 +62,14 @@ class MudeDatePickerConfig {
     this.customModePickerIcon,
     this.modePickerTextHandler,
     this.selectedRangeDayTextStyle,
-  })  : calendarType = calendarType ?? MudeDatePickerType.single,
+  })  : calendarType = calendarType ?? ExpenseDatePickerType.single,
         firstDate = DateUtils.dateOnly(firstDate ?? DateTime(1970)),
-        lastDate =
-            DateUtils.dateOnly(lastDate ?? DateTime(DateTime.now().year + 50)),
+        lastDate = DateUtils.dateOnly(lastDate ?? DateTime(DateTime.now().year + 50)),
         currentDate = currentDate ?? DateUtils.dateOnly(DateTime.now()),
-        calendarViewMode = calendarViewMode ?? MudeDatePickerMode.day;
+        calendarViewMode = calendarViewMode ?? ExpenseDatePickerMode.day;
 
   /// The enabled date picker mode
-  final MudeDatePickerType calendarType;
+  final ExpenseDatePickerType calendarType;
 
   /// The earliest allowable [DateTime] that the user can select.
   final DateTime firstDate;
@@ -82,7 +81,7 @@ class MudeDatePickerConfig {
   final DateTime currentDate;
 
   /// The initially displayed view of the calendar picker.
-  final MudeDatePickerMode calendarViewMode;
+  final ExpenseDatePickerMode calendarViewMode;
 
   /// Custom weekday labels for the current locale, MUST starts from Sunday
   /// Examples:
@@ -123,7 +122,7 @@ class MudeDatePickerConfig {
   final Color? selectedDayHighlightColor;
 
   /// The highlight color for day(s) included in the selected range
-  /// Only applicable when [calendarType] is [MudeDatePickerType.range]
+  /// Only applicable when [calendarType] is [ExpenseDatePickerType.range]
   final Color? selectedRangeHighlightColor;
 
   /// Custom text style for disabled calendar day(s)
@@ -168,12 +167,12 @@ class MudeDatePickerConfig {
   /// Function to control mode picker displayed text
   final CalendarModePickerTextHandler? modePickerTextHandler;
 
-  MudeDatePickerConfig copyWith({
-    MudeDatePickerType? calendarType,
+  ExpenseDatePickerConfig copyWith({
+    ExpenseDatePickerType? calendarType,
     DateTime? firstDate,
     DateTime? lastDate,
     DateTime? currentDate,
-    MudeDatePickerMode? calendarViewMode,
+    ExpenseDatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
@@ -201,15 +200,14 @@ class MudeDatePickerConfig {
     Widget? customModePickerIcon,
     CalendarModePickerTextHandler? modePickerTextHandler,
   }) {
-    return MudeDatePickerConfig(
+    return ExpenseDatePickerConfig(
       calendarType: calendarType ?? this.calendarType,
       firstDate: DateUtils.dateOnly(firstDate ?? this.firstDate),
       lastDate: DateUtils.dateOnly(lastDate ?? this.lastDate),
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
-      weekdayLabelTextStyle:
-          weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
+      weekdayLabelTextStyle: weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       firstDayOfWeek: firstDayOfWeek ?? this.firstDayOfWeek,
       controlsHeight: controlsHeight ?? this.controlsHeight,
       lastMonthIcon: lastMonthIcon ?? this.lastMonthIcon,
@@ -217,42 +215,34 @@ class MudeDatePickerConfig {
       controlsTextStyle: controlsTextStyle ?? this.controlsTextStyle,
       dayTextStyle: dayTextStyle ?? this.dayTextStyle,
       selectedDayTextStyle: selectedDayTextStyle ?? this.selectedDayTextStyle,
-      selectedDayHighlightColor:
-          selectedDayHighlightColor ?? this.selectedDayHighlightColor,
-      selectedRangeHighlightColor:
-          selectedRangeHighlightColor ?? this.selectedRangeHighlightColor,
+      selectedDayHighlightColor: selectedDayHighlightColor ?? this.selectedDayHighlightColor,
+      selectedRangeHighlightColor: selectedRangeHighlightColor ?? this.selectedRangeHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
       todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
-      selectedYearTextStyle:
-          selectedYearTextStyle ?? this.selectedYearTextStyle,
-      selectedRangeDayTextStyle:
-          selectedRangeDayTextStyle ?? this.selectedRangeDayTextStyle,
+      selectedYearTextStyle: selectedYearTextStyle ?? this.selectedYearTextStyle,
+      selectedRangeDayTextStyle: selectedRangeDayTextStyle ?? this.selectedRangeDayTextStyle,
       dayBorderRadius: dayBorderRadius ?? this.dayBorderRadius,
       yearBorderRadius: yearBorderRadius ?? this.yearBorderRadius,
-      selectableDayPredicate:
-          selectableDayPredicate ?? this.selectableDayPredicate,
-      dayTextStylePredicate:
-          dayTextStylePredicate ?? this.dayTextStylePredicate,
+      selectableDayPredicate: selectableDayPredicate ?? this.selectableDayPredicate,
+      dayTextStylePredicate: dayTextStylePredicate ?? this.dayTextStylePredicate,
       dayBuilder: dayBuilder ?? this.dayBuilder,
       yearBuilder: yearBuilder ?? this.yearBuilder,
       disableModePicker: disableModePicker ?? this.disableModePicker,
-      centerAlignModePicker:
-          centerAlignModePicker ?? this.centerAlignModePicker,
+      centerAlignModePicker: centerAlignModePicker ?? this.centerAlignModePicker,
       customModePickerIcon: customModePickerIcon ?? this.customModePickerIcon,
-      modePickerTextHandler:
-          modePickerTextHandler ?? this.modePickerTextHandler,
+      modePickerTextHandler: modePickerTextHandler ?? this.modePickerTextHandler,
     );
   }
 }
 
-class MudeDatePickerWithActionButtonsConfig extends MudeDatePickerConfig {
-  MudeDatePickerWithActionButtonsConfig({
-    MudeDatePickerType? calendarType,
+class ExpenseDatePickerWithActionButtonsConfig extends ExpenseDatePickerConfig {
+  ExpenseDatePickerWithActionButtonsConfig({
+    ExpenseDatePickerType? calendarType,
     DateTime? firstDate,
     DateTime? lastDate,
     DateTime? currentDate,
-    MudeDatePickerMode? calendarViewMode,
+    ExpenseDatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
@@ -350,12 +340,12 @@ class MudeDatePickerWithActionButtonsConfig extends MudeDatePickerConfig {
   final EdgeInsets? buttonPadding;
 
   @override
-  MudeDatePickerWithActionButtonsConfig copyWith({
-    MudeDatePickerType? calendarType,
+  ExpenseDatePickerWithActionButtonsConfig copyWith({
+    ExpenseDatePickerType? calendarType,
     DateTime? firstDate,
     DateTime? lastDate,
     DateTime? currentDate,
-    MudeDatePickerMode? calendarViewMode,
+    ExpenseDatePickerMode? calendarViewMode,
     List<String>? weekdayLabels,
     TextStyle? weekdayLabelTextStyle,
     int? firstDayOfWeek,
@@ -392,15 +382,14 @@ class MudeDatePickerWithActionButtonsConfig extends MudeDatePickerConfig {
     bool? closeDialogOnOkTapped,
     EdgeInsets? buttonPadding,
   }) {
-    return MudeDatePickerWithActionButtonsConfig(
+    return ExpenseDatePickerWithActionButtonsConfig(
       calendarType: calendarType ?? this.calendarType,
       firstDate: DateUtils.dateOnly(firstDate ?? this.firstDate),
       lastDate: DateUtils.dateOnly(lastDate ?? this.lastDate),
       currentDate: currentDate ?? this.currentDate,
       calendarViewMode: calendarViewMode ?? this.calendarViewMode,
       weekdayLabels: weekdayLabels ?? this.weekdayLabels,
-      weekdayLabelTextStyle:
-          weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
+      weekdayLabelTextStyle: weekdayLabelTextStyle ?? this.weekdayLabelTextStyle,
       firstDayOfWeek: firstDayOfWeek ?? this.firstDayOfWeek,
       controlsHeight: controlsHeight ?? this.controlsHeight,
       lastMonthIcon: lastMonthIcon ?? this.lastMonthIcon,
@@ -408,43 +397,31 @@ class MudeDatePickerWithActionButtonsConfig extends MudeDatePickerConfig {
       controlsTextStyle: controlsTextStyle ?? this.controlsTextStyle,
       dayTextStyle: dayTextStyle ?? this.dayTextStyle,
       selectedDayTextStyle: selectedDayTextStyle ?? this.selectedDayTextStyle,
-      selectedRangeDayTextStyle:
-          selectedRangeDayTextStyle ?? this.selectedRangeDayTextStyle,
-      selectedDayHighlightColor:
-          selectedDayHighlightColor ?? this.selectedDayHighlightColor,
-      selectedRangeHighlightColor:
-          selectedRangeHighlightColor ?? this.selectedRangeHighlightColor,
+      selectedRangeDayTextStyle: selectedRangeDayTextStyle ?? this.selectedRangeDayTextStyle,
+      selectedDayHighlightColor: selectedDayHighlightColor ?? this.selectedDayHighlightColor,
+      selectedRangeHighlightColor: selectedRangeHighlightColor ?? this.selectedRangeHighlightColor,
       disabledDayTextStyle: disabledDayTextStyle ?? this.disabledDayTextStyle,
       todayTextStyle: todayTextStyle ?? this.todayTextStyle,
       yearTextStyle: yearTextStyle ?? this.yearTextStyle,
-      selectedYearTextStyle:
-          selectedYearTextStyle ?? this.selectedYearTextStyle,
+      selectedYearTextStyle: selectedYearTextStyle ?? this.selectedYearTextStyle,
       dayBorderRadius: dayBorderRadius ?? this.dayBorderRadius,
       yearBorderRadius: yearBorderRadius ?? this.yearBorderRadius,
-      selectableDayPredicate:
-          selectableDayPredicate ?? this.selectableDayPredicate,
-      dayTextStylePredicate:
-          dayTextStylePredicate ?? this.dayTextStylePredicate,
+      selectableDayPredicate: selectableDayPredicate ?? this.selectableDayPredicate,
+      dayTextStylePredicate: dayTextStylePredicate ?? this.dayTextStylePredicate,
       dayBuilder: dayBuilder ?? this.dayBuilder,
       yearBuilder: yearBuilder ?? this.yearBuilder,
       disableModePicker: disableModePicker ?? this.disableModePicker,
-      centerAlignModePicker:
-          centerAlignModePicker ?? this.centerAlignModePicker,
+      centerAlignModePicker: centerAlignModePicker ?? this.centerAlignModePicker,
       customModePickerIcon: customModePickerIcon ?? this.customModePickerIcon,
-      modePickerTextHandler:
-          modePickerTextHandler ?? this.modePickerTextHandler,
-      gapBetweenCalendarAndButtons:
-          gapBetweenCalendarAndButtons ?? this.gapBetweenCalendarAndButtons,
-      cancelButtonTextStyle:
-          cancelButtonTextStyle ?? this.cancelButtonTextStyle,
+      modePickerTextHandler: modePickerTextHandler ?? this.modePickerTextHandler,
+      gapBetweenCalendarAndButtons: gapBetweenCalendarAndButtons ?? this.gapBetweenCalendarAndButtons,
+      cancelButtonTextStyle: cancelButtonTextStyle ?? this.cancelButtonTextStyle,
       cancelButton: cancelButton ?? this.cancelButton,
       okButtonTextStyle: okButtonTextStyle ?? this.okButtonTextStyle,
       okButton: okButton ?? this.okButton,
       openedFromDialog: openedFromDialog ?? this.openedFromDialog,
-      closeDialogOnCancelTapped:
-          closeDialogOnCancelTapped ?? this.closeDialogOnCancelTapped,
-      closeDialogOnOkTapped:
-          closeDialogOnOkTapped ?? this.closeDialogOnOkTapped,
+      closeDialogOnCancelTapped: closeDialogOnCancelTapped ?? this.closeDialogOnCancelTapped,
+      closeDialogOnOkTapped: closeDialogOnOkTapped ?? this.closeDialogOnOkTapped,
       buttonPadding: buttonPadding ?? this.buttonPadding,
     );
   }

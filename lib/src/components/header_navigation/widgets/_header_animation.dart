@@ -1,9 +1,9 @@
 part of '../header_navigation.dart';
 
-class _MudeHeaderAnimation extends StatelessWidget {
+class _ExpenseHeaderAnimation extends StatelessWidget {
   final Widget? child;
 
-  const _MudeHeaderAnimation(this.child);
+  const _ExpenseHeaderAnimation(this.child);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _BodyAnimationState extends State<_BodyAnimation> with SingleTickerProvide
   void initState() {
     super.initState();
 
-    final motions = context.read<MudeThemeManager>().globals.motions;
+    final motions = context.read<ExpenseThemeManager>().globals.motions;
     final duration = motions.durations.slow02;
     final curves = motions.curves;
 

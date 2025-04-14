@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class ContainerSize extends StatelessWidget {
@@ -16,7 +16,7 @@ class ContainerSize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -24,9 +24,7 @@ class ContainerSize extends StatelessWidget {
     final border = globalTokens.shapes.border;
 
     Color getBorderColor() {
-      return inverse
-          ? aliasTokens.color.inverse.borderColor
-          : aliasTokens.color.action.borderPrimaryColor;
+      return inverse ? aliasTokens.color.inverse.borderColor : aliasTokens.color.action.borderPrimaryColor;
     }
 
     return Container(

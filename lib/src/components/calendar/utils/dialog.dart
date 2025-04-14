@@ -7,7 +7,7 @@ import '../widgets/calendar_date_picker_with_action_buttons.dart';
 
 Future<List<DateTime?>?> showCalendarDatePickerDialog({
   required BuildContext context,
-  required MudeDatePickerWithActionButtonsConfig config,
+  required ExpenseDatePickerWithActionButtonsConfig config,
   required Size dialogSize,
   List<DateTime?> value = const [],
   BorderRadius? borderRadius,
@@ -33,7 +33,7 @@ Future<List<DateTime?>?> showCalendarDatePickerDialog({
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MudeDatePickerWithActionButtons(
+          ExpenseDatePickerWithActionButtons(
             value: value,
             config: config.copyWith(openedFromDialog: true),
           ),

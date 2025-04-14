@@ -1,18 +1,18 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/avatar_container_widget.dart';
 
-class MudeAvatarIcon extends StatelessWidget {
-  /// A [MudeAvatarSize] enum that define the avatar size.
-  final MudeAvatarSize size;
+class ExpenseAvatarIcon extends StatelessWidget {
+  /// A [ExpenseAvatarSize] enum that define the avatar size.
+  final ExpenseAvatarSize size;
 
-  /// A [MudeIconData] object that provides an icon to the widge,
-  /// you get all options in [MudeIcons].
-  final MudeIconData? icon;
+  /// A [ExpenseIconData] object that provides an icon to the widge,
+  /// you get all options in [ExpenseIcons].
+  final ExpenseIconData? icon;
 
   /// A bool that if is true show a notification badge
   /// sinalizing new information.
@@ -26,18 +26,18 @@ class MudeAvatarIcon extends StatelessWidget {
   /// set string locally or set a link from web.
   final String? source;
 
-  /// A MudeAvatarSourceLoad enum that is used to set a new source load.
-  /// you get all options in enum [MudeAvatarSourceLoad].
-  late MudeAvatarSourceLoad? sourceLoad;
+  /// A ExpenseAvatarSourceLoad enum that is used to set a new source load.
+  /// you get all options in enum [ExpenseAvatarSourceLoad].
+  late ExpenseAvatarSourceLoad? sourceLoad;
 
   ///A string value that indicates if you add more information from accessibility
   ///The default value is null
   final String? semanticsLabel;
 
-  MudeAvatarIcon({
+  ExpenseAvatarIcon({
     super.key,
     this.icon,
-    this.size = MudeAvatarSize.md,
+    this.size = ExpenseAvatarSize.md,
     this.showNotification = false,
     this.inverse = false,
     this.source,
@@ -47,13 +47,11 @@ class MudeAvatarIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     Color getIconColor() {
-      return inverse
-          ? aliasTokens.color.inverse.onIconColor
-          : aliasTokens.color.elements.onIconColor;
+      return inverse ? aliasTokens.color.inverse.onIconColor : aliasTokens.color.elements.onIconColor;
     }
 
     Offset getDotDistance() {
@@ -71,8 +69,8 @@ class MudeAvatarIcon extends StatelessWidget {
         inverse: inverse,
         dotDistance: getDotDistance(),
         child: Center(
-          child: MudeIcon(
-            icon: icon ?? MudeIcons.userLine,
+          child: ExpenseIcon(
+            icon: icon ?? ExpenseIcons.userLine,
             color: getIconColor(),
           ),
         ),

@@ -1,21 +1,21 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_progress_circular_painter.dart';
 
-class MudeProgressCircular extends StatelessWidget {
+class ExpenseProgressCircular extends StatelessWidget {
   ///An integer value representing the progress percentage.
   final int progress;
 
   ///Indicates inverse property.
   final bool inverse;
 
-  ///A [MudeProgressCircularSize] enum representing the size of the progress bar circular.
-  ///The default value is [MudeProgressCircularSize.md].
-  final MudeProgressCircularSize size;
+  ///A [ExpenseProgressCircularSize] enum representing the size of the progress bar circular.
+  ///The default value is [ExpenseProgressCircularSize.md].
+  final ExpenseProgressCircularSize size;
 
   ///A string value that indicates if you add more information from accessibility
   ///The default value is null
@@ -27,10 +27,10 @@ class MudeProgressCircular extends StatelessWidget {
 
   final bool showLabel;
 
-  const MudeProgressCircular({
+  const ExpenseProgressCircular({
     super.key,
     required this.progress,
-    this.size = MudeProgressCircularSize.lg,
+    this.size = ExpenseProgressCircularSize.lg,
     this.showLabel = true,
     this.semanticsLabel,
     this.semanticsValue,
@@ -39,20 +39,20 @@ class MudeProgressCircular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context, listen: false);
+    var tokens = Provider.of<ExpenseThemeManager>(context, listen: false);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var sizes = globalTokens.shapes.size;
 
     final boxSize = switch (size) {
-      MudeProgressCircularSize.xs => sizes.s2x,
-      MudeProgressCircularSize.sm => sizes.s3x,
-      MudeProgressCircularSize.lg => sizes.s6x,
-      MudeProgressCircularSize.xl => sizes.s15x,
+      ExpenseProgressCircularSize.xs => sizes.s2x,
+      ExpenseProgressCircularSize.sm => sizes.s3x,
+      ExpenseProgressCircularSize.lg => sizes.s6x,
+      ExpenseProgressCircularSize.xl => sizes.s15x,
     };
 
     String getLabel() {
-      if (size != MudeProgressCircularSize.sm && showLabel) {
+      if (size != ExpenseProgressCircularSize.sm && showLabel) {
         return progress < 100 ? "${(progress).toStringAsFixed(0)}%" : '100%';
       }
 
@@ -70,9 +70,9 @@ class MudeProgressCircular extends StatelessWidget {
       final border = globalTokens.shapes.border;
 
       return [
-        MudeProgressCircularSize.xs,
-        MudeProgressCircularSize.sm,
-        MudeProgressCircularSize.lg,
+        ExpenseProgressCircularSize.xs,
+        ExpenseProgressCircularSize.sm,
+        ExpenseProgressCircularSize.lg,
       ].contains(size)
           ? border.widthSm
           : border.widthMd;
@@ -104,11 +104,11 @@ class MudeProgressCircular extends StatelessWidget {
                 radialSize: boxSize,
               ),
               child: Center(
-                child: size == MudeProgressCircularSize.xs ? const SizedBox.shrink() : label,
+                child: size == ExpenseProgressCircularSize.xs ? const SizedBox.shrink() : label,
               ),
             ),
           ),
-          if (size == MudeProgressCircularSize.xs) ...[
+          if (size == ExpenseProgressCircularSize.xs) ...[
             SizedBox(
               width: globalTokens.shapes.spacing.s1x,
             ),

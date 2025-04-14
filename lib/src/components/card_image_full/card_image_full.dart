@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
-class MudeCardImageFull extends StatefulWidget {
+class ExpenseCardImageFull extends StatefulWidget {
   /// Set a local or web path to load an image
   final String src;
 
@@ -31,7 +31,7 @@ class MudeCardImageFull extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeCardImageFull({
+  const ExpenseCardImageFull({
     super.key,
     required this.src,
     required this.height,
@@ -44,10 +44,10 @@ class MudeCardImageFull extends StatefulWidget {
   });
 
   @override
-  State<MudeCardImageFull> createState() => _MudeCardImageFullState();
+  State<ExpenseCardImageFull> createState() => _ExpenseCardImageFullState();
 }
 
-class _MudeCardImageFullState extends State<MudeCardImageFull> {
+class _ExpenseCardImageFullState extends State<ExpenseCardImageFull> {
   bool _isPressed = false;
 
   _onPressedDown(_) {
@@ -70,14 +70,14 @@ class _MudeCardImageFullState extends State<MudeCardImageFull> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
     final spacing = globalTokens.shapes.spacing;
 
     Widget getImage() {
-      var sourceLoad = urlIsvalid(widget.src) ? MudeImage.network : MudeImage.asset;
+      var sourceLoad = urlIsvalid(widget.src) ? ExpenseImage.network : ExpenseImage.asset;
 
       return Hero(
         tag: widget.heroTag ?? UniqueKey(),
@@ -146,7 +146,7 @@ class _Gradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 

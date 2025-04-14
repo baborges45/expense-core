@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeTopic extends StatelessWidget {
+class ExpenseTopic extends StatelessWidget {
   ///A String representing the text of the topic.
   final String text;
 
-  ///A [MudeIconData] object representing the icon associated with the topic.
-  final MudeIconData icon;
+  ///A [ExpenseIconData] object representing the icon associated with the topic.
+  final ExpenseIconData icon;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -17,7 +17,7 @@ class MudeTopic extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeTopic({
+  const ExpenseTopic({
     super.key,
     required this.text,
     required this.icon,
@@ -27,7 +27,7 @@ class MudeTopic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -40,17 +40,17 @@ class MudeTopic extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 4),
-            child: MudeIcon(
+            child: ExpenseIcon(
               icon: icon,
-              size: MudeIconSize.lg,
+              size: ExpenseIconSize.lg,
               color: aliasTokens.color.elements.iconColor,
             ),
           ),
           SizedBox(width: globalTokens.shapes.spacing.s2x),
           Expanded(
-            child: MudeParagraph(
+            child: ExpenseParagraph(
               text,
-              size: MudeParagraphSize.sm,
+              size: ExpenseParagraphSize.sm,
             ),
           ),
         ],

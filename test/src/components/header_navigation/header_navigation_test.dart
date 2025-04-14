@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 onBack: () => debugPrint(''),
               ),
@@ -34,7 +34,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 title: title,
                 onBack: () => debugPrint(''),
@@ -55,11 +55,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 title: title,
                 subtitle: subtitle,
-                type: MudeHeaderNavigationType.jumbo,
+                type: ExpenseHeaderNavigationType.jumbo,
                 onBack: () => debugPrint(''),
               ),
             ),
@@ -79,12 +79,12 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 title: title,
                 subtitle: subtitle,
                 description: description,
-                type: MudeHeaderNavigationType.jumbo,
+                type: ExpenseHeaderNavigationType.jumbo,
                 onBack: () => debugPrint(''),
               ),
             ),
@@ -106,18 +106,18 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 title: title,
                 subtitle: subtitle,
                 description: description,
-                type: MudeHeaderNavigationType.jumbo,
+                type: ExpenseHeaderNavigationType.jumbo,
                 onBack: () => press = true,
               ),
             ),
           );
 
-          final button = find.byType(MudeButtonIcon);
+          final button = find.byType(ExpenseButtonIcon);
           await widgetTester.tap(button.first);
           await widgetTester.pumpAndSettle();
 
@@ -136,16 +136,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderNavigation(
+              child: ExpenseHeaderNavigation(
                 key: key,
                 title: title,
                 subtitle: subtitle,
                 description: description,
-                type: MudeHeaderNavigationType.jumbo,
+                type: ExpenseHeaderNavigationType.jumbo,
                 onBack: () => debugPrint(''),
                 trailingButtons: [
-                  MudeButtonIcon(
-                    icon: MudeIcons.placeholderLine,
+                  ExpenseButtonIcon(
+                    icon: ExpenseIcons.placeholderLine,
                     onPressed: () => debugPrint(''),
                   ),
                 ],
@@ -153,10 +153,10 @@ void main() {
             ),
           );
 
-          final buttons = find.byType(MudeButtonIcon);
-          final button = widgetTester.widget<MudeButtonIcon>(buttons.last);
+          final buttons = find.byType(ExpenseButtonIcon);
+          final button = widgetTester.widget<ExpenseButtonIcon>(buttons.last);
 
-          expect(button.icon.name, MudeIcons.placeholderLine.name);
+          expect(button.icon.name, ExpenseIcons.placeholderLine.name);
         },
       );
     },
@@ -170,7 +170,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeHeaderNavigation(
+            child: ExpenseHeaderNavigation(
               onBack: () => debugPrint(''),
               semanticsHeaderLabel: 'Label text',
               semanticsHeaderHint: 'Hint Text',

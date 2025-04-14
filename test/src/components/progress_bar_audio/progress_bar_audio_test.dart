@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressBarAudio(
+              child: ExpenseProgressBarAudio(
                 key: key,
                 controller: ProgressBarController()
                   ..setPlayList(
@@ -23,7 +23,7 @@ void main() {
                       ProgressBarAudioSource(
                         id: 1,
                         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
-                        author: 'Mude',
+                        author: 'Expense',
                         title: 'Title 1',
                       ),
                     ],
@@ -42,7 +42,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressBarAudio(
+              child: ExpenseProgressBarAudio(
                 key: key,
                 controller: ProgressBarController()
                   ..setPlayList(
@@ -50,7 +50,7 @@ void main() {
                       ProgressBarAudioSource(
                         id: 1,
                         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
-                        author: 'Mude',
+                        author: 'Expense',
                         title: 'Title 1',
                       ),
                     ],
@@ -70,7 +70,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressBarAudio(
+              child: ExpenseProgressBarAudio(
                 key: key,
                 controller: ProgressBarController()
                   ..setPlayList(
@@ -78,7 +78,7 @@ void main() {
                       ProgressBarAudioSource(
                         id: 1,
                         url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
-                        author: 'Mude',
+                        author: 'Expense',
                         title: 'Title 1',
                       ),
                     ],

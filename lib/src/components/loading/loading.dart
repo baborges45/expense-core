@@ -1,23 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeLoading extends StatefulWidget {
+class ExpenseLoading extends StatefulWidget {
   final bool inverse;
-  final MudeLoadingSize size;
-  const MudeLoading({
+  final ExpenseLoadingSize size;
+  const ExpenseLoading({
     super.key,
     this.inverse = false,
-    this.size = MudeLoadingSize.sm,
+    this.size = ExpenseLoadingSize.sm,
   });
 
   @override
-  State<MudeLoading> createState() => _MudeLoadingState();
+  State<ExpenseLoading> createState() => _ExpenseLoadingState();
 }
 
-class _MudeLoadingState extends State<MudeLoading> {
+class _ExpenseLoadingState extends State<ExpenseLoading> {
   late Timer _timer;
   int index = 0;
 
@@ -35,15 +35,14 @@ class _MudeLoadingState extends State<MudeLoading> {
   }
 
   void initAnimation() {
-    final motions = context.read<MudeThemeManager>().globals.motions;
+    final motions = context.read<ExpenseThemeManager>().globals.motions;
     const totalTransitions = 4;
 
     setState(() => index = 0);
 
     _timer = Timer.periodic(
       Duration(
-        milliseconds:
-            motions.durations.slow02.inMilliseconds ~/ totalTransitions,
+        milliseconds: motions.durations.slow02.inMilliseconds ~/ totalTransitions,
       ),
       (_) {
         setState(() => index == 7 ? index = 0 : index += 1);
@@ -53,19 +52,16 @@ class _MudeLoadingState extends State<MudeLoading> {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
     var size = globalTokens.shapes.size;
     var opacity = globalTokens.shapes.opacity;
 
-    double sizeBody = widget.size == MudeLoadingSize.sm ? size.s2x : size.s3x;
+    double sizeBody = widget.size == ExpenseLoadingSize.sm ? size.s2x : size.s3x;
 
-    Color getColor() => widget.inverse
-        ? aliasTokens.color.inverse.bgColor
-        : aliasTokens.color.elements.bgColor01;
+    Color getColor() => widget.inverse ? aliasTokens.color.inverse.bgColor : aliasTokens.color.elements.bgColor01;
 
-    Color getBackgroundColor() => aliasTokens.color.elements.bgColor03
-        .withOpacity(widget.inverse ? opacity.superHigh : opacity.superLow);
+    Color getBackgroundColor() => aliasTokens.color.elements.bgColor03.withOpacity(widget.inverse ? opacity.superHigh : opacity.superLow);
 
     return Semantics(
       key: const Key('button-loading'),

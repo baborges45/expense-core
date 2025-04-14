@@ -5,13 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeCreditCard extends StatelessWidget {
-  /// (Optional) A MudeFlags object that provides a flag to the widge,
-  /// you get all options in [MudeFlags].
+class ExpenseCreditCard extends StatelessWidget {
+  /// (Optional) A ExpenseFlags object that provides a flag to the widge,
+  /// you get all options in [ExpenseFlags].
   /// If flag in is null it will not be shown.
-  final MudeFlagData? flag;
+  final ExpenseFlagData? flag;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
@@ -25,7 +25,7 @@ class MudeCreditCard extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeCreditCard({
+  const ExpenseCreditCard({
     super.key,
     this.flag,
     this.inverse = false,
@@ -35,7 +35,7 @@ class MudeCreditCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;

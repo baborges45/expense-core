@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,14 +37,12 @@ class _LoadingButtonState extends State<LineBlinkWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
 
     var aliasTokens = tokens.alias;
     var globalTokens = tokens.globals;
     Color getColor() {
-      return index == 0
-          ? Colors.transparent
-          : aliasTokens.color.active.placeholderColor;
+      return index == 0 ? Colors.transparent : aliasTokens.color.active.placeholderColor;
     }
 
     Widget containerCircleAnimate(Color color) {

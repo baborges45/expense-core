@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-class MudeSplashScreen extends StatelessWidget {
+class ExpenseSplashScreen extends StatelessWidget {
   // The splashcreen animation
   final Widget logo;
 
@@ -14,7 +14,7 @@ class MudeSplashScreen extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeSplashScreen({
+  const ExpenseSplashScreen({
     super.key,
     required this.logo,
     this.semanticsHint,

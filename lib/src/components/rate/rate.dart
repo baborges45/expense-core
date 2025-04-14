@@ -1,11 +1,11 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/extensions.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/extensions.dart';
 import 'package:provider/provider.dart';
 
-class MudeRate extends StatelessWidget {
+class ExpenseRate extends StatelessWidget {
   ///A string value that will be displayed under the rate icon.
   final String value;
 
@@ -17,7 +17,7 @@ class MudeRate extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeRate(
+  const ExpenseRate(
     this.value, {
     super.key,
     this.semanticsLabel,
@@ -26,7 +26,7 @@ class MudeRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -40,13 +40,13 @@ class MudeRate extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          MudeIcon(
-            icon: MudeIcons.rateFill,
-            size: MudeIconSize.sm,
+          ExpenseIcon(
+            icon: ExpenseIcons.rateFill,
+            size: ExpenseIconSize.sm,
             color: aliasTokens.color.elements.iconColor,
           ),
           SizedBox(width: globalTokens.shapes.spacing.half),
-          MudeDescription(
+          ExpenseDescription(
             value,
             color: aliasTokens.color.text.descriptionColor,
           ),

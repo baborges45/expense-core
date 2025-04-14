@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
               ),
@@ -37,7 +37,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -55,12 +55,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -83,12 +83,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -114,12 +114,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -149,7 +149,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -164,11 +164,11 @@ void main() {
 
           final widget = find.descendant(
             of: icon,
-            matching: find.byType(MudeIcon),
+            matching: find.byType(ExpenseIcon),
           );
 
-          final iconShowing = widgetTester.widget<MudeIcon>(widget);
-          expect(iconShowing.icon.name, MudeIcons.hideLine.name);
+          final iconShowing = widgetTester.widget<ExpenseIcon>(widget);
+          expect(iconShowing.icon.name, ExpenseIcons.hideLine.name);
         },
       );
 
@@ -178,12 +178,12 @@ void main() {
           final key = UniqueKey();
           const label = 'Label';
           const supporttext = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputPasswordLine(
+              child: ExpenseInputPasswordLine(
                 key: key,
                 label: label,
                 supportText: supporttext,
@@ -211,7 +211,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeInputPasswordLine(
+            child: ExpenseInputPasswordLine(
               label: 'Label',
               semanticsLabel: 'Label',
             ),

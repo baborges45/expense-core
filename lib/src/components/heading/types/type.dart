@@ -1,1 +1,1 @@
-enum MudeHeadingSize { xl, lg, md, sm, xs }
+enum ExpenseHeadingSize { xl, lg, md, sm, xs }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/pixel_ratio.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/pixel_ratio.dart';
 import 'package:provider/provider.dart';
 
 void openDrawer(
@@ -14,13 +14,13 @@ void openDrawer(
   required DateTime firstDate,
   required DateTime lastDate,
   required String buttonLabel,
-  required MudeInputDateType type,
-  required MudeInputDateMode mode,
+  required ExpenseInputDateType type,
+  required ExpenseInputDateMode mode,
   required bool hasChangedYear,
 }) {
   if (disabled) return;
 
-  MudeSuperDrawer.show(
+  ExpenseSuperDrawer.show(
     padding: const EdgeInsets.all(0),
     backgroundColor: backgroundColor,
     context,
@@ -49,8 +49,8 @@ class _DrawerContent extends StatefulWidget {
   final DateTime firstDate;
   final DateTime lastDate;
   final String buttonLabel;
-  final MudeInputDateType type;
-  final MudeInputDateMode mode;
+  final ExpenseInputDateType type;
+  final ExpenseInputDateMode mode;
   final bool hasChangedYear;
 
   const _DrawerContent({
@@ -94,34 +94,32 @@ class __DrawerContentState extends State<_DrawerContent> {
     setState(() => _dateSelected = widget.value);
   }
 
-  MudeDatePickerType getCalendarDatePickerType() {
+  ExpenseDatePickerType getCalendarDatePickerType() {
     switch (widget.type) {
-      case MudeInputDateType.single:
-        return MudeDatePickerType.single;
-      case MudeInputDateType.range:
-        return MudeDatePickerType.range;
+      case ExpenseInputDateType.single:
+        return ExpenseDatePickerType.single;
+      case ExpenseInputDateType.range:
+        return ExpenseDatePickerType.range;
     }
   }
 
-  MudeDatePickerMode getCalendarDataPickerMode() {
+  ExpenseDatePickerMode getCalendarDataPickerMode() {
     switch (widget.mode) {
-      case MudeInputDateMode.day:
-        return MudeDatePickerMode.day;
-      case MudeInputDateMode.year:
-        return MudeDatePickerMode.year;
+      case ExpenseInputDateMode.day:
+        return ExpenseDatePickerMode.day;
+      case ExpenseInputDateMode.year:
+        return ExpenseDatePickerMode.year;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final spacing = globalTokens.shapes.spacing;
 
     bool disableButton() {
-      return widget.type == MudeInputDateType.range
-          ? !(_dateSelected.length > 1 && _dateSelected[1] != null)
-          : (_dateSelected == widget.value);
+      return widget.type == ExpenseInputDateType.range ? !(_dateSelected.length > 1 && _dateSelected[1] != null) : (_dateSelected == widget.value);
     }
 
     return Expanded(
@@ -136,12 +134,12 @@ class __DrawerContentState extends State<_DrawerContent> {
                   bottom: PixelRatio.calc(context, spacing.s4x),
                   left: spacing.s3x,
                 ),
-                child: MudeHeading(
+                child: ExpenseHeading(
                   widget.label,
-                  size: MudeHeadingSize.lg,
+                  size: ExpenseHeadingSize.lg,
                 ),
               ),
-              MudeDatePicker(
+              ExpenseDatePicker(
                 firstDate: widget.firstDate,
                 lastDate: widget.lastDate,
                 onValueChanged: _onDateChanged,
@@ -159,9 +157,9 @@ class __DrawerContentState extends State<_DrawerContent> {
             left: 0,
             child: Padding(
               padding: EdgeInsets.all(spacing.s3x),
-              child: MudeButton(
+              child: ExpenseButton(
                 label: widget.buttonLabel,
-                type: MudeButtonType.blocked,
+                type: ExpenseButtonType.blocked,
                 onPressed: _onConfirm,
                 disabled: disableButton(),
               ),

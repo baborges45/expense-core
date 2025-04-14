@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 mixin PropertiesMixin {
@@ -9,7 +9,7 @@ mixin PropertiesMixin {
     required negative,
     required BuildContext context,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     if (inverse) {
@@ -33,7 +33,7 @@ mixin PropertiesMixin {
     required negative,
     required BuildContext context,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     if (inverse) {
@@ -56,7 +56,7 @@ mixin PropertiesMixin {
     required isPressed,
     required BuildContext context,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     if (disabled) return aliasTokens.color.disabled.opacity;

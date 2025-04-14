@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,12 +20,10 @@ class LeadingNavWidget extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
     var globalShapes = globalTokens.shapes;
 
-    var rightPadding = child is MudeIconData || child is MudeAvatarGroup
-        ? globalShapes.spacing.s1x
-        : globalShapes.spacing.s2x;
+    var rightPadding = child is ExpenseIconData || child is ExpenseAvatarGroup ? globalShapes.spacing.s1x : globalShapes.spacing.s2x;
 
     return Container(
       padding: EdgeInsets.only(right: rightPadding),

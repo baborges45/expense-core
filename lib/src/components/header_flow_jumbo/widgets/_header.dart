@@ -23,7 +23,7 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
     var spacing = globalTokens.shapes.spacing;
 
     Widget getButtonBack() {
@@ -33,10 +33,10 @@ class _Header extends StatelessWidget {
         );
       }
 
-      return MudeButtonIcon(
+      return ExpenseButtonIcon(
         key: const Key('header-flow-jumbo.button-back'),
-        icon: MudeIcons.backLine,
-        size: MudeButtonIconSize.lg,
+        icon: ExpenseIcons.backLine,
+        size: ExpenseButtonIconSize.lg,
         onPressed: onBack!,
         semanticsHint: semanticsButtonBackHint ?? 'Voltar',
       );
@@ -49,9 +49,9 @@ class _Header extends StatelessWidget {
         );
       }
 
-      return MudeButtonIcon(
-        icon: MudeIcons.closeLine,
-        size: MudeButtonIconSize.lg,
+      return ExpenseButtonIcon(
+        icon: ExpenseIcons.closeLine,
+        size: ExpenseButtonIconSize.lg,
         onPressed: onClose!,
         semanticsLabel: semanticsButtonCloseHint ?? 'Fechar',
       );

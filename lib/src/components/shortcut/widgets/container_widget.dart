@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../mixins/properties_mixin.dart';
@@ -26,8 +26,7 @@ class ContainerWidget extends StatefulWidget {
   State<ContainerWidget> createState() => _ContainerWidgetState();
 }
 
-class _ContainerWidgetState extends State<ContainerWidget>
-    with PropertiesMixin {
+class _ContainerWidgetState extends State<ContainerWidget> with PropertiesMixin {
   bool _isPressed = false;
 
   _onPressedDown(_) {
@@ -48,7 +47,7 @@ class _ContainerWidgetState extends State<ContainerWidget>
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
@@ -84,9 +83,7 @@ class _ContainerWidgetState extends State<ContainerWidget>
         return aliasTokens.color.disabled.bgColor;
       }
 
-      return widget.gradient == null
-          ? aliasTokens.color.elements.bgColor02
-          : null;
+      return widget.gradient == null ? aliasTokens.color.elements.bgColor02 : null;
     }
 
     Widget getChild() {

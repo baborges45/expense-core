@@ -2,7 +2,7 @@ part of '../tab.dart';
 
 class _TabItem extends StatelessWidget {
   final String label;
-  final MudeIconData? icon;
+  final ExpenseIconData? icon;
   final bool actived;
   final bool isScrollable;
   final bool inverse;
@@ -17,7 +17,7 @@ class _TabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -33,9 +33,9 @@ class _TabItem extends StatelessWidget {
 
       return Padding(
         padding: EdgeInsets.only(right: globalTokens.shapes.spacing.half),
-        child: MudeIcon(
+        child: ExpenseIcon(
           icon: icon!,
-          size: MudeIconSize.sm,
+          size: ExpenseIconSize.sm,
           color: iconColor,
         ),
       );
@@ -54,9 +54,7 @@ class _TabItem extends StatelessWidget {
         return aliasTokens.color.inverse.labelColor;
       }
 
-      return actived
-          ? aliasTokens.color.selected.labelColor
-          : aliasTokens.color.text.labelColor;
+      return actived ? aliasTokens.color.selected.labelColor : aliasTokens.color.text.labelColor;
     }
 
     return Tab(

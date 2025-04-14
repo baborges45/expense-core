@@ -1,25 +1,25 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 mixin AccessibilityMixin {
   String? getSemanticsLabel({
     required String? semanticsLabel,
     required String tag,
-    required MudeTagStatus status,
+    required ExpenseTagStatus status,
   }) {
     final labelSemantics = semanticsLabel ?? tag;
 
     switch (status) {
-      case MudeTagStatus.neutral:
+      case ExpenseTagStatus.neutral:
         return labelSemantics;
-      case MudeTagStatus.positive:
+      case ExpenseTagStatus.positive:
         return 'positivo: $labelSemantics';
-      case MudeTagStatus.promote:
+      case ExpenseTagStatus.promote:
         return 'promoção: $labelSemantics';
-      case MudeTagStatus.negative:
+      case ExpenseTagStatus.negative:
         return 'negativo: $labelSemantics';
-      case MudeTagStatus.informative:
+      case ExpenseTagStatus.informative:
         return 'informativo: $labelSemantics';
-      case MudeTagStatus.warning:
+      case ExpenseTagStatus.warning:
         return 'atenção: $labelSemantics';
     }
   }

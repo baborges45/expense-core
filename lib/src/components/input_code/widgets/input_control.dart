@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'input_code_description.dart';
@@ -9,9 +9,9 @@ class InputCodeControl extends StatefulWidget {
   final String value;
   final ValueChanged<String> onChanged;
   final String description;
-  final MudeInputCodeController? controller;
+  final ExpenseInputCodeController? controller;
   final ValueChanged<bool>? onFinished;
-  final MudeInputCodeHiperLink? hiperlink;
+  final ExpenseInputCodeHiperLink? hiperlink;
   final FocusNode? focusNode;
   final bool autofocus;
   final TextInputType? keyboardType;
@@ -87,7 +87,7 @@ class _InputCodeControlState extends State<InputCodeControl> {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

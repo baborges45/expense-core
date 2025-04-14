@@ -1,3 +1,3 @@
-enum MudeSkeletonType { retangle, circle }
+enum ExpenseSkeletonType { retangle, circle }
 
-enum MudeSkeletonDirection { ltr, rtl, ttb, btt }
+enum ExpenseSkeletonDirection { ltr, rtl, ttb, btt }

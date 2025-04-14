@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/input_control.dart';
 import 'widgets/line_blink_widget.dart';
 
-class MudeInputCodeLine extends StatefulWidget {
+class ExpenseInputCodeLine extends StatefulWidget {
   ///An integer representing the number of items in the input code field.
   final int itemsCount;
 
@@ -19,8 +19,8 @@ class MudeInputCodeLine extends StatefulWidget {
   ///A string representing a description for the input code field.
   final String description;
 
-  ///(Optional) A [MudeInputCodeController] object that can be used to control the input code field.
-  final MudeInputCodeController? controller;
+  ///(Optional) A [ExpenseInputCodeController] object that can be used to control the input code field.
+  final ExpenseInputCodeController? controller;
 
   ///(Optional) A  callback function that will be called when the input code field is finished
   ///(e.g., when all items have been filled).
@@ -50,7 +50,7 @@ class MudeInputCodeLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeInputCodeLine({
+  const ExpenseInputCodeLine({
     super.key,
     required this.value,
     required this.onChanged,
@@ -68,15 +68,15 @@ class MudeInputCodeLine extends StatefulWidget {
   });
 
   @override
-  State<MudeInputCodeLine> createState() => _MudeInputCodeLineState();
+  State<ExpenseInputCodeLine> createState() => _ExpenseInputCodeLineState();
 }
 
-class _MudeInputCodeLineState extends State<MudeInputCodeLine> {
+class _ExpenseInputCodeLineState extends State<ExpenseInputCodeLine> {
   bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
 
     int getItemsCount() {
       if (widget.itemsCount > 6) return 6;
@@ -145,7 +145,7 @@ class _Box extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
@@ -178,9 +178,7 @@ class _Box extends StatelessWidget {
     }
 
     Color getBorderColor() {
-      return actived && focused
-          ? aliasTokens.color.active.borderColor
-          : aliasTokens.color.elements.borderColor;
+      return actived && focused ? aliasTokens.color.active.borderColor : aliasTokens.color.elements.borderColor;
     }
 
     return Row(

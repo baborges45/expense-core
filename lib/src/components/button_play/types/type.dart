@@ -1,1 +1,1 @@
-enum MudeButtonPlayType { play, pause }
+enum ExpenseButtonPlayType { play, pause }

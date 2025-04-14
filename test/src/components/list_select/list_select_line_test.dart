@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 label: 'Label',
                 description: 'Description',
                 onChanged: (value) => debugPrint(''),
@@ -62,7 +62,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
@@ -87,7 +87,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 description: descripiton,
@@ -113,7 +113,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
@@ -124,7 +124,7 @@ void main() {
             ),
           );
 
-          final checkout = find.byType(MudeCheckbox);
+          final checkout = find.byType(ExpenseCheckbox);
           await widgetTester.tap(checkout);
           await widgetTester.pumpAndSettle();
 
@@ -142,7 +142,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
@@ -154,7 +154,7 @@ void main() {
             ),
           );
 
-          final checkout = find.byType(MudeCheckbox);
+          final checkout = find.byType(ExpenseCheckbox);
           await widgetTester.tap(checkout);
           await widgetTester.pumpAndSettle();
 
@@ -166,7 +166,7 @@ void main() {
         'Should list select line position',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           const label = 'Label';
           bool itemSelected = false;
@@ -174,14 +174,14 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                linePosition: MudeListSelectPosition.bottom,
+                linePosition: ExpenseListSelectPosition.bottom,
               ),
             ),
           );
@@ -208,19 +208,19 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: MudeIcons.placeholderLine,
+                leading: ExpenseIcons.placeholderLine,
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -234,19 +234,19 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: MudeImage.asset('test/assets/image.png'),
+                leading: ExpenseImage.asset('test/assets/image.png'),
               ),
             ),
           );
 
-          expect(find.byType(MudeImage), findsOneWidget);
+          expect(find.byType(ExpenseImage), findsOneWidget);
         },
       );
 
@@ -260,19 +260,19 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: MudeAvatarIcon(icon: MudeIcons.calendarLine),
+                leading: ExpenseAvatarIcon(icon: ExpenseIcons.calendarLine),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -286,21 +286,21 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: MudeAvatarIcon(
-                  icon: MudeIcons.placeholderLine,
+                leading: ExpenseAvatarIcon(
+                  icon: ExpenseIcons.placeholderLine,
                 ),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -314,21 +314,21 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: MudeAvatarIcon(
-                  icon: MudeIcons.placeholderLine,
+                leading: ExpenseAvatarIcon(
+                  icon: ExpenseIcons.placeholderLine,
                 ),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -342,19 +342,19 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListSelectLine(
+              child: ExpenseListSelectLine(
                 key: key,
                 label: label,
                 onChanged: (e) {
                   itemSelected = e!;
                 },
                 value: itemSelected,
-                leading: const MudeCreditCard(),
+                leading: const ExpenseCreditCard(),
               ),
             ),
           );
 
-          expect(find.byType(MudeCreditCard), findsOneWidget);
+          expect(find.byType(ExpenseCreditCard), findsOneWidget);
         },
       );
     },

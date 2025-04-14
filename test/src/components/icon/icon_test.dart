@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeIcon(icon: MudeIcons.calendarLine),
+              child: ExpenseIcon(icon: ExpenseIcons.calendarLine),
             ),
           );
 
@@ -55,9 +55,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeIcon(
+              child: ExpenseIcon(
                 key: key,
-                icon: MudeIcons.closeLine,
+                icon: ExpenseIcons.closeLine,
               ),
             ),
           );
@@ -69,20 +69,19 @@ void main() {
         'Should be size sm',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeIcon(
+              child: ExpenseIcon(
                 key: key,
-                icon: MudeIcons.closeLine,
-                size: MudeIconSize.sm,
+                icon: ExpenseIcons.closeLine,
+                size: ExpenseIconSize.sm,
               ),
             ),
           );
 
-          final widget =
-              widgetTester.widget<SvgPicture>(find.byType(SvgPicture));
+          final widget = widgetTester.widget<SvgPicture>(find.byType(SvgPicture));
           final height = widget.height;
           expect(height, tokens?.globals.shapes.size.s2x);
         },
@@ -92,20 +91,19 @@ void main() {
         'Should be size md',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeIcon(
+              child: ExpenseIcon(
                 key: key,
-                icon: MudeIcons.closeLine,
-                size: MudeIconSize.lg,
+                icon: ExpenseIcons.closeLine,
+                size: ExpenseIconSize.lg,
               ),
             ),
           );
 
-          final widget =
-              widgetTester.widget<SvgPicture>(find.byType(SvgPicture));
+          final widget = widgetTester.widget<SvgPicture>(find.byType(SvgPicture));
           final height = widget.height;
           expect(height, tokens?.globals.shapes.size.s2_5x);
         },

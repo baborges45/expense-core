@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/content_widget.dart';
 
-class MudeListContentGhost extends StatelessWidget {
+class ExpenseListContentGhost extends StatelessWidget {
   ///A string representing the label text
   final String label;
 
@@ -15,8 +15,8 @@ class MudeListContentGhost extends StatelessWidget {
   final String? descriptionRight;
 
   /// A dynamic type that can be this one of these:
-  /// [MudeIconData], [MudeImage], [MudeAvatarName], [MudeAvatarIcon],
-  /// [MudeAvatarIcon], [MudeCreditCard].
+  /// [ExpenseIconData], [ExpenseImage], [ExpenseAvatarName], [ExpenseAvatarIcon],
+  /// [ExpenseAvatarIcon], [ExpenseCreditCard].
   final dynamic leading;
 
   ///A string value that provides a descriptive label for accessibility purposes.
@@ -27,7 +27,7 @@ class MudeListContentGhost extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeListContentGhost({
+  const ExpenseListContentGhost({
     super.key,
     required this.label,
     this.description = '',
@@ -39,7 +39,7 @@ class MudeListContentGhost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
 
     return Semantics(

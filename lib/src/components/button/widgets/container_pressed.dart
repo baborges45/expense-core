@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class ContainerPressed extends StatelessWidget {
   final bool isPressed;
@@ -16,7 +16,7 @@ class ContainerPressed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var durations = globalTokens.motions.durations;
@@ -26,9 +26,7 @@ class ContainerPressed extends StatelessWidget {
     }
 
     Color getColorBoxShadow() {
-      return inverse
-          ? aliasTokens.mixin.pressedOutlineInverse
-          : aliasTokens.mixin.pressedOutline;
+      return inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
     }
 
     return AnimatedPositioned(

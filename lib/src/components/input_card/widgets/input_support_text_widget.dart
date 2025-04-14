@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class InputSupportTextWidget extends StatelessWidget {
   final String? text;
@@ -22,7 +22,7 @@ class InputSupportTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (text == null || text!.isEmpty) return const SizedBox(height: 20);
 
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -31,15 +31,12 @@ class InputSupportTextWidget extends StatelessWidget {
         return aliasTokens.color.disabled.supportTextColor;
       }
 
-      return hasError
-          ? aliasTokens.color.negative.supportTextColor
-          : aliasTokens.color.text.supportTextColor;
+      return hasError ? aliasTokens.color.negative.supportTextColor : aliasTokens.color.text.supportTextColor;
     }
 
     final newText = hasError ? 'Erro, ${text!}' : text!;
 
-    final opacityBody =
-        disabled && addOpacityBody ? globalTokens.shapes.opacity.low : 1.0;
+    final opacityBody = disabled && addOpacityBody ? globalTokens.shapes.opacity.low : 1.0;
 
     return Semantics(
       label: newText,

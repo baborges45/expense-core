@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class InputPasswordIconWidget extends StatelessWidget {
@@ -22,7 +22,7 @@ class InputPasswordIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -32,9 +32,7 @@ class InputPasswordIconWidget extends StatelessWidget {
         return aliasTokens.color.disabled.iconColor;
       }
 
-      return hasError
-          ? errorColor ?? aliasTokens.color.negative.iconColor
-          : aliasTokens.color.elements.iconColor;
+      return hasError ? errorColor ?? aliasTokens.color.negative.iconColor : aliasTokens.color.elements.iconColor;
     }
 
     return Semantics(
@@ -42,9 +40,9 @@ class InputPasswordIconWidget extends StatelessWidget {
       enabled: !disabled,
       child: Container(
         margin: EdgeInsets.only(right: spacing.s1x),
-        child: MudeButtonIcon(
+        child: ExpenseButtonIcon(
           key: const Key('input-password.icon'),
-          icon: hide ? MudeIcons.hideOffLine : MudeIcons.hideLine,
+          icon: hide ? ExpenseIcons.hideOffLine : ExpenseIcons.hideLine,
           onPressed: onPressed,
           iconColor: getIconColor(),
           disabled: disabled,

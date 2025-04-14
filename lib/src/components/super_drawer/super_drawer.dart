@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_body_custom.dart';
 part 'widgets/_button_close.dart';
 
-class MudeSuperDrawer {
+class ExpenseSuperDrawer {
   // coverage:ignore-start
-  const MudeSuperDrawer._();
+  const ExpenseSuperDrawer._();
   // coverage:ignore-end
 
   static Future<void> show(
@@ -27,7 +27,7 @@ class MudeSuperDrawer {
     ///The default to [CrossAxisAlignment.start].
     CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
   }) async {
-    var tokens = context.read<MudeThemeManager>();
+    var tokens = context.read<ExpenseThemeManager>();
     var aliasTokens = tokens.alias;
 
     Color getBarrierColor() {

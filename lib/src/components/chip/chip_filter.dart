@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 import 'widgets/container_chip.dart';
 
-class MudeChipFilter extends StatefulWidget {
+class ExpenseChipFilter extends StatefulWidget {
   ///A required callback that will be called when the chip filter is pressed.
   final VoidCallback onPressed;
 
@@ -20,7 +20,7 @@ class MudeChipFilter extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeChipFilter({
+  const ExpenseChipFilter({
     super.key,
     required this.onPressed,
     required this.label,
@@ -29,10 +29,10 @@ class MudeChipFilter extends StatefulWidget {
   });
 
   @override
-  State<MudeChipFilter> createState() => _MudeChipFilterState();
+  State<ExpenseChipFilter> createState() => _ExpenseChipFilterState();
 }
 
-class _MudeChipFilterState extends State<MudeChipFilter> with PropertiesMixin {
+class _ExpenseChipFilterState extends State<ExpenseChipFilter> with PropertiesMixin {
   bool _isPressed = false;
 
   void _onPressedDown() {
@@ -45,7 +45,7 @@ class _MudeChipFilterState extends State<MudeChipFilter> with PropertiesMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
     var globalsTokens = tokens.globals;
 
@@ -71,20 +71,19 @@ class _MudeChipFilterState extends State<MudeChipFilter> with PropertiesMixin {
           child: ContainerChip(
             isPressed: _isPressed,
             isSelected: false,
-            type: MudeChipType.filter,
+            type: ExpenseChipType.filter,
             children: [
               Text(
                 widget.label,
-                style: aliasTokens.mixin.labelMd2
-                    .copyWith(color: aliasTokens.color.text.labelColor),
+                style: aliasTokens.mixin.labelMd2.copyWith(color: aliasTokens.color.text.labelColor),
               ),
               SizedBox(
                 width: globalsTokens.shapes.spacing.half,
               ),
-              MudeIcon(
-                icon: MudeIcons.closeLine,
+              ExpenseIcon(
+                icon: ExpenseIcons.closeLine,
                 color: getIconColor(),
-                size: MudeIconSize.sm,
+                size: ExpenseIconSize.sm,
               ),
             ],
           ),

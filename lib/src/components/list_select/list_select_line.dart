@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/content_widget.dart';
 
-class MudeListSelectLine<T> extends StatelessWidget {
+class ExpenseListSelectLine<T> extends StatelessWidget {
   ///A string that specifies the label of the widget.
   final String label;
 
@@ -15,9 +15,9 @@ class MudeListSelectLine<T> extends StatelessWidget {
   ///that will be displayed before the label.
   final dynamic leading;
 
-  ///(Optional) An enum value of MudeListSelectType that specifies whether
+  ///(Optional) An enum value of ExpenseListSelectType that specifies whether
   ///the widget is a checkbox or a radio button or a switch.
-  final MudeListSelectType type;
+  final ExpenseListSelectType type;
 
   ///A generic type that represents the value of the widget.
   final T? value;
@@ -31,9 +31,9 @@ class MudeListSelectLine<T> extends StatelessWidget {
   ///(Optional) A generic type that represents the group value of the widget. This parameter is used only when the widget is of type radio button.
   final T? groupValue;
 
-  ///(Optional) An enum value of MudeListSelectPosition that specifies whether
+  ///(Optional) An enum value of ExpenseListSelectPosition that specifies whether
   ///the showing line position.
-  final MudeListSelectPosition linePosition;
+  final ExpenseListSelectPosition linePosition;
 
   ///(Optional) A string parameter that represents a description for the Trailling in terms of accessibility
   final String? semanticsTrailling;
@@ -46,14 +46,14 @@ class MudeListSelectLine<T> extends StatelessWidget {
   ///The default value is null
   final String? semanticsDescription;
 
-  const MudeListSelectLine({
+  const ExpenseListSelectLine({
     super.key,
     required this.label,
     required this.onChanged,
     required this.value,
-    this.type = MudeListSelectType.checkbox,
+    this.type = ExpenseListSelectType.checkbox,
     this.disabled = false,
-    this.linePosition = MudeListSelectPosition.top,
+    this.linePosition = ExpenseListSelectPosition.top,
     this.description,
     this.leading,
     this.groupValue,
@@ -64,7 +64,7 @@ class MudeListSelectLine<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -73,7 +73,7 @@ class MudeListSelectLine<T> extends StatelessWidget {
     }
 
     Border? getBorder() {
-      if (linePosition == MudeListSelectPosition.top) {
+      if (linePosition == ExpenseListSelectPosition.top) {
         return Border(
           top: BorderSide(
             width: aliasTokens.defaultt.borderWidth,
@@ -81,7 +81,7 @@ class MudeListSelectLine<T> extends StatelessWidget {
           ),
         );
       }
-      if (linePosition == MudeListSelectPosition.bottom) {
+      if (linePosition == ExpenseListSelectPosition.bottom) {
         return Border(
           bottom: BorderSide(
             width: aliasTokens.defaultt.borderWidth,

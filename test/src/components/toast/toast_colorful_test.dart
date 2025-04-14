@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudeToastColoful.show(
+                return ExpenseToastColoful.show(
                   context: context,
                   message: message,
                 );
@@ -41,10 +41,10 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudeToastColoful.show(
+                return ExpenseToastColoful.show(
                   context: context,
                   message: message,
-                  type: MudeToastType.negative,
+                  type: ExpenseToastType.negative,
                 );
               },
               child: Container(),
@@ -55,10 +55,10 @@ void main() {
           await widgetTester.tap(button);
           await widgetTester.pumpAndSettle();
 
-          final icons = find.byType(MudeIcon);
-          final icon = widgetTester.widget<MudeIcon>(icons.first);
+          final icons = find.byType(ExpenseIcon);
+          final icon = widgetTester.widget<ExpenseIcon>(icons.first);
 
-          expect(icon.icon.name, MudeIcons.negativeLine.name);
+          expect(icon.icon.name, ExpenseIcons.negativeLine.name);
         },
       );
 
@@ -70,10 +70,10 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudeToastColoful.show(
+                return ExpenseToastColoful.show(
                   context: context,
                   message: message,
-                  type: MudeToastType.negative,
+                  type: ExpenseToastType.negative,
                 );
               },
               child: Container(),
@@ -102,7 +102,7 @@ void main() {
         await widgetTester.pumpWidget(
           Wrapper(
             onTap: (context) {
-              return MudeToastColoful.show(
+              return ExpenseToastColoful.show(
                 context: context,
                 message: 'Toast',
               );

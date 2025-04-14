@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/content_navigation_widget.dart';
 
-class MudeListNavigationLine extends StatefulWidget {
+class ExpenseListNavigationLine extends StatefulWidget {
   ///A string that represents the label for the list navigator.
   final String label;
 
@@ -12,19 +12,19 @@ class MudeListNavigationLine extends StatefulWidget {
   final String? description;
 
   /// A dynamic type that can be this one of these:
-  /// [MudeIconData], [MudeImage], [MudeAvatarName], [MudeAvatarIcon],
-  /// [MudeAvatarIcon], [MudeCreditCard].
+  /// [ExpenseIconData], [ExpenseImage], [ExpenseAvatarName], [ExpenseAvatarIcon],
+  /// [ExpenseAvatarIcon], [ExpenseCreditCard].
   final dynamic leading;
 
   ///(Optional)  A tag that can be used to identify the list item.
-  final MudeTagContainer? tag;
+  final ExpenseTagContainer? tag;
 
   ///(Optional) A [VoidCallback] that is called when the list item is pressed.
   final VoidCallback? onPressed;
 
-  ///A [MudeListNavigationPosition] enum representing the currently line position in the list navigation.
+  ///A [ExpenseListNavigationPosition] enum representing the currently line position in the list navigation.
   ///It can be top, bottom and none.
-  final MudeListNavigationPosition linePosition;
+  final ExpenseListNavigationPosition linePosition;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -34,23 +34,23 @@ class MudeListNavigationLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeListNavigationLine({
+  const ExpenseListNavigationLine({
     super.key,
     required this.label,
     this.description,
     this.leading,
     this.tag,
     this.onPressed,
-    this.linePosition = MudeListNavigationPosition.top,
+    this.linePosition = ExpenseListNavigationPosition.top,
     this.semanticsLabel,
     this.semanticsHint,
   });
 
   @override
-  State<MudeListNavigationLine> createState() => _MudeListNavigationLineState();
+  State<ExpenseListNavigationLine> createState() => _ExpenseListNavigationLineState();
 }
 
-class _MudeListNavigationLineState extends State<MudeListNavigationLine> {
+class _ExpenseListNavigationLineState extends State<ExpenseListNavigationLine> {
   bool _isPressed = false;
 
   _onPressedDown(_) {
@@ -65,7 +65,7 @@ class _MudeListNavigationLineState extends State<MudeListNavigationLine> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -78,7 +78,7 @@ class _MudeListNavigationLineState extends State<MudeListNavigationLine> {
     }
 
     Border? getBorder() {
-      if (widget.linePosition == MudeListNavigationPosition.top) {
+      if (widget.linePosition == ExpenseListNavigationPosition.top) {
         return Border(
           top: BorderSide(
             color: aliasTokens.color.elements.borderColor,
@@ -87,7 +87,7 @@ class _MudeListNavigationLineState extends State<MudeListNavigationLine> {
         );
       }
 
-      if (widget.linePosition == MudeListNavigationPosition.bottom) {
+      if (widget.linePosition == ExpenseListNavigationPosition.bottom) {
         return Border(
           bottom: BorderSide(
             color: aliasTokens.color.elements.borderColor,

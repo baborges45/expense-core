@@ -1,1 +1,1 @@
-enum MudeFlagType { positive, informative, negative, promote, warning }
+enum ExpenseFlagType { positive, informative, negative, promote, warning }

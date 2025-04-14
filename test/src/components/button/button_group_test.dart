@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -17,18 +17,18 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonGroup(
-                buttonPrimary: MudeButton(
+              child: ExpenseButtonGroup(
+                buttonPrimary: ExpenseButton(
                   label: titlePrimary,
                   onPressed: () => debugPrint(''),
                   semanticsLabel: 'Test',
                 ),
-                buttonTertiary: MudeButtonMini(
+                buttonTertiary: ExpenseButtonMini(
                   label: titleSecondary,
                   onPressed: () => debugPrint(''),
                   semanticsLabel: 'Test',
                 ),
-                type: MudeButtonGrouType.group,
+                type: ExpenseButtonGrouType.group,
               ),
             ),
           );
@@ -70,16 +70,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonGroup(
-                buttonPrimary: MudeButton(
+              child: ExpenseButtonGroup(
+                buttonPrimary: ExpenseButton(
                   label: titlePrimary,
                   onPressed: () => debugPrint(''),
                 ),
-                buttonTertiary: MudeButtonMini(
+                buttonTertiary: ExpenseButtonMini(
                   label: titleSecondary,
                   onPressed: () => debugPrint(''),
                 ),
-                type: MudeButtonGrouType.group,
+                type: ExpenseButtonGrouType.group,
               ),
             ),
           );
@@ -102,16 +102,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonGroup(
-                buttonPrimary: MudeButton(
+              child: ExpenseButtonGroup(
+                buttonPrimary: ExpenseButton(
                   label: titlePrimary,
                   onPressed: () => debugPrint(''),
                 ),
-                buttonTertiary: MudeButtonMini(
+                buttonTertiary: ExpenseButtonMini(
                   label: titleSecondary,
                   onPressed: () => debugPrint(''),
                 ),
-                type: MudeButtonGrouType.blocked,
+                type: ExpenseButtonGrouType.blocked,
               ),
             ),
           );

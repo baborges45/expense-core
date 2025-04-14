@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 onPressed: (newValue) => {},
@@ -35,7 +35,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 onPressed: (newValue) => {
@@ -57,15 +57,15 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 onPressed: (newValue) => {},
-                icon: MudeIcons.backLine,
+                icon: ExpenseIcons.backLine,
               ),
             ),
           );
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -73,24 +73,24 @@ void main() {
         'Should have an icon selected and inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 isSelected: true,
                 inverse: true,
                 onPressed: (newValue) => {},
-                icon: MudeIcons.backLine,
+                icon: ExpenseIcons.backLine,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(
-            find.byType(MudeIcon),
+          final icon = widgetTester.widget<ExpenseIcon>(
+            find.byType(ExpenseIcon),
           );
 
           expect(icon.color, tokens!.alias.color.inverse.onIconColor);
@@ -101,23 +101,23 @@ void main() {
         'Should have an icon selected',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 isSelected: true,
                 onPressed: (newValue) => {},
-                icon: MudeIcons.backLine,
+                icon: ExpenseIcons.backLine,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(
-            find.byType(MudeIcon),
+          final icon = widgetTester.widget<ExpenseIcon>(
+            find.byType(ExpenseIcon),
           );
 
           expect(icon.color, tokens!.alias.color.selected.onIconColor);
@@ -128,23 +128,23 @@ void main() {
         'Should have an icon inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 inverse: true,
                 onPressed: (newValue) => {},
-                icon: MudeIcons.backLine,
+                icon: ExpenseIcons.backLine,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(
-            find.byType(MudeIcon),
+          final icon = widgetTester.widget<ExpenseIcon>(
+            find.byType(ExpenseIcon),
           );
 
           expect(icon.color, tokens!.alias.color.inverse.iconColor);
@@ -155,12 +155,12 @@ void main() {
         'Should be pressed',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 onPressed: (newValue) => {},
@@ -183,12 +183,12 @@ void main() {
         'Should be showing border',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipSelect(
+              child: ExpenseChipSelect(
                 key: key,
                 label: '',
                 onPressed: (newValue) => {},
@@ -219,7 +219,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeChipSelect(
+            child: ExpenseChipSelect(
               label: '',
               onPressed: (newValue) => {},
               isSelected: false,

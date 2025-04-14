@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part './widgets/bottom_bar_item_widget.dart';
 
-class MudeBottomBarFloat extends StatefulWidget {
-  /// A list of [MudeBottomBarFloatItem] objects to be displayed in the bottom bar.
-  final List<MudeBottomBarFloatItem> items;
+class ExpenseBottomBarFloat extends StatefulWidget {
+  /// A list of [ExpenseBottomBarFloatItem] objects to be displayed in the bottom bar.
+  final List<ExpenseBottomBarFloatItem> items;
 
   /// A [ValueChanged] type int callback triggered when the tab index is changed.
   final ValueChanged<int> onChanged;
@@ -18,7 +18,7 @@ class MudeBottomBarFloat extends StatefulWidget {
   /// The width size.
   final double? width;
 
-  const MudeBottomBarFloat({
+  const ExpenseBottomBarFloat({
     super.key,
     required this.items,
     required this.onChanged,
@@ -27,10 +27,10 @@ class MudeBottomBarFloat extends StatefulWidget {
   });
 
   @override
-  State<MudeBottomBarFloat> createState() => _MudeBottomBarFloatState();
+  State<ExpenseBottomBarFloat> createState() => _ExpenseBottomBarFloatState();
 }
 
-class _MudeBottomBarFloatState extends State<MudeBottomBarFloat> {
+class _ExpenseBottomBarFloatState extends State<ExpenseBottomBarFloat> {
   _onChanged(int index) {
     String autoHint = 'Tab ${index + 1} de ${widget.items.length} ativado';
     SemanticsService.announce(autoHint, TextDirection.ltr);
@@ -40,7 +40,7 @@ class _MudeBottomBarFloatState extends State<MudeBottomBarFloat> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     final size = globalTokens.shapes.size;
@@ -105,8 +105,7 @@ class _MudeBottomBarFloatState extends State<MudeBottomBarFloat> {
               children: widget.items.asMap().entries.map<Widget>(
                 (tab) {
                   String label = tab.value.label;
-                  String autoHint =
-                      'Tab ${tab.key + 1} de ${widget.items.length}';
+                  String autoHint = 'Tab ${tab.key + 1} de ${widget.items.length}';
 
                   return Container(
                     decoration: BoxDecoration(

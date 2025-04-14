@@ -1,1 +1,1 @@
-enum MudeChipType { select, filter }
+enum ExpenseChipType { select, filter }

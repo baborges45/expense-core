@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class DropdownIcon extends StatelessWidget {
@@ -14,7 +14,7 @@ class DropdownIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
 
     Color getIconColor() {
       if (inverse) {
@@ -24,13 +24,13 @@ class DropdownIcon extends StatelessWidget {
       return aliasTokens.color.elements.iconColor;
     }
 
-    MudeIconData getIcon() {
-      return _isOpen ? MudeIcons.dropdownCloseLine : MudeIcons.dropdownOpenLine;
+    ExpenseIconData getIcon() {
+      return _isOpen ? ExpenseIcons.dropdownCloseLine : ExpenseIcons.dropdownOpenLine;
     }
 
-    return MudeIcon(
+    return ExpenseIcon(
       icon: getIcon(),
-      size: MudeIconSize.sm,
+      size: ExpenseIconSize.sm,
       color: getIconColor(),
     );
   }

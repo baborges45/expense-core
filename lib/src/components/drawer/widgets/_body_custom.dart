@@ -9,8 +9,7 @@ class _BodyCustom extends StatefulWidget {
   State<_BodyCustom> createState() => _BodyCustomState();
 }
 
-class _BodyCustomState extends State<_BodyCustom>
-    with SingleTickerProviderStateMixin {
+class _BodyCustomState extends State<_BodyCustom> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
 
@@ -18,7 +17,7 @@ class _BodyCustomState extends State<_BodyCustom>
   void initState() {
     super.initState();
 
-    final motions = context.read<MudeThemeManager>().globals.motions;
+    final motions = context.read<ExpenseThemeManager>().globals.motions;
     final duration = motions.durations.slow02;
     final curves = motions.curves;
 
@@ -50,7 +49,7 @@ class _BodyCustomState extends State<_BodyCustom>
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;

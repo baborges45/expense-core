@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/accessibility_mixin.dart';
 
-class MudeTagContainer extends StatelessWidget with AccessibilityMixin {
+class ExpenseTagContainer extends StatelessWidget with AccessibilityMixin {
   ///A String representing the label of the tag.
   final String tag;
 
-  ///A MudeTagStatus enum object representing the status of the tag.
-  ///The default is MudeTagStatus.neutral.
-  final MudeTagStatus status;
+  ///A ExpenseTagStatus enum object representing the status of the tag.
+  ///The default is ExpenseTagStatus.neutral.
+  final ExpenseTagStatus status;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
@@ -19,17 +19,17 @@ class MudeTagContainer extends StatelessWidget with AccessibilityMixin {
   ///(Optional) A string paramenter that represents the status of the tag in terms of accessibility.
   final String? semanticsLabel;
 
-  const MudeTagContainer(
+  const ExpenseTagContainer(
     this.tag, {
     super.key,
-    this.status = MudeTagStatus.neutral,
+    this.status = ExpenseTagStatus.neutral,
     this.inverse = false,
     this.semanticsLabel,
   });
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -39,17 +39,17 @@ class MudeTagContainer extends StatelessWidget with AccessibilityMixin {
       }
 
       switch (status) {
-        case MudeTagStatus.neutral:
+        case ExpenseTagStatus.neutral:
           return aliasTokens.color.elements.bgColor04;
-        case MudeTagStatus.positive:
+        case ExpenseTagStatus.positive:
           return aliasTokens.color.positive.bgColor;
-        case MudeTagStatus.promote:
+        case ExpenseTagStatus.promote:
           return aliasTokens.color.promote.bgColor;
-        case MudeTagStatus.negative:
+        case ExpenseTagStatus.negative:
           return aliasTokens.color.negative.bgColor;
-        case MudeTagStatus.informative:
+        case ExpenseTagStatus.informative:
           return aliasTokens.color.informative.bgColor;
-        case MudeTagStatus.warning:
+        case ExpenseTagStatus.warning:
           return aliasTokens.color.warning.bgColor;
       }
     }
@@ -60,17 +60,17 @@ class MudeTagContainer extends StatelessWidget with AccessibilityMixin {
       }
 
       switch (status) {
-        case MudeTagStatus.neutral:
+        case ExpenseTagStatus.neutral:
           return aliasTokens.color.text.onLabelColor;
-        case MudeTagStatus.positive:
+        case ExpenseTagStatus.positive:
           return aliasTokens.color.positive.onLabelColor;
-        case MudeTagStatus.promote:
+        case ExpenseTagStatus.promote:
           return aliasTokens.color.promote.onLabelColor;
-        case MudeTagStatus.negative:
+        case ExpenseTagStatus.negative:
           return aliasTokens.color.negative.onLabelColor;
-        case MudeTagStatus.informative:
+        case ExpenseTagStatus.informative:
           return aliasTokens.color.informative.onLabelColor;
-        case MudeTagStatus.warning:
+        case ExpenseTagStatus.warning:
           return aliasTokens.color.warning.onLabelColor;
       }
     }

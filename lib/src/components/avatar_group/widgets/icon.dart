@@ -3,7 +3,7 @@
 part of '../avatar_group.dart';
 
 class _Icon extends StatelessWidget {
-  final MudeIconData icon;
+  final ExpenseIconData icon;
   final Color? color;
   final bool inverse;
   final double size;
@@ -20,7 +20,7 @@ class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     Color getIconColor() {

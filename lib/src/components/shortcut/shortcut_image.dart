@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 
-class MudeShortcutImage extends StatefulWidget {
+class ExpenseShortcutImage extends StatefulWidget {
   /// A String that represents the label of the shortcut.
   final String label;
 
@@ -33,7 +33,7 @@ class MudeShortcutImage extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeShortcutImage({
+  const ExpenseShortcutImage({
     super.key,
     required this.label,
     required this.description,
@@ -46,10 +46,10 @@ class MudeShortcutImage extends StatefulWidget {
   });
 
   @override
-  State<MudeShortcutImage> createState() => _MudeShortcutImageState();
+  State<ExpenseShortcutImage> createState() => _ExpenseShortcutImageState();
 }
 
-class _MudeShortcutImageState extends State<MudeShortcutImage> with PropertiesMixin {
+class _ExpenseShortcutImageState extends State<ExpenseShortcutImage> with PropertiesMixin {
   bool _isPressed = false;
 
   _onPressedDown(_) {
@@ -70,7 +70,7 @@ class _MudeShortcutImageState extends State<MudeShortcutImage> with PropertiesMi
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     final spacing = globalTokens.shapes.spacing;
@@ -174,14 +174,14 @@ class _ShortcutIconContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
 
     Widget getImage() {
       bool isValid = urlIsvalid(source);
-      var sourceLoad = isValid ? MudeImage.network : MudeImage.asset;
+      var sourceLoad = isValid ? ExpenseImage.network : ExpenseImage.asset;
 
       return ClipRRect(
         borderRadius: BorderRadius.circular(

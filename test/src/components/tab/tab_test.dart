@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -12,16 +12,16 @@ void main() {
         'Should display correct number of tabs',
         (widgetTester) async {
           final key = UniqueKey();
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(label: 'Tab 1'),
-            MudeTabItem(label: 'Tab 2'),
-            MudeTabItem(label: 'Tab 3'),
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(label: 'Tab 1'),
+            ExpenseTabItem(label: 'Tab 2'),
+            ExpenseTabItem(label: 'Tab 3'),
           ];
           await widgetTester.pumpWidget(
             Wrapper(
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -43,10 +43,10 @@ void main() {
         'Should call onPressed when a tab is pressed',
         (widgetTester) async {
           final key = UniqueKey();
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(label: 'Tab 1'),
-            MudeTabItem(label: 'Tab 2'),
-            MudeTabItem(label: 'Tab 3'),
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(label: 'Tab 1'),
+            ExpenseTabItem(label: 'Tab 2'),
+            ExpenseTabItem(label: 'Tab 3'),
           ];
 
           int selectedIndex = -1;
@@ -54,7 +54,7 @@ void main() {
             Wrapper(
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -84,14 +84,14 @@ void main() {
         'Should have a notification badge',
         (widgetTester) async {
           final key = UniqueKey();
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(
               label: 'Tab 1',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 2',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 3',
             ),
           ];
@@ -100,7 +100,7 @@ void main() {
             Wrapper(
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -112,7 +112,7 @@ void main() {
               ),
             ),
           );
-          expect(find.byType(MudeBadge), findsNWidgets(2));
+          expect(find.byType(ExpenseBadge), findsNWidgets(2));
         },
       );
 
@@ -120,14 +120,14 @@ void main() {
         'Should have a tabline',
         (widgetTester) async {
           final key = UniqueKey();
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(
               label: 'Tab 1',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 2',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 3',
             ),
           ];
@@ -136,7 +136,7 @@ void main() {
             Wrapper(
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -156,16 +156,16 @@ void main() {
         'Should have an icon',
         (widgetTester) async {
           final key = UniqueKey();
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(
               label: 'Tab 1',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 2',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 3',
-              icon: MudeIcons.calendarLine,
+              icon: ExpenseIcons.calendarLine,
             ),
           ];
 
@@ -173,7 +173,7 @@ void main() {
             Wrapper(
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -185,7 +185,7 @@ void main() {
               ),
             ),
           );
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -193,17 +193,17 @@ void main() {
         'Should be inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(
+          ExpenseThemeManager? tokens;
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(
               label: 'Tab 1',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 2',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 3',
-              icon: MudeIcons.calendarLine,
+              icon: ExpenseIcons.calendarLine,
             ),
           ];
 
@@ -212,7 +212,7 @@ void main() {
               onTokens: (t) => tokens = t,
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   inverse: true,
@@ -240,16 +240,16 @@ void main() {
         'Should change icon color if active',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
-          final List<MudeTabItem> tabs = [
-            MudeTabItem(
+          ExpenseThemeManager? tokens;
+          final List<ExpenseTabItem> tabs = [
+            ExpenseTabItem(
               label: 'Tab 1',
-              icon: MudeIcons.calendarLine,
+              icon: ExpenseIcons.calendarLine,
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 2',
             ),
-            MudeTabItem(
+            ExpenseTabItem(
               label: 'Tab 3',
             ),
           ];
@@ -259,7 +259,7 @@ void main() {
               onTokens: (t) => tokens = t,
               child: DefaultTabController(
                 length: 3,
-                child: MudeTab(
+                child: ExpenseTab(
                   key: key,
                   tabs: tabs,
                   children: [
@@ -272,8 +272,8 @@ void main() {
             ),
           );
 
-          final iconFinder = find.byType(MudeIcon);
-          final icon = widgetTester.widget<MudeIcon>(iconFinder);
+          final iconFinder = find.byType(ExpenseIcon);
+          final icon = widgetTester.widget<ExpenseIcon>(iconFinder);
           expect(icon.color, tokens!.alias.color.selected.iconColor);
         },
       );
@@ -286,16 +286,16 @@ void main() {
       (widgetTester) async {
         final SemanticsHandle handle = widgetTester.ensureSemantics();
 
-        final List<MudeTabItem> tabs = [
-          MudeTabItem(
+        final List<ExpenseTabItem> tabs = [
+          ExpenseTabItem(
             label: 'Tab 1',
             semanticsLabel: 'Tab 1',
           ),
-          MudeTabItem(
+          ExpenseTabItem(
             label: 'Tab 2',
             semanticsLabel: 'Tab 2',
           ),
-          MudeTabItem(
+          ExpenseTabItem(
             label: 'Tab 3',
             semanticsLabel: 'Tab 3',
           ),
@@ -305,7 +305,7 @@ void main() {
           Wrapper(
             child: DefaultTabController(
               length: 3,
-              child: MudeTab(
+              child: ExpenseTab(
                 tabs: tabs,
                 children: [
                   Container(),

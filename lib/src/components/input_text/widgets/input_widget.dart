@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../input_formatters/text_cellphone.dart';
@@ -32,7 +32,7 @@ class InputWidget extends StatelessWidget {
   final TextInputAction? textInputAction;
   final Widget? label;
   final TextStyle? labelStyle;
-  final MudeInputTextType type;
+  final ExpenseInputTextType type;
 
   const InputWidget({
     super.key,
@@ -56,45 +56,42 @@ class InputWidget extends StatelessWidget {
     this.textInputAction,
     this.label,
     this.labelStyle,
-    this.type = MudeInputTextType.text,
+    this.type = ExpenseInputTextType.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
     var placeholderStyle = aliasTokens.mixin.placeholder.merge(
       TextStyle(color: textColor),
     );
 
-    final Map<MudeInputTextType, List<TextInputFormatter>> inputFormatterMap = {
-      MudeInputTextType.cellphone: [
+    final Map<ExpenseInputTextType, List<TextInputFormatter>> inputFormatterMap = {
+      ExpenseInputTextType.cellphone: [
         FilteringTextInputFormatter.digitsOnly,
         CellphoneInputFormatter(),
       ],
-      MudeInputTextType.cep: [
+      ExpenseInputTextType.cep: [
         FilteringTextInputFormatter.digitsOnly,
         CEPInputFormatter(),
       ],
-      MudeInputTextType.cnpj: [
+      ExpenseInputTextType.cnpj: [
         FilteringTextInputFormatter.digitsOnly,
         CNPJInputFormatter(),
       ],
-      MudeInputTextType.cpf: [
+      ExpenseInputTextType.cpf: [
         FilteringTextInputFormatter.digitsOnly,
         CPFInputFormatter(),
       ],
-      MudeInputTextType.text: [],
+      ExpenseInputTextType.text: [],
     };
 
-    final List<TextInputFormatter>? inputFormatters =
-        inputFormatterMap[type] ?? inputFormatterMap[MudeInputTextType.text];
+    final List<TextInputFormatter>? inputFormatters = inputFormatterMap[type] ?? inputFormatterMap[ExpenseInputTextType.text];
 
     getKeyboardType() {
       if (keyboardType != null) return keyboardType;
 
-      return type == MudeInputTextType.text
-          ? TextInputType.text
-          : TextInputType.number;
+      return type == ExpenseInputTextType.text ? TextInputType.text : TextInputType.number;
     }
 
     return Row(

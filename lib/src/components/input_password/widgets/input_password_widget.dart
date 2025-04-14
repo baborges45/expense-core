@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'input_password_error_icon.dart';
@@ -55,7 +55,7 @@ class InputPasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
     var placeholderStyle = aliasTokens.mixin.placeholder.merge(
       TextStyle(color: textColor),
     );

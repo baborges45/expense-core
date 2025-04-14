@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 
 class ValidationLeadingType {
   // coverage:ignore-start
@@ -8,37 +8,36 @@ class ValidationLeadingType {
   // coverage:ignore-end
 
   static Widget widgetAccept(dynamic widget, bool inverse) {
-    if (widget is MudeIconData) {
-      return MudeIcon(
+    if (widget is ExpenseIconData) {
+      return ExpenseIcon(
         icon: widget,
-        size: MudeIconSize.lg,
+        size: ExpenseIconSize.lg,
       );
     }
 
-    if (widget is MudeImage) {
-      var sourcemap =
-          urlIsvalid(widget.src) ? MudeImage.network : MudeImage.asset;
+    if (widget is ExpenseImage) {
+      var sourcemap = urlIsvalid(widget.src) ? ExpenseImage.network : ExpenseImage.asset;
 
       return sourcemap(
         widget.src,
         fit: widget.fit,
-        aspectRatio: MudeImageAspectRatio.ratio_1x1,
+        aspectRatio: ExpenseImageAspectRatio.ratio_1x1,
       );
     }
 
-    if (widget is MudeAvatarIcon) {
-      return MudeAvatarIcon(
+    if (widget is ExpenseAvatarIcon) {
+      return ExpenseAvatarIcon(
         icon: widget.icon,
         source: widget.source,
         sourceLoad: widget.sourceLoad,
         showNotification: widget.showNotification,
         inverse: inverse,
-        size: MudeAvatarSize.sm,
+        size: ExpenseAvatarSize.sm,
       );
     }
 
-    if (widget is MudeCreditCard) {
-      return MudeCreditCard(
+    if (widget is ExpenseCreditCard) {
+      return ExpenseCreditCard(
         flag: widget.flag,
         inverse: inverse,
       );

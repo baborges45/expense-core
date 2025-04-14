@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'input_formatters/text_cellphone.dart';
@@ -10,7 +10,7 @@ import 'input_formatters/text_cpf.dart';
 import 'widgets/input_error_icon.dart';
 import 'widgets/input_support_text_widget.dart';
 
-class MudeInputTextLine extends StatefulWidget {
+class ExpenseInputTextLine extends StatefulWidget {
   ///A string that represents the label for the password field.
   final String label;
 
@@ -75,11 +75,11 @@ class MudeInputTextLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  /// (Optional) A [MudeInputTextType] enum representing the type of text input for this widget: [cellphone], [cep], [cnpj], [cpf], or [text].
+  /// (Optional) A [ExpenseInputTextType] enum representing the type of text input for this widget: [cellphone], [cep], [cnpj], [cpf], or [text].
   /// The default value is [text].
-  final MudeInputTextType type;
+  final ExpenseInputTextType type;
 
-  const MudeInputTextLine({
+  const ExpenseInputTextLine({
     super.key,
     required this.label,
     this.supportText,
@@ -103,14 +103,14 @@ class MudeInputTextLine extends StatefulWidget {
     // Accessibility
     this.semanticsLabel,
     this.semanticsHint,
-    this.type = MudeInputTextType.text,
+    this.type = ExpenseInputTextType.text,
   });
 
   @override
-  State<MudeInputTextLine> createState() => _MudeInputTextLineState();
+  State<ExpenseInputTextLine> createState() => _ExpenseInputTextLineState();
 }
 
-class _MudeInputTextLineState extends State<MudeInputTextLine> {
+class _ExpenseInputTextLineState extends State<ExpenseInputTextLine> {
   bool _isPressed = false;
   bool _isFocussed = false;
   bool _isFilled = false;
@@ -150,33 +150,33 @@ class _MudeInputTextLineState extends State<MudeInputTextLine> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
     var defaultColor = aliasTokens.defaultt;
 
-    final Map<MudeInputTextType, List<TextInputFormatter>> inputFormatterMap = {
-      MudeInputTextType.cellphone: [
+    final Map<ExpenseInputTextType, List<TextInputFormatter>> inputFormatterMap = {
+      ExpenseInputTextType.cellphone: [
         FilteringTextInputFormatter.digitsOnly,
         CellphoneInputFormatter(),
       ],
-      MudeInputTextType.cep: [
+      ExpenseInputTextType.cep: [
         FilteringTextInputFormatter.digitsOnly,
         CEPInputFormatter(),
       ],
-      MudeInputTextType.cnpj: [
+      ExpenseInputTextType.cnpj: [
         FilteringTextInputFormatter.digitsOnly,
         CNPJInputFormatter(),
       ],
-      MudeInputTextType.cpf: [
+      ExpenseInputTextType.cpf: [
         FilteringTextInputFormatter.digitsOnly,
         CPFInputFormatter(),
       ],
-      MudeInputTextType.text: [],
+      ExpenseInputTextType.text: [],
     };
 
-    final List<TextInputFormatter>? inputFormatters = inputFormatterMap[widget.type] ?? inputFormatterMap[MudeInputTextType.text];
+    final List<TextInputFormatter>? inputFormatters = inputFormatterMap[widget.type] ?? inputFormatterMap[ExpenseInputTextType.text];
 
     Color getBackgroundColor() {
       return _isPressed ? aliasTokens.mixin.pressedOutline : Colors.transparent;
@@ -251,7 +251,7 @@ class _MudeInputTextLineState extends State<MudeInputTextLine> {
     getKeyboardType() {
       if (widget.keyboardType != null) return widget.keyboardType;
 
-      return widget.type == MudeInputTextType.text ? TextInputType.text : TextInputType.number;
+      return widget.type == ExpenseInputTextType.text ? TextInputType.text : TextInputType.number;
     }
 
     final textColor = getTextColor();

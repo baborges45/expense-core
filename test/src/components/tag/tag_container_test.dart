@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -16,7 +16,7 @@ void main() {
           final SemanticsHandle handle = widgetTester.ensureSemantics();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeTagContainer(
+              child: ExpenseTagContainer(
                 'Tag',
                 key: key,
               ),
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeTagContainer(
+              child: ExpenseTagContainer(
                 'Tag',
                 key: key,
               ),
@@ -72,10 +72,10 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
 
-          for (var status in MudeTagStatus.values) {
+          for (var status in ExpenseTagStatus.values) {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeTagContainer(
+                child: ExpenseTagContainer(
                   'Tag',
                   status: status,
                   key: key,
@@ -92,13 +92,13 @@ void main() {
         'Should tag inverted',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
-          for (var type in MudeTagStatus.values) {
+          for (var type in ExpenseTagStatus.values) {
             await widgetTester.pumpWidget(
               Wrapper(
                 onTokens: (t) => tokens = t,
-                child: MudeTagContainer(
+                child: ExpenseTagContainer(
                   'Tag',
                   key: key,
                   status: type,

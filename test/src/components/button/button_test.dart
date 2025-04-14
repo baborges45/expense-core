@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 label: 'label',
                 onPressed: () => debugPrint(''),
               ),
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 label: text,
                 onPressed: () => debugPrint(''),
               ),
@@ -78,7 +78,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 key: key,
                 label: 'Button',
                 onPressed: () => pressed = true,
@@ -100,7 +100,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 key: key,
                 label: 'Button',
                 disabled: true,
@@ -124,7 +124,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 key: key,
                 label: text,
                 loading: true,
@@ -151,10 +151,10 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButton(
+              child: ExpenseButton(
                 key: key,
                 label: text,
-                icon: MudeIcons.plusLine,
+                icon: ExpenseIcons.plusLine,
                 onPressed: () => debugPrint(''),
               ),
             ),
@@ -178,15 +178,15 @@ void main() {
       (widgetTester) async {
         final key = UniqueKey();
         String text = 'Button';
-        MudeThemeManager? tokens;
+        ExpenseThemeManager? tokens;
 
         await widgetTester.pumpWidget(
           Wrapper(
             onTokens: (t) => tokens = t,
-            child: MudeButton(
+            child: ExpenseButton(
               key: key,
               label: text,
-              icon: MudeIcons.plusLine,
+              icon: ExpenseIcons.plusLine,
               onPressed: () => debugPrint(''),
               inverse: true,
             ),
@@ -205,12 +205,12 @@ void main() {
       (widgetTester) async {
         final key = UniqueKey();
         String text = 'Button';
-        MudeThemeManager? tokens;
+        ExpenseThemeManager? tokens;
 
         await widgetTester.pumpWidget(
           Wrapper(
             onTokens: (t) => tokens = t,
-            child: MudeButtonMini(
+            child: ExpenseButtonMini(
               key: key,
               label: text,
               onPressed: () => debugPrint(''),
@@ -231,12 +231,12 @@ void main() {
 
     testWidgets('Should be loading', (widgetTester) async {
       final key = UniqueKey();
-      MudeThemeManager? tokens;
+      ExpenseThemeManager? tokens;
 
       await widgetTester.pumpWidget(
         Wrapper(
           onTokens: (t) => tokens = t,
-          child: MudeLoading(key: key),
+          child: ExpenseLoading(key: key),
         ),
       );
 

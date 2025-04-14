@@ -1,11 +1,11 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FlagDescription extends StatelessWidget {
-  final MudeFlagType type;
+  final ExpenseFlagType type;
   final String message;
-  final MudeFlagHyperLink? hyperLink;
+  final ExpenseFlagHyperLink? hyperLink;
 
   const FlagDescription({
     super.key,
@@ -16,21 +16,21 @@ class FlagDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     Color getFontColor() {
       switch (type) {
-        case MudeFlagType.positive:
+        case ExpenseFlagType.positive:
           return aliasTokens.color.positive.onDescriptionColor;
-        case MudeFlagType.informative:
+        case ExpenseFlagType.informative:
           return aliasTokens.color.informative.onDescriptionColor;
-        case MudeFlagType.negative:
+        case ExpenseFlagType.negative:
           return aliasTokens.color.negative.onDescriptionColor;
-        case MudeFlagType.promote:
+        case ExpenseFlagType.promote:
           return aliasTokens.color.promote.onDescriptionColor;
-        case MudeFlagType.warning:
+        case ExpenseFlagType.warning:
           return aliasTokens.color.warning.onDescriptionColor;
       }
     }

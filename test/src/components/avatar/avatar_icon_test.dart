@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,10 +15,10 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 source: 'test/assets/image.png',
-                icon: MudeIcons.backLine,
-                sourceLoad: MudeAvatarSourceLoad.asset,
+                icon: ExpenseIcons.backLine,
+                sourceLoad: ExpenseAvatarSourceLoad.asset,
               ),
             ),
           );
@@ -58,9 +58,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
               ),
             ),
           );
@@ -76,14 +76,14 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
           expect(find.byType(Image), findsNothing);
         },
       );
@@ -95,15 +95,15 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 source: 'test/assets/image.png',
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
           expect(find.byType(Image), findsOneWidget);
         },
       );
@@ -115,17 +115,17 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 source: 'test/assets/image.png',
-                size: MudeAvatarSize.sm,
+                size: ExpenseAvatarSize.sm,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(find.byType(MudeIcon));
-          expect(icon.size, MudeIconSize.sm);
+          final icon = widgetTester.widget<ExpenseIcon>(find.byType(ExpenseIcon));
+          expect(icon.size, ExpenseIconSize.sm);
         },
       );
 
@@ -133,22 +133,22 @@ void main() {
         'Should avatar inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeAvatarIcon(
+              child: ExpenseAvatarIcon(
                 key: key,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 source: 'test/assets/image.png',
-                size: MudeAvatarSize.sm,
+                size: ExpenseAvatarSize.sm,
                 inverse: true,
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(find.byType(MudeIcon));
+          final icon = widgetTester.widget<ExpenseIcon>(find.byType(ExpenseIcon));
           expect(icon.color, tokens!.alias.color.inverse.onIconColor);
         },
       );

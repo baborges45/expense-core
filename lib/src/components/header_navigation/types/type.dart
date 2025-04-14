@@ -1,1 +1,1 @@
-enum MudeHeaderNavigationType { compact, jumbo, image }
+enum ExpenseHeaderNavigationType { compact, jumbo, image }

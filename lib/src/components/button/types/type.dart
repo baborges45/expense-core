@@ -1,10 +1,10 @@
-enum MudeButtonType { minwidth, blocked }
+enum ExpenseButtonType { minwidth, blocked }
 
-enum MudeButtonGrouType { blocked, group }
+enum ExpenseButtonGrouType { blocked, group }
 
-enum MudeButtonSize { sm, lg }
+enum ExpenseButtonSize { sm, lg }
 
-enum MudeButtonColorType {
+enum ExpenseButtonColorType {
   negative,
   positive,
   inverse,

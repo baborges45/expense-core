@@ -1,8 +1,8 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class TabItemModel {
   final String label;
-  final MudeIconData? icon;
+  final ExpenseIconData? icon;
   final int index;
   final bool isScrollable;
   final String? semanticsLabel;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeSwitch extends StatefulWidget {
+class ExpenseSwitch extends StatefulWidget {
   ///A boolean value that determines whether the switch is disabled or not.
   ///The default value is false.
   final bool disabled;
@@ -26,7 +26,7 @@ class MudeSwitch extends StatefulWidget {
   ///The default value is null
   final String? semanticsLabel;
 
-  const MudeSwitch({
+  const ExpenseSwitch({
     super.key,
     required this.value,
     required this.onChanged,
@@ -37,10 +37,10 @@ class MudeSwitch extends StatefulWidget {
   });
 
   @override
-  State<MudeSwitch> createState() => _MudeSwitchState();
+  State<ExpenseSwitch> createState() => _ExpenseSwitchState();
 }
 
-class _MudeSwitchState extends State<MudeSwitch> {
+class _ExpenseSwitchState extends State<ExpenseSwitch> {
   bool _isPressed = false;
   double _positionDot = 5;
 
@@ -69,7 +69,7 @@ class _MudeSwitchState extends State<MudeSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context, listen: false);
+    final tokens = Provider.of<ExpenseThemeManager>(context, listen: false);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -79,20 +79,14 @@ class _MudeSwitchState extends State<MudeSwitch> {
 
     Color getBackgroundColor() {
       if (widget.disabled) {
-        return widget.value
-            ? aliasTokens.color.unselected.bg
-            : Colors.transparent;
+        return widget.value ? aliasTokens.color.unselected.bg : Colors.transparent;
       }
 
       if (widget.inverse) {
-        return widget.value
-            ? aliasTokens.color.inverse.bgColor
-            : Colors.transparent;
+        return widget.value ? aliasTokens.color.inverse.bgColor : Colors.transparent;
       }
 
-      return widget.value
-          ? aliasTokens.color.selected.bgColor
-          : Colors.transparent;
+      return widget.value ? aliasTokens.color.selected.bgColor : Colors.transparent;
     }
 
     Widget getLabel() {
@@ -143,15 +137,11 @@ class _MudeSwitchState extends State<MudeSwitch> {
         return aliasTokens.color.disabled.borderColor;
       }
 
-      return widget.value
-          ? aliasTokens.color.selected.bgColor
-          : aliasTokens.color.unselected.border;
+      return widget.value ? aliasTokens.color.selected.bgColor : aliasTokens.color.unselected.border;
     }
 
     Color getPressedColor() {
-      return widget.inverse
-          ? aliasTokens.mixin.pressedOutlineInverse
-          : aliasTokens.mixin.pressedOutline;
+      return widget.inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
     }
 
     bool labelIsNotEmpty = widget.label != null && widget.label!.isNotEmpty;
@@ -252,7 +242,7 @@ class _Dot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -269,9 +259,7 @@ class _Dot extends StatelessWidget {
         return value ? aliasDisabled.onBgColor : aliasDisabled.bgColor;
       }
 
-      return value
-          ? aliasTokens.color.selected.onBgColor
-          : aliasTokens.color.unselected.bg;
+      return value ? aliasTokens.color.selected.onBgColor : aliasTokens.color.unselected.bg;
     }
 
     return AnimatedPositioned(

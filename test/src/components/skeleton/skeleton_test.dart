@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSkeleton(
+              child: ExpenseSkeleton(
                 key: key,
               ),
             ),
@@ -31,14 +31,14 @@ void main() {
         'Should skeleton type circle',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSkeleton(
+              child: ExpenseSkeleton(
                 key: key,
-                type: MudeSkeletonType.circle,
+                type: ExpenseSkeletonType.circle,
               ),
             ),
           );
@@ -61,9 +61,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSkeleton(
+              child: ExpenseSkeleton(
                 key: key,
-                type: MudeSkeletonType.retangle,
+                type: ExpenseSkeletonType.retangle,
                 height: size,
                 width: size,
               ),
@@ -89,9 +89,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSkeleton(
+              child: ExpenseSkeleton(
                 key: key,
-                type: MudeSkeletonType.retangle,
+                type: ExpenseSkeletonType.retangle,
                 height: size,
                 width: size,
                 borderRadius: borderRadius,
@@ -115,10 +115,10 @@ void main() {
           double size = 100;
           BorderRadius borderRadius = BorderRadius.circular(12);
 
-          for (var direction in MudeSkeletonDirection.values) {
+          for (var direction in ExpenseSkeletonDirection.values) {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeSkeleton(
+                child: ExpenseSkeleton(
                   key: key,
                   direction: direction,
                   height: size,
@@ -128,8 +128,8 @@ void main() {
               ),
             );
 
-            final skeleton = widgetTester.widget<MudeSkeleton>(
-              find.byType(MudeSkeleton),
+            final skeleton = widgetTester.widget<ExpenseSkeleton>(
+              find.byType(ExpenseSkeleton),
             );
 
             expect(skeleton.direction, direction);
@@ -147,7 +147,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeSkeleton(
+            child: ExpenseSkeleton(
               semanticsLabel: 'Skeleton',
             ),
           ),

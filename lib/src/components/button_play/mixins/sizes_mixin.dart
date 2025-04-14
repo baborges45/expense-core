@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 mixin SizesMixin {
-  double getSize(MudeButtonIconSize size, BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+  double getSize(ExpenseButtonIconSize size, BuildContext context) {
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     switch (size) {
-      case MudeButtonIconSize.sm:
+      case ExpenseButtonIconSize.sm:
         return globalTokens.shapes.size.s4x;
-      case MudeButtonIconSize.lg:
+      case ExpenseButtonIconSize.lg:
         return globalTokens.shapes.size.s6x;
     }
   }
 
-  MudeIconSize getSizeIcon(MudeButtonIconSize size) {
+  ExpenseIconSize getSizeIcon(ExpenseButtonIconSize size) {
     switch (size) {
-      case MudeButtonIconSize.sm:
-        return MudeIconSize.sm;
-      case MudeButtonIconSize.lg:
-        return MudeIconSize.lg;
+      case ExpenseButtonIconSize.sm:
+        return ExpenseIconSize.sm;
+      case ExpenseButtonIconSize.lg:
+        return ExpenseIconSize.lg;
     }
   }
 
   Widget getNotificationDot({
-    required MudeButtonIconSize size,
+    required ExpenseButtonIconSize size,
     required double opacity,
     required bool show,
     double positionDotSM = 5,
@@ -36,9 +36,9 @@ mixin SizesMixin {
 
     double getPositionDot() {
       switch (size) {
-        case MudeButtonIconSize.sm:
+        case ExpenseButtonIconSize.sm:
           return positionDotSM;
-        case MudeButtonIconSize.lg:
+        case ExpenseButtonIconSize.lg:
           return positionDotLG;
       }
     }
@@ -51,9 +51,9 @@ mixin SizesMixin {
       child: AnimatedOpacity(
         duration: const Duration(milliseconds: 200),
         opacity: opacity,
-        child: const MudeBadge(
+        child: const ExpenseBadge(
           key: Key('badge.notification'),
-          size: MudeBadgeSize.sm,
+          size: ExpenseBadgeSize.sm,
         ),
       ),
     );

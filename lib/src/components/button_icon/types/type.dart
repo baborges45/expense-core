@@ -1,3 +1,3 @@
-enum MudeButtonIconSize { sm, lg }
+enum ExpenseButtonIconSize { sm, lg }
 
-enum MudeButtonLikeType { like, dislike }
+enum ExpenseButtonLikeType { like, dislike }

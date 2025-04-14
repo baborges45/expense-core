@@ -15,7 +15,7 @@ class _CalendarView extends StatefulWidget {
   }) : super(key: key);
 
   /// The calendar configurations
-  final MudeDatePickerConfig config;
+  final ExpenseDatePickerConfig config;
 
   /// The initial month to display.
   final DateTime initialMonth;
@@ -58,18 +58,13 @@ class _CalendarViewState extends State<_CalendarView> {
     );
 
     _shortcutMap = const <ShortcutActivator, Intent>{
-      SingleActivator(LogicalKeyboardKey.arrowLeft):
-          DirectionalFocusIntent(TraversalDirection.left),
-      SingleActivator(LogicalKeyboardKey.arrowRight):
-          DirectionalFocusIntent(TraversalDirection.right),
-      SingleActivator(LogicalKeyboardKey.arrowDown):
-          DirectionalFocusIntent(TraversalDirection.down),
-      SingleActivator(LogicalKeyboardKey.arrowUp):
-          DirectionalFocusIntent(TraversalDirection.up),
+      SingleActivator(LogicalKeyboardKey.arrowLeft): DirectionalFocusIntent(TraversalDirection.left),
+      SingleActivator(LogicalKeyboardKey.arrowRight): DirectionalFocusIntent(TraversalDirection.right),
+      SingleActivator(LogicalKeyboardKey.arrowDown): DirectionalFocusIntent(TraversalDirection.down),
+      SingleActivator(LogicalKeyboardKey.arrowUp): DirectionalFocusIntent(TraversalDirection.up),
     };
     _actionMap = <Type, Action<Intent>>{
-      NextFocusIntent:
-          CallbackAction<NextFocusIntent>(onInvoke: _handleGridNextFocus),
+      NextFocusIntent: CallbackAction<NextFocusIntent>(onInvoke: _handleGridNextFocus),
       PreviousFocusIntent: CallbackAction<PreviousFocusIntent>(
         onInvoke: _handleGridPreviousFocus,
       ),
@@ -90,8 +85,7 @@ class _CalendarViewState extends State<_CalendarView> {
   @override
   void didUpdateWidget(_CalendarView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.initialMonth != oldWidget.initialMonth &&
-        widget.initialMonth != _currentMonth) {
+    if (widget.initialMonth != oldWidget.initialMonth && widget.initialMonth != _currentMonth) {
       // We can't interrupt this widget build with a scroll, so do it next frame
       // Add workaround to fix Flutter 3.0.0 compiler issue
       // https://github.com/flutter/flutter/issues/103561#issuecomment-1125512962
@@ -116,13 +110,11 @@ class _CalendarViewState extends State<_CalendarView> {
 
   void _handleMonthPageChanged(int monthPage) {
     setState(() {
-      final DateTime monthDate =
-          DateUtils.addMonthsToMonthDate(widget.config.firstDate, monthPage);
+      final DateTime monthDate = DateUtils.addMonthsToMonthDate(widget.config.firstDate, monthPage);
       if (!DateUtils.isSameMonth(_currentMonth, monthDate)) {
         _currentMonth = DateTime(monthDate.year, monthDate.month);
         widget.onDisplayedMonthChanged(_currentMonth);
-        if (_focusedDay != null &&
-            !DateUtils.isSameMonth(_focusedDay, _currentMonth)) {
+        if (_focusedDay != null && !DateUtils.isSameMonth(_focusedDay, _currentMonth)) {
           // We have navigated to a new month with the grid focused, but the
           // focused day is not in this month. Choose a new one trying to keep
           // the same day of the month.
@@ -269,8 +261,7 @@ class _CalendarViewState extends State<_CalendarView> {
     });
   }
 
-  static const Map<TraversalDirection, int> _directionOffset =
-      <TraversalDirection, int>{
+  static const Map<TraversalDirection, int> _directionOffset = <TraversalDirection, int>{
     TraversalDirection.up: -DateTime.daysPerWeek,
     TraversalDirection.right: 1,
     TraversalDirection.down: DateTime.daysPerWeek,
@@ -300,8 +291,7 @@ class _CalendarViewState extends State<_CalendarView> {
       _dayDirectionOffset(direction, textDirection),
     );
 
-    while (!nextDate.isBefore(widget.config.firstDate) &&
-        !nextDate.isAfter(widget.config.lastDate)) {
+    while (!nextDate.isBefore(widget.config.firstDate) && !nextDate.isAfter(widget.config.lastDate)) {
       if (_isSelectable(nextDate)) {
         return nextDate;
       }
@@ -319,13 +309,11 @@ class _CalendarViewState extends State<_CalendarView> {
   }
 
   Widget _buildItems(_, int index) {
-    final DateTime month =
-        DateUtils.addMonthsToMonthDate(widget.config.firstDate, index);
+    final DateTime month = DateUtils.addMonthsToMonthDate(widget.config.firstDate, index);
 
     return _DayPicker(
       key: ValueKey<DateTime>(month),
-      selectedDates: (widget.selectedDates..removeWhere((d) => d == null))
-          .cast<DateTime>(),
+      selectedDates: (widget.selectedDates..removeWhere((d) => d == null)).cast<DateTime>(),
       onChanged: _handleDateSelected,
       config: widget.config,
       displayedMonth: month,
@@ -345,14 +333,14 @@ class _CalendarViewState extends State<_CalendarView> {
             child: Row(
               children: [
                 if (centerAlignModePicker != true) const Spacer(),
-                MudeButtonIcon(
-                  icon: MudeIcons.navigationLeftLine,
+                ExpenseButtonIcon(
+                  icon: ExpenseIcons.navigationLeftLine,
                   onPressed: _handlePreviousMonth,
                   disabled: _isDisplayingFirstMonth,
                 ),
                 if (centerAlignModePicker == true) const Spacer(),
-                MudeButtonIcon(
-                  icon: MudeIcons.navigationRightLine,
+                ExpenseButtonIcon(
+                  icon: ExpenseIcons.navigationRightLine,
                   onPressed: _handleNextMonth,
                   disabled: _isDisplayingLastMonth,
                 ),

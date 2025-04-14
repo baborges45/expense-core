@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -8,12 +8,12 @@ void main() {
   group('Loading', () {
     testWidgets('Should be loading', (widgetTester) async {
       final key = UniqueKey();
-      MudeThemeManager? tokens;
+      ExpenseThemeManager? tokens;
 
       await widgetTester.pumpWidget(
         Wrapper(
           onTokens: (t) => tokens = t,
-          child: MudeLoading(key: key),
+          child: ExpenseLoading(key: key),
         ),
       );
 

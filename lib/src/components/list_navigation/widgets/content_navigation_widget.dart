@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/components/list_navigation/widgets/tag_widget.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/components/list_navigation/widgets/tag_widget.dart';
 
 import 'leading_nav_widget.dart';
 
@@ -10,7 +10,7 @@ class ContentNavigationWidget extends StatelessWidget {
   final String label;
   final String? description;
   final dynamic leading;
-  final MudeTagContainer? tag;
+  final ExpenseTagContainer? tag;
   final bool inverse;
 
   const ContentNavigationWidget({
@@ -24,7 +24,7 @@ class ContentNavigationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -38,13 +38,13 @@ class ContentNavigationWidget extends StatelessWidget {
         label: description,
         child: Column(
           children: [
-            MudeDescription(description!),
+            ExpenseDescription(description!),
           ],
         ),
       );
     }
 
-    return !(leading is MudeAvatarGroup || leading is MudeIconData)
+    return !(leading is ExpenseAvatarGroup || leading is ExpenseIconData)
         ? _buildNormalContent(getDescription, aliasTokens, spacing)
         : _buildContent(aliasTokens, spacing);
   }
@@ -88,9 +88,9 @@ class ContentNavigationWidget extends StatelessWidget {
         ExcludeSemantics(
           child: Padding(
             padding: EdgeInsets.only(left: spacing.s2x),
-            child: MudeIcon(
-              icon: MudeIcons.navigationRightLine,
-              size: MudeIconSize.lg,
+            child: ExpenseIcon(
+              icon: ExpenseIcons.navigationRightLine,
+              size: ExpenseIconSize.lg,
               color: aliasTokens.color.elements.iconColor,
             ),
           ),
@@ -109,7 +109,7 @@ class ContentNavigationWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(bottom: spacing.s1x),
-              child: MudeDescription(description!),
+              child: ExpenseDescription(description!),
             ),
             Row(
               children: [
@@ -139,9 +139,9 @@ class ContentNavigationWidget extends StatelessWidget {
         ExcludeSemantics(
           child: Padding(
             padding: EdgeInsets.only(left: spacing.s2x),
-            child: MudeIcon(
-              icon: MudeIcons.navigationRightLine,
-              size: MudeIconSize.lg,
+            child: ExpenseIcon(
+              icon: ExpenseIcons.navigationRightLine,
+              size: ExpenseIconSize.lg,
               color: aliasTokens.color.elements.iconColor,
             ),
           ),

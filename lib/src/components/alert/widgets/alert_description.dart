@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../mixins/properties_mixin.dart';
 
 class AlertDescription extends StatelessWidget with PropertiesMixin {
   final String description;
   final AlertHyperLink? hiperLink;
-  final MudeAlertType type;
+  final ExpenseAlertType type;
 
   const AlertDescription({
     super.key,
@@ -41,7 +41,7 @@ class AlertDescription extends StatelessWidget with PropertiesMixin {
                 ),
               ),
             ),
-            child: MudeDescription(
+            child: ExpenseDescription(
               hiperLink!.text,
               color: fontColor,
             ),
@@ -55,7 +55,7 @@ class AlertDescription extends StatelessWidget with PropertiesMixin {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       children: [
         Flexible(
-          child: MudeDescription(
+          child: ExpenseDescription(
             description,
             color: fontColor,
           ),

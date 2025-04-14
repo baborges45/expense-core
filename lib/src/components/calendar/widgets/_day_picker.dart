@@ -16,7 +16,7 @@ class _DayPicker extends StatefulWidget {
   }) : super(key: key);
 
   /// The calendar configurations
-  final MudeDatePickerConfig config;
+  final ExpenseDatePickerConfig config;
 
   /// The currently selected dates.
   ///
@@ -47,8 +47,7 @@ class _DayPickerState extends State<_DayPicker> {
 
     _dayFocusNodes = List<FocusNode>.generate(
       daysInMonth,
-      (int index) =>
-          FocusNode(skipTraversal: true, debugLabel: 'Day ${index + 1}'),
+      (int index) => FocusNode(skipTraversal: true, debugLabel: 'Day ${index + 1}'),
     );
   }
 
@@ -57,8 +56,7 @@ class _DayPickerState extends State<_DayPicker> {
     super.didChangeDependencies();
     // Check to see if the focused date is in this month, if so focus it.
     final DateTime? focusedDate = _FocusedDate.maybeOf(context);
-    if (focusedDate != null &&
-        DateUtils.isSameMonth(widget.displayedMonth, focusedDate)) {
+    if (focusedDate != null && DateUtils.isSameMonth(widget.displayedMonth, focusedDate)) {
       _dayFocusNodes[focusedDate.day - 1].requestFocus();
     }
   }
@@ -94,12 +92,9 @@ class _DayPickerState extends State<_DayPicker> {
     MaterialLocalizations localizations,
   ) {
     final List<Widget> result = <Widget>[];
-    final weekdays =
-        widget.config.weekdayLabels ?? localizations.narrowWeekdays;
-    final firstDayOfWeek =
-        widget.config.firstDayOfWeek ?? localizations.firstDayOfWeekIndex;
-    assert(firstDayOfWeek >= 0 && firstDayOfWeek <= 6,
-        'firstDayOfWeek must between 0 and 6');
+    final weekdays = widget.config.weekdayLabels ?? localizations.narrowWeekdays;
+    final firstDayOfWeek = widget.config.firstDayOfWeek ?? localizations.firstDayOfWeekIndex;
+    assert(firstDayOfWeek >= 0 && firstDayOfWeek <= 6, 'firstDayOfWeek must between 0 and 6');
     for (int i = firstDayOfWeek; true; i = (i + 1) % 7) {
       final String weekday = weekdays[i];
       result.add(ExcludeSemantics(
@@ -118,15 +113,14 @@ class _DayPickerState extends State<_DayPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
     final colors = aliasTokens.color;
     final colorsText = aliasTokens.color.text;
 
-    final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
 
     final TextStyle headerStyle = aliasTokens.mixin.labelMd2.merge(
       TextStyle(color: aliasTokens.color.text.labelColor),
@@ -167,11 +161,9 @@ class _DayPickerState extends State<_DayPicker> {
             dayToBuild.isBefore(widget.config.firstDate) ||
             !(widget.config.selectableDayPredicate?.call(dayToBuild) ?? true);
 
-        final bool isSelectedDay =
-            widget.selectedDates.any((d) => DateUtils.isSameDay(d, dayToBuild));
+        final bool isSelectedDay = widget.selectedDates.any((d) => DateUtils.isSameDay(d, dayToBuild));
 
-        final bool isToday =
-            DateUtils.isSameDay(widget.config.currentDate, dayToBuild);
+        final bool isToday = DateUtils.isSameDay(widget.config.currentDate, dayToBuild);
 
         BoxDecoration? decoration;
         Color dayColor = enabledDayColor;
@@ -182,11 +174,8 @@ class _DayPickerState extends State<_DayPicker> {
           dayColor = selectedDayColor;
           decoration = BoxDecoration(
             borderRadius: widget.config.dayBorderRadius,
-            color: widget.config.selectedDayHighlightColor ??
-                selectedDayBackground,
-            shape: widget.config.dayBorderRadius != null
-                ? BoxShape.rectangle
-                : BoxShape.circle,
+            color: widget.config.selectedDayHighlightColor ?? selectedDayBackground,
+            shape: widget.config.dayBorderRadius != null ? BoxShape.rectangle : BoxShape.circle,
           );
         } else if (isDisabled) {
           dayColor = disabledDayColor.withOpacity(
@@ -198,15 +187,11 @@ class _DayPickerState extends State<_DayPicker> {
           dayColor = widget.config.selectedDayHighlightColor ?? todayColor;
           decoration = BoxDecoration(
             borderRadius: widget.config.dayBorderRadius,
-            shape: widget.config.dayBorderRadius != null
-                ? BoxShape.rectangle
-                : BoxShape.circle,
+            shape: widget.config.dayBorderRadius != null ? BoxShape.rectangle : BoxShape.circle,
           );
         }
 
-        var customDayTextStyle =
-            widget.config.dayTextStylePredicate?.call(date: dayToBuild) ??
-                widget.config.dayTextStyle;
+        var customDayTextStyle = widget.config.dayTextStylePredicate?.call(date: dayToBuild) ?? widget.config.dayTextStyle;
 
         if (isToday && widget.config.todayTextStyle != null) {
           customDayTextStyle = widget.config.todayTextStyle;
@@ -222,9 +207,7 @@ class _DayPickerState extends State<_DayPicker> {
           }
         }
 
-        final isFullySelectedRangePicker =
-            widget.config.calendarType == MudeDatePickerType.range &&
-                widget.selectedDates.length == 2;
+        final isFullySelectedRangePicker = widget.config.calendarType == ExpenseDatePickerType.range && widget.selectedDates.length == 2;
         var isDateInBetweenRangePickerSelectedDates = false;
 
         if (isFullySelectedRangePicker) {
@@ -232,13 +215,10 @@ class _DayPickerState extends State<_DayPicker> {
           final endDate = DateUtils.dateOnly(widget.selectedDates[1]);
 
           isDateInBetweenRangePickerSelectedDates =
-              !(dayToBuild.isBefore(startDate) ||
-                      dayToBuild.isAfter(endDate)) &&
-                  !DateUtils.isSameDay(startDate, endDate);
+              !(dayToBuild.isBefore(startDate) || dayToBuild.isAfter(endDate)) && !DateUtils.isSameDay(startDate, endDate);
         }
 
-        if (isDateInBetweenRangePickerSelectedDates &&
-            widget.config.selectedRangeDayTextStyle != null) {
+        if (isDateInBetweenRangePickerSelectedDates && widget.config.selectedRangeDayTextStyle != null) {
           customDayTextStyle = widget.config.selectedRangeDayTextStyle;
         }
 
@@ -246,8 +226,7 @@ class _DayPickerState extends State<_DayPicker> {
           customDayTextStyle = widget.config.selectedDayTextStyle;
         }
 
-        final dayTextStyle =
-            customDayTextStyle ?? dayStyle.apply(color: dayColor);
+        final dayTextStyle = customDayTextStyle ?? dayStyle.apply(color: dayColor);
 
         Widget dayWidget = widget.config.dayBuilder?.call(
               date: dayToBuild,
@@ -422,7 +401,7 @@ class _TodayState extends State<_Today> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final aliasTokens = tokens.alias;
 
     Color getBackgroundColor() {
@@ -441,14 +420,11 @@ class _TodayState extends State<_Today> {
         // day of month before the rest of the date, as they are looking
         // for the day of month. To do that we prepend day of month to the
         // formatted full date.
-        label:
-            '${widget.localizations.formatDecimal(widget.day)}, ${widget.localizations.formatFullDate(widget.dayToBuild)}',
+        label: '${widget.localizations.formatDecimal(widget.day)}, ${widget.localizations.formatFullDate(widget.dayToBuild)}',
         selected: widget.isSelectedDay,
         excludeSemantics: true,
         child: Container(
-          key: widget.isSelectedDay
-              ? const Key('calendar-day-picker.selected')
-              : null,
+          key: widget.isSelectedDay ? const Key('calendar-day-picker.selected') : null,
           decoration: BoxDecoration(
             color: getBackgroundColor(),
             shape: BoxShape.circle,
@@ -473,17 +449,14 @@ class _TodaySelected extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
-    final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
 
     Color getBackgroundColor() {
-      return isSelectedDay && !disabled
-          ? aliasTokens.color.selected.bgColor
-          : Colors.transparent;
+      return isSelectedDay && !disabled ? aliasTokens.color.selected.bgColor : Colors.transparent;
     }
 
     Color getTextColor() {
@@ -493,9 +466,7 @@ class _TodaySelected extends StatelessWidget {
         );
       }
 
-      return isSelectedDay
-          ? aliasTokens.color.selected.onLabelColor
-          : aliasTokens.color.text.labelColor;
+      return isSelectedDay ? aliasTokens.color.selected.onLabelColor : aliasTokens.color.text.labelColor;
     }
 
     return Stack(

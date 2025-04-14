@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'bottom_bar_animation_widget.dart';
 
 class BottomBarContainerWidget extends StatefulWidget {
-  /// Set a list items [MudeBottomBarItem] to displayed.
-  final List<MudeBottomBarItem> items;
+  /// Set a list items [ExpenseBottomBarItem] to displayed.
+  final List<ExpenseBottomBarItem> items;
 
   /// Get index ever tab changed.
   final ValueChanged<int> onChanged;
@@ -36,12 +36,10 @@ class BottomBarContainerWidget extends StatefulWidget {
   });
 
   @override
-  State<BottomBarContainerWidget> createState() =>
-      _MudeBottomBarContainerWidgetCircleState();
+  State<BottomBarContainerWidget> createState() => _ExpenseBottomBarContainerWidgetCircleState();
 }
 
-class _MudeBottomBarContainerWidgetCircleState
-    extends State<BottomBarContainerWidget> {
+class _ExpenseBottomBarContainerWidgetCircleState extends State<BottomBarContainerWidget> {
   double sizeTab = 0;
 
   GlobalKey tabKey = GlobalKey();
@@ -74,7 +72,7 @@ class _MudeBottomBarContainerWidgetCircleState
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var elements = aliasTokens.color.elements;
@@ -101,11 +99,9 @@ class _MudeBottomBarContainerWidgetCircleState
             children: [
               ...widget.items.asMap().entries.map(
                 (tab) {
-                  String isActived =
-                      widget.currentIndex == tab.key ? 'ativado' : '';
+                  String isActived = widget.currentIndex == tab.key ? 'ativado' : '';
 
-                  String autoHint =
-                      '$isActived Tab ${tab.key + 1} de ${widget.items.length}';
+                  String autoHint = '$isActived Tab ${tab.key + 1} de ${widget.items.length}';
 
                   return BottomBarItemWidget(
                     key: tab.key == 0 ? tabKey : null,

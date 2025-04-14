@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/card_container.dart';
 
-class MudeCardImageContainer extends StatelessWidget {
+class ExpenseCardImageContainer extends StatelessWidget {
   /// Set a local or web path to load an image
   final String src;
 
@@ -30,7 +30,7 @@ class MudeCardImageContainer extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeCardImageContainer({
+  const ExpenseCardImageContainer({
     super.key,
     required this.src,
     this.child,
@@ -43,14 +43,14 @@ class MudeCardImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     final spacing = globalTokens.shapes.spacing;
     var aliasTokens = tokens.alias;
     var border = aliasTokens.defaultt.borderRadius;
 
     Widget getImage() {
-      var sourceLoad = urlIsvalid(src) ? MudeImage.network : MudeImage.asset;
+      var sourceLoad = urlIsvalid(src) ? ExpenseImage.network : ExpenseImage.asset;
 
       BorderRadius? defineBorderRadius = BorderRadius.only(
         topLeft: Radius.circular(border),
@@ -65,7 +65,7 @@ class MudeCardImageContainer extends StatelessWidget {
           src,
           fit: fit,
           width: double.maxFinite,
-          aspectRatio: MudeImageAspectRatio.ratio_3x2,
+          aspectRatio: ExpenseImageAspectRatio.ratio_3x2,
           borderRadius: defineBorderRadius,
         ),
       );
@@ -81,7 +81,7 @@ class MudeCardImageContainer extends StatelessWidget {
         width: globalTokens.shapes.size.s30x,
         child: CardContainer(
           noPadding: true,
-          type: MudeCardContainerType.card,
+          type: ExpenseCardContainerType.card,
           onPressed: onPressed,
           opacity: aliasTokens.color.pressed.containerOpacity,
           noBorder: true,

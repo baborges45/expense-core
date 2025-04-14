@@ -2,7 +2,7 @@ part of '../skeleton.dart';
 
 class _Shimmer extends SingleChildRenderObjectWidget {
   final double percent;
-  final MudeSkeletonDirection direction;
+  final ExpenseSkeletonDirection direction;
   final Gradient gradient;
 
   const _Shimmer({
@@ -28,7 +28,7 @@ class _Shimmer extends SingleChildRenderObjectWidget {
 @immutable
 // ignore: must_be_immutable
 class _ShimmerFilter extends RenderProxyBox {
-  MudeSkeletonDirection _direction;
+  ExpenseSkeletonDirection _direction;
   Gradient _gradient;
   double _percent;
 
@@ -59,7 +59,7 @@ class _ShimmerFilter extends RenderProxyBox {
     // coverage:ignore-end
   }
 
-  set direction(MudeSkeletonDirection newDirection) {
+  set direction(ExpenseSkeletonDirection newDirection) {
     if (newDirection == _direction) {
       return;
     }
@@ -77,15 +77,15 @@ class _ShimmerFilter extends RenderProxyBox {
       final double height = size.height;
       Rect rect;
       double dx, dy;
-      if (_direction == MudeSkeletonDirection.rtl) {
+      if (_direction == ExpenseSkeletonDirection.rtl) {
         dx = _offset(width, -width, _percent);
         dy = 0.0;
         rect = Rect.fromLTWH(dx - width, dy, 3 * width, height);
-      } else if (_direction == MudeSkeletonDirection.ttb) {
+      } else if (_direction == ExpenseSkeletonDirection.ttb) {
         dx = 0.0;
         dy = _offset(-height, height, _percent);
         rect = Rect.fromLTWH(dx, dy - height, width, 3 * height);
-      } else if (_direction == MudeSkeletonDirection.btt) {
+      } else if (_direction == ExpenseSkeletonDirection.btt) {
         dx = 0.0;
         dy = _offset(height, -height, _percent);
         rect = Rect.fromLTWH(dx, dy - height, width, 3 * height);

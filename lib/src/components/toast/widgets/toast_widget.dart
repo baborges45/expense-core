@@ -3,18 +3,18 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../mixins/properties_mixin.dart';
 
-class MudeToastWidget extends StatefulWidget {
+class ExpenseToastWidget extends StatefulWidget {
   final String message;
-  final MudeToastType? type;
-  final MudeToastColor color;
+  final ExpenseToastType? type;
+  final ExpenseToastColor color;
   final String? semanticsHint;
 
-  const MudeToastWidget({
+  const ExpenseToastWidget({
     super.key,
     required this.message,
     required this.color,
@@ -23,11 +23,10 @@ class MudeToastWidget extends StatefulWidget {
   });
 
   @override
-  State<MudeToastWidget> createState() => _MudeToastWidgetState();
+  State<ExpenseToastWidget> createState() => _ExpenseToastWidgetState();
 }
 
-class _MudeToastWidgetState extends State<MudeToastWidget>
-    with PropertiesMixin {
+class _ExpenseToastWidgetState extends State<ExpenseToastWidget> with PropertiesMixin {
   late Timer _timer;
 
   @override
@@ -53,7 +52,7 @@ class _MudeToastWidgetState extends State<MudeToastWidget>
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -74,12 +73,10 @@ class _MudeToastWidgetState extends State<MudeToastWidget>
     );
 
     getIcon() {
-      return MudeIcon(
-        icon: widget.type == MudeToastType.negative
-            ? MudeIcons.negativeLine
-            : MudeIcons.positiveLine,
+      return ExpenseIcon(
+        icon: widget.type == ExpenseToastType.negative ? ExpenseIcons.negativeLine : ExpenseIcons.positiveLine,
         color: iconColor,
-        size: MudeIconSize.lg,
+        size: ExpenseIconSize.lg,
       );
     }
 
@@ -113,7 +110,7 @@ class _MudeToastWidgetState extends State<MudeToastWidget>
                 width: spacing.s1x,
               ),
               Expanded(
-                child: MudeDescription(
+                child: ExpenseDescription(
                   widget.message,
                   color: fontColor,
                 ),
@@ -121,10 +118,10 @@ class _MudeToastWidgetState extends State<MudeToastWidget>
               SizedBox(
                 width: spacing.s1x,
               ),
-              MudeIcon(
-                icon: MudeIcons.closeLine,
+              ExpenseIcon(
+                icon: ExpenseIcons.closeLine,
                 color: iconColor,
-                size: MudeIconSize.sm,
+                size: ExpenseIconSize.sm,
               ),
             ],
           ),

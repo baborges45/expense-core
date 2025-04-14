@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -14,9 +14,9 @@ void main() {
           final SemanticsHandle handle = widgetTester.ensureSemantics();
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 progress: 11,
-                size: MudeProgressCircularSize.sm,
+                size: ExpenseProgressCircularSize.sm,
               ),
             ),
           );
@@ -51,7 +51,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 key: key,
                 progress: 0,
               ),
@@ -67,7 +67,7 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 key: key,
                 progress: 10,
               ),
@@ -81,15 +81,15 @@ void main() {
         'Should be render with size lg',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 key: key,
                 progress: 10,
-                size: MudeProgressCircularSize.lg,
+                size: ExpenseProgressCircularSize.lg,
               ),
             ),
           );
@@ -104,15 +104,15 @@ void main() {
         'Should be render with size me',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 key: key,
                 progress: 10,
-                size: MudeProgressCircularSize.lg,
+                size: ExpenseProgressCircularSize.lg,
               ),
             ),
           );
@@ -127,15 +127,15 @@ void main() {
         'Should be render with size sm',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeProgressCircular(
+              child: ExpenseProgressCircular(
                 key: key,
                 progress: 10,
-                size: MudeProgressCircularSize.sm,
+                size: ExpenseProgressCircularSize.sm,
               ),
             ),
           );

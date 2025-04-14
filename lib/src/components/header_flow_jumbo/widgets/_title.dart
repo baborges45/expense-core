@@ -19,7 +19,7 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
     final spacing = globalTokens.shapes.spacing;
 
     return Padding(
@@ -35,15 +35,15 @@ class _Title extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 if (description.isNotEmpty) ...[
-                  MudeDescription(
+                  ExpenseDescription(
                     description,
                     semanticsLabel: description,
                   ),
                   SizedBox(height: spacing.s1x),
                 ],
-                MudeHeading(
+                ExpenseHeading(
                   title,
-                  size: MudeHeadingSize.lg,
+                  size: ExpenseHeadingSize.lg,
                 ),
               ],
             ),

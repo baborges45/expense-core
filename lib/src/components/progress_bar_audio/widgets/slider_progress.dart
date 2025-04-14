@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mude_tokens/tokens.dart';
+import 'package:expense_tokens/tokens.dart';
 import 'package:provider/provider.dart';
 
 class SeekBar extends StatefulWidget {
@@ -43,7 +43,7 @@ class SeekBarState extends State<SeekBar> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     final size = globalTokens.shapes.size;
@@ -166,8 +166,7 @@ String _formatDuration(Duration value) {
   int minutes = value.inMinutes;
 
   String twoDigits(int n) => n.toString().padLeft(2, "0");
-  String oneOrTwoDigitMinutes =
-      minutes.remainder(60) < 10 ? value.inMinutes.remainder(60).toString() : twoDigits(value.inMinutes.remainder(60));
+  String oneOrTwoDigitMinutes = minutes.remainder(60) < 10 ? value.inMinutes.remainder(60).toString() : twoDigits(value.inMinutes.remainder(60));
   String twoDigitSeconds = twoDigits(value.inSeconds.remainder(60));
 
   return '$oneOrTwoDigitMinutes:$twoDigitSeconds';

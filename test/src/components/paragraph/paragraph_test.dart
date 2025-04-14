@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeParagraph(
+              child: ExpenseParagraph(
                 key: key,
                 text,
               ),
@@ -31,17 +31,17 @@ void main() {
         'Should  paragraph size sm',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           const text = 'Paragraph';
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeParagraph(
+              child: ExpenseParagraph(
                 key: key,
                 text,
-                size: MudeParagraphSize.sm,
+                size: ExpenseParagraphSize.sm,
               ),
             ),
           );
@@ -57,17 +57,17 @@ void main() {
         'Should  paragraph inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           const text = 'Paragraph';
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeParagraph(
+              child: ExpenseParagraph(
                 key: key,
                 text,
-                size: MudeParagraphSize.sm,
+                size: ExpenseParagraphSize.sm,
                 inverse: true,
               ),
             ),
@@ -90,7 +90,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeParagraph(
+            child: ExpenseParagraph(
               'Paragraph',
               semanticsHint: 'Paragraph',
             ),

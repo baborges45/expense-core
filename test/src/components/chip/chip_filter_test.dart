@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipFilter(
+              child: ExpenseChipFilter(
                 key: key,
                 label: '',
                 onPressed: () => debugPrint(''),
@@ -34,7 +34,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipFilter(
+              child: ExpenseChipFilter(
                 key: key,
                 label: 'Test',
                 onPressed: () => debugPrint(''),
@@ -54,7 +54,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipFilter(
+              child: ExpenseChipFilter(
                 key: key,
                 label: '',
                 onPressed: () {
@@ -73,12 +73,12 @@ void main() {
         'Should be inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeChipFilter(
+              child: ExpenseChipFilter(
                 key: key,
                 label: '',
                 onPressed: () => debugPrint(''),
@@ -103,7 +103,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeChipFilter(
+              child: ExpenseChipFilter(
                 key: key,
                 label: '',
                 onPressed: () => debugPrint(''),
@@ -134,7 +134,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeChipFilter(
+            child: ExpenseChipFilter(
               label: 'Chip Filter',
               onPressed: () => debugPrint(''),
               semanticsLabel: 'Chip Filter',

@@ -2,13 +2,13 @@
 
 part of '../currency.dart';
 
-class _MudeCurrencyOutcome extends StatelessWidget {
+class _ExpenseCurrencyOutcome extends StatelessWidget {
   final String price;
   final TextStyle defaultStyle;
   final bool hide;
-  final MudeIconSize iconSize;
+  final ExpenseIconSize iconSize;
 
-  const _MudeCurrencyOutcome({
+  const _ExpenseCurrencyOutcome({
     super.key,
     required this.price,
     required this.defaultStyle,
@@ -18,7 +18,7 @@ class _MudeCurrencyOutcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var negativeColor = aliasTokens.color.negative;
@@ -38,15 +38,15 @@ class _MudeCurrencyOutcome extends StatelessWidget {
       children: [
         ExcludeSemantics(
           excluding: true,
-          child: MudeIcon(
-            icon: MudeIcons.downLine,
+          child: ExpenseIcon(
+            icon: ExpenseIcons.downLine,
             size: iconSize,
             color: negativeColor.labelColor,
           ),
         ),
         SizedBox(width: globalTokens.shapes.spacing.half),
         priceText,
-        _MudeHideDot(
+        _ExpenseHideDot(
           price: price,
           hide: hide,
           color: negativeColor.iconColor,

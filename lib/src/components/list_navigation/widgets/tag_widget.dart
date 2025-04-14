@@ -1,8 +1,8 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 
 class TagWidget extends StatelessWidget {
-  final MudeTagContainer? tag;
+  final ExpenseTagContainer? tag;
 
   const TagWidget({
     super.key,

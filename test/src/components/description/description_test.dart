@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeDescription(text),
+              child: ExpenseDescription(text),
             ),
           );
 
@@ -30,7 +30,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeDescription(
+              child: ExpenseDescription(
                 text,
                 color: Colors.red,
               ),
@@ -51,7 +51,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeDescription(
+              child: ExpenseDescription(
                 text,
                 align: TextAlign.center,
               ),
@@ -68,12 +68,12 @@ void main() {
         'Should description inverse',
         (widgetTester) async {
           const text = 'Description';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: const MudeDescription(
+              child: const ExpenseDescription(
                 text,
                 inverse: true,
               ),

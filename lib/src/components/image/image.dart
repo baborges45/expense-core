@@ -2,16 +2,16 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeImage extends StatelessWidget {
+class ExpenseImage extends StatelessWidget {
   ///A string value that refers to the local or web path to load an image.
   final String src;
 
-  /// A [MudeImageAspectRatio] objetc that defines the image aspect radio,
-  /// The default value is [MudeImageAspectRatio.fillContainer].
-  final MudeImageAspectRatio aspectRatio;
+  /// A [ExpenseImageAspectRatio] objetc that defines the image aspect radio,
+  /// The default value is [ExpenseImageAspectRatio.fillContainer].
+  final ExpenseImageAspectRatio aspectRatio;
 
   /// A bool value that if true will make the image fill the container.
   /// The default value is false.
@@ -32,9 +32,9 @@ class MudeImage extends StatelessWidget {
   /// A [BorderRadius] object that represents the border radius of the image.
   final BorderRadius? borderRadius;
 
-  /// A [MudeImageType] enum value that let you choose which type of source you will be using.
+  /// A [ExpenseImageType] enum value that let you choose which type of source you will be using.
   /// It can be asset or network.
-  late MudeImageType type;
+  late ExpenseImageType type;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -49,10 +49,10 @@ class MudeImage extends StatelessWidget {
   final bool excludeSemantics;
 
   /// With [asset] you must load an image locally
-  MudeImage.asset(
+  ExpenseImage.asset(
     this.src, {
     super.key,
-    this.aspectRatio = MudeImageAspectRatio.ratio_1x1,
+    this.aspectRatio = ExpenseImageAspectRatio.ratio_1x1,
     this.fillContainer = false,
     this.repeat = ImageRepeat.noRepeat,
     this.fit = BoxFit.cover,
@@ -62,14 +62,14 @@ class MudeImage extends StatelessWidget {
     this.semanticsHint,
     this.excludeSemantics = false,
   }) {
-    type = MudeImageType.asset;
+    type = ExpenseImageType.asset;
   }
 
   /// With [network] you must load an image from the internet
-  MudeImage.network(
+  ExpenseImage.network(
     this.src, {
     super.key,
-    this.aspectRatio = MudeImageAspectRatio.ratio_1x1,
+    this.aspectRatio = ExpenseImageAspectRatio.ratio_1x1,
     this.fillContainer = false,
     this.repeat = ImageRepeat.noRepeat,
     this.fit = BoxFit.cover,
@@ -79,43 +79,43 @@ class MudeImage extends StatelessWidget {
     this.semanticsHint,
     this.excludeSemantics = false,
   }) {
-    type = MudeImageType.network;
+    type = ExpenseImageType.network;
   }
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
-    _MudeImageAspectRatioSize getSize() {
+    _ExpenseImageAspectRatioSize getSize() {
       switch (aspectRatio) {
-        case MudeImageAspectRatio.ratio_1x1:
-          return _MudeImageAspectRatioSize(
+        case ExpenseImageAspectRatio.ratio_1x1:
+          return _ExpenseImageAspectRatioSize(
             width: globalTokens.shapes.size.s5x,
             height: null,
             aspectRatio: 1 / 1,
           );
-        case MudeImageAspectRatio.ratio_3x2:
-          return _MudeImageAspectRatioSize(
+        case ExpenseImageAspectRatio.ratio_3x2:
+          return _ExpenseImageAspectRatioSize(
             width: globalTokens.shapes.size.s4x,
             height: null,
             aspectRatio: 3 / 2,
           );
-        case MudeImageAspectRatio.ratio_16x9:
-          return _MudeImageAspectRatioSize(
+        case ExpenseImageAspectRatio.ratio_16x9:
+          return _ExpenseImageAspectRatioSize(
             width: globalTokens.shapes.size.s8x,
             height: null,
             aspectRatio: 16 / 9,
           );
-        case MudeImageAspectRatio.ratio_2x3:
-          return _MudeImageAspectRatioSize(
+        case ExpenseImageAspectRatio.ratio_2x3:
+          return _ExpenseImageAspectRatioSize(
             width: globalTokens.shapes.size.s4x,
             height: null,
             aspectRatio: 2 / 3,
           );
-        case MudeImageAspectRatio.ratio_4x3:
-          return _MudeImageAspectRatioSize(
+        case ExpenseImageAspectRatio.ratio_4x3:
+          return _ExpenseImageAspectRatioSize(
             width: globalTokens.shapes.size.s4x,
             height: null,
             aspectRatio: 4 / 3,
@@ -129,7 +129,7 @@ class MudeImage extends StatelessWidget {
       BorderRadius borderRadiusChoice = borderRadius ?? BorderRadius.circular(newBorderRadius);
 
       switch (type) {
-        case MudeImageType.asset:
+        case ExpenseImageType.asset:
           return Semantics(
             image: true,
             label: semanticsLabel,
@@ -145,7 +145,7 @@ class MudeImage extends StatelessWidget {
             ),
           );
 
-        case MudeImageType.network:
+        case ExpenseImageType.network:
           return Semantics(
             image: true,
             label: semanticsLabel,
@@ -179,12 +179,12 @@ class MudeImage extends StatelessWidget {
   }
 }
 
-class _MudeImageAspectRatioSize {
+class _ExpenseImageAspectRatioSize {
   final double? width;
   final double? height;
   final double? aspectRatio;
 
-  _MudeImageAspectRatioSize({
+  _ExpenseImageAspectRatioSize({
     required this.width,
     required this.height,
     required this.aspectRatio,

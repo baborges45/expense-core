@@ -1,3 +1,3 @@
-enum MudeCurrencyType { currency, sale, income, outcome }
+enum ExpenseCurrencyType { currency, sale, income, outcome }
 
-enum MudeCurrencySize { sm, lg }
+enum ExpenseCurrencySize { sm, lg }

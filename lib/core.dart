@@ -1,8 +1,9 @@
-library mude_core;
+library expense_core;
 
 // Libs
-export 'package:mude_assets/assets.dart';
-export 'package:mude_tokens/tokens.dart';
+export 'package:expense_assets/assets.dart';
+export 'package:expense_tokens/tokens.dart';
+export 'package:flutter_svg/svg.dart';
 
 export 'src/components/accordion_journey/accordion_journey.dart';
 export 'src/components/alert/alert.dart';

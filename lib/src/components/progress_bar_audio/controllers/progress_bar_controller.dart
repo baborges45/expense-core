@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:mude_core/src/components/dropdown/models/dropdown_item.dart';
+import 'package:expense_core/src/components/dropdown/models/dropdown_item.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'audio_source.dart';
@@ -13,7 +13,7 @@ export 'package:just_audio/just_audio.dart';
 class ProgressBarController {
   final AudioPlayer _player = AudioPlayer();
   StreamSubscription? _stateSub;
-  ValueNotifier<MudeDropdownItem?> selectedSpeed = ValueNotifier<MudeDropdownItem?>(null);
+  ValueNotifier<ExpenseDropdownItem?> selectedSpeed = ValueNotifier<ExpenseDropdownItem?>(null);
 
   Stream<PositionData> get positionDataStream => Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         _player.positionStream,
@@ -70,7 +70,7 @@ class ProgressBarController {
               Uri.parse(src.url),
               tag: MediaItem(
                 id: '${src.id}',
-                album: "Mude Journey",
+                album: "Expense Journey",
                 title: src.title,
                 artist: src.author,
                 artUri: src.imageUrl != null ? Uri.parse(src.imageUrl!) : null,
@@ -98,7 +98,7 @@ class ProgressBarController {
         Uri.parse(src.url),
         tag: MediaItem(
           id: '${src.id}',
-          album: "Mude Journey",
+          album: "Expense Journey",
           title: src.title,
           artist: src.author,
           artUri: src.imageUrl != null ? Uri.parse(src.imageUrl!) : null,
