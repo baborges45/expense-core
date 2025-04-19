@@ -86,7 +86,7 @@ class _ExpenseSwitchState extends State<ExpenseSwitch> {
         return widget.value ? aliasTokens.color.inverse.bgColor : Colors.transparent;
       }
 
-      return widget.value ? aliasTokens.color.selected.bgColor : Colors.transparent;
+      return widget.value ? aliasTokens.color.elements.bgColor06 : Colors.transparent;
     }
 
     Widget getLabel() {
