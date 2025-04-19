@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeRadioButton<T> extends StatefulWidget {
-  ///The value corresponding to this MudeRadioButton.
-  ///This is the value that is assigned to the group when this MudeRadioButton is selected.
+class ExpenseRadioButton<T> extends StatefulWidget {
+  ///The value corresponding to this ExpenseRadioButton.
+  ///This is the value that is assigned to the group when this ExpenseRadioButton is selected.
   final T value;
 
-  ///A string text that appears next to the MudeRadioButton.
+  ///A string text that appears next to the ExpenseRadioButton.
   final String? label;
 
-  ///A dinymic value currently selected by the group of MudeRadioButtons.
-  ///If this [MudeRadioButton] has the same value as groupValue, it will be selected.
+  ///A dinymic value currently selected by the group of ExpenseRadioButtons.
+  ///If this [ExpenseRadioButton] has the same value as groupValue, it will be selected.
   final T? groupValue;
 
-  ///A callback function called when this MudeRadioButton is selected.
+  ///A callback function called when this ExpenseRadioButton is selected.
   ///The function returns the newly selected value.
   final ValueChanged<T?>? onChanged;
 
@@ -31,7 +31,7 @@ class MudeRadioButton<T> extends StatefulWidget {
   ///The default value is null
   final String? semanticsLabel;
 
-  const MudeRadioButton({
+  const ExpenseRadioButton({
     Key? key,
     required this.value,
     required this.onChanged,
@@ -45,10 +45,10 @@ class MudeRadioButton<T> extends StatefulWidget {
   bool get _selected => value == groupValue;
 
   @override
-  State<MudeRadioButton> createState() => _MyWidgetState<T>();
+  State<ExpenseRadioButton> createState() => _MyWidgetState<T>();
 }
 
-class _MyWidgetState<T> extends State<MudeRadioButton<T>> {
+class _MyWidgetState<T> extends State<ExpenseRadioButton<T>> {
   bool isPressed = false;
 
   void _onPressed(bool value) {
@@ -68,13 +68,11 @@ class _MyWidgetState<T> extends State<MudeRadioButton<T>> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size.s2_5x;
-    final EdgeInsets marginContainer = widget.label != null
-        ? EdgeInsets.only(right: globalTokens.shapes.spacing.s1x)
-        : EdgeInsets.zero;
+    final EdgeInsets marginContainer = widget.label != null ? EdgeInsets.only(right: globalTokens.shapes.spacing.s1x) : EdgeInsets.zero;
 
     Widget? getLabel() {
       if (widget.label != null) {
@@ -113,9 +111,7 @@ class _MyWidgetState<T> extends State<MudeRadioButton<T>> {
     Widget? fillContainer() {
       var size = globalTokens.shapes.size.s1x;
 
-      Color color = !widget.disabled
-          ? aliasTokens.color.selected.onIconColor
-          : aliasTokens.color.disabled.onIconColor;
+      Color color = !widget.disabled ? aliasTokens.color.selected.onIconColor : aliasTokens.color.disabled.onIconColor;
 
       if (widget.inverse) {
         color = aliasTokens.color.inverse.onIconColor;
@@ -137,27 +133,21 @@ class _MyWidgetState<T> extends State<MudeRadioButton<T>> {
 
     Color getColorFillContainer() {
       if (widget.inverse) {
-        return widget._selected
-            ? aliasTokens.color.inverse.bgColor
-            : Colors.transparent;
+        return widget._selected ? aliasTokens.color.inverse.bgColor : Colors.transparent;
       }
 
       if (widget.disabled && widget._selected) {
         return aliasTokens.color.disabled.bgColor;
       }
 
-      return widget._selected
-          ? aliasTokens.color.selected.bgColor
-          : Colors.transparent;
+      return widget._selected ? aliasTokens.color.selected.bgColor : Colors.transparent;
     }
 
     Color getBorderContainer() {
       if (widget.inverse) return aliasTokens.color.inverse.borderColor;
       if (widget.disabled) return aliasTokens.color.disabled.borderColor;
 
-      return widget._selected
-          ? aliasTokens.color.selected.borderColor
-          : aliasTokens.color.unselected.border;
+      return widget._selected ? aliasTokens.color.selected.borderColor : aliasTokens.color.unselected.border;
     }
 
     double getOpacity() {
@@ -167,9 +157,7 @@ class _MyWidgetState<T> extends State<MudeRadioButton<T>> {
     }
 
     Color getPressedColor() {
-      return widget.inverse
-          ? aliasTokens.mixin.pressedOutlineInverse
-          : aliasTokens.mixin.pressedOutline;
+      return widget.inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
     }
 
     Widget onPressAnimation() {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/container_widget.dart';
 
-class MudeShortcutJumbo extends StatelessWidget {
+class ExpenseShortcutJumbo extends StatelessWidget {
   /// A String that represents the label of the shortcut.
   final String label;
 
@@ -14,9 +14,9 @@ class MudeShortcutJumbo extends StatelessWidget {
   /// A [VoidCallback] that is called when the shortcut is pressed.
   final VoidCallback onPressed;
 
-  ///(Optional) A [MudeIconData] that represents the icon for the shortcut.
-  ///Used only if type is [MudeShortcutType.icon].
-  final MudeIconData? icon;
+  ///(Optional) A [ExpenseIconData] that represents the icon for the shortcut.
+  ///Used only if type is [ExpenseShortcutType.icon].
+  final ExpenseIconData? icon;
 
   ///A boolean value that indicates whether the shortcut is disabled.
   ///The default value is false.
@@ -30,7 +30,7 @@ class MudeShortcutJumbo extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeShortcutJumbo({
+  const ExpenseShortcutJumbo({
     super.key,
     required this.label,
     required this.description,
@@ -43,18 +43,16 @@ class MudeShortcutJumbo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     Widget getItemShorcut() {
-      Color iconColor = disabled
-          ? aliasTokens.color.disabled.onIconColor
-          : aliasTokens.color.elements.iconColor;
+      Color iconColor = disabled ? aliasTokens.color.disabled.onIconColor : aliasTokens.color.elements.iconColor;
 
-      return MudeIcon(
+      return ExpenseIcon(
         icon: icon!,
         color: iconColor,
-        size: MudeIconSize.lg,
+        size: ExpenseIconSize.lg,
       );
     }
 

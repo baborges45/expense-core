@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part './widgets/_shimmer.dart';
 
-class MudeSkeleton extends StatefulWidget {
+class ExpenseSkeleton extends StatefulWidget {
   ///(Optional) A double representing the height of the skeleton widget.
   final double? height;
 
@@ -15,17 +15,17 @@ class MudeSkeleton extends StatefulWidget {
   ///(Optional) A BorderRadius object representing the border radius of the skeleton widget.
   final BorderRadius? borderRadius;
 
-  ///A [MudeSkeletonType] enum object representing the shape of the skeleton widget.
-  ///The default value is [MudeSkeletonType.retangle].
-  final MudeSkeletonType type;
+  ///A [ExpenseSkeletonType] enum object representing the shape of the skeleton widget.
+  ///The default value is [ExpenseSkeletonType.retangle].
+  final ExpenseSkeletonType type;
 
   ///A [Duration] object representing the duration of the shimmering animation.
   ///The default value is 1500 milliseconds.
   final Duration duration;
 
-  ///(Optional) A [MudeSkeletonDirection] representing animation direction.
-  ///The default value is [MudeSkeletonDirection.ltr]
-  final MudeSkeletonDirection direction;
+  ///(Optional) A [ExpenseSkeletonDirection] representing animation direction.
+  ///The default value is [ExpenseSkeletonDirection.ltr]
+  final ExpenseSkeletonDirection direction;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -35,24 +35,23 @@ class MudeSkeleton extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeSkeleton({
+  const ExpenseSkeleton({
     super.key,
     this.height,
     this.width,
     this.borderRadius,
-    this.type = MudeSkeletonType.retangle,
-    this.direction = MudeSkeletonDirection.ltr,
+    this.type = ExpenseSkeletonType.retangle,
+    this.direction = ExpenseSkeletonDirection.ltr,
     this.duration = const Duration(milliseconds: 1500),
     this.semanticsLabel,
     this.semanticsHint,
   });
 
   @override
-  State<MudeSkeleton> createState() => _MudeSkeletonState();
+  State<ExpenseSkeleton> createState() => _ExpenseSkeletonState();
 }
 
-class _MudeSkeletonState extends State<MudeSkeleton>
-    with SingleTickerProviderStateMixin {
+class _ExpenseSkeletonState extends State<ExpenseSkeleton> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -75,7 +74,7 @@ class _MudeSkeletonState extends State<MudeSkeleton>
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var elements = aliasTokens.color.elements;
@@ -94,7 +93,7 @@ class _MudeSkeletonState extends State<MudeSkeleton>
     }
 
     double getHeight() {
-      if (widget.type == MudeSkeletonType.circle) {
+      if (widget.type == ExpenseSkeletonType.circle) {
         return widget.height ?? widget.width ?? globalTokens.shapes.size.s8x;
       }
 
@@ -102,7 +101,7 @@ class _MudeSkeletonState extends State<MudeSkeleton>
     }
 
     double getWidth() {
-      if (widget.type == MudeSkeletonType.circle) {
+      if (widget.type == ExpenseSkeletonType.circle) {
         return widget.width ?? widget.height ?? globalTokens.shapes.size.s8x;
       }
 
@@ -110,12 +109,11 @@ class _MudeSkeletonState extends State<MudeSkeleton>
     }
 
     BorderRadius getBorderRadius() {
-      if (widget.type == MudeSkeletonType.circle) {
+      if (widget.type == ExpenseSkeletonType.circle) {
         return BorderRadius.circular(globalTokens.shapes.border.radiusCircular);
       }
 
-      return widget.borderRadius ??
-          BorderRadius.circular(globalTokens.shapes.border.radiusXs);
+      return widget.borderRadius ?? BorderRadius.circular(globalTokens.shapes.border.radiusXs);
     }
 
     return Semantics(

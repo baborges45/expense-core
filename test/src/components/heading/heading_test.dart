@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeading(
+              child: ExpenseHeading(
                 key: key,
                 text,
               ),
@@ -31,14 +31,14 @@ void main() {
         'Should heading sizes',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           const text = 'Heading';
 
-          for (var size in MudeHeadingSize.values) {
+          for (var size in ExpenseHeadingSize.values) {
             await widgetTester.pumpWidget(
               Wrapper(
                 onTokens: (t) => tokens = t,
-                child: MudeHeading(
+                child: ExpenseHeading(
                   key: key,
                   text,
                   size: size,
@@ -50,19 +50,19 @@ void main() {
             final style = widget.style as TextStyle;
 
             switch (size) {
-              case MudeHeadingSize.xl:
+              case ExpenseHeadingSize.xl:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeXl);
                 break;
-              case MudeHeadingSize.lg:
+              case ExpenseHeadingSize.lg:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeLg);
                 break;
-              case MudeHeadingSize.md:
+              case ExpenseHeadingSize.md:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeMd);
                 break;
-              case MudeHeadingSize.sm:
+              case ExpenseHeadingSize.sm:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeSm);
                 break;
-              case MudeHeadingSize.xs:
+              case ExpenseHeadingSize.xs:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeXs);
                 break;
             }
@@ -74,13 +74,13 @@ void main() {
         'Should heading inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           const text = 'Heading';
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeHeading(
+              child: ExpenseHeading(
                 key: key,
                 text,
                 inverse: true,

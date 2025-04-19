@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,10 +15,10 @@ void main() {
             Wrapper(
               child: const SizedBox.shrink(),
               onTap: (context) {
-                MudeSuperDrawer.show(
+                ExpenseSuperDrawer.show(
                   context,
                   children: [
-                    MudeButton(
+                    ExpenseButton(
                       label: 'Close',
                       onPressed: () => debugPrint(''),
                     ),
@@ -33,7 +33,7 @@ void main() {
           await widgetTester.pump(const Duration(milliseconds: 800));
 
           expect(find.byType(Column), findsWidgets);
-          expect(find.byType(MudeButton), findsOneWidget);
+          expect(find.byType(ExpenseButton), findsOneWidget);
         },
       );
 
@@ -44,7 +44,7 @@ void main() {
             Wrapper(
               child: const SizedBox.shrink(),
               onTap: (context) {
-                MudeSuperDrawer.show(
+                ExpenseSuperDrawer.show(
                   context,
                   children: [],
                 );
@@ -58,11 +58,11 @@ void main() {
           await widgetTester.pump(const Duration(milliseconds: 800));
 
           // close
-          final buttonClose = find.byType(MudeButtonIcon);
+          final buttonClose = find.byType(ExpenseButtonIcon);
           await widgetTester.tap(buttonClose);
           await widgetTester.pump(const Duration(milliseconds: 800));
 
-          expect(find.byType(MudeSuperDrawer), findsNothing);
+          expect(find.byType(ExpenseSuperDrawer), findsNothing);
         },
       );
     },
@@ -77,7 +77,7 @@ void main() {
           Wrapper(
             child: const SizedBox.shrink(),
             onTap: (context) {
-              MudeSuperDrawer.show(
+              ExpenseSuperDrawer.show(
                 context,
                 children: [],
               );

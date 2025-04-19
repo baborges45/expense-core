@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "mude-flutter-core",
+      "name": "expense-flutter-core",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "mude-flutter-core (profile mode)",
+      "name": "expense-flutter-core (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "mude-flutter-core (release mode)",
+      "name": "expense-flutter-core (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

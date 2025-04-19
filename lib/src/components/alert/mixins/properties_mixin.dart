@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -6,75 +6,75 @@ import 'package:provider/provider.dart';
 mixin PropertiesMixin {
   Color getBackgroundColor({
     required BuildContext context,
-    required MudeAlertType alertColor,
+    required ExpenseAlertType alertColor,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     switch (alertColor) {
-      case MudeAlertType.positive:
+      case ExpenseAlertType.positive:
         return aliasTokens.color.positive.bgColor;
 
-      case MudeAlertType.negative:
+      case ExpenseAlertType.negative:
         return aliasTokens.color.negative.bgColor;
 
-      case MudeAlertType.informative:
+      case ExpenseAlertType.informative:
         return aliasTokens.color.informative.bgColor;
 
-      case MudeAlertType.warning:
+      case ExpenseAlertType.warning:
         return aliasTokens.color.warning.bgColor;
 
-      case MudeAlertType.promote:
+      case ExpenseAlertType.promote:
         return aliasTokens.color.promote.bgColor;
     }
   }
 
   Color getIconColor({
     required BuildContext context,
-    required MudeAlertType alertColor,
+    required ExpenseAlertType alertColor,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     switch (alertColor) {
-      case MudeAlertType.positive:
+      case ExpenseAlertType.positive:
         return aliasTokens.color.positive.onIconColor;
 
-      case MudeAlertType.negative:
+      case ExpenseAlertType.negative:
         return aliasTokens.color.negative.onIconColor;
 
-      case MudeAlertType.informative:
+      case ExpenseAlertType.informative:
         return aliasTokens.color.informative.onIconColor;
 
-      case MudeAlertType.warning:
+      case ExpenseAlertType.warning:
         return aliasTokens.color.warning.onIconColor;
 
-      case MudeAlertType.promote:
+      case ExpenseAlertType.promote:
         return aliasTokens.color.promote.onIconColor;
     }
   }
 
   Color getFontColor({
     required BuildContext context,
-    required MudeAlertType alertColor,
+    required ExpenseAlertType alertColor,
   }) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     switch (alertColor) {
-      case MudeAlertType.positive:
+      case ExpenseAlertType.positive:
         return aliasTokens.color.positive.onDescriptionColor;
 
-      case MudeAlertType.negative:
+      case ExpenseAlertType.negative:
         return aliasTokens.color.negative.onDescriptionColor;
 
-      case MudeAlertType.informative:
+      case ExpenseAlertType.informative:
         return aliasTokens.color.informative.onDescriptionColor;
 
-      case MudeAlertType.warning:
+      case ExpenseAlertType.warning:
         return aliasTokens.color.warning.onDescriptionColor;
 
-      case MudeAlertType.promote:
+      case ExpenseAlertType.promote:
         return aliasTokens.color.promote.onDescriptionColor;
     }
   }

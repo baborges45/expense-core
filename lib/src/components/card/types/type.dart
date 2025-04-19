@@ -1,4 +1,4 @@
-enum MudeCardContainerType {
+enum ExpenseCardContainerType {
   card,
   cardAlternative,
   active,

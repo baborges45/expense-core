@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -17,7 +17,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -26,7 +26,7 @@ void main() {
             ),
           );
 
-          expect(find.byType(MudeHeaderFlowJumbo), findsOneWidget);
+          expect(find.byType(ExpenseHeaderFlowJumbo), findsOneWidget);
         },
       );
 
@@ -40,7 +40,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -49,7 +49,7 @@ void main() {
             ),
           );
 
-          final buttonClose = find.byType(MudeButtonIcon);
+          final buttonClose = find.byType(ExpenseButtonIcon);
           await widgetTester.tap(buttonClose.first);
           await widgetTester.pumpAndSettle();
 
@@ -67,7 +67,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -97,7 +97,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -109,7 +109,7 @@ void main() {
             ),
           );
 
-          expect(find.byType(MudeProgressLine), findsOneWidget);
+          expect(find.byType(ExpenseProgressLine), findsOneWidget);
         },
       );
 
@@ -122,7 +122,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -134,7 +134,7 @@ void main() {
             ),
           );
 
-          expect(find.byType(MudeProgressLine), findsOneWidget);
+          expect(find.byType(ExpenseProgressLine), findsOneWidget);
         },
       );
 
@@ -147,7 +147,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeHeaderFlowJumbo(
+              child: ExpenseHeaderFlowJumbo(
                 key: key,
                 title: title,
                 description: description,
@@ -177,7 +177,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeHeaderFlowJumbo(
+            child: ExpenseHeaderFlowJumbo(
               title: title,
               description: description,
               onClose: () => debugPrint(''),

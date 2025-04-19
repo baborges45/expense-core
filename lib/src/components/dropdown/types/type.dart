@@ -1,1 +1,1 @@
-enum MudeDropDownType { container, ghost }
+enum ExpenseDropDownType { container, ghost }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
   final Widget child;
-  final Function(MudeThemeManager tokens)? onTokens;
+  final Function(ExpenseThemeManager tokens)? onTokens;
   final Function(BuildContext context)? onTap;
   final Function(BuildContext context)? onContext;
 
@@ -21,9 +21,9 @@ class Wrapper extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MudeThemeManager(
-            theme: MudeThemeOptions.default_theme,
-            mode: MudeThemeMode.light,
+          create: (_) => ExpenseThemeManager(
+            theme: ExpenseThemeOptions.default_theme,
+            mode: ExpenseThemeMode.light,
           ),
         ),
       ],
@@ -41,7 +41,7 @@ class Wrapper extends StatelessWidget {
 
 class WrapperHome extends StatelessWidget {
   final Widget child;
-  final Function(MudeThemeManager tokens)? onTokens;
+  final Function(ExpenseThemeManager tokens)? onTokens;
   final Function(BuildContext context)? onTap;
   final Function(BuildContext context)? onContext;
 
@@ -55,7 +55,7 @@ class WrapperHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MudeThemeManager tokens = Provider.of<MudeThemeManager>(context);
+    ExpenseThemeManager tokens = Provider.of<ExpenseThemeManager>(context);
 
     if (onTokens != null) {
       onTokens!(tokens);

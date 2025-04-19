@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 label: 'label',
                 onPressed: () => debugPrint(''),
               ),
@@ -58,7 +58,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 label: label,
                 onPressed: () => debugPrint(''),
               ),
@@ -79,7 +79,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 key: key,
                 label: label,
                 onPressed: () => press = true,
@@ -101,7 +101,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 key: key,
                 label: label,
                 disabled: true,
@@ -124,7 +124,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 key: key,
                 label: label,
                 loading: true,
@@ -152,11 +152,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFloat(
+              child: ExpenseButtonFloat(
                 key: key,
                 label: label,
                 loading: true,
-                icon: MudeIcons.userLine,
+                icon: ExpenseIcons.userLine,
                 onPressed: () => debugPrint(''),
               ),
             ),

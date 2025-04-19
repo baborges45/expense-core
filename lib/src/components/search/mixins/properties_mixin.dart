@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 mixin PropertiesMixin {
@@ -8,11 +8,9 @@ mixin PropertiesMixin {
     bool isFilled,
     BuildContext context,
   ) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
 
-    return isFocussed || isFilled
-        ? aliasTokens.color.active.placeholderColor
-        : aliasTokens.color.elements.iconColor;
+    return isFocussed || isFilled ? aliasTokens.color.active.placeholderColor : aliasTokens.color.elements.iconColor;
   }
 
   Widget getSuffix({
@@ -24,15 +22,15 @@ mixin PropertiesMixin {
     required BuildContext context,
   }) {
     if (isFocussed || isFilled || noIconSearch) {
-      return MudeButtonIcon(
+      return ExpenseButtonIcon(
         semanticsLabel: 'Apagar',
         key: const Key('input-search.clear'),
-        icon: MudeIcons.closeLine,
+        icon: ExpenseIcons.closeLine,
         onPressed: () {
           controller.text = '';
           onClear();
         },
-        size: MudeButtonIconSize.sm,
+        size: ExpenseButtonIconSize.sm,
       );
     }
 
@@ -40,9 +38,9 @@ mixin PropertiesMixin {
       width: 48,
       height: 48,
       child: Center(
-        child: MudeIcon(
-          icon: MudeIcons.searchLine,
-          size: MudeIconSize.sm,
+        child: ExpenseIcon(
+          icon: ExpenseIcons.searchLine,
+          size: ExpenseIconSize.sm,
           color: getIconColor(isFocussed, isFilled, context),
         ),
       ),
@@ -61,10 +59,8 @@ mixin PropertiesMixin {
     bool isFocussed,
     BuildContext context,
   ) {
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
 
-    return isFocussed
-        ? aliasTokens.color.active.placeholderColor
-        : aliasTokens.color.text.placeholderColor;
+    return isFocussed ? aliasTokens.color.active.placeholderColor : aliasTokens.color.text.placeholderColor;
   }
 }

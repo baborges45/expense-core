@@ -1,4 +1,4 @@
-enum MudeImageAspectRatio {
+enum ExpenseImageAspectRatio {
   ratio_1x1,
   ratio_16x9,
   ratio_2x3,
@@ -6,4 +6,4 @@ enum MudeImageAspectRatio {
   ratio_4x3,
 }
 
-enum MudeImageType { asset, network }
+enum ExpenseImageType { asset, network }

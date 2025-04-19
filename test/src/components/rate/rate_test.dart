@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../wrapper.dart';
@@ -14,7 +14,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeRate(size),
+              child: ExpenseRate(size),
             ),
           );
 
@@ -34,7 +34,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeRate(
+            child: ExpenseRate(
               size,
               semanticsLabel: '5 Estrelas',
             ),

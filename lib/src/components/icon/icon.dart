@@ -2,17 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeIcon extends StatelessWidget {
-  /// Set a icon, you get all options in [MudeIcons]
+class ExpenseIcon extends StatelessWidget {
+  /// Set a icon, you get all options in [ExpenseIcons]
   /// This field is required.
-  final MudeIconData icon;
+  final ExpenseIconData icon;
 
-  /// Set a size, you get all options in [MudeIconSize].
-  /// If you don't he will assume [MudeIconSize.lg].
-  final MudeIconSize size;
+  /// Set a size, you get all options in [ExpenseIconSize].
+  /// If you don't he will assume [ExpenseIconSize.lg].
+  final ExpenseIconSize size;
 
   /// Set a color, this field accept value null.
   final Color? color;
@@ -24,28 +24,28 @@ class MudeIcon extends StatelessWidget {
   ///The default value is null
   final String? semanticsLabel;
 
-  const MudeIcon({
+  const ExpenseIcon({
     super.key,
     required this.icon,
     this.color,
-    this.size = MudeIconSize.lg,
+    this.size = ExpenseIconSize.lg,
     this.inverse = false,
     this.semanticsLabel,
   });
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     double getSizeIcon() {
       switch (size) {
-        case MudeIconSize.sm:
+        case ExpenseIconSize.sm:
           return globalTokens.shapes.size.s2x;
-        case MudeIconSize.lg:
+        case ExpenseIconSize.lg:
           return globalTokens.shapes.size.s2_5x;
-        case MudeIconSize.xl:
+        case ExpenseIconSize.xl:
           return globalTokens.shapes.size.s3x;
       }
     }

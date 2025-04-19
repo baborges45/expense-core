@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_tab_item.dart';
 part 'widgets/tab_bar_controller.dart';
 
-class MudeTab extends StatefulWidget {
-  ///A  list of [MudeTabItem] objects.
-  ///Each MudeTabItem represents a tab in the [MudeTab] widget.
-  final List<MudeTabItem> tabs;
+class ExpenseTab extends StatefulWidget {
+  ///A  list of [ExpenseTabItem] objects.
+  ///Each ExpenseTabItem represents a tab in the [ExpenseTab] widget.
+  final List<ExpenseTabItem> tabs;
 
-  //A list of widgets that will be displayed in the content area of the [MudeTab] widget.
+  //A list of widgets that will be displayed in the content area of the [ExpenseTab] widget.
   // One widget per tab.
   // Its length must match the length of the [TabBar.tabs] list, as well as the [controller]'s [TabController.length].
   final List<Widget>? children;
@@ -27,9 +27,9 @@ class MudeTab extends StatefulWidget {
   ///The default value is false.
   final bool inverse;
 
-  final MudeTabBarController? controller;
+  final ExpenseTabBarController? controller;
 
-  const MudeTab({
+  const ExpenseTab({
     super.key,
     required this.tabs,
     this.children,
@@ -40,13 +40,13 @@ class MudeTab extends StatefulWidget {
   });
 
   @override
-  State<MudeTab> createState() => _TabState();
+  State<ExpenseTab> createState() => _TabState();
 }
 
-class _TabState extends State<MudeTab> with SingleTickerProviderStateMixin {
+class _TabState extends State<ExpenseTab> with SingleTickerProviderStateMixin {
   final List<TabItemModel> _listTabs = [];
   int indexSelected = 0;
-  MudeTabBarController? controller;
+  ExpenseTabBarController? controller;
 
   @override
   void initState() {
@@ -60,7 +60,7 @@ class _TabState extends State<MudeTab> with SingleTickerProviderStateMixin {
   void remapItemsTab() {
     for (var i = 0; i < widget.tabs.length; i++) {
       String label = widget.tabs[i].label;
-      MudeIconData? icon = widget.tabs[i].icon;
+      ExpenseIconData? icon = widget.tabs[i].icon;
 
       _listTabs.add(
         TabItemModel(
@@ -75,13 +75,13 @@ class _TabState extends State<MudeTab> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size.s2x;
     bool actived = false;
 
-    controller ??= MudeTabBarController(
+    controller ??= ExpenseTabBarController(
       length: widget.tabs.length,
       vsync: this,
       duration: globalTokens.motions.durations.slow01,

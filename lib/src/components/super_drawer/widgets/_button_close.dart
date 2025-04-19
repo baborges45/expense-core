@@ -6,7 +6,7 @@ class _ButtonClose extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.read<MudeThemeManager>();
+    final tokens = context.read<ExpenseThemeManager>();
     final globalTokens = tokens.globals;
 
     double getPosition() {
@@ -26,8 +26,8 @@ class _ButtonClose extends StatelessWidget {
           Positioned(
             right: position,
             top: position,
-            child: MudeButtonIcon(
-              icon: MudeIcons.closeLine,
+            child: ExpenseButtonIcon(
+              icon: ExpenseIcons.closeLine,
               onPressed: () => Navigator.pop(context),
               semanticsLabel: 'Fechar Drawer',
             ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../validations/validation_leading.dart';
 
@@ -20,7 +20,7 @@ class LeadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (child == null) return const SizedBox.shrink();
 
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return Row(
       children: [

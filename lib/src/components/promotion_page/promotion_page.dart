@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_button_close.dart';
 
-class MudePromotionPage {
+class ExpensePromotionPage {
   // coverage:ignore-start
-  const MudePromotionPage._();
+  const ExpensePromotionPage._();
 
-  /// Showing a MudePromotionPage
+  /// Showing a ExpensePromotionPage
   ///
   /// [child] => Set a new [Widget] to displayed.
   /// [sourceBanner] => A string value that refers to the local or web path to load an image.
   /// [fit] => Set a fit displayed image. You get all options in [BoxFit]
-  /// [aspectRatio] => Set a aspect ratio in image. You get all options in [MudeImageAspectRatio]
+  /// [aspectRatio] => Set a aspect ratio in image. You get all options in [ExpenseImageAspectRatio]
   /// [type] => An object of type [PromotionPageType] that defines the display type of the PromotionPage.
   static Future<void> show(
     BuildContext context, {
@@ -23,12 +23,11 @@ class MudePromotionPage {
     PromotionPageType type = PromotionPageType.slotContainer,
     BoxFit fit = BoxFit.cover,
   }) async {
-    var tokens = context.read<MudeThemeManager>();
+    var tokens = context.read<ExpenseThemeManager>();
     var aliasTokens = tokens.alias;
 
     Widget getImage() {
-      var sourceLoad =
-          urlIsvalid(sourceBanner) ? MudeImage.network : MudeImage.asset;
+      var sourceLoad = urlIsvalid(sourceBanner) ? ExpenseImage.network : ExpenseImage.asset;
 
       return sourceLoad(
         sourceBanner,
@@ -107,7 +106,7 @@ class _BodyState extends State<_Body> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     final size = MediaQuery.of(context).size;

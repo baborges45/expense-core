@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,9 +15,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeTopic(
+              child: ExpenseTopic(
                 key: key,
-                icon: MudeIcons.chatLine,
+                icon: ExpenseIcons.chatLine,
                 text: 'Test',
               ),
             ),
@@ -34,15 +34,15 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeTopic(
+              child: ExpenseTopic(
                 key: key,
-                icon: MudeIcons.chatLine,
+                icon: ExpenseIcons.chatLine,
                 text: 'Test',
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -53,9 +53,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeTopic(
+              child: ExpenseTopic(
                 key: key,
-                icon: MudeIcons.chatLine,
+                icon: ExpenseIcons.chatLine,
                 text: 'Test',
               ),
             ),
@@ -75,8 +75,8 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeTopic(
-              icon: MudeIcons.chatLine,
+            child: ExpenseTopic(
+              icon: ExpenseIcons.chatLine,
               text: 'Test',
               semanticsLabel: 'Topic',
               semanticsHint: 'Topic',

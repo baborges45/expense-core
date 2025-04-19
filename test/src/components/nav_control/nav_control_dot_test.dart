@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -12,12 +12,12 @@ void main() {
         'Should render nav control',
         (widgetTester) async {
           int itemSelected = 0;
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeNavControlDot(
+              child: ExpenseNavControlDot(
                 length: 5,
                 indexSelected: itemSelected,
               ),
@@ -38,12 +38,12 @@ void main() {
         'Should render nav control inverse',
         (widgetTester) async {
           int itemSelected = 0;
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeNavControlDot(
+              child: ExpenseNavControlDot(
                 length: 5,
                 inverse: true,
                 indexSelected: itemSelected,
@@ -72,7 +72,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeNavControlDot(
+            child: ExpenseNavControlDot(
               length: 5,
               indexSelected: itemSelected,
               semanticsLabel: 'NavControl Dot',

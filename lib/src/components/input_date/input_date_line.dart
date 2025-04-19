@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/content_widget.dart';
 import 'widgets/open_drawer.dart';
 import 'widgets/support_widget.dart';
 
-class MudeInputDateLine extends StatefulWidget {
+class ExpenseInputDateLine extends StatefulWidget {
   ///A string representing the label for the select field.
   final String label;
 
@@ -31,13 +31,13 @@ class MudeInputDateLine extends StatefulWidget {
   ///The default value is false.
   final bool hasError;
 
-  ///(Optional) A optional [MudeInputDateType] object that represents the type
+  ///(Optional) A optional [ExpenseInputDateType] object that represents the type
   ///that will be rendered on the screen [single] or [range]
-  final MudeInputDateType type;
+  final ExpenseInputDateType type;
 
-  ///(Optional) A optional [MudeInputDateType] object that represents the type
+  ///(Optional) A optional [ExpenseInputDateType] object that represents the type
   ///that will be rendered on the screen [day] or [years]
-  final MudeInputDateMode mode;
+  final ExpenseInputDateMode mode;
 
   ///A boolean indicating whether this field is actived to change years
   final bool hasChangedYear;
@@ -59,7 +59,7 @@ class MudeInputDateLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeInputDateLine({
+  const ExpenseInputDateLine({
     super.key,
     required this.label,
     required this.firstDate,
@@ -68,8 +68,8 @@ class MudeInputDateLine extends StatefulWidget {
     this.onConfirm,
     this.currentDate,
     this.supportText,
-    this.type = MudeInputDateType.single,
-    this.mode = MudeInputDateMode.day,
+    this.type = ExpenseInputDateType.single,
+    this.mode = ExpenseInputDateMode.day,
     this.disabled = false,
     this.hasError = false,
     this.buttonLabel = 'Confirmar',
@@ -79,10 +79,10 @@ class MudeInputDateLine extends StatefulWidget {
   });
 
   @override
-  State<MudeInputDateLine> createState() => _MudeInputDateLineState();
+  State<ExpenseInputDateLine> createState() => _ExpenseInputDateLineState();
 }
 
-class _MudeInputDateLineState extends State<MudeInputDateLine> {
+class _ExpenseInputDateLineState extends State<ExpenseInputDateLine> {
   bool _isPressed = false;
 
   void _onPressed(bool isPressed) {
@@ -92,7 +92,7 @@ class _MudeInputDateLineState extends State<MudeInputDateLine> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
     final spacing = globalTokens.shapes.spacing;
@@ -122,9 +122,7 @@ class _MudeInputDateLineState extends State<MudeInputDateLine> {
         return aliasTokens.color.negative.placeholderColor;
       }
 
-      return widget.value.isNotEmpty
-          ? aliasTokens.color.active.onPlaceholderColor
-          : aliasTokens.color.text.onPlaceholderColor;
+      return widget.value.isNotEmpty ? aliasTokens.color.active.onPlaceholderColor : aliasTokens.color.text.onPlaceholderColor;
     }
 
     Color getLabelColor() {
@@ -136,9 +134,7 @@ class _MudeInputDateLineState extends State<MudeInputDateLine> {
         return aliasTokens.color.negative.labelColor;
       }
 
-      return widget.value.isNotEmpty
-          ? aliasTokens.color.text.onLabelColor
-          : aliasTokens.color.text.labelColor;
+      return widget.value.isNotEmpty ? aliasTokens.color.text.onLabelColor : aliasTokens.color.text.labelColor;
     }
 
     Color getBorderColor() {

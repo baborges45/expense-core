@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/sizes_mixin.dart';
 import 'widgets/container_size.dart';
 
-class MudeButtonPlay extends StatefulWidget {
-  ///The initial status of the button. It is of type [MudeButtonPlayType] and has a default value of [MudeButtonPlayType.play].
-  final MudeButtonPlayType initialStatus;
+class ExpenseButtonPlay extends StatefulWidget {
+  ///The initial status of the button. It is of type [ExpenseButtonPlayType] and has a default value of [ExpenseButtonPlayType.play].
+  final ExpenseButtonPlayType initialStatus;
 
   ///(Optional) A boolean indicating whether the button should be disabled.
   ///The default value is false.
   final bool disabled;
 
   ///A required callback that will be called when the button is pressed passing the current state.
-  final void Function(MudeButtonPlayType) onPressed;
+  final void Function(ExpenseButtonPlayType) onPressed;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
@@ -30,21 +30,21 @@ class MudeButtonPlay extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeButtonPlay({
+  const ExpenseButtonPlay({
     super.key,
     required this.onPressed,
     this.disabled = false,
-    this.initialStatus = MudeButtonPlayType.pause,
+    this.initialStatus = ExpenseButtonPlayType.pause,
     this.inverse = false,
     this.semanticsLabel,
     this.semanticsHint,
   });
 
   @override
-  State<MudeButtonPlay> createState() => _MudeButtonPlayState();
+  State<ExpenseButtonPlay> createState() => _ExpenseButtonPlayState();
 }
 
-class _MudeButtonPlayState extends State<MudeButtonPlay> with SizesMixin {
+class _ExpenseButtonPlayState extends State<ExpenseButtonPlay> with SizesMixin {
   bool _isPressed = false;
   _onPressedDown(_) {
     if (widget.disabled) return null;
@@ -58,20 +58,20 @@ class _MudeButtonPlayState extends State<MudeButtonPlay> with SizesMixin {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final aliasTokens = tokens.alias;
     final globalTokens = tokens.globals;
     final size = globalTokens.shapes.size;
 
     final radius = globalTokens.shapes.border.radiusCircular;
 
-    MudeIcon getIcon() {
+    ExpenseIcon getIcon() {
       Color? color = widget.disabled ? aliasTokens.color.disabled.iconColor : aliasTokens.color.action.iconPrimaryColor;
 
-      return MudeIcon(
+      return ExpenseIcon(
         key: const Key('button-play.icon'),
-        icon: widget.initialStatus == MudeButtonPlayType.pause ? MudeIcons.pauseLine : MudeIcons.playFill,
-        size: MudeIconSize.xl,
+        icon: widget.initialStatus == ExpenseButtonPlayType.pause ? ExpenseIcons.pauseLine : ExpenseIcons.playFill,
+        size: ExpenseIconSize.xl,
         color: color,
         inverse: widget.inverse,
       );

@@ -1,3 +1,3 @@
-enum MudeInputDateType { single, range }
+enum ExpenseInputDateType { single, range }
 
-enum MudeInputDateMode { day, year }
+enum ExpenseInputDateMode { day, year }

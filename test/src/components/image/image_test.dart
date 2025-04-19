@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
@@ -14,29 +14,28 @@ void main() {
         (widgetTester) async {
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeImage.asset('test/assets/image.png'),
+              child: ExpenseImage.asset('test/assets/image.png'),
             ),
           );
 
-          expect(find.byType(MudeImage), findsOneWidget);
+          expect(find.byType(ExpenseImage), findsOneWidget);
         },
       );
 
       testWidgets(
         'Should image aspect ratio',
         (widgetTester) async {
-          for (var aspect in MudeImageAspectRatio.values) {
+          for (var aspect in ExpenseImageAspectRatio.values) {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeImage.asset(
+                child: ExpenseImage.asset(
                   'test/assets/image.png',
                   aspectRatio: aspect,
                 ),
               ),
             );
 
-            final image =
-                widgetTester.widget<MudeImage>(find.byType(MudeImage));
+            final image = widgetTester.widget<ExpenseImage>(find.byType(ExpenseImage));
             expect(image.aspectRatio, aspect);
           }
         },
@@ -49,14 +48,14 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeImage.asset(
+              child: ExpenseImage.asset(
                 'test/assets/image.png',
                 width: width,
               ),
             ),
           );
 
-          final image = widgetTester.widget<MudeImage>(find.byType(MudeImage));
+          final image = widgetTester.widget<ExpenseImage>(find.byType(ExpenseImage));
           expect(image.width, width);
         },
       );
@@ -64,12 +63,12 @@ void main() {
       testWidgets(
         'Should image fill container',
         (widgetTester) async {
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeImage.asset(
+              child: ExpenseImage.asset(
                 'test/assets/image.png',
                 fillContainer: true,
               ),
@@ -91,14 +90,14 @@ void main() {
           mockNetworkImagesFor(() async {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeImage.network(
+                child: ExpenseImage.network(
                   'https://example.com/some_image.jpg',
                   fillContainer: true,
                 ),
               ),
             );
 
-            expect(find.byType(MudeImage), findsOneWidget);
+            expect(find.byType(ExpenseImage), findsOneWidget);
           });
         },
       );
@@ -113,7 +112,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeImage.asset(
+            child: ExpenseImage.asset(
               'test/assets/image.png',
               semanticsLabel: 'Image',
               semanticsHint: 'Image Hint',

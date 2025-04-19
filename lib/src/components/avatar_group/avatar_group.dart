@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/components/avatar/widgets/avatar_container_widget.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/components/avatar/widgets/avatar_container_widget.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/avatar.dart';
 part 'widgets/icon.dart';
 
-class MudeAvatarGroup extends StatelessWidget {
+class ExpenseAvatarGroup extends StatelessWidget {
   /// List of image urls
   final List<String> imageList;
 
@@ -15,7 +14,7 @@ class MudeAvatarGroup extends StatelessWidget {
   final int maxVisible;
 
   /// Size of the avatar group
-  final MudeAvatarGroupSize size;
+  final ExpenseAvatarGroupSize size;
 
   /// Whether to show the description
   final bool isDescription;
@@ -26,11 +25,11 @@ class MudeAvatarGroup extends StatelessWidget {
   /// Description text
   final String? description;
 
-  const MudeAvatarGroup({
+  const ExpenseAvatarGroup({
     super.key,
     required this.imageList,
     this.maxVisible = 4,
-    this.size = MudeAvatarGroupSize.sm,
+    this.size = ExpenseAvatarGroupSize.sm,
     this.isDescription = false,
     this.descriptionColor,
     this.description,
@@ -41,16 +40,16 @@ class MudeAvatarGroup extends StatelessWidget {
     int extraCount = imageList.length - maxVisible;
     bool showExtra = extraCount > 0;
     final showCount = extraCount > 0 ? maxVisible : imageList.length;
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
     var globalTokens = tokens.globals;
 
-    MudeAvatarSize getSpaceAvatar() {
+    ExpenseAvatarSize getSpaceAvatar() {
       switch (size) {
-        case MudeAvatarGroupSize.sm:
-          return MudeAvatarSize.sm;
-        case MudeAvatarGroupSize.lg:
-          return MudeAvatarSize.lg;
+        case ExpenseAvatarGroupSize.sm:
+          return ExpenseAvatarSize.sm;
+        case ExpenseAvatarGroupSize.lg:
+          return ExpenseAvatarSize.lg;
       }
     }
 
@@ -59,34 +58,34 @@ class MudeAvatarGroup extends StatelessWidget {
 
     double getBorder() {
       switch (size) {
-        case MudeAvatarGroupSize.sm:
+        case ExpenseAvatarGroupSize.sm:
           return border.widthXs;
 
-        case MudeAvatarGroupSize.lg:
+        case ExpenseAvatarGroupSize.lg:
           return border.widthSm;
       }
     }
 
     double getSizeAvatar() {
       switch (size) {
-        case MudeAvatarGroupSize.sm:
+        case ExpenseAvatarGroupSize.sm:
           return sizes.s3x + 2 * getBorder();
 
-        case MudeAvatarGroupSize.lg:
+        case ExpenseAvatarGroupSize.lg:
           return sizes.s12x + 2 * getBorder();
       }
     }
 
     double getSize() {
-      return size == MudeAvatarGroupSize.sm && !isDescription ? sizes.s12x : MediaQuery.of(context).size.width;
+      return size == ExpenseAvatarGroupSize.sm && !isDescription ? sizes.s12x : MediaQuery.of(context).size.width;
     }
 
     double getSizeGap() {
       switch (size) {
-        case MudeAvatarGroupSize.sm:
+        case ExpenseAvatarGroupSize.sm:
           return sizes.half;
 
-        case MudeAvatarGroupSize.lg:
+        case ExpenseAvatarGroupSize.lg:
           return sizes.s4x;
       }
     }
@@ -108,17 +107,17 @@ class MudeAvatarGroup extends StatelessWidget {
                 ),
               ),
               child: _AvatarIcon(
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 size: getSpaceAvatar(),
                 showNotification: false,
                 inverse: false,
                 source: imageList[index],
-                sourceLoad: MudeAvatarSourceLoad.network,
+                sourceLoad: ExpenseAvatarSourceLoad.network,
               ),
             ),
           ),
         )..add(
-            showExtra && size != MudeAvatarGroupSize.sm
+            showExtra && size != ExpenseAvatarGroupSize.sm
                 ? Positioned(
                     left: (showCount * getSizeAvatar()) - (showCount * getSizeGap()),
                     child: Container(
@@ -152,7 +151,7 @@ class MudeAvatarGroup extends StatelessWidget {
                     child: Positioned(
                       left: (showCount * getSizeAvatar()) + sizes.s2x - (showCount * getSizeGap()),
                       top: (getSizeAvatar() / 2) - (tokens.globals.typographys.fontSize2xs / 2),
-                      child: MudeDescription(
+                      child: ExpenseDescription(
                         description ?? '',
                         color: descriptionColor,
                       ),

@@ -17,7 +17,7 @@ class _ProgressCirclePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var tokens = Provider.of<MudeThemeManager>(context, listen: false);
+    var tokens = Provider.of<ExpenseThemeManager>(context, listen: false);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var elements = aliasTokens.color.elements;

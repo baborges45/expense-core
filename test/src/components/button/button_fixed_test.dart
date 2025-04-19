@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,8 +15,8 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFixed(
-                button: MudeButton(
+              child: ExpenseButtonFixed(
+                button: ExpenseButton(
                   label: 'label',
                   onPressed: () => debugPrint(''),
                 ),
@@ -60,8 +60,8 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonFixed(
-                button: MudeButton(
+              child: ExpenseButtonFixed(
+                button: ExpenseButton(
                   label: label,
                   onPressed: () => debugPrint(''),
                 ),

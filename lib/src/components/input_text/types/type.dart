@@ -1,1 +1,1 @@
-enum MudeInputTextType { cpf, cnpj, cellphone, cep, text }
+enum ExpenseInputTextType { cpf, cnpj, cellphone, cep, text }

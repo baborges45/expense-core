@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MudeInputCodeHiperLink {
+class ExpenseInputCodeHiperLink {
   final String text;
   final VoidCallback onPressed;
 
-  MudeInputCodeHiperLink({
+  ExpenseInputCodeHiperLink({
     required this.text,
     required this.onPressed,
   });

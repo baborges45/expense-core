@@ -1,6 +1,6 @@
-# Mude Flutter Core
+# Expense Flutter Core
 
-Biblioteca `core` do `Design System Mude` responsável por disponibilizar acesso a todos os componentes e tokens do Design System.
+Biblioteca `core` do `Design System Expense` responsável por disponibilizar acesso a todos os componentes e tokens do Design System.
 
 ## Índice
 
@@ -29,13 +29,13 @@ Biblioteca `core` do `Design System Mude` responsável por disponibilizar acesso
 Instale a `lib core` em uma pasta ao lado do projeto em que ela será utilizada.
 
 ```sh
-git clone https://github.com/design-system-as-a-service/mude-flutter-core.git
+git clone https://github.com/design-system-as-a-service/expense-flutter-core.git
 ```
 
 ou
 
 ```sh
-git clone git@github.com:design-system-as-a-service/mude-flutter-core.git
+git clone git@github.com:design-system-as-a-service/expense-flutter-core.git
 ```
 
 ## Configuração
@@ -51,15 +51,15 @@ dependencies:
 
   provider: ^6.0.5 # lib provider
 
-  mude_core:
-    path: ../mude-flutter-core # lib core
+  expense_core:
+    path: ../expense-flutter-core # lib core
 ```
 
 No arquivo `main.dart`, antes de chamar o primeiro widget na função `main()`, adicione o `MultiProvider` e referencie o provider `ThemeManager` da `lib core` conforme o exemplo abaixo:
 
 ```dart
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -67,9 +67,9 @@ void main() {
     MultiProvider(                            // MultiProvider
       providers: [
         ChangeNotifierProvider(
-          create: (_) => MudeThemeManager(      // ThemeManager
-            theme: MudeThemeOptions.defaultt,   // definição de tema
-            mode: MudeThemeMode.light,          // definição de modo
+          create: (_) => ExpenseThemeManager(      // ThemeManager
+            theme: ExpenseThemeOptions.defaultt,   // definição de tema
+            mode: ExpenseThemeMode.light,          // definição de modo
           ),
         )
       ],
@@ -86,14 +86,14 @@ Pronto, agora você já pode utilizar os tokens e componentes da `lib core` e fa
 Veja como é simples utilizar os tokens e componentes da `lib core`:
 
 ```dart
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);   // permite acesso à todos os tokens
+    var tokens = Provider.of<ExpenseThemeManager>(context);   // permite acesso à todos os tokens
     var spacingTokens = tokens.globals.shapes.spacing;
     var colorTokens = tokens.alias.color;
 
@@ -105,20 +105,20 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MudeHeading("Login"),                          // componente de Header
+            ExpenseHeading("Login"),                          // componente de Header
             SizedBox(height: spacingTokens.s4x),
-            MudeInputTextContainer(                        // componente de InputText
+            ExpenseInputTextContainer(                        // componente de InputText
               label: 'E-mail',
             ),
             SizedBox(height: spacingTokens.s2x),         // token de espaçamento
-            MudeInputPasswordContainer(                    // componente de InputPassword
+            ExpenseInputPasswordContainer(                    // componente de InputPassword
               label: 'Senha',
             ),
             SizedBox(height: spacingTokens.s4x),         // token de espaçamento
-            MudeButton(                                    // componente de Button
+            ExpenseButton(                                    // componente de Button
               label: 'Login',
               onPressed: () {/* go to Home Page */},
-              type: MudeButtonType.blocked,
+              type: ExpenseButtonType.blocked,
             ),
           ],
         ),
@@ -198,10 +198,10 @@ Toda função de ação tem por padrão o nome `onPressed` e é sem retorno.
 
 `icon`
 
-Toda propriedade `icon` é por padrão do tipo `MudeIconData`, contendo as seguintes propriedades:
+Toda propriedade `icon` é por padrão do tipo `ExpenseIconData`, contendo as seguintes propriedades:
 
 ```dart
- class MudeIconData {
+ class ExpenseIconData {
     final String package; // nome do pacote onde está o asset
     final String path;    // caminho do asset dentro da biblioteca
     final String name;    // nome do asset para consumação
@@ -222,7 +222,7 @@ Por padrão, a maioria dos componentes trazem duas propriedades opcionais de ace
 Para utilizar, basta atribuí-las ao componente da seguinte forma:
 
 ```dart
- MudeButton(
+ ExpenseButton(
     label: 'Comprar',
     onPressed: () {},
     semanticsLabel: "Botão de Comprar",                      // semanticsLabel
@@ -245,10 +245,10 @@ Também levamos em consideração o comportamento dos componentes nos seguintes 
 
 Os tokens representam todas as cores, espaçamentos, tamanhos, características de bordas, sombras e opacidades disponíveis no Design System. Os componentes são construídos a partir dos tokens.
 
-Utilize a classe `MudeThemeManager` via `provider` para encontrar os tokens:
+Utilize a classe `ExpenseThemeManager` via `provider` para encontrar os tokens:
 
 ```dart
-var tokens = Provider.of<MudeThemeManager>(context);
+var tokens = Provider.of<ExpenseThemeManager>(context);
 ```
 
 Na variável `tokens` encontre todas as possibilidades de tokens agrupadas:
@@ -289,7 +289,7 @@ class MyRoundedContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context); // permite acesso à todos os tokens
+    var tokens = Provider.of<ExpenseThemeManager>(context); // permite acesso à todos os tokens
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -303,7 +303,7 @@ class MyRoundedContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: MudeIcon(icon: MudeIcons.PlaceholderLine),  // ícone MudeIcons.PlaceholderLine
+        child: ExpenseIcon(icon: ExpenseIcons.PlaceholderLine),  // ícone ExpenseIcons.PlaceholderLine
       ),
     );
   }
@@ -389,10 +389,10 @@ derry metrics
 
 ### Suporte
 
-| Biblioteca                                                 | Versão | Função                            |
-| ---------------------------------------------------------- | ------ | --------------------------------- |
-| [ds_tokens](https://github.com/Meiuca/mude-flutter-tokens) | v0.0.2 | Contém os tokens do Design System |
-| [ds_assets](https://github.com/Meiuca/mude-flutter-assets) | v0.0.2 | Contém os assets do Design System |
+| Biblioteca                                                    | Versão | Função                            |
+| ------------------------------------------------------------- | ------ | --------------------------------- |
+| [ds_tokens](https://github.com/Meiuca/expense-flutter-tokens) | v0.0.2 | Contém os tokens do Design System |
+| [ds_assets](https://github.com/Meiuca/expense-flutter-assets) | v0.0.2 | Contém os assets do Design System |
 
 ### Externas
 

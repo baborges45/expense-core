@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
               ),
@@ -37,7 +37,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
@@ -59,11 +59,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
+                tag: const ExpenseTagContainer(tag),
               ),
             ),
           );
@@ -82,20 +82,20 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
-                leading: MudeIcons.placeholderLine,
+                tag: const ExpenseTagContainer(tag),
+                leading: ExpenseIcons.placeholderLine,
               ),
             ),
           );
 
-          final icons = find.byType(MudeIcon);
-          final icon = widgetTester.widget<MudeIcon>(icons.first);
-          expect(find.byType(MudeIcon), findsWidgets);
-          expect(icon.icon.name, MudeIcons.placeholderLine.name);
+          final icons = find.byType(ExpenseIcon);
+          final icon = widgetTester.widget<ExpenseIcon>(icons.first);
+          expect(find.byType(ExpenseIcon), findsWidgets);
+          expect(icon.icon.name, ExpenseIcons.placeholderLine.name);
         },
       );
 
@@ -111,12 +111,12 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
-                leading: MudeIcons.placeholderLine,
+                tag: const ExpenseTagContainer(tag),
+                leading: ExpenseIcons.placeholderLine,
                 onPressed: () => press = true,
               ),
             ),
@@ -140,12 +140,12 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
-                leading: MudeIcons.placeholderLine,
+                tag: const ExpenseTagContainer(tag),
+                leading: ExpenseIcons.placeholderLine,
                 onPressed: () => press = true,
               ),
             ),
@@ -168,7 +168,7 @@ void main() {
         'Should list navigation check background color',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           const label = 'Label';
           const description = 'Description';
@@ -177,12 +177,12 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
-                leading: MudeIcons.placeholderLine,
+                tag: const ExpenseTagContainer(tag),
+                leading: ExpenseIcons.placeholderLine,
                 onPressed: () => debugPrint(''),
               ),
             ),
@@ -205,7 +205,7 @@ void main() {
         'Should list navigation line position',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           const label = 'Label';
           const description = 'Description';
@@ -214,14 +214,14 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                tag: const MudeTagContainer(tag),
-                leading: MudeIcons.placeholderLine,
+                tag: const ExpenseTagContainer(tag),
+                leading: ExpenseIcons.placeholderLine,
                 onPressed: () => debugPrint(''),
-                linePosition: MudeListNavigationPosition.bottom,
+                linePosition: ExpenseListNavigationPosition.bottom,
               ),
             ),
           );
@@ -250,16 +250,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: MudeIcon(icon: MudeIcons.placeholderLine),
+                leading: ExpenseIcon(icon: ExpenseIcons.placeholderLine),
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -272,16 +272,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: MudeImage.asset('test/assets/image.png'),
+                leading: ExpenseImage.asset('test/assets/image.png'),
               ),
             ),
           );
 
-          expect(find.byType(MudeImage), findsOneWidget);
+          expect(find.byType(ExpenseImage), findsOneWidget);
         },
       );
 
@@ -294,16 +294,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: MudeAvatarIcon(icon: MudeIcons.calendarLine),
+                leading: ExpenseAvatarIcon(icon: ExpenseIcons.calendarLine),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -316,18 +316,18 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: MudeAvatarIcon(
-                  icon: MudeIcons.placeholderLine,
+                leading: ExpenseAvatarIcon(
+                  icon: ExpenseIcons.placeholderLine,
                 ),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -340,18 +340,18 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: MudeAvatarIcon(
-                  icon: MudeIcons.placeholderLine,
+                leading: ExpenseAvatarIcon(
+                  icon: ExpenseIcons.placeholderLine,
                 ),
               ),
             ),
           );
 
-          expect(find.byType(MudeAvatarIcon), findsOneWidget);
+          expect(find.byType(ExpenseAvatarIcon), findsOneWidget);
         },
       );
 
@@ -364,16 +364,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeListNavigationLine(
+              child: ExpenseListNavigationLine(
                 key: key,
                 label: label,
                 description: description,
-                leading: const MudeCreditCard(),
+                leading: const ExpenseCreditCard(),
               ),
             ),
           );
 
-          expect(find.byType(MudeCreditCard), findsOneWidget);
+          expect(find.byType(ExpenseCreditCard), findsOneWidget);
         },
       );
     },
@@ -387,7 +387,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeListNavigationLine(
+            child: ExpenseListNavigationLine(
               label: 'List Navigator',
               semanticsLabel: 'List Navigator',
             ),

@@ -14,7 +14,7 @@ class _DatePickerModeToggleButton extends StatefulWidget {
   });
 
   /// The current display of the calendar picker.
-  final MudeDatePickerMode mode;
+  final ExpenseDatePickerMode mode;
 
   /// The text that displays the current month/year being viewed.
   final String title;
@@ -23,16 +23,13 @@ class _DatePickerModeToggleButton extends StatefulWidget {
   final VoidCallback onTitlePressed;
 
   /// The calendar configurations
-  final MudeDatePickerConfig config;
+  final ExpenseDatePickerConfig config;
 
   @override
-  _DatePickerModeToggleButtonState createState() =>
-      _DatePickerModeToggleButtonState();
+  _DatePickerModeToggleButtonState createState() => _DatePickerModeToggleButtonState();
 }
 
-class _DatePickerModeToggleButtonState
-    extends State<_DatePickerModeToggleButton>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
+class _DatePickerModeToggleButtonState extends State<_DatePickerModeToggleButton> with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   //
   bool _isPressed = false;
   double _sizeWidth = 0;
@@ -43,7 +40,7 @@ class _DatePickerModeToggleButtonState
   void initState() {
     super.initState();
     _controller = AnimationController(
-      value: widget.mode == MudeDatePickerMode.year ? 0.5 : 0,
+      value: widget.mode == ExpenseDatePickerMode.year ? 0.5 : 0,
       upperBound: 0.5,
       duration: const Duration(milliseconds: 200),
       vsync: this,
@@ -68,7 +65,7 @@ class _DatePickerModeToggleButtonState
       return;
     }
 
-    if (widget.mode == MudeDatePickerMode.year) {
+    if (widget.mode == ExpenseDatePickerMode.year) {
       _controller.forward();
     } else {
       _controller.reverse();
@@ -103,8 +100,7 @@ class _DatePickerModeToggleButtonState
           children: [
             Flexible(
               child: Semantics(
-                label:
-                    MaterialLocalizations.of(context).selectYearSemanticsLabel,
+                label: MaterialLocalizations.of(context).selectYearSemanticsLabel,
                 excludeSemantics: true,
                 button: true,
                 child: SizedBox(
@@ -125,8 +121,7 @@ class _DatePickerModeToggleButtonState
                               keyContent: _keyContent,
                               controller: _controller,
                               widget: widget,
-                              hasChangedYear:
-                                  widget.config.disableModePicker == true,
+                              hasChangedYear: widget.config.disableModePicker == true,
                             ),
                             _ContainerPressed(
                               show: _isPressed,
@@ -140,8 +135,7 @@ class _DatePickerModeToggleButtonState
                 ),
               ),
             ),
-            if (widget.mode == MudeDatePickerMode.day)
-              const SizedBox(width: _monthNavButtonsWidth),
+            if (widget.mode == ExpenseDatePickerMode.day) const SizedBox(width: _monthNavButtonsWidth),
           ],
         ),
       ),
@@ -170,7 +164,7 @@ class _Month extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -195,7 +189,7 @@ class _Month extends StatelessWidget {
           if (!hasChangedYear)
             RotationTransition(
               turns: controller,
-              child: MudeIcon(icon: MudeIcons.dropdownOpenLine),
+              child: ExpenseIcon(icon: ExpenseIcons.dropdownOpenLine),
             ),
         ],
       ),
@@ -216,7 +210,7 @@ class _ContainerPressed extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!show) return const SizedBox.shrink();
 
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
     final size = globalTokens.shapes.size;

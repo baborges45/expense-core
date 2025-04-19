@@ -46,7 +46,7 @@ void main() {
 
   String n = '\n';
   List<String> exportContent = [
-    'library mude_core;$n',
+    'library expense_core;$n',
     n,
     '// Libs$n',
     'export \'package:ds_assets/assets.dart\';$n',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressLine(
+              child: ExpenseProgressLine(
                 key: key,
                 progress: progress,
               ),
@@ -35,7 +35,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeProgressLine(
+              child: ExpenseProgressLine(
                 key: key,
                 progress: progress,
                 showPercentual: true,
@@ -57,7 +57,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onContext: (c) => context = c,
-              child: MudeProgressLine(
+              child: ExpenseProgressLine(
                 key: key,
                 progress: progress,
                 showPercentual: true,
@@ -67,8 +67,8 @@ void main() {
 
           await widgetTester.pumpAndSettle();
 
-          final state = widgetTester.state<MudeProgressLineState>(
-            find.byType(MudeProgressLine),
+          final state = widgetTester.state<ExpenseProgressLineState>(
+            find.byType(ExpenseProgressLine),
           );
 
           expect(state.sizeWidth, MediaQuery.of(context!).size.width);
@@ -85,7 +85,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeProgressLine(
+            child: ExpenseProgressLine(
               progress: 10,
               semanticsLabel: 'Progress line',
             ),

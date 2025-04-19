@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,16 +15,16 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutJumbo(
+              child: ExpenseShortcutJumbo(
                 label: text,
                 description: text,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 onPressed: () => debugPrint(''),
               ),
             ),
           );
 
-          expect(find.byType(MudeIcon), findsOneWidget);
+          expect(find.byType(ExpenseIcon), findsOneWidget);
         },
       );
 
@@ -37,11 +37,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeShortcutJumbo(
+              child: ExpenseShortcutJumbo(
                 key: key,
                 label: text,
                 description: text,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 onPressed: () => press = true,
               ),
             ),
@@ -59,23 +59,23 @@ void main() {
           final key = UniqueKey();
           const text = 'Text';
 
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeShortcutJumbo(
+              child: ExpenseShortcutJumbo(
                 key: key,
                 label: text,
                 description: text,
-                icon: MudeIcons.placeholderLine,
+                icon: ExpenseIcons.placeholderLine,
                 disabled: true,
                 onPressed: () => debugPrint(''),
               ),
             ),
           );
 
-          final icon = widgetTester.widget<MudeIcon>(find.byType(MudeIcon));
+          final icon = widgetTester.widget<ExpenseIcon>(find.byType(ExpenseIcon));
           expect(icon.color, tokens!.alias.color.disabled.onIconColor);
         },
       );
@@ -91,10 +91,10 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeShortcutJumbo(
+            child: ExpenseShortcutJumbo(
               label: text,
               description: text,
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
               onPressed: () => debugPrint(''),
             ),
           ),

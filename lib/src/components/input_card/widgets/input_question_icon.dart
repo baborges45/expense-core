@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class InputQuestionIcon extends StatelessWidget {
   final bool show;
@@ -21,8 +21,8 @@ class InputQuestionIcon extends StatelessWidget {
 
     return Semantics(
       button: true,
-      child: MudeButtonIcon(
-        icon: MudeIcons.supportLine,
+      child: ExpenseButtonIcon(
+        icon: ExpenseIcons.supportLine,
         iconColor: iconColor,
         onPressed: onQuestion ?? () {},
       ),

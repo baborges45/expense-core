@@ -1,1 +1,1 @@
-enum MudeInputCardType { card, validate, cvv }
+enum ExpenseInputCardType { card, validate, cvv }

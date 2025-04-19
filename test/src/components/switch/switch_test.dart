@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,7 +14,7 @@ void main() {
           final SemanticsHandle handle = widgetTester.ensureSemantics();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 value: false,
                 onChanged: (e) => debugPrint(''),
                 semanticsLabel: 'switch',
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) {
                   pressed = value;
@@ -76,13 +76,13 @@ void main() {
         'Should verify switch was pressed',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           bool pressed = false;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) {
                   pressed = value;
@@ -109,13 +109,13 @@ void main() {
         'Should verify switch was pressed with inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           bool pressed = false;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) {
                   pressed = value;
@@ -143,13 +143,13 @@ void main() {
         'Switch should be disabled with checked',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           bool pressed = true;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 disabled: true,
                 key: key,
                 onChanged: (bool value) {
@@ -161,8 +161,7 @@ void main() {
           );
 
           final containers = find.byKey(const Key('switch.background'));
-          final container =
-              widgetTester.widget<AnimatedContainer>(containers.first);
+          final container = widgetTester.widget<AnimatedContainer>(containers.first);
           final decoration = container.decoration as BoxDecoration;
 
           expect(decoration.color, tokens!.alias.color.disabled.bgColor);
@@ -178,7 +177,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) {
                   pressed = value;
@@ -190,8 +189,7 @@ void main() {
           );
 
           final containers = find.byKey(const Key('switch.background'));
-          final container =
-              widgetTester.widget<AnimatedContainer>(containers.first);
+          final container = widgetTester.widget<AnimatedContainer>(containers.first);
           final decoration = container.decoration as BoxDecoration;
 
           expect(decoration.color, Colors.transparent);
@@ -202,14 +200,14 @@ void main() {
         'Switch should be inverse with checked',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           bool pressed = true;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) {
                   pressed = value;
@@ -221,8 +219,7 @@ void main() {
           );
 
           final containers = find.byKey(const Key('switch.background'));
-          final container =
-              widgetTester.widget<AnimatedContainer>(containers.first);
+          final container = widgetTester.widget<AnimatedContainer>(containers.first);
           final decoration = container.decoration as BoxDecoration;
 
           expect(decoration.color, tokens!.alias.color.inverse.bgColor);
@@ -233,12 +230,12 @@ void main() {
         'Should switch background filled',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) => debugPrint(''),
                 value: true,
@@ -247,8 +244,7 @@ void main() {
           );
 
           final containers = find.byKey(const Key('switch.background'));
-          final container =
-              widgetTester.widget<AnimatedContainer>(containers.first);
+          final container = widgetTester.widget<AnimatedContainer>(containers.first);
           final decoration = container.decoration as BoxDecoration;
 
           expect(decoration.color, tokens!.alias.color.selected.bgColor);
@@ -263,7 +259,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSwitch(
+              child: ExpenseSwitch(
                 key: key,
                 onChanged: (bool value) => press = value,
                 value: press,

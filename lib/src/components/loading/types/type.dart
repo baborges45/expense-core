@@ -1,1 +1,1 @@
-enum MudeLoadingSize { sm, lg }
+enum ExpenseLoadingSize { sm, lg }

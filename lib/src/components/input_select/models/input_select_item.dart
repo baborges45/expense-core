@@ -1,6 +1,6 @@
-class MudeInputSelectItem {
+class ExpenseInputSelectItem {
   final String value;
   final String label;
 
-  MudeInputSelectItem(this.value, this.label);
+  ExpenseInputSelectItem(this.value, this.label);
 }

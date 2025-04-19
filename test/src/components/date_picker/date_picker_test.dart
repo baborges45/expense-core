@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
@@ -35,7 +35,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
@@ -68,7 +68,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
@@ -97,7 +97,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
@@ -106,7 +106,7 @@ void main() {
           ),
         );
 
-        final button = find.byType(MudeButtonIcon);
+        final button = find.byType(ExpenseButtonIcon);
         await widgetTester.tap(button.last);
         await widgetTester.pumpAndSettle();
 
@@ -122,7 +122,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
@@ -159,11 +159,11 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
-              type: MudeDatePickerType.multi,
+              type: ExpenseDatePickerType.multi,
             ),
           ),
         );
@@ -185,11 +185,11 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
-              type: MudeDatePickerType.multi,
+              type: ExpenseDatePickerType.multi,
             ),
           ),
         );
@@ -221,11 +221,11 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               key: key,
               value: date,
               onValueChanged: (value) => date = value,
-              type: MudeDatePickerType.range,
+              type: ExpenseDatePickerType.range,
             ),
           ),
         );
@@ -250,7 +250,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDatePicker(
+            child: ExpenseDatePicker(
               value: date,
               onValueChanged: (value) => date = value,
               semanticsLabel: 'Calendário',

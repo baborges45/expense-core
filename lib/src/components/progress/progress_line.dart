@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_line_progress.dart';
 part 'widgets/_percentual_progress.dart';
 
-class MudeProgressLine extends StatefulWidget {
+class ExpenseProgressLine extends StatefulWidget {
   ///An integer value representing the progress percentage.
   final int progress;
 
@@ -19,7 +19,7 @@ class MudeProgressLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsLabel;
 
-  const MudeProgressLine({
+  const ExpenseProgressLine({
     super.key,
     required this.progress,
     this.showPercentual = false,
@@ -27,10 +27,10 @@ class MudeProgressLine extends StatefulWidget {
   });
 
   @override
-  State<MudeProgressLine> createState() => MudeProgressLineState();
+  State<ExpenseProgressLine> createState() => ExpenseProgressLineState();
 }
 
-class MudeProgressLineState extends State<MudeProgressLine> {
+class ExpenseProgressLineState extends State<ExpenseProgressLine> {
   double sizeWidth = 0;
   int progressLoad = 0;
 

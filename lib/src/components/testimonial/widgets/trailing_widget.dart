@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class TrailingWidget extends StatelessWidget {
-  final MudeButtonIcon? trailingButton;
+  final ExpenseButtonIcon? trailingButton;
 
   const TrailingWidget({
     super.key,

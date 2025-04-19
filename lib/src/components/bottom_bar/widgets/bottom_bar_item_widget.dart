@@ -5,10 +5,10 @@ class BottomBarItemWidget extends StatefulWidget {
   final String label;
 
   /// Set a icon to displayed.
-  final MudeIconData icon;
+  final ExpenseIconData icon;
 
   /// Set a icon displayed if tab selected.
-  final MudeIconData? iconFilled;
+  final ExpenseIconData? iconFilled;
 
   /// Get index when the tab is pressed.
   final ValueChanged<int> onPressed;
@@ -71,7 +71,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     final size = globalTokens.shapes.size;
@@ -85,9 +85,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
         return aliasTokens.color.selected.onLabelColor;
       }
 
-      return widget.active
-          ? aliasTokens.color.selected.labelColor
-          : aliasTokens.color.text.labelColor;
+      return widget.active ? aliasTokens.color.selected.labelColor : aliasTokens.color.text.labelColor;
     }
 
     Widget getText() {
@@ -119,7 +117,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
       required isPressed,
       required BuildContext context,
     }) {
-      var tokens = Provider.of<MudeThemeManager>(context);
+      var tokens = Provider.of<ExpenseThemeManager>(context);
       var aliasTokens = tokens.alias;
 
       if (isPressed) return aliasTokens.color.pressed.containerOpacity;
@@ -128,8 +126,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
     }
 
     bool isOnlyIcon = widget.onlyIconActive || widget.onlyIcon;
-    String? labelSemantic =
-        isOnlyIcon && widget.active ? widget.label : widget.semanticsLabel;
+    String? labelSemantic = isOnlyIcon && widget.active ? widget.label : widget.semanticsLabel;
 
     return Semantics(
       label: widget.active ? 'Ativo $labelSemantic' : labelSemantic,
@@ -152,9 +149,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
               minWidth: size.s6x,
             ),
             decoration: BoxDecoration(
-              color: _isPressed
-                  ? aliasTokens.mixin.pressedOutline
-                  : Colors.transparent,
+              color: _isPressed ? aliasTokens.mixin.pressedOutline : Colors.transparent,
               borderRadius: BorderRadius.circular(
                 globalTokens.shapes.border.radiusCircular,
               ),
@@ -190,7 +185,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
 
 // This is used to calculate the size of the current bar item.
 class _FakeBottomBarWidget extends StatelessWidget {
-  final MudeIconData icon;
+  final ExpenseIconData icon;
   final String label;
   final TextStyle textSize;
 
@@ -203,7 +198,7 @@ class _FakeBottomBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     final size = globalTokens.shapes.size;
 
@@ -241,8 +236,8 @@ class _FakeBottomBarWidget extends StatelessWidget {
 }
 
 class _Icon extends StatelessWidget {
-  final MudeIconData? iconFilled;
-  final MudeIconData icon;
+  final ExpenseIconData? iconFilled;
+  final ExpenseIconData icon;
   final bool active;
   final bool inverse;
   final bool activeInverse;
@@ -257,7 +252,7 @@ class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     Color getColorIcon() {
@@ -269,12 +264,10 @@ class _Icon extends StatelessWidget {
         return aliasTokens.color.selected.onIconColor;
       }
 
-      return active
-          ? aliasTokens.color.selected.onBgColor
-          : aliasTokens.color.elements.iconColor;
+      return active ? aliasTokens.color.selected.onBgColor : aliasTokens.color.elements.iconColor;
     }
 
-    MudeIconData getIcon() {
+    ExpenseIconData getIcon() {
       if (iconFilled != null && active) {
         return iconFilled!;
       }
@@ -283,7 +276,7 @@ class _Icon extends StatelessWidget {
     }
 
     return Center(
-      child: MudeIcon(
+      child: ExpenseIcon(
         icon: getIcon(),
         color: getColorIcon(),
       ),

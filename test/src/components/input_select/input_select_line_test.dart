@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,10 +15,10 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 label: 'label',
-                items: [MudeInputSelectItem('value', 'label')],
-                value: MudeInputSelectItem('value', 'label'),
+                items: [ExpenseInputSelectItem('value', 'label')],
+                value: ExpenseInputSelectItem('value', 'label'),
                 onChanged: (e) => debugPrint(''),
               ),
             ),
@@ -56,13 +56,13 @@ void main() {
         'Should render input select',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeInputSelectItem? value;
-          List<MudeInputSelectItem> list = [];
+          ExpenseInputSelectItem? value;
+          List<ExpenseInputSelectItem> list = [];
           const label = 'Label';
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -81,14 +81,14 @@ void main() {
         'Should input select with Support text',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeInputSelectItem? value;
-          List<MudeInputSelectItem> list = [];
+          ExpenseInputSelectItem? value;
+          List<ExpenseInputSelectItem> list = [];
           const label = 'Label';
           const supportText = 'Support text';
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -107,21 +107,21 @@ void main() {
         'Should input select pressed',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeInputSelectItem? value;
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem? value;
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
           const placeholder = 'Placeholder Text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -148,21 +148,21 @@ void main() {
         'Should input select disabled',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeInputSelectItem value = MudeInputSelectItem('1', 'Item 01');
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem value = ExpenseInputSelectItem('1', 'Item 01');
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
           const placeholder = 'Placeholder Text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -187,21 +187,21 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
 
-          MudeInputSelectItem? value = MudeInputSelectItem('1', 'Item 01');
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem? value = ExpenseInputSelectItem('1', 'Item 01');
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
           const supportText = 'Support text';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -225,13 +225,13 @@ void main() {
         'Should input select tap',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
-          MudeInputSelectItem? value = MudeInputSelectItem('1', 'Item 01');
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem? value = ExpenseInputSelectItem('1', 'Item 01');
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
@@ -239,7 +239,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -265,18 +265,18 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
 
-          MudeInputSelectItem? value;
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem? value;
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,
@@ -308,18 +308,18 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
 
-          MudeInputSelectItem? value;
-          List<MudeInputSelectItem> list = [
-            MudeInputSelectItem('1', 'Item 01'),
-            MudeInputSelectItem('2', 'Item 02'),
-            MudeInputSelectItem('3', 'Item 03'),
+          ExpenseInputSelectItem? value;
+          List<ExpenseInputSelectItem> list = [
+            ExpenseInputSelectItem('1', 'Item 01'),
+            ExpenseInputSelectItem('2', 'Item 02'),
+            ExpenseInputSelectItem('3', 'Item 03'),
           ];
 
           const label = 'Label';
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputSelectLine(
+              child: ExpenseInputSelectLine(
                 key: key,
                 label: label,
                 items: list,

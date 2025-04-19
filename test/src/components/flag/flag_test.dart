@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,10 +14,10 @@ void main() {
           final key = UniqueKey();
           const message = 'Message';
 
-          for (var type in MudeFlagType.values) {
+          for (var type in ExpenseFlagType.values) {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeFlag(
+                child: ExpenseFlag(
                   key: key,
                   message: message,
                   type: type,
@@ -40,11 +40,11 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeFlag(
+              child: ExpenseFlag(
                 key: key,
                 message: message,
-                type: MudeFlagType.informative,
-                hyperLink: MudeFlagHyperLink(
+                type: ExpenseFlagType.informative,
+                hyperLink: ExpenseFlagHyperLink(
                   text: text,
                   onPressed: () => press = true,
                 ),
@@ -69,9 +69,9 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeFlag(
+            child: ExpenseFlag(
               message: 'Flag',
-              type: MudeFlagType.informative,
+              type: ExpenseFlagType.informative,
             ),
           ),
         );

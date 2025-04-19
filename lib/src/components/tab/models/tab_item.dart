@@ -1,12 +1,12 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
-class MudeTabItem {
+class ExpenseTabItem {
   final String label;
-  final MudeIconData? icon;
+  final ExpenseIconData? icon;
   final String? semanticsLabel;
   final String? semanticsHint;
 
-  MudeTabItem({
+  ExpenseTabItem({
     required this.label,
     this.icon,
     this.semanticsLabel,

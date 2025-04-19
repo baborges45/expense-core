@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/input_support_text_widget.dart';
 import 'widgets/input_widget.dart';
 
-class MudeInputCardLine extends StatefulWidget {
+class ExpenseInputCardLine extends StatefulWidget {
   ///A string that represents the label for the password field.
   final String label;
 
@@ -64,15 +64,15 @@ class MudeInputCardLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  ///(Optional) A [MudeInputCardType] enum representing the type render this widget [card], [validate], [cvv]
+  ///(Optional) A [ExpenseInputCardType] enum representing the type render this widget [card], [validate], [cvv]
   ///The default value is [card]
-  final MudeInputCardType type;
+  final ExpenseInputCardType type;
 
   ///(Optional) A callback function that will be called when the user pressed question icon.
   ///Ps: This widget rendered just if type is [validate] and [cvv]
   final VoidCallback? onQuestion;
 
-  const MudeInputCardLine({
+  const ExpenseInputCardLine({
     super.key,
     required this.label,
     this.supportText,
@@ -91,7 +91,7 @@ class MudeInputCardLine extends StatefulWidget {
     this.onEditingComplete,
     this.onSubmitted,
     this.textInputAction,
-    this.type = MudeInputCardType.card,
+    this.type = ExpenseInputCardType.card,
 
     // Accessibility
     this.semanticsLabel,
@@ -99,10 +99,10 @@ class MudeInputCardLine extends StatefulWidget {
   });
 
   @override
-  State<MudeInputCardLine> createState() => _MudeInputCardState();
+  State<ExpenseInputCardLine> createState() => _ExpenseInputCardState();
 }
 
-class _MudeInputCardState extends State<MudeInputCardLine> {
+class _ExpenseInputCardState extends State<ExpenseInputCardLine> {
   bool _isPressed = false;
   bool _isFocussed = false;
   bool _isFilled = false;
@@ -142,7 +142,7 @@ class _MudeInputCardState extends State<MudeInputCardLine> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var opacity = globalTokens.shapes.opacity;
@@ -160,9 +160,7 @@ class _MudeInputCardState extends State<MudeInputCardLine> {
         return aliasTokens.color.negative.placeholderColor;
       }
 
-      return _isFilled || _isFocussed
-          ? aliasTokens.color.active.placeholderColor
-          : aliasTokens.color.text.placeholderColor;
+      return _isFilled || _isFocussed ? aliasTokens.color.active.placeholderColor : aliasTokens.color.text.placeholderColor;
     }
 
     Color getBorderColor() {
@@ -174,14 +172,10 @@ class _MudeInputCardState extends State<MudeInputCardLine> {
         return aliasTokens.color.negative.borderColor;
       }
 
-      return _isFocussed
-          ? aliasTokens.color.active.borderColor
-          : aliasTokens.color.elements.borderColor;
+      return _isFocussed ? aliasTokens.color.active.borderColor : aliasTokens.color.elements.borderColor;
     }
 
-    Color getLabelColor() => widget.hasError
-        ? aliasTokens.color.negative.labelColor
-        : aliasTokens.color.text.onLabelColor;
+    Color getLabelColor() => widget.hasError ? aliasTokens.color.negative.labelColor : aliasTokens.color.text.onLabelColor;
 
     TextStyle? getLabelStyle() {
       Color color = getLabelColor();

@@ -1,4 +1,4 @@
-import 'package:mude_core/src/utils/pixel_ratio.dart';
+import 'package:expense_core/src/utils/pixel_ratio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

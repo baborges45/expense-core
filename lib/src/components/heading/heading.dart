@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeHeading extends StatelessWidget {
+class ExpenseHeading extends StatelessWidget {
   ///A string text that will be displayed in the heading.
   final String text;
 
-  ///A MudeHeadingSize object that represents the size of the heading.
-  ///The default value is [MudeHeadingSize.lg].
-  final MudeHeadingSize size;
+  ///A ExpenseHeadingSize object that represents the size of the heading.
+  ///The default value is [ExpenseHeadingSize.lg].
+  final ExpenseHeadingSize size;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
@@ -21,10 +21,10 @@ class MudeHeading extends StatelessWidget {
   // The alignment of the text
   final TextAlign? textAlign;
 
-  const MudeHeading(
+  const ExpenseHeading(
     this.text, {
     super.key,
-    this.size = MudeHeadingSize.lg,
+    this.size = ExpenseHeadingSize.lg,
     this.inverse = false,
     this.textAlign = TextAlign.left,
     this.semanticsLabel,
@@ -32,47 +32,39 @@ class MudeHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
-    double getSize(MudeHeadingSize size) {
+    double getSize(ExpenseHeadingSize size) {
       switch (size) {
-        case MudeHeadingSize.xl:
+        case ExpenseHeadingSize.xl:
           return globalTokens.typographys.fontSizeXl;
-        case MudeHeadingSize.lg:
+        case ExpenseHeadingSize.lg:
           return globalTokens.typographys.fontSizeLg;
-        case MudeHeadingSize.md:
+        case ExpenseHeadingSize.md:
           return globalTokens.typographys.fontSizeMd;
-        case MudeHeadingSize.sm:
+        case ExpenseHeadingSize.sm:
           return globalTokens.typographys.fontSizeSm;
-        case MudeHeadingSize.xs:
+        case ExpenseHeadingSize.xs:
           return globalTokens.typographys.fontSizeXs;
       }
     }
 
     Color getTextColor() {
-      return inverse
-          ? aliasTokens.color.inverse.headingColor
-          : aliasTokens.color.text.headingColor;
+      return inverse ? aliasTokens.color.inverse.headingColor : aliasTokens.color.text.headingColor;
     }
 
     FontWeight getFontWeight() {
-      return size == MudeHeadingSize.xl
-          ? globalTokens.typographys.fontWeightLightItalic
-          : globalTokens.typographys.fontWeightMedium;
+      return size == ExpenseHeadingSize.xl ? globalTokens.typographys.fontWeightLightItalic : globalTokens.typographys.fontWeightMedium;
     }
 
     String getFontFamily() {
-      return size == MudeHeadingSize.xl
-          ? globalTokens.typographys.fontFamilyBrand
-          : globalTokens.typographys.fontFamilyBase;
+      return size == ExpenseHeadingSize.xl ? globalTokens.typographys.fontFamilyBrand : globalTokens.typographys.fontFamilyBase;
     }
 
     double getlineHeight() {
-      return size == MudeHeadingSize.xl
-          ? globalTokens.typographys.lineHeightDefault
-          : globalTokens.typographys.lineHeightSm;
+      return size == ExpenseHeadingSize.xl ? globalTokens.typographys.lineHeightDefault : globalTokens.typographys.lineHeightSm;
     }
 
     return Semantics(

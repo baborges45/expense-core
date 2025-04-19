@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class InputPasswordErrorIcon extends StatelessWidget {
@@ -16,16 +16,16 @@ class InputPasswordErrorIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!show) return const SizedBox.shrink();
 
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     return ExcludeSemantics(
       child: Padding(
         padding: EdgeInsets.only(left: globalTokens.shapes.spacing.s2x),
-        child: MudeIcon(
-          icon: MudeIcons.negativeLine,
-          size: MudeIconSize.lg,
+        child: ExpenseIcon(
+          icon: ExpenseIcons.negativeLine,
+          size: ExpenseIconSize.lg,
           color: iconColor ?? aliasTokens.color.negative.iconColor,
         ),
       ),

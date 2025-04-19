@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class SelectIconWidget extends StatelessWidget {
@@ -18,7 +18,7 @@ class SelectIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -29,16 +29,16 @@ class SelectIconWidget extends StatelessWidget {
       return aliasTokens.color.elements.iconColor;
     }
 
-    MudeIconData getIcon() {
-      return actived ? MudeIcons.dropdownCloseLine : MudeIcons.dropdownOpenLine;
+    ExpenseIconData getIcon() {
+      return actived ? ExpenseIcons.dropdownCloseLine : ExpenseIcons.dropdownOpenLine;
     }
 
     Widget getIconAlert() {
       if (!hasError || disabled) return const SizedBox.shrink();
 
-      return MudeIcon(
-        icon: MudeIcons.negativeLine,
-        size: MudeIconSize.lg,
+      return ExpenseIcon(
+        icon: ExpenseIcons.negativeLine,
+        size: ExpenseIconSize.lg,
         color: getIconColor(),
       );
     }
@@ -47,9 +47,9 @@ class SelectIconWidget extends StatelessWidget {
       children: [
         getIconAlert(),
         SizedBox(width: globalTokens.shapes.spacing.s2x),
-        MudeIcon(
+        ExpenseIcon(
           icon: getIcon(),
-          size: MudeIconSize.lg,
+          size: ExpenseIconSize.lg,
           color: getIconColor(),
         ),
       ],

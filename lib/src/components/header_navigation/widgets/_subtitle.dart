@@ -1,12 +1,12 @@
 part of '../header_navigation.dart';
 
-class _MudeSubtitle extends StatelessWidget {
+class _ExpenseSubtitle extends StatelessWidget {
   final String? subtitle;
   final String? description;
-  final MudeHeaderNavigationType type;
+  final ExpenseHeaderNavigationType type;
   final String? semanticsSubtitleLabel;
 
-  const _MudeSubtitle({
+  const _ExpenseSubtitle({
     required this.subtitle,
     required this.description,
     required this.type,
@@ -15,13 +15,11 @@ class _MudeSubtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
-    if (type == MudeHeaderNavigationType.compact ||
-        type == MudeHeaderNavigationType.image ||
-        subtitle == null) {
+    if (type == ExpenseHeaderNavigationType.compact || type == ExpenseHeaderNavigationType.image || subtitle == null) {
       return const SizedBox.shrink();
     }
 
@@ -32,7 +30,7 @@ class _MudeSubtitle extends StatelessWidget {
 
       return Padding(
         padding: EdgeInsets.only(top: globalTokens.shapes.spacing.s1x),
-        child: MudeDescription(
+        child: ExpenseDescription(
           description!,
           semanticsLabel: description!,
         ),
@@ -44,10 +42,10 @@ class _MudeSubtitle extends StatelessWidget {
         return const SizedBox.shrink();
       }
 
-      return MudeHeading(
+      return ExpenseHeading(
         subtitle!,
         semanticsLabel: semanticsSubtitleLabel,
-        size: MudeHeadingSize.lg,
+        size: ExpenseHeadingSize.lg,
       );
     }
 

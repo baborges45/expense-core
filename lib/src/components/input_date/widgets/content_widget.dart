@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart' show DateFormat;
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class Content extends StatelessWidget {
@@ -15,7 +15,7 @@ class Content extends StatelessWidget {
   final Color? labelColor;
   final String? label;
   final EdgeInsetsGeometry? padding;
-  final MudeInputDateType type;
+  final ExpenseInputDateType type;
 
   const Content({
     super.key,
@@ -29,12 +29,12 @@ class Content extends StatelessWidget {
     this.labelColor,
     this.label,
     this.padding,
-    this.type = MudeInputDateType.single,
+    this.type = ExpenseInputDateType.single,
   });
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -46,18 +46,15 @@ class Content extends StatelessWidget {
         return const SizedBox.shrink();
       }
 
-      String valueSelected = type == MudeInputDateType.single
-          ? '00/00/0000'
-          : '00/00/0000 - 00/00/0000';
+      String valueSelected = type == ExpenseInputDateType.single ? '00/00/0000' : '00/00/0000 - 00/00/0000';
 
       var dateFormatter = DateFormat('dd/MM/yyyy');
 
-      if (type == MudeInputDateType.single && value.isNotEmpty) {
+      if (type == ExpenseInputDateType.single && value.isNotEmpty) {
         valueSelected = dateFormatter.format(value[0]!);
-      } else if (type == MudeInputDateType.range && value.isNotEmpty) {
+      } else if (type == ExpenseInputDateType.range && value.isNotEmpty) {
         final initialDate = dateFormatter.format(value[0]!);
-        final finalDate =
-            value.length > 1 ? dateFormatter.format(value[1]!) : '00/00/0000';
+        final finalDate = value.length > 1 ? dateFormatter.format(value[1]!) : '00/00/0000';
         valueSelected = '$initialDate - $finalDate';
       }
 
@@ -74,9 +71,7 @@ class Content extends StatelessWidget {
         return const SizedBox.shrink();
       }
 
-      TextStyle mixinChoice = value.isEmpty
-          ? aliasTokens.mixin.labelLg2
-          : aliasTokens.mixin.labelSm2;
+      TextStyle mixinChoice = value.isEmpty ? aliasTokens.mixin.labelLg2 : aliasTokens.mixin.labelSm2;
 
       double spacingLabel = value.isEmpty ? 0 : globalTokens.shapes.spacing.s1x;
 
@@ -115,12 +110,12 @@ class Content extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (hasError)
-                MudeIcon(
-                  icon: MudeIcons.negativeLine,
+                ExpenseIcon(
+                  icon: ExpenseIcons.negativeLine,
                   color: iconColor,
                 ),
-              MudeButtonIcon(
-                icon: MudeIcons.calendarLine,
+              ExpenseButtonIcon(
+                icon: ExpenseIcons.calendarLine,
                 onPressed: onPressed,
                 iconColor: iconColor,
               ),

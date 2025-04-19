@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageContainer(
+              child: ExpenseCardImageContainer(
                 key: key,
                 src: 'test/assets/image.png',
               ),
@@ -23,7 +23,7 @@ void main() {
           );
 
           expect(find.byKey(key), findsOneWidget);
-          expect(find.byType(MudeImage), findsOneWidget);
+          expect(find.byType(ExpenseImage), findsOneWidget);
         },
       );
 
@@ -35,7 +35,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageContainer(
+              child: ExpenseCardImageContainer(
                 key: key,
                 src: 'test/assets/image.png',
                 onPressed: () => press = true,
@@ -55,7 +55,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageContainer(
+              child: ExpenseCardImageContainer(
                 key: key,
                 src: 'test/assets/image.png',
                 onPressed: () => debugPrint(''),
@@ -63,7 +63,7 @@ void main() {
             ),
           );
 
-          final image = widgetTester.widget<MudeImage>(find.byType(MudeImage));
+          final image = widgetTester.widget<ExpenseImage>(find.byType(ExpenseImage));
           expect(image.borderRadius, isNull);
         },
       );
@@ -78,7 +78,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeCardImageContainer(
+            child: ExpenseCardImageContainer(
               src: 'test/assets/image.png',
               semanticsLabel: 'Card image container',
             ),

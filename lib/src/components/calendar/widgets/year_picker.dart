@@ -26,7 +26,7 @@ class YearPicker extends StatefulWidget {
   }) : super(key: key);
 
   /// The calendar configurations
-  final MudeDatePickerConfig config;
+  final ExpenseDatePickerConfig config;
 
   /// The currently selected dates.
   ///
@@ -55,10 +55,9 @@ class _YearPickerState extends State<YearPicker> {
   @override
   void initState() {
     super.initState();
-    final scrollOffset =
-        widget.selectedDates.isNotEmpty && widget.selectedDates[0] != null
-            ? _scrollOffsetForYear(widget.selectedDates[0]!)
-            : _scrollOffsetForYear(DateUtils.dateOnly(DateTime.now()));
+    final scrollOffset = widget.selectedDates.isNotEmpty && widget.selectedDates[0] != null
+        ? _scrollOffsetForYear(widget.selectedDates[0]!)
+        : _scrollOffsetForYear(DateUtils.dateOnly(DateTime.now()));
     _scrollController = ScrollController(initialScrollOffset: scrollOffset);
   }
 
@@ -66,10 +65,9 @@ class _YearPickerState extends State<YearPicker> {
   void didUpdateWidget(YearPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.selectedDates != oldWidget.selectedDates) {
-      final scrollOffset =
-          widget.selectedDates.isNotEmpty && widget.selectedDates[0] != null
-              ? _scrollOffsetForYear(widget.selectedDates[0]!)
-              : _scrollOffsetForYear(DateUtils.dateOnly(DateTime.now()));
+      final scrollOffset = widget.selectedDates.isNotEmpty && widget.selectedDates[0] != null
+          ? _scrollOffsetForYear(widget.selectedDates[0]!)
+          : _scrollOffsetForYear(DateUtils.dateOnly(DateTime.now()));
       _scrollController.jumpTo(scrollOffset);
     }
   }
@@ -94,8 +92,7 @@ class _YearPickerState extends State<YearPicker> {
     final bool isSelected = widget.initialMonth.year == year;
 
     final bool isCurrentYear = year == widget.config.currentDate.year;
-    final bool isDisabled =
-        year < firstDate.year || year > widget.config.lastDate.year;
+    final bool isDisabled = year < firstDate.year || year > widget.config.lastDate.year;
 
     final Color textColor;
 
@@ -104,14 +101,12 @@ class _YearPickerState extends State<YearPicker> {
     } else if (isDisabled) {
       textColor = colorScheme.onSurface.withOpacity(0.38);
     } else if (isCurrentYear) {
-      textColor =
-          widget.config.selectedDayHighlightColor ?? colorScheme.primary;
+      textColor = widget.config.selectedDayHighlightColor ?? colorScheme.primary;
     } else {
       textColor = colorScheme.onSurface.withOpacity(0.87);
     }
 
-    TextStyle? itemStyle = widget.config.yearTextStyle ??
-        textTheme.bodyLarge?.apply(color: textColor);
+    TextStyle? itemStyle = widget.config.yearTextStyle ?? textTheme.bodyLarge?.apply(color: textColor);
 
     if (isSelected) {
       itemStyle = widget.config.selectedYearTextStyle ?? itemStyle;
@@ -119,9 +114,7 @@ class _YearPickerState extends State<YearPicker> {
 
     Widget yearItem = _Year(
       onPressed: () {
-        final month = widget.selectedDates.isNotEmpty
-            ? widget.selectedDates[0]?.month ?? 1
-            : 1;
+        final month = widget.selectedDates.isNotEmpty ? widget.selectedDates[0]?.month ?? 1 : 1;
 
         widget.onChanged(DateTime(year, month));
       },
@@ -190,7 +183,7 @@ class _YearState extends State<_Year> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
 
@@ -220,9 +213,7 @@ class _YearState extends State<_Year> {
         return aliasTokens.mixin.pressedOutline;
       }
 
-      return widget.isSelected
-          ? aliasTokens.color.selected.bgColor
-          : Colors.transparent;
+      return widget.isSelected ? aliasTokens.color.selected.bgColor : Colors.transparent;
     }
 
     return Center(
@@ -261,9 +252,7 @@ class _YearPickerGridDelegate extends SliverGridDelegate {
 
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
-    final double tileWidth = (constraints.crossAxisExtent -
-            (_yearPickerColumnCount - 1) * _yearPickerRowSpacing) /
-        _yearPickerColumnCount;
+    final double tileWidth = (constraints.crossAxisExtent - (_yearPickerColumnCount - 1) * _yearPickerRowSpacing) / _yearPickerColumnCount;
 
     return SliverGridRegularTileLayout(
       childCrossAxisExtent: tileWidth,
@@ -279,6 +268,5 @@ class _YearPickerGridDelegate extends SliverGridDelegate {
   bool shouldRelayout(_YearPickerGridDelegate oldDelegate) => false;
 }
 
-const _YearPickerGridDelegate _yearPickerGridDelegate =
-    _YearPickerGridDelegate();
+const _YearPickerGridDelegate _yearPickerGridDelegate = _YearPickerGridDelegate();
 // coverage:ignore-end

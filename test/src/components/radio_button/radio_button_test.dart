@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,7 +14,7 @@ void main() {
           final SemanticsHandle handle = widgetTester.ensureSemantics();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 value: false,
                 onChanged: (value) => debugPrint(''),
                 semanticsLabel: 'radio',
@@ -56,7 +56,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: null,
@@ -74,7 +74,7 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: null,
@@ -91,11 +91,11 @@ void main() {
         'Should be inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: 'a',
@@ -119,7 +119,7 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: 'a',
@@ -130,12 +130,10 @@ void main() {
             ),
           );
 
-          final animationFinder =
-              find.byKey(const Key('radio_button.animation'));
+          final animationFinder = find.byKey(const Key('radio_button.animation'));
           expect(animationFinder, findsNothing);
 
-          final radioButtonFinder =
-              find.byKey(const Key('radio_button.container'));
+          final radioButtonFinder = find.byKey(const Key('radio_button.container'));
 
           await widgetTester.press(radioButtonFinder);
           await widgetTester.pump();
@@ -149,7 +147,7 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeRadioButton(
+              child: ExpenseRadioButton(
                 key: key,
                 onChanged: (value) => debugPrint(''),
                 value: 'a',
@@ -159,12 +157,10 @@ void main() {
             ),
           );
 
-          final animationFinder =
-              find.byKey(const Key('radio_button.animation'));
+          final animationFinder = find.byKey(const Key('radio_button.animation'));
           expect(animationFinder, findsNothing);
 
-          final radioButtonFinder =
-              find.byKey(const Key('radio_button.container'));
+          final radioButtonFinder = find.byKey(const Key('radio_button.container'));
 
           await widgetTester.press(radioButtonFinder);
           await widgetTester.pump();
@@ -188,13 +184,13 @@ void main() {
             Wrapper(
               child: Column(
                 children: [
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyA,
                     onChanged: onChanged,
                     value: 'a',
                     groupValue: groupValue,
                   ),
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyB,
                     onChanged: onChanged,
                     value: 'b',
@@ -226,20 +222,20 @@ void main() {
             Wrapper(
               child: Column(
                 children: [
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyA,
                     onChanged: onChanged,
                     value: 'a',
                     groupValue: groupValue,
                   ),
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyB,
                     onChanged: onChanged,
                     value: 'b',
                     disabled: true,
                     groupValue: groupValue,
                   ),
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyC,
                     onChanged: onChanged,
                     value: 'c',
@@ -272,7 +268,7 @@ void main() {
             Wrapper(
               child: Column(
                 children: [
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: key,
                     onChanged: onChanged,
                     value: 'a',
@@ -308,13 +304,13 @@ void main() {
             Wrapper(
               child: Column(
                 children: [
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyA,
                     onChanged: onChanged,
                     value: null,
                     groupValue: groupValue,
                   ),
-                  MudeRadioButton(
+                  ExpenseRadioButton(
                     key: keyB,
                     onChanged: onChanged,
                     value: 'b',

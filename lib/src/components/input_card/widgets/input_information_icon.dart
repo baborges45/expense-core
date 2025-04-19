@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 class InputInformationIcon extends StatelessWidget {
@@ -16,7 +16,7 @@ class InputInformationIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!show) return const SizedBox.shrink();
 
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -25,9 +25,9 @@ class InputInformationIcon extends StatelessWidget {
         padding: EdgeInsets.only(
           left: globalTokens.shapes.spacing.s2x,
         ),
-        child: MudeIcon(
-          icon: MudeIcons.informationLine,
-          size: MudeIconSize.lg,
+        child: ExpenseIcon(
+          icon: ExpenseIcons.informationLine,
+          size: ExpenseIconSize.lg,
           color: iconColor ?? aliasTokens.color.elements.iconColor,
         ),
       ),

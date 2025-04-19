@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -12,24 +12,24 @@ void main() {
         'Should render bottom bar float',
         (widgetTester) async {
           final key = UniqueKey();
-          List<MudeBottomBarFloatItem> list = [
-            MudeBottomBarFloatItem(
+          List<ExpenseBottomBarFloatItem> list = [
+            ExpenseBottomBarFloatItem(
               label: 'Item 01',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
-            MudeBottomBarFloatItem(
+            ExpenseBottomBarFloatItem(
               label: 'Item 02',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
-            MudeBottomBarFloatItem(
+            ExpenseBottomBarFloatItem(
               label: 'Item 03',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
           ];
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeBottomBarFloat(
+              child: ExpenseBottomBarFloat(
                 key: key,
                 items: list,
                 onChanged: (index) => debugPrint('$index'),
@@ -47,24 +47,24 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
           int itemSelected = 0;
-          List<MudeBottomBarFloatItem> list = [
-            MudeBottomBarFloatItem(
+          List<ExpenseBottomBarFloatItem> list = [
+            ExpenseBottomBarFloatItem(
               label: 'Item 01',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
-            MudeBottomBarFloatItem(
+            ExpenseBottomBarFloatItem(
               label: 'Item 02',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
-            MudeBottomBarFloatItem(
+            ExpenseBottomBarFloatItem(
               label: 'Item 03',
-              icon: MudeIcons.placeholderLine,
+              icon: ExpenseIcons.placeholderLine,
             ),
           ];
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeBottomBarFloat(
+              child: ExpenseBottomBarFloat(
                 key: key,
                 currentIndex: itemSelected,
                 onChanged: (index) => itemSelected = index,
@@ -88,13 +88,13 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeBottomBarFloat(
+            child: ExpenseBottomBarFloat(
               currentIndex: 0,
               onChanged: (index) => debugPrint('$index'),
               items: [
-                MudeBottomBarFloatItem(
+                ExpenseBottomBarFloatItem(
                   label: 'Item 01',
-                  icon: MudeIcons.placeholderLine,
+                  icon: ExpenseIcons.placeholderLine,
                   semanticsLabel: 'Item 01',
                 ),
               ],

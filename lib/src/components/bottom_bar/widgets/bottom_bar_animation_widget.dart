@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class BottomBarAnimationWidget extends StatelessWidget {
   /// Set how much left side spacing is applied
@@ -23,7 +23,7 @@ class BottomBarAnimationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return AnimatedPositioned(
       duration: globalTokens.motions.durations.fast02,

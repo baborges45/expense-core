@@ -1,8 +1,1 @@
-enum MudeTagStatus {
-  neutral,
-  positive,
-  promote,
-  negative,
-  informative,
-  warning
-}
+enum ExpenseTagStatus { neutral, positive, promote, negative, informative, warning }

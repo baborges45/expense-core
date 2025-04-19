@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import './widgets/slider_label.dart';
 import './widgets/thumb.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/scheduler.dart';
 
 import 'package:provider/provider.dart';
 
-class MudeSliderRange extends StatefulWidget {
+class ExpenseSliderRange extends StatefulWidget {
   /// A [RangeValues] value that represents the progress of the bar.
   final RangeValues values;
 
@@ -29,7 +29,7 @@ class MudeSliderRange extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeSliderRange({
+  const ExpenseSliderRange({
     super.key,
     required this.onChange,
     required this.values,
@@ -40,10 +40,10 @@ class MudeSliderRange extends StatefulWidget {
   });
 
   @override
-  State<MudeSliderRange> createState() => MudeSliderRangeState();
+  State<ExpenseSliderRange> createState() => ExpenseSliderRangeState();
 }
 
-class MudeSliderRangeState extends State<MudeSliderRange> {
+class ExpenseSliderRangeState extends State<ExpenseSliderRange> {
   double _containerWidth = 0;
   bool isPressedStart = false;
   bool isPressedEnd = false;
@@ -62,7 +62,7 @@ class MudeSliderRangeState extends State<MudeSliderRange> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;

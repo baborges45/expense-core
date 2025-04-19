@@ -6,10 +6,10 @@ import '../widgets/dropdown_select.dart';
 mixin PropertiesMixin {
   openDrawer({
     required BuildContext context,
-    required List<MudeDropdownItem> items,
+    required List<ExpenseDropdownItem> items,
     required Function(bool) updateState,
-    required ValueChanged<MudeDropdownItem> onChanged,
-    required MudeDropdownItem? value,
+    required ValueChanged<ExpenseDropdownItem> onChanged,
+    required ExpenseDropdownItem? value,
   }) {
     updateState(true);
 

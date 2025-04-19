@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -14,7 +14,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudePromotionPage.show(
+                return ExpensePromotionPage.show(
                   context,
                   child: const Text('Promotion Page'),
                   sourceBanner: 'test/assets/image.png',
@@ -28,7 +28,7 @@ void main() {
           await widgetTester.tap(button);
           await widgetTester.pumpAndSettle();
 
-          expect(find.byType(MudeImage), findsOneWidget);
+          expect(find.byType(ExpenseImage), findsOneWidget);
         },
       );
 
@@ -40,7 +40,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudePromotionPage.show(
+                return ExpensePromotionPage.show(
                   context,
                   child: const Text(chilText),
                   sourceBanner: 'test/assets/image.png',
@@ -66,7 +66,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudePromotionPage.show(
+                return ExpensePromotionPage.show(
                   context,
                   child: const Text(chilText),
                   sourceBanner: 'test/assets/image.png',
@@ -81,7 +81,7 @@ void main() {
           await widgetTester.tap(button);
           await widgetTester.pumpAndSettle();
 
-          final widget = widgetTester.widget<MudeImage>(find.byType(MudeImage));
+          final widget = widgetTester.widget<ExpenseImage>(find.byType(ExpenseImage));
 
           expect(widget.fit, BoxFit.fill);
         },
@@ -95,7 +95,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudePromotionPage.show(
+                return ExpensePromotionPage.show(
                   context,
                   child: const Text(chilText),
                   sourceBanner: 'test/assets/image.png',
@@ -109,9 +109,9 @@ void main() {
           await widgetTester.tap(button);
           await widgetTester.pumpAndSettle();
 
-          final widget = widgetTester.widget<MudeImage>(find.byType(MudeImage));
+          final widget = widgetTester.widget<ExpenseImage>(find.byType(ExpenseImage));
 
-          expect(widget.aspectRatio, MudeImageAspectRatio.ratio_2x3);
+          expect(widget.aspectRatio, ExpenseImageAspectRatio.ratio_2x3);
         },
       );
 
@@ -123,7 +123,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTap: (context) {
-                return MudePromotionPage.show(
+                return ExpensePromotionPage.show(
                   context,
                   child: const Text(chilText),
                   sourceBanner: 'test/assets/image.png',
@@ -161,7 +161,7 @@ void main() {
         await widgetTester.pumpWidget(
           Wrapper(
             onTap: (context) {
-              return MudePromotionPage.show(
+              return ExpensePromotionPage.show(
                 context,
                 child: const Text('Promotion Page'),
                 sourceBanner: 'test/assets/image.png',

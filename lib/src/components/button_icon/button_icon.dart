@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/sizes_mixin.dart';
 import 'widgets/container_size.dart';
 
-class MudeButtonIcon extends StatefulWidget {
-  ///The size of the button. It is of type [MudeButtonIconSize] and has a default value of [MudeButtonIconSize.lg].
-  final MudeButtonIconSize size;
+class ExpenseButtonIcon extends StatefulWidget {
+  ///The size of the button. It is of type [ExpenseButtonIconSize] and has a default value of [ExpenseButtonIconSize.lg].
+  final ExpenseButtonIconSize size;
 
   ///(Optional) A boolean indicating whether the button should be disabled.
   ///The default value is false.
@@ -28,8 +28,8 @@ class MudeButtonIcon extends StatefulWidget {
   ///A required callback that will be called when the button is pressed.
   final VoidCallback onPressed;
 
-  ///A [MudeIconData] object representing the icon to be displayed on the button.
-  final MudeIconData icon;
+  ///A [ExpenseIconData] object representing the icon to be displayed on the button.
+  final ExpenseIconData icon;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
@@ -43,11 +43,11 @@ class MudeButtonIcon extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeButtonIcon({
+  const ExpenseButtonIcon({
     super.key,
     required this.icon,
     required this.onPressed,
-    this.size = MudeButtonIconSize.lg,
+    this.size = ExpenseButtonIconSize.lg,
     this.disabled = false,
     this.showNotification = false,
     this.inverse = false,
@@ -58,10 +58,10 @@ class MudeButtonIcon extends StatefulWidget {
   });
 
   @override
-  State<MudeButtonIcon> createState() => _MudeButtonIconState();
+  State<ExpenseButtonIcon> createState() => _ExpenseButtonIconState();
 }
 
-class _MudeButtonIconState extends State<MudeButtonIcon> with SizesMixin {
+class _ExpenseButtonIconState extends State<ExpenseButtonIcon> with SizesMixin {
   bool _isPressed = false;
 
   _onPressedDown(_) {
@@ -76,23 +76,19 @@ class _MudeButtonIconState extends State<MudeButtonIcon> with SizesMixin {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final aliasTokens = tokens.alias;
     final globalTokens = tokens.globals;
     final size = globalTokens.shapes.size;
 
     final radius = globalTokens.shapes.border.radiusCircular;
 
-    MudeIcon getIcon() {
-      MudeIconSize iconSize = widget.size == MudeButtonIconSize.lg
-          ? MudeIconSize.lg
-          : MudeIconSize.sm;
+    ExpenseIcon getIcon() {
+      ExpenseIconSize iconSize = widget.size == ExpenseButtonIconSize.lg ? ExpenseIconSize.lg : ExpenseIconSize.sm;
 
-      Color? color = widget.disabled
-          ? aliasTokens.color.disabled.iconColor
-          : widget.iconColor;
+      Color? color = widget.disabled ? aliasTokens.color.disabled.iconColor : widget.iconColor;
 
-      return MudeIcon(
+      return ExpenseIcon(
         key: const Key('button-icon.icon'),
         icon: widget.icon,
         size: iconSize,
@@ -117,9 +113,7 @@ class _MudeButtonIconState extends State<MudeButtonIcon> with SizesMixin {
           return widget.backgroundColor!;
         }
 
-        return widget.inverse
-            ? aliasTokens.mixin.pressedOutlineInverse
-            : aliasTokens.mixin.pressedOutline;
+        return widget.inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
       }
 
       return null;

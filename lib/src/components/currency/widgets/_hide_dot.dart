@@ -2,12 +2,12 @@
 
 part of '../currency.dart';
 
-class _MudeHideDot extends StatelessWidget {
+class _ExpenseHideDot extends StatelessWidget {
   final String price;
   final bool hide;
   final Color? color;
 
-  const _MudeHideDot({
+  const _ExpenseHideDot({
     required this.price,
     required this.hide,
     this.color,
@@ -15,7 +15,7 @@ class _MudeHideDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
@@ -37,8 +37,6 @@ class _MudeHideDot extends StatelessWidget {
       ),
     );
 
-    return hide
-        ? Row(children: [...numbersHideDots.map((e) => dots)])
-        : const SizedBox.shrink();
+    return hide ? Row(children: [...numbersHideDots.map((e) => dots)]) : const SizedBox.shrink();
   }
 }

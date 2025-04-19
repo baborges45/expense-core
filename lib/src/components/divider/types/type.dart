@@ -1,1 +1,1 @@
-enum MudeDividerSize { thin }
+enum ExpenseDividerSize { thin }

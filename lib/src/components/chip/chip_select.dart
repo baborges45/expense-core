@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 import 'widgets/container_chip.dart';
 
-class MudeChipSelect extends StatefulWidget {
+class ExpenseChipSelect extends StatefulWidget {
   ///A boolean indicating whether the chip select is selected.
   ///The default value is false.
   final bool isSelected;
@@ -15,8 +15,8 @@ class MudeChipSelect extends StatefulWidget {
   final String label;
 
   ///(Optional) An icon to be displayed before the label text.
-  ///It uses the MudeIconData type from the mude_core package.
-  final MudeIconData? icon;
+  ///It uses the ExpenseIconData type from the expense_core package.
+  final ExpenseIconData? icon;
 
   ///A required callback that will be called when the chip select is pressed.
   ///It takes a boolean parameter indicating the new selected state.
@@ -34,7 +34,7 @@ class MudeChipSelect extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeChipSelect({
+  const ExpenseChipSelect({
     super.key,
     this.icon,
     required this.onPressed,
@@ -46,10 +46,10 @@ class MudeChipSelect extends StatefulWidget {
   });
 
   @override
-  State<MudeChipSelect> createState() => _MudeChipSelectState();
+  State<ExpenseChipSelect> createState() => _ExpenseChipSelectState();
 }
 
-class _MudeChipSelectState extends State<MudeChipSelect> with PropertiesMixin {
+class _ExpenseChipSelectState extends State<ExpenseChipSelect> with PropertiesMixin {
   bool isPressed = false;
 
   void _onPressedDown() {
@@ -71,7 +71,7 @@ class _MudeChipSelectState extends State<MudeChipSelect> with PropertiesMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
     var globalsTokens = tokens.globals;
 
@@ -79,9 +79,7 @@ class _MudeChipSelectState extends State<MudeChipSelect> with PropertiesMixin {
       final isSelected = widget.isSelected;
       final aliasTokens = tokens.alias.color;
 
-      return isSelected
-          ? aliasTokens.selected.onIconColor
-          : aliasTokens.elements.iconColor;
+      return isSelected ? aliasTokens.selected.onIconColor : aliasTokens.elements.iconColor;
     }
 
     double getOpacity() {
@@ -94,15 +92,15 @@ class _MudeChipSelectState extends State<MudeChipSelect> with PropertiesMixin {
       context: context,
       inverse: false,
       isSelected: widget.isSelected,
-      type: MudeChipType.select,
+      type: ExpenseChipType.select,
     );
 
     Widget getIcon() {
       return widget.icon != null
           ? Row(children: [
-              MudeIcon(
+              ExpenseIcon(
                 icon: widget.icon!,
-                size: MudeIconSize.sm,
+                size: ExpenseIconSize.sm,
                 color: getIconColor(),
               ),
               SizedBox(width: globalsTokens.shapes.spacing.half, height: 0),
@@ -125,7 +123,7 @@ class _MudeChipSelectState extends State<MudeChipSelect> with PropertiesMixin {
           child: ContainerChip(
             isPressed: isPressed,
             isSelected: widget.isSelected,
-            type: MudeChipType.select,
+            type: ExpenseChipType.select,
             children: [
               getIcon(),
               Text(

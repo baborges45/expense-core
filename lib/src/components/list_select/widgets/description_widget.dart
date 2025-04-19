@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionWidget extends StatelessWidget {
@@ -15,7 +15,7 @@ class DescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (description == null) return const SizedBox.shrink();
 
-    return MudeDescription(
+    return ExpenseDescription(
       description!,
       semanticsLabel: semanticsDescription ?? description!,
     );

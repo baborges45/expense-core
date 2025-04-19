@@ -1,1 +1,1 @@
-enum MudeBrandType { logo, symbol }
+enum ExpenseBrandType { logo, symbol }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeDescription extends StatelessWidget {
+class ExpenseDescription extends StatelessWidget {
   /// Set a text to display in the description.
   final String text;
 
@@ -20,7 +20,7 @@ class MudeDescription extends StatelessWidget {
   ///The default value is null
   final String? semanticsLabel;
 
-  const MudeDescription(
+  const ExpenseDescription(
     this.text, {
     super.key,
     this.align = TextAlign.left,
@@ -31,7 +31,7 @@ class MudeDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 

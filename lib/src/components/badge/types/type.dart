@@ -1,1 +1,1 @@
-enum MudeBadgeSize { sm, lg }
+enum ExpenseBadgeSize { sm, lg }

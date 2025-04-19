@@ -1,10 +1,10 @@
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import 'widgets/slider_progress.dart';
 
-class MudeProgressBarAudio extends StatefulWidget {
+class ExpenseProgressBarAudio extends StatefulWidget {
   /// The player controller.
   final ProgressBarController controller;
 
@@ -14,7 +14,7 @@ class MudeProgressBarAudio extends StatefulWidget {
   ///Indicates inverse property.
   final bool inverse;
 
-  const MudeProgressBarAudio({
+  const ExpenseProgressBarAudio({
     super.key,
     required this.controller,
     this.hideText = false,
@@ -22,10 +22,10 @@ class MudeProgressBarAudio extends StatefulWidget {
   });
 
   @override
-  State<MudeProgressBarAudio> createState() => _MudeProgressBarAudioState();
+  State<ExpenseProgressBarAudio> createState() => _ExpenseProgressBarAudioState();
 }
 
-class _MudeProgressBarAudioState extends State<MudeProgressBarAudio> {
+class _ExpenseProgressBarAudioState extends State<ExpenseProgressBarAudio> {
   String _formatDuration(double value) {
     Duration duration = Duration(seconds: value.round());
     int minutes = duration.inMinutes;

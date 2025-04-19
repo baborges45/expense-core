@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 import 'widgets/dropdown_icon.dart';
 
-class MudeDropDownContainer extends StatefulWidget {
-  ///A list of [MudeDropdownItem] objects that represent the dropdown items.
-  final List<MudeDropdownItem> items;
+class ExpenseDropDownContainer extends StatefulWidget {
+  ///A list of [ExpenseDropdownItem] objects that represent the dropdown items.
+  final List<ExpenseDropdownItem> items;
 
   ///A callback function that will be called when the dropdown value is changed.
-  final ValueChanged<MudeDropdownItem> onChanged;
+  final ValueChanged<ExpenseDropdownItem> onChanged;
 
   ///The currently selected dropdown item.
-  final MudeDropdownItem? value;
+  final ExpenseDropdownItem? value;
 
   ///A string that represents the placeholder text to display when no item is selected.
   final String placeholder;
@@ -26,14 +26,14 @@ class MudeDropDownContainer extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  ///A [MudeDropDownType] object representing the type of the dropdown.
-  final MudeDropDownType type;
+  ///A [ExpenseDropDownType] object representing the type of the dropdown.
+  final ExpenseDropDownType type;
 
   ///(Optional) A boolean parameter that specifies whether the link should have an inverse color scheme.
   ///The default value is false.
   final bool inverse;
 
-  const MudeDropDownContainer({
+  const ExpenseDropDownContainer({
     super.key,
     required this.items,
     required this.onChanged,
@@ -41,16 +41,15 @@ class MudeDropDownContainer extends StatefulWidget {
     this.value,
     this.semanticsLabel,
     this.semanticsHint,
-    this.type = MudeDropDownType.container,
+    this.type = ExpenseDropDownType.container,
     this.inverse = false,
   });
 
   @override
-  State<MudeDropDownContainer> createState() => _MudeDropDownState();
+  State<ExpenseDropDownContainer> createState() => _ExpenseDropDownState();
 }
 
-class _MudeDropDownState extends State<MudeDropDownContainer>
-    with PropertiesMixin {
+class _ExpenseDropDownState extends State<ExpenseDropDownContainer> with PropertiesMixin {
   bool _isOpen = false;
   bool _isPressed = false;
 
@@ -87,7 +86,7 @@ class _MudeDropDownState extends State<MudeDropDownContainer>
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
     final spacing = globalTokens.shapes.spacing;
@@ -104,9 +103,7 @@ class _MudeDropDownState extends State<MudeDropDownContainer>
     }
 
     Color getPressedColor() {
-      return widget.inverse
-          ? aliasTokens.mixin.pressedOutlineInverse
-          : aliasTokens.mixin.pressedOutline;
+      return widget.inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
     }
 
     Widget getText() {
@@ -165,7 +162,7 @@ class _MudeDropDownState extends State<MudeDropDownContainer>
           onTapCancel: () => updateState(false),
           child: Container(
             color: Colors.transparent,
-            child: widget.type == MudeDropDownType.ghost
+            child: widget.type == ExpenseDropDownType.ghost
                 ? Stack(
                     clipBehavior: Clip.none,
                     alignment: Alignment.centerLeft,

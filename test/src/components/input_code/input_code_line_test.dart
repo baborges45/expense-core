@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 value: 'value',
                 onChanged: (e) => debugPrint(''),
                 semanticsLabel: 'semanticsLabel',
@@ -59,7 +59,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 onChanged: (e) => debugPrint(''),
@@ -80,7 +80,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 description: description,
@@ -102,7 +102,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 description: description,
@@ -125,7 +125,7 @@ void main() {
         'Should input code tap',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           String value = '';
           const description = 'Description';
@@ -133,7 +133,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 description: description,
@@ -160,7 +160,7 @@ void main() {
         'Should input code actived and focused',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           String value = '';
           const description = 'Description';
@@ -168,7 +168,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 description: description,
@@ -196,7 +196,7 @@ void main() {
         'Should input code obscure text',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           String value = '1';
           const description = 'Description';
@@ -204,7 +204,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeInputCodeLine(
+              child: ExpenseInputCodeLine(
                 key: key,
                 value: value,
                 description: description,

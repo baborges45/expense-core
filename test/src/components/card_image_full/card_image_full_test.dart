@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageFull(
+              child: ExpenseCardImageFull(
                 key: key,
                 src: 'test/assets/image.png',
                 height: 200,
@@ -35,7 +35,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageFull(
+              child: ExpenseCardImageFull(
                 key: key,
                 src: 'test/assets/image.png',
                 height: 200,
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageFull(
+              child: ExpenseCardImageFull(
                 key: key,
                 src: 'test/assets/image.png',
                 height: 200,
@@ -79,7 +79,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCardImageFull(
+              child: ExpenseCardImageFull(
                 key: key,
                 src: 'test/assets/image.png',
                 height: 200,
@@ -111,7 +111,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeCardImageFull(
+            child: ExpenseCardImageFull(
               src: 'test/assets/image.png',
               semanticsLabel: 'Card Full Image',
               height: 200,

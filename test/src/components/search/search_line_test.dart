@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSearchLine(
+              child: ExpenseSearchLine(
                 key: key,
               ),
             ),
@@ -57,7 +57,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSearchLine(
+              child: ExpenseSearchLine(
                 key: key,
               ),
             ),
@@ -71,12 +71,12 @@ void main() {
         'Should search tap',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSearchLine(
+              child: ExpenseSearchLine(
                 key: key,
               ),
             ),
@@ -98,12 +98,12 @@ void main() {
         'Should search filled and focused',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeSearchLine(
+              child: ExpenseSearchLine(
                 key: key,
               ),
             ),
@@ -132,7 +132,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeSearchLine(
+              child: ExpenseSearchLine(
                 key: key,
               ),
             ),

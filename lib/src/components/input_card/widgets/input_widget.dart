@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../input_formatters/card_flags.dart';
@@ -31,7 +31,7 @@ class InputWidget extends StatelessWidget {
   final TextInputAction? textInputAction;
   final Widget? label;
   final TextStyle? labelStyle;
-  final MudeInputCardType type;
+  final ExpenseInputCardType type;
   final VoidCallback? onQuestion;
   final bool isPressed;
   final bool addOpacityBody;
@@ -60,41 +60,39 @@ class InputWidget extends StatelessWidget {
     this.textInputAction,
     this.label,
     this.labelStyle,
-    this.type = MudeInputCardType.card,
+    this.type = ExpenseInputCardType.card,
   });
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
-    final Map<MudeInputCardType, List<TextInputFormatter>> inputFormatterMap = {
-      MudeInputCardType.card: [
+    final Map<ExpenseInputCardType, List<TextInputFormatter>> inputFormatterMap = {
+      ExpenseInputCardType.card: [
         FilteringTextInputFormatter.digitsOnly,
         CardNumberInputFormatter(),
         LengthLimitingTextInputFormatter(19),
       ],
-      MudeInputCardType.validate: [
+      ExpenseInputCardType.validate: [
         FilteringTextInputFormatter.digitsOnly,
         CardMonthInputFormatter(),
         LengthLimitingTextInputFormatter(5),
       ],
-      MudeInputCardType.cvv: [
+      ExpenseInputCardType.cvv: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(3),
       ],
     };
 
-    final List<TextInputFormatter>? inputFormatters =
-        inputFormatterMap[type] ?? inputFormatterMap[MudeInputCardType.card];
+    final List<TextInputFormatter>? inputFormatters = inputFormatterMap[type] ?? inputFormatterMap[ExpenseInputCardType.card];
 
-    final MudeFlagData? cardFlag = CardFlags.getCardFlag(controller.text);
+    final ExpenseFlagData? cardFlag = CardFlags.getCardFlag(controller.text);
 
-    final positionIconError = type != MudeInputCardType.card ? 30.0 : 0.0;
+    final positionIconError = type != ExpenseInputCardType.card ? 30.0 : 0.0;
 
-    final opacityBody =
-        disabled && addOpacityBody ? globalTokens.shapes.opacity.low : 1.0;
+    final opacityBody = disabled && addOpacityBody ? globalTokens.shapes.opacity.low : 1.0;
 
     TextStyle getPlaceholderStyle() {
       return aliasTokens.mixin.placeholder.merge(
@@ -109,7 +107,7 @@ class InputWidget extends StatelessWidget {
         //
         // Credit Card Widget
         Visibility(
-          visible: type == MudeInputCardType.card,
+          visible: type == ExpenseInputCardType.card,
           child: ExcludeSemantics(
             child: InputCreditCardWidget(
               flag: cardFlag,
@@ -175,7 +173,7 @@ class InputWidget extends StatelessWidget {
                 Positioned(
                   right: -16,
                   child: InputQuestionIcon(
-                    show: type != MudeInputCardType.card,
+                    show: type != ExpenseInputCardType.card,
                     iconColor: iconColor,
                     onQuestion: disabled ? null : onQuestion,
                     label: controller.text,

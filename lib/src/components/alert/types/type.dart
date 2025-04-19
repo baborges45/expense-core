@@ -1,1 +1,1 @@
-enum MudeAlertType { positive, warning, negative, informative, promote }
+enum ExpenseAlertType { positive, warning, negative, informative, promote }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../mixins/properties_mixin.dart';
@@ -11,7 +11,7 @@ class ContainerButtonWidget extends StatefulWidget {
   final VoidCallback onPressed;
   final double? width;
   final List<BoxShadow>? boxShadow;
-  final MudeIconData? icon;
+  final ExpenseIconData? icon;
   final Widget? child;
   final bool disabled;
   final bool loading;
@@ -79,7 +79,7 @@ class _ContainerButtonState extends State<ContainerButtonWidget> with Properties
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -129,11 +129,11 @@ class _ContainerButtonState extends State<ContainerButtonWidget> with Properties
                 padding: EdgeInsets.only(
                   right: spacing.s1x,
                 ),
-                child: MudeIcon(
+                child: ExpenseIcon(
                   key: const Key('ds-button-icon'),
                   icon: widget.icon!,
                   color: textColor,
-                  size: MudeIconSize.lg,
+                  size: ExpenseIconSize.lg,
                 ),
               )
             : const SizedBox.shrink();
@@ -173,7 +173,7 @@ class _ContainerButtonState extends State<ContainerButtonWidget> with Properties
               const Positioned.fill(
                 child: Align(
                   alignment: Alignment.center,
-                  child: MudeLoading(),
+                  child: ExpenseLoading(),
                 ),
               ),
             ],

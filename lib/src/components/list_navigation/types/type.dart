@@ -1,1 +1,1 @@
-enum MudeListNavigationPosition { top, bottom, none }
+enum ExpenseListNavigationPosition { top, bottom, none }

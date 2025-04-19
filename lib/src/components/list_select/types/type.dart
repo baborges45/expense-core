@@ -1,3 +1,3 @@
-enum MudeListSelectType { checkbox, radiobutton, switcher }
+enum ExpenseListSelectType { checkbox, radiobutton, switcher }
 
-enum MudeListSelectPosition { top, bottom, none }
+enum ExpenseListSelectPosition { top, bottom, none }

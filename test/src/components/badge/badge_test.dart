@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeBadge(
+              child: ExpenseBadge(
                 key: key,
               ),
             ),
@@ -31,14 +31,14 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeBadge(
+              child: ExpenseBadge(
                 key: key,
-                size: MudeBadgeSize.lg,
+                size: ExpenseBadgeSize.lg,
               ),
             ),
           );
-          final widget = widgetTester.widget<MudeBadge>(find.byKey(key));
-          expect(widget.size, MudeBadgeSize.lg);
+          final widget = widgetTester.widget<ExpenseBadge>(find.byKey(key));
+          expect(widget.size, ExpenseBadgeSize.lg);
         },
       );
 
@@ -48,15 +48,15 @@ void main() {
           final key = UniqueKey();
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeBadge(
+              child: ExpenseBadge(
                 key: key,
-                size: MudeBadgeSize.sm,
+                size: ExpenseBadgeSize.sm,
               ),
             ),
           );
 
-          final widget = widgetTester.widget<MudeBadge>(find.byKey(key));
-          expect(widget.size, MudeBadgeSize.sm);
+          final widget = widgetTester.widget<ExpenseBadge>(find.byKey(key));
+          expect(widget.size, ExpenseBadgeSize.sm);
         },
       );
     },
@@ -70,7 +70,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeBadge(
+            child: ExpenseBadge(
               semanticsLabel: 'Badge',
               semanticsHint: 'Badge',
             ),

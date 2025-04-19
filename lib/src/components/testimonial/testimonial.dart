@@ -1,10 +1,10 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'widgets/content_widget.dart';
 
-class MudeTestimonial extends StatelessWidget {
+class ExpenseTestimonial extends StatelessWidget {
   ///A string representing the label text
   final String label;
 
@@ -12,12 +12,12 @@ class MudeTestimonial extends StatelessWidget {
   final String description;
 
   /// A dynamic type that can be this one of these:
-  /// [MudeIconData], [MudeImage], [MudeAvatarName], [MudeAvatarIcon],
-  /// [MudeAvatarIcon].
+  /// [ExpenseIconData], [ExpenseImage], [ExpenseAvatarName], [ExpenseAvatarIcon],
+  /// [ExpenseAvatarIcon].
   final dynamic leading;
 
-  /// A [MudeButtonMini] button that will be displayed on the right.
-  final MudeButtonIcon? trailingButton;
+  /// A [ExpenseButtonMini] button that will be displayed on the right.
+  final ExpenseButtonIcon? trailingButton;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -27,7 +27,7 @@ class MudeTestimonial extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeTestimonial({
+  const ExpenseTestimonial({
     super.key,
     required this.label,
     required this.description,

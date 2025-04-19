@@ -1,13 +1,13 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 class CardFlags {
-  static MudeFlagData? getCardFlag(String cardNumber) {
+  static ExpenseFlagData? getCardFlag(String cardNumber) {
     if (cardNumber.startsWith('4')) {
-      return MudeFlags.visa;
+      return ExpenseFlags.visa;
     } else if (cardNumber.startsWith('5')) {
-      return MudeFlags.masterCard;
+      return ExpenseFlags.masterCard;
     } else if (cardNumber.startsWith('6')) {
-      return MudeFlags.elo;
+      return ExpenseFlags.elo;
     } else {
       return null;
     }

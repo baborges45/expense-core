@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/select.dart';
 import 'widgets/select_icon_widget.dart';
 import 'widgets/select_support_text_widget.dart';
 
-class MudeInputSelectLine extends StatefulWidget {
+class ExpenseInputSelectLine extends StatefulWidget {
   ///A string representing the label for the select field.
   final String label;
 
   ///(Optional) A string representing support text for the select field.
   final String? supportText;
 
-  ///A list of [MudeInputSelectItem] objects representing the selectable items in the select field.
-  final List<MudeInputSelectItem> items;
+  ///A list of [ExpenseInputSelectItem] objects representing the selectable items in the select field.
+  final List<ExpenseInputSelectItem> items;
 
-  ///(Optional) A [MudeInputSelectItem] object representing the currently selected value.
-  final MudeInputSelectItem? value;
+  ///(Optional) A [ExpenseInputSelectItem] object representing the currently selected value.
+  final ExpenseInputSelectItem? value;
 
   ///A callback function that will be called when the value of the select field changes.
-  ///It returns a [MudeInputSelectItem] parameter representing the new selected value.
-  final ValueChanged<MudeInputSelectItem> onChanged;
+  ///It returns a [ExpenseInputSelectItem] parameter representing the new selected value.
+  final ValueChanged<ExpenseInputSelectItem> onChanged;
 
   ///A string representing the placeholder text for the select field.
   ///The default value is Selecione um item.
@@ -34,7 +34,7 @@ class MudeInputSelectLine extends StatefulWidget {
   ///A boolean indicating whether the select field has an error.
   ///The default value is false.
   final bool hasError;
-  const MudeInputSelectLine({
+  const ExpenseInputSelectLine({
     super.key,
     required this.label,
     required this.items,
@@ -47,10 +47,10 @@ class MudeInputSelectLine extends StatefulWidget {
   });
 
   @override
-  State<MudeInputSelectLine> createState() => _MudeInputSelectLineState();
+  State<ExpenseInputSelectLine> createState() => _ExpenseInputSelectLineState();
 }
 
-class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
+class _ExpenseInputSelectLineState extends State<ExpenseInputSelectLine> {
   bool _isPressed = false;
   bool _isActive = false;
 
@@ -79,14 +79,12 @@ class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     Color getBackgroundColor() {
-      return _isPressed
-          ? aliasTokens.mixin.pressedOutline
-          : aliasTokens.color.elements.bgColor01;
+      return _isPressed ? aliasTokens.mixin.pressedOutline : aliasTokens.color.elements.bgColor01;
     }
 
     Color getTextColor() {
@@ -98,9 +96,7 @@ class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
         return aliasTokens.color.negative.placeholderColor;
       }
 
-      return _isActive || widget.value != null
-          ? aliasTokens.color.active.placeholderColor
-          : aliasTokens.color.text.placeholderColor;
+      return _isActive || widget.value != null ? aliasTokens.color.active.placeholderColor : aliasTokens.color.text.placeholderColor;
     }
 
     Color getBorderColor() {
@@ -112,9 +108,7 @@ class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
         return aliasTokens.color.negative.borderColor;
       }
 
-      return _isActive
-          ? aliasTokens.color.active.borderColor
-          : aliasTokens.color.elements.borderColor;
+      return _isActive ? aliasTokens.color.active.borderColor : aliasTokens.color.elements.borderColor;
     }
 
     Widget getPlaceholder() {
@@ -123,8 +117,7 @@ class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
       bool isLabel = widget.value?.label != null;
 
       String placeholder = isLabel ? widget.value!.label : widget.placeholder;
-      TextStyle labelMixin =
-          isLabel ? aliasTokens.mixin.labelLg2 : aliasTokens.mixin.placeholder;
+      TextStyle labelMixin = isLabel ? aliasTokens.mixin.labelLg2 : aliasTokens.mixin.placeholder;
 
       double spacing = 10 + globalTokens.shapes.spacing.s1x;
 
@@ -151,15 +144,11 @@ class _MudeInputSelectLineState extends State<MudeInputSelectLine> {
         return aliasTokens.color.negative.labelColor;
       }
 
-      return _isActive || widget.value != null
-          ? aliasTokens.color.active.labelColor
-          : aliasTokens.color.text.labelColor;
+      return _isActive || widget.value != null ? aliasTokens.color.active.labelColor : aliasTokens.color.text.labelColor;
     }
 
     Widget getLabel() {
-      TextStyle sizeLabel = widget.value == null
-          ? aliasTokens.mixin.labelLg2
-          : aliasTokens.mixin.labelSm2;
+      TextStyle sizeLabel = widget.value == null ? aliasTokens.mixin.labelLg2 : aliasTokens.mixin.labelSm2;
 
       return Text(
         widget.label,

@@ -1,5 +1,5 @@
-name: mude_core
-description: Projeto Core dedicado ao mude.
+name: expense_core
+description: Projeto Core dedicado ao expense.
 version: 0.4.0+8
 publish_to: none
 
@@ -19,11 +19,11 @@ dependencies:
   rxdart:
   audio_session:
 
-  mude_tokens:
-    path: ../mude-tokens
+  expense_tokens:
+    path: ../expense-tokens
 
-  mude_assets:
-    path: ../mude-assets
+  expense_assets:
+    path: ../expense-assets
   equatable: ^2.0.5
   cached_network_image: ^3.3.1
 

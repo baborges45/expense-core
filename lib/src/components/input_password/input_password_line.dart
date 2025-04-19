@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/input_password_error_icon.dart';
 import 'widgets/input_password_icon_widget.dart';
 import 'widgets/input_password_support_text_widget.dart';
 
-class MudeInputPasswordLine extends StatefulWidget {
+class ExpenseInputPasswordLine extends StatefulWidget {
   ///A string that represents the label for the password field.
   final String label;
 
@@ -63,7 +63,7 @@ class MudeInputPasswordLine extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeInputPasswordLine({
+  const ExpenseInputPasswordLine({
     super.key,
     required this.label,
     this.supportText,
@@ -89,10 +89,10 @@ class MudeInputPasswordLine extends StatefulWidget {
   });
 
   @override
-  State<MudeInputPasswordLine> createState() => _MudeInputTextLPasswordtate();
+  State<ExpenseInputPasswordLine> createState() => _ExpenseInputTextLPasswordtate();
 }
 
-class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
+class _ExpenseInputTextLPasswordtate extends State<ExpenseInputPasswordLine> {
   bool _isPressed = false;
   bool _isFocussed = false;
   bool _isFilled = false;
@@ -133,16 +133,14 @@ class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var size = globalTokens.shapes.size;
     var defaultColor = aliasTokens.defaultt;
 
     Color getBackgroundColor() {
-      return _isPressed
-          ? aliasTokens.mixin.pressedOutline
-          : aliasTokens.color.elements.bgColor01;
+      return _isPressed ? aliasTokens.mixin.pressedOutline : aliasTokens.color.elements.bgColor01;
     }
 
     Color getTextColor() {
@@ -154,14 +152,10 @@ class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
         return aliasTokens.color.negative.placeholderColor;
       }
 
-      return _isFilled || _isFocussed
-          ? aliasTokens.color.active.placeholderColor
-          : aliasTokens.color.text.placeholderColor;
+      return _isFilled || _isFocussed ? aliasTokens.color.active.placeholderColor : aliasTokens.color.text.placeholderColor;
     }
 
-    Color getLabelColor() => widget.hasError
-        ? aliasTokens.color.negative.labelColor
-        : aliasTokens.color.active.labelColor;
+    Color getLabelColor() => widget.hasError ? aliasTokens.color.negative.labelColor : aliasTokens.color.active.labelColor;
 
     TextStyle? getLabelStyle() {
       Color color = getLabelColor();
@@ -181,15 +175,11 @@ class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
     }
 
     Color getBorderColor() {
-      return widget.hasError
-          ? aliasTokens.color.negative.borderColor
-          : aliasTokens.color.elements.borderColor;
+      return widget.hasError ? aliasTokens.color.negative.borderColor : aliasTokens.color.elements.borderColor;
     }
 
     Color getBorderFocusColor() {
-      return widget.hasError
-          ? aliasTokens.color.negative.borderColor
-          : aliasTokens.color.active.borderColor;
+      return widget.hasError ? aliasTokens.color.negative.borderColor : aliasTokens.color.active.borderColor;
     }
 
     UnderlineInputBorder getBorderDiasbleColor() {
@@ -212,8 +202,7 @@ class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
     EdgeInsetsGeometry? getPaddingError() {
       if (!widget.hasError) return null;
 
-      double spacingRight =
-          widget.hasError ? (24 * 2) + globalTokens.shapes.spacing.s2x : 0;
+      double spacingRight = widget.hasError ? (24 * 2) + globalTokens.shapes.spacing.s2x : 0;
 
       return EdgeInsets.only(right: spacingRight, bottom: 12, top: 12);
     }
@@ -310,8 +299,7 @@ class _MudeInputTextLPasswordtate extends State<MudeInputPasswordLine> {
 
                             // Icon Password
                             InputPasswordIconWidget(
-                              onPressed: () =>
-                                  setState(() => _isHide = !_isHide),
+                              onPressed: () => setState(() => _isHide = !_isHide),
                               hide: _isHide,
                               disabled: widget.disabled,
                               hasError: widget.hasError,

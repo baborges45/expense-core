@@ -1,1 +1,1 @@
-enum MudeParagraphSize { sm, lg }
+enum ExpenseParagraphSize { sm, lg }

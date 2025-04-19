@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 label: 'label',
                 onPressed: () => debugPrint(''),
               ),
@@ -58,7 +58,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 label: label,
                 onPressed: () => debugPrint(''),
               ),
@@ -79,7 +79,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 key: key,
                 label: label,
                 disabled: true,
@@ -104,7 +104,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 key: key,
                 label: label,
                 onPressed: () {
@@ -124,12 +124,12 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
           const label = 'Button';
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 key: key,
                 label: label,
                 inverse: true,
@@ -157,7 +157,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeButtonMini(
+              child: ExpenseButtonMini(
                 key: key,
                 label: label,
                 inverse: true,

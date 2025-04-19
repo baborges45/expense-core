@@ -1,8 +1,8 @@
-import 'package:mude_core/src/components/input_text/input_formatters/text_cellphone.dart';
-import 'package:mude_core/src/components/input_text/input_formatters/text_cep.dart';
-import 'package:mude_core/src/components/input_text/input_formatters/text_cnpj.dart';
-import 'package:mude_core/src/components/input_text/input_formatters/text_cpf.dart';
-import 'package:mude_core/src/components/input_text/types/type.dart';
+import 'package:expense_core/src/components/input_text/input_formatters/text_cellphone.dart';
+import 'package:expense_core/src/components/input_text/input_formatters/text_cep.dart';
+import 'package:expense_core/src/components/input_text/input_formatters/text_cnpj.dart';
+import 'package:expense_core/src/components/input_text/input_formatters/text_cpf.dart';
+import 'package:expense_core/src/components/input_text/types/type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,24 +10,24 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../wrapper.dart';
 
 void main() {
-  final Map<MudeInputTextType, List<TextInputFormatter>> inputFormatterMap = {
-    MudeInputTextType.cellphone: [
+  final Map<ExpenseInputTextType, List<TextInputFormatter>> inputFormatterMap = {
+    ExpenseInputTextType.cellphone: [
       FilteringTextInputFormatter.digitsOnly,
       CellphoneInputFormatter(),
     ],
-    MudeInputTextType.cep: [
+    ExpenseInputTextType.cep: [
       FilteringTextInputFormatter.digitsOnly,
       CEPInputFormatter(),
     ],
-    MudeInputTextType.cnpj: [
+    ExpenseInputTextType.cnpj: [
       FilteringTextInputFormatter.digitsOnly,
       CNPJInputFormatter(),
     ],
-    MudeInputTextType.cpf: [
+    ExpenseInputTextType.cpf: [
       FilteringTextInputFormatter.digitsOnly,
       CPFInputFormatter(),
     ],
-    MudeInputTextType.text: [],
+    ExpenseInputTextType.text: [],
   };
 
   group(
@@ -39,7 +39,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               child: TextField(
-                inputFormatters: inputFormatterMap[MudeInputTextType.cellphone],
+                inputFormatters: inputFormatterMap[ExpenseInputTextType.cellphone],
               ),
             ),
           );
@@ -59,7 +59,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               child: TextField(
-                inputFormatters: inputFormatterMap[MudeInputTextType.cpf],
+                inputFormatters: inputFormatterMap[ExpenseInputTextType.cpf],
               ),
             ),
           );
@@ -79,7 +79,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               child: TextField(
-                inputFormatters: inputFormatterMap[MudeInputTextType.cep],
+                inputFormatters: inputFormatterMap[ExpenseInputTextType.cep],
               ),
             ),
           );
@@ -99,7 +99,7 @@ void main() {
           await widgetTester.pumpWidget(
             Wrapper(
               child: TextField(
-                inputFormatters: inputFormatterMap[MudeInputTextType.cnpj],
+                inputFormatters: inputFormatterMap[ExpenseInputTextType.cnpj],
               ),
             ),
           );

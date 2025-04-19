@@ -3,7 +3,7 @@ import 'types/type.dart';
 import 'widgets/toast_animated.dart';
 import 'widgets/toast_widget.dart';
 
-class MudeToastColoful {
+class ExpenseToastColoful {
   static void show({
     ///A BuildContext object representing the current context.
     required BuildContext context,
@@ -11,8 +11,8 @@ class MudeToastColoful {
     ///A string object representing the message to display in the toast notification.
     required String message,
 
-    ///(Optional) A [MudeToastType] object representing the type of the toast notification .
-    MudeToastType? type,
+    ///(Optional) A [ExpenseToastType] object representing the type of the toast notification .
+    ExpenseToastType? type,
 
     ///A [Duration] object representing the duration of the toast notification.
     ///The default value is 4 seconds.
@@ -31,17 +31,15 @@ class MudeToastColoful {
       }
     }
 
-    MudeToastColor getColor() {
-      return type == MudeToastType.negative
-          ? MudeToastColor.negative
-          : MudeToastColor.positive;
+    ExpenseToastColor getColor() {
+      return type == ExpenseToastType.negative ? ExpenseToastColor.negative : ExpenseToastColor.positive;
     }
 
     overlayEntry = OverlayEntry(
       builder: (context) => ToastAnimated(
         onDismissed: onDismissed,
         duration: duration,
-        child: MudeToastWidget(
+        child: ExpenseToastWidget(
           message: message,
           type: type,
           color: getColor(),

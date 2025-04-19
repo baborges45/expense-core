@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
-class MudeCheckbox extends StatefulWidget {
+class ExpenseCheckbox extends StatefulWidget {
   ///(Optional) A boolean indicating whether the checkbox should be disabled. The default value is false.
   final bool disabled;
 
@@ -33,7 +33,7 @@ class MudeCheckbox extends StatefulWidget {
   ///The default value is false
   final bool excludeSemantics;
 
-  const MudeCheckbox({
+  const ExpenseCheckbox({
     super.key,
     required this.onChanged,
     this.disabled = false,
@@ -46,10 +46,10 @@ class MudeCheckbox extends StatefulWidget {
   });
 
   @override
-  State<MudeCheckbox> createState() => _MudeCheckboxState();
+  State<ExpenseCheckbox> createState() => _ExpenseCheckboxState();
 }
 
-class _MudeCheckboxState extends State<MudeCheckbox> {
+class _ExpenseCheckboxState extends State<ExpenseCheckbox> {
   bool _isPressed = false;
 
   void _onPressed(bool value) {
@@ -60,7 +60,7 @@ class _MudeCheckboxState extends State<MudeCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
@@ -77,20 +77,14 @@ class _MudeCheckboxState extends State<MudeCheckbox> {
 
     Color? getBackgroundColor() {
       if (widget.inverse) {
-        return widget.value == true || widget.value == null
-            ? aliasTokens.color.inverse.bgColor
-            : null;
+        return widget.value == true || widget.value == null ? aliasTokens.color.inverse.bgColor : null;
       }
 
       if (widget.disabled) {
-        return widget.value == true || widget.value == null
-            ? aliasTokens.color.disabled.bgColor
-            : null;
+        return widget.value == true || widget.value == null ? aliasTokens.color.disabled.bgColor : null;
       }
 
-      return widget.value == true || widget.value == null
-          ? aliasTokens.color.selected.bgColor
-          : null;
+      return widget.value == true || widget.value == null ? aliasTokens.color.selected.bgColor : null;
     }
 
     double getOpacity() {
@@ -109,49 +103,47 @@ class _MudeCheckboxState extends State<MudeCheckbox> {
     Widget? getLabel() {
       if (widget.label != null) {
         if (widget.inverse) {
-          return MudeParagraph(
+          return ExpenseParagraph(
             widget.label!,
-            size: MudeParagraphSize.sm,
+            size: ExpenseParagraphSize.sm,
           );
         }
 
         if (widget.disabled) {
-          return MudeParagraph(
+          return ExpenseParagraph(
             widget.label!,
-            size: MudeParagraphSize.sm,
+            size: ExpenseParagraphSize.sm,
           );
         }
 
-        return MudeParagraph(
+        return ExpenseParagraph(
           widget.label!,
-          size: MudeParagraphSize.sm,
+          size: ExpenseParagraphSize.sm,
         );
       } else {
         return const SizedBox.shrink();
       }
     }
 
-    MudeIcon? getIcon() {
+    ExpenseIcon? getIcon() {
       if (widget.value == null) {
-        return MudeIcon(
-          icon: MudeIcons.minusLine,
+        return ExpenseIcon(
+          icon: ExpenseIcons.minusLine,
           color: getIconColor(),
-          size: MudeIconSize.sm,
+          size: ExpenseIconSize.sm,
         );
       }
       if (widget.value == false) return null;
 
-      return MudeIcon(
-        icon: MudeIcons.checkLine,
+      return ExpenseIcon(
+        icon: ExpenseIcons.checkLine,
         color: getIconColor(),
-        size: MudeIconSize.sm,
+        size: ExpenseIconSize.sm,
       );
     }
 
     Color getPressedColor() {
-      return widget.inverse
-          ? aliasTokens.mixin.pressedOutlineInverse
-          : aliasTokens.mixin.pressedOutline;
+      return widget.inverse ? aliasTokens.mixin.pressedOutlineInverse : aliasTokens.mixin.pressedOutline;
     }
 
     Widget onPressAnimation() {

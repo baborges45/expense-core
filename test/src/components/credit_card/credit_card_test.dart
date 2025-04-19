@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCreditCard(key: key),
+              child: ExpenseCreditCard(key: key),
             ),
           );
 
@@ -31,9 +31,9 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeCreditCard(
+              child: ExpenseCreditCard(
                 key: key,
-                flag: MudeFlags.masterCard,
+                flag: ExpenseFlags.masterCard,
               ),
             ),
           );
@@ -46,14 +46,14 @@ void main() {
         'Should credit card inverse',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeCreditCard(
+              child: ExpenseCreditCard(
                 key: key,
-                flag: MudeFlags.masterCard,
+                flag: ExpenseFlags.masterCard,
                 inverse: true,
               ),
             ),
@@ -75,8 +75,8 @@ void main() {
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeCreditCard(
-              flag: MudeFlags.elo,
+            child: ExpenseCreditCard(
+              flag: ExpenseFlags.elo,
               semanticsLabel: 'Elo',
             ),
           ),

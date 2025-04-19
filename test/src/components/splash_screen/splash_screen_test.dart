@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -12,13 +12,13 @@ void main() {
         (widgetTester) async {
           await widgetTester.pumpWidget(
             const Wrapper(
-              child: MudeSplashScreen(
-                logo: MudeBrand(type: MudeBrandType.logo),
+              child: ExpenseSplashScreen(
+                logo: ExpenseBrand(type: ExpenseBrandType.logo),
               ),
             ),
           );
 
-          final widget = find.byType(MudeSplashScreen);
+          final widget = find.byType(ExpenseSplashScreen);
           expect(widget, findsOneWidget);
         },
       );
@@ -33,8 +33,8 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeSplashScreen(
-              logo: MudeBrand(type: MudeBrandType.logo),
+            child: ExpenseSplashScreen(
+              logo: ExpenseBrand(type: ExpenseBrandType.logo),
               semanticsLabel: 'Splash screen',
               semanticsHint: 'Splash screen',
             ),

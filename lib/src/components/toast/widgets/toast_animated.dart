@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,7 +53,7 @@ class _AnimatedState extends State<ToastAnimated> {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     return GestureDetector(
       onTap: dismissedAnimation,

@@ -2,14 +2,14 @@
 
 part of '../header_navigation.dart';
 
-class _MudeHeader extends StatelessWidget {
+class _ExpenseHeader extends StatelessWidget {
   final String? title;
   final VoidCallback onBack;
-  final List<MudeButtonIcon>? trailingButtons;
+  final List<ExpenseButtonIcon>? trailingButtons;
   final String? semanticsHeaderLabel;
   final String? semanticsButtonBackLabel;
 
-  const _MudeHeader({
+  const _ExpenseHeader({
     required this.title,
     required this.onBack,
     this.trailingButtons,
@@ -19,7 +19,7 @@ class _MudeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var globalTokens = Provider.of<MudeThemeManager>(context).globals;
+    var globalTokens = Provider.of<ExpenseThemeManager>(context).globals;
 
     Widget getButtons() {
       if (trailingButtons == null) {
@@ -33,12 +33,12 @@ class _MudeHeader extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: globalTokens.shapes.spacing.half,
               ),
-              child: MudeButtonIcon(
+              child: ExpenseButtonIcon(
                 icon: button.icon,
                 onPressed: button.onPressed,
                 disabled: button.disabled,
                 showNotification: button.showNotification,
-                size: MudeButtonIconSize.lg,
+                size: ExpenseButtonIconSize.lg,
                 semanticsLabel: button.semanticsLabel,
                 semanticsHint: button.semanticsHint,
               ),
@@ -64,9 +64,9 @@ class _MudeHeader extends StatelessWidget {
         return const ExcludeSemantics(child: SizedBox.shrink());
       }
 
-      return MudeHeading(
+      return ExpenseHeading(
         title!,
-        size: MudeHeadingSize.xs,
+        size: ExpenseHeadingSize.xs,
         semanticsLabel: semanticsHeaderLabel,
       );
     }
@@ -84,8 +84,8 @@ class _MudeHeader extends StatelessWidget {
           ),
           Row(
             children: [
-              MudeButtonIcon(
-                icon: MudeIcons.backLine,
+              ExpenseButtonIcon(
+                icon: ExpenseIcons.backLine,
                 onPressed: onBack,
                 semanticsLabel: semanticsButtonBackLabel ?? 'Voltar',
               ),

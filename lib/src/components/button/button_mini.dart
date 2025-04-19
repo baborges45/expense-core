@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'mixins/properties_mixin.dart';
 
-class MudeButtonMini extends StatefulWidget {
+class ExpenseButtonMini extends StatefulWidget {
   ///A string that represents the text label displayed on the button.
   final String label;
 
@@ -32,10 +32,10 @@ class MudeButtonMini extends StatefulWidget {
   final bool excludeSemantics;
 
   /// Set a color type to displayed.
-  final MudeButtonColorType type;
+  final ExpenseButtonColorType type;
 
   /// Set a icon to displayed.
-  final MudeIconData? icon;
+  final ExpenseIconData? icon;
 
   /// Set a icon to displayed.
   final bool isIconNav;
@@ -43,7 +43,7 @@ class MudeButtonMini extends StatefulWidget {
   /// A boolean value indicating whether the text should be underlined.
   final bool underline;
 
-  const MudeButtonMini({
+  const ExpenseButtonMini({
     super.key,
     required this.label,
     required this.onPressed,
@@ -53,16 +53,16 @@ class MudeButtonMini extends StatefulWidget {
     this.semanticsHint,
     this.excludeSemantics = false,
     this.icon,
-    this.type = MudeButtonColorType.positive,
+    this.type = ExpenseButtonColorType.positive,
     this.isIconNav = true,
     this.underline = false,
   });
 
   @override
-  State<MudeButtonMini> createState() => _MudeButtonMiniState();
+  State<ExpenseButtonMini> createState() => _ExpenseButtonMiniState();
 }
 
-class _MudeButtonMiniState extends State<MudeButtonMini> with PropertiesMixin, WidgetsBindingObserver {
+class _ExpenseButtonMiniState extends State<ExpenseButtonMini> with PropertiesMixin, WidgetsBindingObserver {
   bool _isPressed = false;
   double _sizeWidth = 0;
 
@@ -113,7 +113,7 @@ class _MudeButtonMiniState extends State<MudeButtonMini> with PropertiesMixin, W
 
   @override
   Widget build(BuildContext context) {
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final globalTokens = tokens.globals;
     final aliasTokens = tokens.alias;
     final spacing = globalTokens.shapes.spacing;
@@ -128,10 +128,10 @@ class _MudeButtonMiniState extends State<MudeButtonMini> with PropertiesMixin, W
     Color getTextColor() {
       final elements = aliasTokens.color;
       final color = switch (widget.type) {
-        MudeButtonColorType.positive => elements.action.labelPrimaryColor,
-        MudeButtonColorType.negative => elements.negative.labelColor,
-        MudeButtonColorType.inverse => elements.inverse.labelColor,
-        MudeButtonColorType.disabled => elements.disabled.labelColor,
+        ExpenseButtonColorType.positive => elements.action.labelPrimaryColor,
+        ExpenseButtonColorType.negative => elements.negative.labelColor,
+        ExpenseButtonColorType.inverse => elements.inverse.labelColor,
+        ExpenseButtonColorType.disabled => elements.disabled.labelColor,
       };
 
       return color;
@@ -150,11 +150,11 @@ class _MudeButtonMiniState extends State<MudeButtonMini> with PropertiesMixin, W
             padding: EdgeInsets.only(
               right: spacing.half,
             ),
-            child: MudeIcon(
+            child: ExpenseIcon(
               key: const Key('ds-button-icon'),
-              icon: widget.isIconNav ? MudeIcons.navigationRightLine : widget.icon!,
+              icon: widget.isIconNav ? ExpenseIcons.navigationRightLine : widget.icon!,
               color: aliasTokens.color.elements.iconColor,
-              size: MudeIconSize.sm,
+              size: ExpenseIconSize.sm,
             ),
           )
         : const SizedBox.shrink();

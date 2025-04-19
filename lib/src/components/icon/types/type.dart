@@ -1,1 +1,1 @@
-enum MudeIconSize { sm, lg, xl }
+enum ExpenseIconSize { sm, lg, xl }

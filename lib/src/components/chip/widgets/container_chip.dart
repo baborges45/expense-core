@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import '../mixins/properties_mixin.dart';
 
 class ContainerChip extends StatelessWidget with PropertiesMixin {
   final List<Widget> children;
-  final MudeChipType type;
+  final ExpenseChipType type;
   final bool isSelected;
   final bool isPressed;
 
@@ -20,7 +20,7 @@ class ContainerChip extends StatelessWidget with PropertiesMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
     var globalsTokens = tokens.globals;
     final spacing = globalsTokens.shapes.spacing;

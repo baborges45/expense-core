@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 
 class LabelText extends StatelessWidget {
@@ -8,9 +8,9 @@ class LabelText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MudeHeading(
+    return ExpenseHeading(
       label,
-      size: MudeHeadingSize.xs,
+      size: ExpenseHeadingSize.xs,
     );
   }
 }

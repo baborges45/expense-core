@@ -1,10 +1,10 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 mixin PropertiesMixin {
   double getOpacity(bool disabled, bool isPressed, BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     if (disabled) {

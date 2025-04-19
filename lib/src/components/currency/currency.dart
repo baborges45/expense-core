@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_currency_income.dart';
@@ -9,23 +9,23 @@ part 'widgets/_currency_sale.dart';
 part 'widgets/_currency_text.dart';
 part 'widgets/_hide_dot.dart';
 
-class MudeCurrency extends StatelessWidget {
+class ExpenseCurrency extends StatelessWidget {
   /// A doule value that will be displayed as the price.
   final double price;
 
   /// A doule value that represents the discount.
-  /// It only will be displayed on [MudeCurrencyType.sale] type.
+  /// It only will be displayed on [ExpenseCurrencyType.sale] type.
   /// The default value is 0.0
   final double priceOut;
 
-  /// A [MudeCurrencyType] that represents the type of the widget.
+  /// A [ExpenseCurrencyType] that represents the type of the widget.
   /// it can be currency, sale, income, or outcome.
-  /// The default value is [MudeCurrencyType.currency].
-  final MudeCurrencyType type;
+  /// The default value is [ExpenseCurrencyType.currency].
+  final ExpenseCurrencyType type;
 
-  /// A [MudeCurrencySize] enum that represents how big should be the widget.
-  /// The default value is [MudeCurrencySize.sm].
-  final MudeCurrencySize size;
+  /// A [ExpenseCurrencySize] enum that represents how big should be the widget.
+  /// The default value is [ExpenseCurrencySize.sm].
+  final ExpenseCurrencySize size;
 
   /// Define if value is hide, this field is true or false.
   /// If you don't he will assume false.
@@ -43,11 +43,11 @@ class MudeCurrency extends StatelessWidget {
   ///The default value is false
   final bool excludeSemantics;
 
-  const MudeCurrency({
+  const ExpenseCurrency({
     super.key,
     required this.price,
-    this.size = MudeCurrencySize.sm,
-    this.type = MudeCurrencyType.currency,
+    this.size = ExpenseCurrencySize.sm,
+    this.type = ExpenseCurrencyType.currency,
     this.priceOut = 0.0,
     this.hide = false,
     this.semanticsLabel,
@@ -57,7 +57,7 @@ class MudeCurrency extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var aliasTokens = tokens.alias;
 
     final formatCurrency = NumberFormat("#,##0.00", "pt_BR");
@@ -67,19 +67,19 @@ class MudeCurrency extends StatelessWidget {
 
     TextStyle getTextStyle() {
       switch (size) {
-        case MudeCurrencySize.sm:
+        case ExpenseCurrencySize.sm:
           return aliasTokens.mixin.labelMd2;
-        case MudeCurrencySize.lg:
+        case ExpenseCurrencySize.lg:
           return aliasTokens.mixin.labelLg2;
       }
     }
 
-    MudeIconSize getIconSize() {
+    ExpenseIconSize getIconSize() {
       switch (size) {
-        case MudeCurrencySize.sm:
-          return MudeIconSize.sm;
-        case MudeCurrencySize.lg:
-          return MudeIconSize.lg;
+        case ExpenseCurrencySize.sm:
+          return ExpenseIconSize.sm;
+        case ExpenseCurrencySize.lg:
+          return ExpenseIconSize.lg;
       }
     }
 
@@ -95,9 +95,9 @@ class MudeCurrency extends StatelessWidget {
     TextStyle defaultStyle = getTextStyle();
 
     switch (type) {
-      case MudeCurrencyType.income:
+      case ExpenseCurrencyType.income:
         return getSemantic(
-          _MudeCurrencyIncome(
+          _ExpenseCurrencyIncome(
             price: newPrice,
             defaultStyle: defaultStyle,
             hide: hide,
@@ -105,9 +105,9 @@ class MudeCurrency extends StatelessWidget {
           ),
         );
 
-      case MudeCurrencyType.outcome:
+      case ExpenseCurrencyType.outcome:
         return getSemantic(
-          _MudeCurrencyOutcome(
+          _ExpenseCurrencyOutcome(
             price: newPrice,
             defaultStyle: defaultStyle,
             hide: hide,
@@ -115,9 +115,9 @@ class MudeCurrency extends StatelessWidget {
           ),
         );
 
-      case MudeCurrencyType.sale:
+      case ExpenseCurrencyType.sale:
         return getSemantic(
-          _MudeCurrencySale(
+          _ExpenseCurrencySale(
             price: newPrice,
             priceOut: newPriceOut,
             defaultStyle: defaultStyle,
@@ -127,7 +127,7 @@ class MudeCurrency extends StatelessWidget {
 
       default:
         return getSemantic(
-          _MudePriceText(
+          _ExpensePriceText(
             price: newPrice,
             defaultStyle: defaultStyle,
             hide: hide,

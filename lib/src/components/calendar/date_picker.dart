@@ -4,7 +4,7 @@
 
 import 'dart:math' as math;
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mude_core/src/utils/string_extensions.dart';
+import 'package:expense_core/src/utils/string_extensions.dart';
 
 import 'utils/date_util.dart';
 
@@ -28,8 +28,7 @@ const double _dayPickerRowHeight = 42.0;
 // A 31 day month that starts on Saturday.
 // One extra row for the day-of-week header.
 const int _maxDayPickerRowCount = 6;
-const double _maxDayPickerHeight =
-    _dayPickerRowHeight * (_maxDayPickerRowCount + 1);
+const double _maxDayPickerHeight = _dayPickerRowHeight * (_maxDayPickerRowCount + 1);
 const double _monthPickerHorizontalPadding = 8.0;
 
 const int _yearPickerColumnCount = 3;
@@ -40,11 +39,11 @@ const double _yearPickerRowSpacing = 8.0;
 const double _subHeaderHeight = 52.0;
 const double _monthNavButtonsWidth = 108.0;
 
-class MudeDatePicker extends StatefulWidget {
+class ExpenseDatePicker extends StatefulWidget {
   /// The calendar UI related configurations
-  // final MudeDatePickerConfig config;
+  // final ExpenseDatePickerConfig config;
   /// The enabled date picker mode
-  final MudeDatePickerType type;
+  final ExpenseDatePickerType type;
 
   /// The earliest allowable [DateTime] that the user can select.
   final DateTime? firstDate;
@@ -56,7 +55,7 @@ class MudeDatePicker extends StatefulWidget {
   final DateTime? currentDate;
 
   /// The initially displayed view of the calendar picker.
-  final MudeDatePickerMode calendarViewMode;
+  final ExpenseDatePickerMode calendarViewMode;
 
   /// The selected [DateTime]s that the picker should display.
   final List<DateTime?> value;
@@ -81,13 +80,13 @@ class MudeDatePicker extends StatefulWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  MudeDatePicker({
+  ExpenseDatePicker({
     required this.value,
-    this.type = MudeDatePickerType.single,
+    this.type = ExpenseDatePickerType.single,
     this.firstDate,
     this.lastDate,
     this.currentDate,
-    this.calendarViewMode = MudeDatePickerMode.day,
+    this.calendarViewMode = ExpenseDatePickerMode.day,
     this.onValueChanged,
     this.displayedMonthDate,
     this.onDisplayedMonthChanged,
@@ -99,18 +98,16 @@ class MudeDatePicker extends StatefulWidget {
     const valid = true;
     const invalid = false;
 
-    if (type == MudeDatePickerType.single) {
-      assert(value.length < 2,
-          'Error: single date picker only allows maximum one initial date');
+    if (type == ExpenseDatePickerType.single) {
+      assert(value.length < 2, 'Error: single date picker only allows maximum one initial date');
     }
 
-    if (type == MudeDatePickerType.range && value.length > 1) {
+    if (type == ExpenseDatePickerType.range && value.length > 1) {
       bool isRangePickerValueValid = false;
       if (value[0] == null) {
         isRangePickerValueValid = (value[1] != null ? invalid : valid);
       } else if (value[1] != null) {
-        isRangePickerValueValid =
-            (value[1]!.isBefore(value[0]!) ? invalid : valid);
+        isRangePickerValueValid = (value[1]!.isBefore(value[0]!) ? invalid : valid);
       } else {
         isRangePickerValueValid = valid;
       }
@@ -123,25 +120,25 @@ class MudeDatePicker extends StatefulWidget {
   }
 
   @override
-  State<MudeDatePicker> createState() => _MudeDatePickerState();
+  State<ExpenseDatePicker> createState() => _ExpenseDatePickerState();
 }
 
-class _MudeDatePickerState extends State<MudeDatePicker> {
+class _ExpenseDatePickerState extends State<ExpenseDatePicker> {
   bool _announcedInitialDate = false;
   late List<DateTime?> _selectedDates;
-  late MudeDatePickerMode _mode;
+  late ExpenseDatePickerMode _mode;
   late DateTime _currentDisplayedMonthDate;
   final GlobalKey _monthPickerKey = GlobalKey();
   final GlobalKey _yearPickerKey = GlobalKey();
   late MaterialLocalizations _localizations;
   late TextDirection _textDirection;
-  late MudeDatePickerConfig configNOW;
+  late ExpenseDatePickerConfig configNOW;
 
   @override
   void initState() {
     super.initState();
 
-    configNOW = MudeDatePickerConfig(
+    configNOW = ExpenseDatePickerConfig(
       calendarType: widget.type,
       firstDate: widget.firstDate,
       lastDate: widget.lastDate,
@@ -162,7 +159,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
 
   // coverage:ignore-start
   @override
-  void didUpdateWidget(MudeDatePicker oldWidget) {
+  void didUpdateWidget(ExpenseDatePicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (configNOW.calendarViewMode != oldWidget.calendarViewMode) {
       _mode = configNOW.calendarViewMode;
@@ -216,7 +213,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
   }
   // coverage:ignore-end
 
-  void _handleModeChanged(MudeDatePickerMode mode) {
+  void _handleModeChanged(ExpenseDatePickerMode mode) {
     _vibrate();
     setState(() {
       _mode = mode;
@@ -225,9 +222,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
         for (final date in _selectedDates) {
           if (date != null) {
             SemanticsService.announce(
-              _mode == MudeDatePickerMode.day
-                  ? _localizations.formatMonthYear(date)
-                  : _localizations.formatYear(date),
+              _mode == ExpenseDatePickerMode.day ? _localizations.formatMonthYear(date) : _localizations.formatYear(date),
               _textDirection,
             );
           }
@@ -245,24 +240,18 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
       );
       var newDisplayedMonthDate = currentDisplayedMonthDate;
 
-      if (_currentDisplayedMonthDate.year != date.year ||
-          _currentDisplayedMonthDate.month != date.month) {
+      if (_currentDisplayedMonthDate.year != date.year || _currentDisplayedMonthDate.month != date.month) {
         newDisplayedMonthDate = DateTime(date.year, date.month);
       }
 
       if (fromYearPicker) {
-        final selectedDatesInThisYear = _selectedDates
-            .where((d) => d?.year == date.year)
-            .toList()
-          ..sort((d1, d2) => d1!.compareTo(d2!));
+        final selectedDatesInThisYear = _selectedDates.where((d) => d?.year == date.year).toList()..sort((d1, d2) => d1!.compareTo(d2!));
         if (selectedDatesInThisYear.isNotEmpty) {
-          newDisplayedMonthDate =
-              DateTime(date.year, selectedDatesInThisYear[0]!.month);
+          newDisplayedMonthDate = DateTime(date.year, selectedDatesInThisYear[0]!.month);
         }
       }
 
-      if (currentDisplayedMonthDate.year != newDisplayedMonthDate.year ||
-          currentDisplayedMonthDate.month != newDisplayedMonthDate.month) {
+      if (currentDisplayedMonthDate.year != newDisplayedMonthDate.year || currentDisplayedMonthDate.month != newDisplayedMonthDate.month) {
         _currentDisplayedMonthDate = DateTime(
           newDisplayedMonthDate.year,
           newDisplayedMonthDate.month,
@@ -282,7 +271,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
     }
 
     setState(() {
-      _mode = MudeDatePickerMode.day;
+      _mode = ExpenseDatePickerMode.day;
       _handleMonthChanged(value, fromYearPicker: true);
     });
   }
@@ -293,28 +282,23 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
       var selectedDates = [..._selectedDates];
       selectedDates.removeWhere((d) => d == null);
 
-      if (configNOW.calendarType == MudeDatePickerType.single) {
+      if (configNOW.calendarType == ExpenseDatePickerType.single) {
         selectedDates = [value];
-      } else if (configNOW.calendarType == MudeDatePickerType.multi) {
-        final index =
-            selectedDates.indexWhere((d) => DateUtils.isSameDay(d, value));
+      } else if (configNOW.calendarType == ExpenseDatePickerType.multi) {
+        final index = selectedDates.indexWhere((d) => DateUtils.isSameDay(d, value));
         if (index != -1) {
           selectedDates.removeAt(index);
         } else {
           selectedDates.add(value);
         }
-      } else if (configNOW.calendarType == MudeDatePickerType.range) {
+      } else if (configNOW.calendarType == ExpenseDatePickerType.range) {
         if (selectedDates.isEmpty) {
           selectedDates.add(value);
         } else {
-          final isRangeSet =
-              selectedDates.length > 1 && selectedDates[1] != null;
-          final isSelectedDayBeforeStartDate =
-              value.isBefore(selectedDates[0]!);
+          final isRangeSet = selectedDates.length > 1 && selectedDates[1] != null;
+          final isSelectedDayBeforeStartDate = value.isBefore(selectedDates[0]!);
 
-          selectedDates = isRangeSet || isSelectedDayBeforeStartDate
-              ? [value, null]
-              : [selectedDates[0], value];
+          selectedDates = isRangeSet || isSelectedDayBeforeStartDate ? [value, null] : [selectedDates[0], value];
         }
       }
 
@@ -322,12 +306,11 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
         ..removeWhere((d) => d == null)
         ..sort((d1, d2) => d1!.compareTo(d2!));
 
-      final isValueDifferent =
-          configNOW.calendarType != MudeDatePickerType.single ||
-              !DateUtils.isSameDay(
-                selectedDates[0],
-                _selectedDates.isNotEmpty ? _selectedDates[0] : null,
-              );
+      final isValueDifferent = configNOW.calendarType != ExpenseDatePickerType.single ||
+          !DateUtils.isSameDay(
+            selectedDates[0],
+            _selectedDates.isNotEmpty ? _selectedDates[0] : null,
+          );
       if (isValueDifferent) {
         _selectedDates = [...selectedDates];
         widget.onValueChanged?.call(_selectedDates);
@@ -337,7 +320,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
 
   Widget _buildPicker() {
     switch (_mode) {
-      case MudeDatePickerMode.day:
+      case ExpenseDatePickerMode.day:
         return _CalendarView(
           config: configNOW,
           key: _monthPickerKey,
@@ -346,7 +329,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
           onChanged: _handleDayChanged,
           onDisplayedMonthChanged: _handleMonthChanged,
         );
-      case MudeDatePickerMode.year:
+      case ExpenseDatePickerMode.year:
         return Padding(
           padding: EdgeInsets.only(
             top: configNOW.controlsHeight ?? _subHeaderHeight,
@@ -365,10 +348,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
   @override
   Widget build(BuildContext context) {
     String getTitle() {
-      return _localizations
-          .formatMonthYear(_currentDisplayedMonthDate)
-          .replaceAll(' de', '')
-          .capitalize();
+      return _localizations.formatMonthYear(_currentDisplayedMonthDate).replaceAll(' de', '').capitalize();
     }
 
     assert(debugCheckHasMaterial(context));
@@ -381,8 +361,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
       child: Stack(
         children: <Widget>[
           SizedBox(
-            height: (configNOW.controlsHeight ?? _subHeaderHeight) +
-                _maxDayPickerHeight,
+            height: (configNOW.controlsHeight ?? _subHeaderHeight) + _maxDayPickerHeight,
             child: _buildPicker(),
           ),
           // Put the mode toggle button on top so that it won't be covered up by the _CalendarView
@@ -392,9 +371,7 @@ class _MudeDatePickerState extends State<MudeDatePicker> {
             title: getTitle(),
             onTitlePressed: () {
               // Toggle the day/year mode.
-              _handleModeChanged(_mode == MudeDatePickerMode.day
-                  ? MudeDatePickerMode.year
-                  : MudeDatePickerMode.day);
+              _handleModeChanged(_mode == ExpenseDatePickerMode.day ? ExpenseDatePickerMode.year : ExpenseDatePickerMode.day);
             },
           ),
         ],

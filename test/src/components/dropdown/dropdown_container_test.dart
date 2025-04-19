@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -13,15 +13,15 @@ void main() {
         (widgetTester) async {
           final key = UniqueKey();
 
-          List<MudeDropdownItem> list = [
-            const MudeDropdownItem('1', 'Item 01'),
-            const MudeDropdownItem('2', 'Item 02'),
-            const MudeDropdownItem('3', 'Item 03'),
+          List<ExpenseDropdownItem> list = [
+            const ExpenseDropdownItem('1', 'Item 01'),
+            const ExpenseDropdownItem('2', 'Item 02'),
+            const ExpenseDropdownItem('3', 'Item 03'),
           ];
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeDropDownContainer(
+              child: ExpenseDropDownContainer(
                 key: key,
                 items: list,
                 onChanged: (item) => debugPrint(''),
@@ -37,16 +37,16 @@ void main() {
         'Should dropdown tap',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeDropdownItem? itemSelected;
-          List<MudeDropdownItem> list = [
-            const MudeDropdownItem('1', 'Item 01'),
-            const MudeDropdownItem('2', 'Item 02'),
-            const MudeDropdownItem('3', 'Item 03'),
+          ExpenseDropdownItem? itemSelected;
+          List<ExpenseDropdownItem> list = [
+            const ExpenseDropdownItem('1', 'Item 01'),
+            const ExpenseDropdownItem('2', 'Item 02'),
+            const ExpenseDropdownItem('3', 'Item 03'),
           ];
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeDropDownContainer(
+              child: ExpenseDropDownContainer(
                 key: key,
                 items: list,
                 onChanged: (item) {
@@ -78,15 +78,15 @@ void main() {
         'Should tapcancel dropdown',
         (widgetTester) async {
           final key = UniqueKey();
-          List<MudeDropdownItem> list = [
-            const MudeDropdownItem('1', 'Item 01'),
-            const MudeDropdownItem('2', 'Item 02'),
-            const MudeDropdownItem('3', 'Item 03'),
+          List<ExpenseDropdownItem> list = [
+            const ExpenseDropdownItem('1', 'Item 01'),
+            const ExpenseDropdownItem('2', 'Item 02'),
+            const ExpenseDropdownItem('3', 'Item 03'),
           ];
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeDropDownContainer(
+              child: ExpenseDropDownContainer(
                 key: key,
                 items: list,
                 onChanged: (item) {},
@@ -113,15 +113,15 @@ void main() {
       (widgetTester) async {
         final SemanticsHandle handle = widgetTester.ensureSemantics();
 
-        List<MudeDropdownItem> list = [
-          const MudeDropdownItem('1', 'Item 01'),
-          const MudeDropdownItem('2', 'Item 02'),
-          const MudeDropdownItem('3', 'Item 03'),
+        List<ExpenseDropdownItem> list = [
+          const ExpenseDropdownItem('1', 'Item 01'),
+          const ExpenseDropdownItem('2', 'Item 02'),
+          const ExpenseDropdownItem('3', 'Item 03'),
         ];
 
         await widgetTester.pumpWidget(
           Wrapper(
-            child: MudeDropDownContainer(
+            child: ExpenseDropDownContainer(
               items: list,
               onChanged: (item) => debugPrint(''),
               semanticsLabel: 'Dropdown Container',

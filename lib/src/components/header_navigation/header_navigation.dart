@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
-import 'package:mude_core/src/utils/check_url_is_valid.dart';
+import 'package:expense_core/core.dart';
+import 'package:expense_core/src/utils/check_url_is_valid.dart';
 import 'package:provider/provider.dart';
 
 part 'widgets/_header.dart';
@@ -8,7 +8,7 @@ part 'widgets/_header_animation.dart';
 part 'widgets/_header_image.dart';
 part 'widgets/_subtitle.dart';
 
-class MudeHeaderNavigation extends StatelessWidget {
+class ExpenseHeaderNavigation extends StatelessWidget {
   ///(Optional) A string representing the title of the header.
   final String? title;
 
@@ -21,12 +21,12 @@ class MudeHeaderNavigation extends StatelessWidget {
   ///(Optional) A string representing the description of the header.
   final String? description;
 
-  ///A [List] of [MudeButtonIcon] objects representing the trailing buttons to be displayed in the header.
-  final List<MudeButtonIcon>? trailingButtons;
+  ///A [List] of [ExpenseButtonIcon] objects representing the trailing buttons to be displayed in the header.
+  final List<ExpenseButtonIcon>? trailingButtons;
 
-  ///A [MudeHeaderNavigationType] object representing the type of the header,
+  ///A [ExpenseHeaderNavigationType] object representing the type of the header,
   ///such as compact or jumbo.
-  final MudeHeaderNavigationType type;
+  final ExpenseHeaderNavigationType type;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -59,14 +59,14 @@ class MudeHeaderNavigation extends StatelessWidget {
   /// Set the heroTag value
   final String? heroTag;
 
-  const MudeHeaderNavigation({
+  const ExpenseHeaderNavigation({
     super.key,
     this.title,
     required this.onBack,
     this.subtitle,
     this.description,
     this.trailingButtons,
-    this.type = MudeHeaderNavigationType.compact,
+    this.type = ExpenseHeaderNavigationType.compact,
     this.semanticsHeaderLabel,
     this.semanticsSubtitleLabel,
     this.semanticsHeaderHint,
@@ -83,10 +83,10 @@ class MudeHeaderNavigation extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double dynamicHeight = screenHeight * 0.6;
 
-    var aliasTokens = Provider.of<MudeThemeManager>(context).alias;
+    var aliasTokens = Provider.of<ExpenseThemeManager>(context).alias;
 
     Widget getImage(String source) {
-      var sourceLoad = urlIsvalid(source) ? MudeImage.network : MudeImage.asset;
+      var sourceLoad = urlIsvalid(source) ? ExpenseImage.network : ExpenseImage.asset;
 
       return Hero(
         tag: heroTag ?? UniqueKey(),
@@ -100,13 +100,13 @@ class MudeHeaderNavigation extends StatelessWidget {
 
     return Semantics(
       explicitChildNodes: true,
-      child: type == MudeHeaderNavigationType.image
+      child: type == ExpenseHeaderNavigationType.image
           ? SizedBox(
               height: dynamicHeight,
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: _MudeHeaderAnimation(
+                    child: _ExpenseHeaderAnimation(
                       getImage(source ?? ''),
                     ),
                   ),
@@ -125,8 +125,8 @@ class MudeHeaderNavigation extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _MudeHeaderAnimation(
-                        _MudeHeader(
+                      _ExpenseHeaderAnimation(
+                        _ExpenseHeader(
                           title: title,
                           onBack: onBack,
                           trailingButtons: trailingButtons,
@@ -134,7 +134,7 @@ class MudeHeaderNavigation extends StatelessWidget {
                           semanticsButtonBackLabel: semanticsButtonBackLabel,
                         ),
                       ),
-                      _MudeHeaderImage(
+                      _ExpenseHeaderImage(
                         type: type,
                         source: source ?? '',
                         tag: tag,
@@ -150,14 +150,14 @@ class MudeHeaderNavigation extends StatelessWidget {
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _MudeHeader(
+                _ExpenseHeader(
                   title: title,
                   onBack: onBack,
                   trailingButtons: trailingButtons,
                   semanticsHeaderLabel: semanticsHeaderLabel,
                   semanticsButtonBackLabel: semanticsButtonBackLabel,
                 ),
-                _MudeSubtitle(
+                _ExpenseSubtitle(
                   subtitle: subtitle,
                   description: description,
                   type: type,

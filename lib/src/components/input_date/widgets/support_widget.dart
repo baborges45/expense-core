@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class SupportText extends StatelessWidget {
   Widget build(BuildContext context) {
     if (supportText == null) return const SizedBox.shrink();
 
-    final tokens = Provider.of<MudeThemeManager>(context);
+    final tokens = Provider.of<ExpenseThemeManager>(context);
     final aliasTokens = tokens.alias;
 
     Color getTextColor() {

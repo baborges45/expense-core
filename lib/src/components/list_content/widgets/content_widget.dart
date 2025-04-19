@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'leading_widget.dart';
@@ -12,7 +12,7 @@ class ContentWidget extends StatelessWidget {
   final String? labelRight;
   final String? descriptionRight;
   final dynamic leading;
-  final MudeButtonIcon? trailingButton;
+  final ExpenseButtonIcon? trailingButton;
   final bool isLayoutContainer;
   final bool inverse;
 
@@ -30,7 +30,7 @@ class ContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var spacing = globalTokens.shapes.spacing;
@@ -44,7 +44,7 @@ class ContentWidget extends StatelessWidget {
         label: descriptionRight,
         child: Padding(
           padding: EdgeInsets.only(left: spacing.s1x),
-          child: MudeDescription(descriptionRight!),
+          child: ExpenseDescription(descriptionRight!),
         ),
       );
     }
@@ -58,13 +58,13 @@ class ContentWidget extends StatelessWidget {
         label: description,
         child: Column(
           children: [
-            MudeDescription(description!),
+            ExpenseDescription(description!),
           ],
         ),
       );
     }
 
-    return !(leading is MudeAvatarGroup || leading is MudeIconData)
+    return !(leading is ExpenseAvatarGroup || leading is ExpenseIconData)
         ? _buildNormalContent(
             getDescription,
             spacing,
@@ -131,7 +131,7 @@ class ContentWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(bottom: spacing.s1x),
-              child: MudeDescription(description!),
+              child: ExpenseDescription(description!),
             ),
             Row(
               children: [

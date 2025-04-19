@@ -1,12 +1,12 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/content_widget.dart';
 
-class MudeListContentLine extends StatelessWidget {
+class ExpenseListContentLine extends StatelessWidget {
   ///A string representing the label text
   final String label;
 
@@ -20,17 +20,17 @@ class MudeListContentLine extends StatelessWidget {
   final String? descriptionRight;
 
   /// A dynamic type that can be this one of these:
-  /// [MudeIconData], [MudeImage], [MudeAvatarName], [MudeAvatarIcon],
-  /// [MudeAvatarIcon], [MudeCreditCard].
+  /// [ExpenseIconData], [ExpenseImage], [ExpenseAvatarName], [ExpenseAvatarIcon],
+  /// [ExpenseAvatarIcon], [ExpenseCreditCard].
   final dynamic leading;
 
-  ///(Optional) A [MudeButtonMini] button that will be displayed on the right.
-  final MudeButtonIcon? trailingButton;
+  ///(Optional) A [ExpenseButtonMini] button that will be displayed on the right.
+  final ExpenseButtonIcon? trailingButton;
 
-  /// A [MudeListContentPosition] that defines the position of the border line
+  /// A [ExpenseListContentPosition] that defines the position of the border line
   /// It can be a top, bottom or none.
   /// The default value is none.
-  final MudeListContentPosition linePosition;
+  final ExpenseListContentPosition linePosition;
 
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
@@ -40,7 +40,7 @@ class MudeListContentLine extends StatelessWidget {
   ///The default value is null
   final String? semanticsHint;
 
-  const MudeListContentLine({
+  const ExpenseListContentLine({
     super.key,
     required this.label,
     this.description = '',
@@ -50,17 +50,17 @@ class MudeListContentLine extends StatelessWidget {
     this.trailingButton,
     this.semanticsLabel,
     this.semanticsHint,
-    this.linePosition = MudeListContentPosition.top,
+    this.linePosition = ExpenseListContentPosition.top,
   });
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
 
     Border? getBorder() {
-      if (linePosition == MudeListContentPosition.top) {
+      if (linePosition == ExpenseListContentPosition.top) {
         return Border(
           top: BorderSide(
             color: aliasTokens.color.elements.borderColor,
@@ -68,7 +68,7 @@ class MudeListContentLine extends StatelessWidget {
           ),
         );
       }
-      if (linePosition == MudeListContentPosition.bottom) {
+      if (linePosition == ExpenseListContentPosition.bottom) {
         return Border(
           bottom: BorderSide(
             color: aliasTokens.color.elements.borderColor,

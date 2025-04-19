@@ -1,4 +1,4 @@
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,14 +13,14 @@ void main() {
         'Should render brand logo',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeBrand(
+              child: ExpenseBrand(
                 key: key,
-                type: MudeBrandType.logo,
+                type: ExpenseBrandType.logo,
               ),
             ),
           );
@@ -38,14 +38,14 @@ void main() {
         'Should render brand symbol',
         (widgetTester) async {
           final key = UniqueKey();
-          MudeThemeManager? tokens;
+          ExpenseThemeManager? tokens;
 
           await widgetTester.pumpWidget(
             Wrapper(
               onTokens: (t) => tokens = t,
-              child: MudeBrand(
+              child: ExpenseBrand(
                 key: key,
-                type: MudeBrandType.symbol,
+                type: ExpenseBrandType.symbol,
               ),
             ),
           );
@@ -70,8 +70,8 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeBrand(
-              type: MudeBrandType.logo,
+            child: ExpenseBrand(
+              type: ExpenseBrandType.logo,
               semanticsLabel: 'logo',
             ),
           ),

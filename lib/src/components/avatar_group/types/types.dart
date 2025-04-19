@@ -1,1 +1,1 @@
-enum MudeAvatarGroupSize { sm, lg }
+enum ExpenseAvatarGroupSize { sm, lg }

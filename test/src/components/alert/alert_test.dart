@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mude_core/core.dart';
+import 'package:expense_core/core.dart';
 
 import '../../../wrapper.dart';
 
@@ -16,7 +16,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAlert(
+              child: ExpenseAlert(
                 key: key,
                 message: message,
               ),
@@ -36,7 +36,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAlert(
+              child: ExpenseAlert(
                 key: key,
                 message: message,
                 open: false,
@@ -62,7 +62,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAlert(
+              child: ExpenseAlert(
                 key: key,
                 message: message,
                 onClose: () => press = true,
@@ -87,7 +87,7 @@ void main() {
 
           await widgetTester.pumpWidget(
             Wrapper(
-              child: MudeAlert(
+              child: ExpenseAlert(
                 key: key,
                 message: message,
                 hyperlink: AlertHyperLink(
@@ -110,10 +110,10 @@ void main() {
           final key = UniqueKey();
           const message = 'Message';
 
-          for (var type in MudeAlertType.values) {
+          for (var type in ExpenseAlertType.values) {
             await widgetTester.pumpWidget(
               Wrapper(
-                child: MudeAlert(
+                child: ExpenseAlert(
                   key: key,
                   message: message,
                   type: type,
@@ -122,27 +122,27 @@ void main() {
             );
 
             await widgetTester.pumpAndSettle();
-            final icons = find.byType(MudeIcon);
-            final icon = widgetTester.widget<MudeIcon>(icons.first);
+            final icons = find.byType(ExpenseIcon);
+            final icon = widgetTester.widget<ExpenseIcon>(icons.first);
 
             switch (type) {
-              case MudeAlertType.positive:
-                expect(icon.icon.name, MudeIcons.positiveLine.name);
+              case ExpenseAlertType.positive:
+                expect(icon.icon.name, ExpenseIcons.positiveLine.name);
                 break;
-              case MudeAlertType.negative:
-                expect(icon.icon.name, MudeIcons.negativeLine.name);
+              case ExpenseAlertType.negative:
+                expect(icon.icon.name, ExpenseIcons.negativeLine.name);
                 break;
-              case MudeAlertType.informative:
-                expect(icon.icon.name, MudeIcons.informationLine.name);
+              case ExpenseAlertType.informative:
+                expect(icon.icon.name, ExpenseIcons.informationLine.name);
                 break;
-              case MudeAlertType.warning:
-                expect(icon.icon.name, MudeIcons.warningLine.name);
+              case ExpenseAlertType.warning:
+                expect(icon.icon.name, ExpenseIcons.warningLine.name);
                 break;
-              case MudeAlertType.promote:
-                expect(icon.icon.name, MudeIcons.promoteLine.name);
+              case ExpenseAlertType.promote:
+                expect(icon.icon.name, ExpenseIcons.promoteLine.name);
                 break;
               default:
-                expect(icon.icon.name, MudeIcons.positiveLine.name);
+                expect(icon.icon.name, ExpenseIcons.positiveLine.name);
                 break;
             }
           }
@@ -159,7 +159,7 @@ void main() {
 
         await widgetTester.pumpWidget(
           const Wrapper(
-            child: MudeAlert(
+            child: ExpenseAlert(
               message: 'Message',
               semanticsLabel: 'Alert',
             ),

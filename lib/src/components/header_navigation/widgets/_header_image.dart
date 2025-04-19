@@ -1,14 +1,14 @@
 part of '../header_navigation.dart';
 
-class _MudeHeaderImage extends StatelessWidget {
-  final MudeHeaderNavigationType type;
+class _ExpenseHeaderImage extends StatelessWidget {
+  final ExpenseHeaderNavigationType type;
   final String? semanticsSubtitleLabel;
   final String source;
   final Widget? tag;
   final String? headingText;
   final Widget? child;
 
-  const _MudeHeaderImage({
+  const _ExpenseHeaderImage({
     required this.type,
     required this.source,
     required this.tag,
@@ -20,19 +20,17 @@ class _MudeHeaderImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget headingWidget = headingText != null
-        ? MudeHeading(
+        ? ExpenseHeading(
             headingText!,
             semanticsLabel: semanticsSubtitleLabel,
-            size: MudeHeadingSize.xl,
+            size: ExpenseHeadingSize.xl,
           )
         : const SizedBox.shrink();
 
     final Widget tagWidget = tag ?? const SizedBox.shrink();
     final Widget childWidget = child ?? const SizedBox.shrink();
 
-    return type == MudeHeaderNavigationType.image
-        ? _buildBody(tagWidget, headingWidget, childWidget)
-        : const SizedBox.shrink();
+    return type == ExpenseHeaderNavigationType.image ? _buildBody(tagWidget, headingWidget, childWidget) : const SizedBox.shrink();
   }
 
   Widget _buildBody(
@@ -72,7 +70,7 @@ class _BodyState extends State<_Body> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-    final motions = context.read<MudeThemeManager>().globals.motions;
+    final motions = context.read<ExpenseThemeManager>().globals.motions;
     final duration = motions.durations.slow02;
     final curves = motions.curves;
 
@@ -115,7 +113,7 @@ class _BodyState extends State<_Body> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var tokens = Provider.of<MudeThemeManager>(context);
+    var tokens = Provider.of<ExpenseThemeManager>(context);
     var globalTokens = tokens.globals;
     final spacing = globalTokens.shapes.spacing;
     final s3x = spacing.s3x;
