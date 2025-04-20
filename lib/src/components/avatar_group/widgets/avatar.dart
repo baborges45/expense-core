@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use, unused_element
+// ignore_for_file: must_be_immutable, deprecated_member_use, unused_element, unused_element_parameter
 
 part of '../avatar_group.dart';
 

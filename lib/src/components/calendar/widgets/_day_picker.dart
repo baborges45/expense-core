@@ -178,8 +178,8 @@ class _DayPickerState extends State<_DayPicker> {
             shape: widget.config.dayBorderRadius != null ? BoxShape.rectangle : BoxShape.circle,
           );
         } else if (isDisabled) {
-          dayColor = disabledDayColor.withOpacity(
-            globalTokens.shapes.opacity.low,
+          dayColor = disabledDayColor.withAlpha(
+            (globalTokens.shapes.opacity.low * 255).toInt(),
           );
         } else if (isToday) {
           // The current day gets a different text color and a circle stroke
@@ -461,8 +461,8 @@ class _TodaySelected extends StatelessWidget {
 
     Color getTextColor() {
       if (disabled) {
-        return aliasTokens.color.disabled.labelColor.withOpacity(
-          globalTokens.shapes.opacity.low,
+        return aliasTokens.color.disabled.labelColor.withAlpha(
+          (globalTokens.shapes.opacity.low * 255).toInt(),
         );
       }
 

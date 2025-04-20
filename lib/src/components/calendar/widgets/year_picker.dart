@@ -99,11 +99,11 @@ class _YearPickerState extends State<YearPicker> {
     if (isSelected) {
       textColor = colorScheme.onPrimary;
     } else if (isDisabled) {
-      textColor = colorScheme.onSurface.withOpacity(0.38);
+      textColor = colorScheme.onSurface.withAlpha(0x38);
     } else if (isCurrentYear) {
       textColor = widget.config.selectedDayHighlightColor ?? colorScheme.primary;
     } else {
-      textColor = colorScheme.onSurface.withOpacity(0.87);
+      textColor = colorScheme.onSurface.withAlpha(0x87);
     }
 
     TextStyle? itemStyle = widget.config.yearTextStyle ?? textTheme.bodyLarge?.apply(color: textColor);
@@ -196,8 +196,8 @@ class _YearState extends State<_Year> {
       if (widget.isSelected) {
         textColor = aliasTokens.color.selected.onLabelColor;
       } else if (widget.isDisabled) {
-        textColor = aliasTokens.color.disabled.labelColor.withOpacity(
-          globalTokens.shapes.opacity.low,
+        textColor = aliasTokens.color.disabled.labelColor.withAlpha(
+          (globalTokens.shapes.opacity.low * 255).toInt(),
         );
       }
 

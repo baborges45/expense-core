@@ -59,7 +59,7 @@ class SeekBarState extends State<SeekBar> {
     final duration = widget.duration.inMilliseconds.toDouble();
 
     final activeColor = widget.inverse ? inverseBgColor : colors.elements.bgColor01;
-    final inactiveColor = activeColor.withOpacity(globalTokens.shapes.opacity.superLow);
+    final inactiveColor = activeColor.withAlpha(globalTokens.shapes.opacity.superLow * 255 ~/ 100);
 
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,

@@ -55,7 +55,10 @@ class _ContentState extends State<_Content> {
   Widget build(BuildContext context) {
     onSelectedOption() {
       Future.delayed(const Duration(milliseconds: 200), () {
-        Navigator.pop(context);
+        if (mounted) {
+          Navigator.pop(context);
+        }
+
         widget.onInit();
       });
     }

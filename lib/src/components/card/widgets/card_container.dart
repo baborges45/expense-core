@@ -94,8 +94,8 @@ class _CardContainerState extends State<CardContainer> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  elements.bgColor06.withOpacity(0),
-                  elements.bgColor06.withOpacity(0.4),
+                  elements.bgColor06.withAlpha(0),
+                  elements.bgColor06.withAlpha(0x4),
                 ],
               )
             : null,

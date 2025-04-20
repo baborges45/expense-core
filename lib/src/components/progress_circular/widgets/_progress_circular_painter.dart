@@ -40,8 +40,8 @@ class _ProgressCirclePainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     final remainColor = Paint()
-      ..color = elements.bgColor05.withOpacity(
-        globalTokens.shapes.opacity.superLow,
+      ..color = elements.bgColor05.withAlpha(
+        globalTokens.shapes.opacity.superLow * 255 ~/ 100,
       )
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;

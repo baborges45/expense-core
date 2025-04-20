@@ -61,7 +61,9 @@ class _ExpenseLoadingState extends State<ExpenseLoading> {
 
     Color getColor() => widget.inverse ? aliasTokens.color.inverse.bgColor : aliasTokens.color.elements.bgColor01;
 
-    Color getBackgroundColor() => aliasTokens.color.elements.bgColor03.withOpacity(widget.inverse ? opacity.superHigh : opacity.superLow);
+    Color getBackgroundColor() => aliasTokens.color.elements.bgColor03.withAlpha(
+          widget.inverse ? (opacity.superHigh * 255).toInt() : (opacity.superLow * 255).toInt(),
+        );
 
     return Semantics(
       key: const Key('button-loading'),

@@ -141,9 +141,6 @@ void main() {
               case ExpenseAlertType.promote:
                 expect(icon.icon.name, ExpenseIcons.promoteLine.name);
                 break;
-              default:
-                expect(icon.icon.name, ExpenseIcons.positiveLine.name);
-                break;
             }
           }
         },
