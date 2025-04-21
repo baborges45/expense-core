@@ -65,6 +65,9 @@ void main() {
               case ExpenseHeadingSize.xs:
                 expect(style.fontSize, tokens!.globals.typographys.fontSizeXs);
                 break;
+              case ExpenseHeadingSize.xxs:
+                expect(style.fontSize, tokens!.globals.typographys.fontSize2xs);
+                break;
             }
           }
         },

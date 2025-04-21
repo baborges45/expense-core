@@ -68,9 +68,11 @@ class ExpenseCurrency extends StatelessWidget {
     TextStyle getTextStyle() {
       switch (size) {
         case ExpenseCurrencySize.sm:
-          return aliasTokens.mixin.labelMd2;
-        case ExpenseCurrencySize.lg:
           return aliasTokens.mixin.labelLg2;
+        case ExpenseCurrencySize.md:
+          return aliasTokens.mixin.labelLg4;
+        case ExpenseCurrencySize.lg:
+          return aliasTokens.mixin.labelLg5;
       }
     }
 
@@ -78,6 +80,8 @@ class ExpenseCurrency extends StatelessWidget {
       switch (size) {
         case ExpenseCurrencySize.sm:
           return ExpenseIconSize.sm;
+        case ExpenseCurrencySize.md:
+          return ExpenseIconSize.lg;
         case ExpenseCurrencySize.lg:
           return ExpenseIconSize.lg;
       }
