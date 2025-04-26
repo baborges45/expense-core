@@ -79,7 +79,7 @@ class _MyWidgetState<T> extends State<ExpenseRadioButton<T>> {
         if (widget.inverse) {
           return Text(
             widget.label!,
-            style: aliasTokens.mixin.labelMd1.merge(TextStyle(
+            style: aliasTokens.mixin.labelLg3.merge(TextStyle(
               color: aliasTokens.color.inverse.labelColor,
             )),
           );
@@ -89,7 +89,7 @@ class _MyWidgetState<T> extends State<ExpenseRadioButton<T>> {
           return Text(
             widget.label!,
             key: const Key('radio_button.label_disabled'),
-            style: aliasTokens.mixin.labelMd1.merge(TextStyle(
+            style: aliasTokens.mixin.labelLg3.merge(TextStyle(
               color: aliasTokens.color.disabled.labelColor,
             )),
           );
@@ -97,7 +97,7 @@ class _MyWidgetState<T> extends State<ExpenseRadioButton<T>> {
 
         return Text(
           widget.label!,
-          style: aliasTokens.mixin.labelMd1.merge(
+          style: aliasTokens.mixin.labelLg3.merge(
             TextStyle(
               color: aliasTokens.color.text.labelColor,
             ),

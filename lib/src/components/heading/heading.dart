@@ -95,28 +95,28 @@ class ExpenseHeading extends StatelessWidget {
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.walk,
+            icon: ExpenseIcons.carSideview,
             iconColor: textColor,
           );
         case ExpenseHeadingType.shopping:
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.premium,
+            icon: ExpenseIcons.shopping,
             iconColor: textColor,
           );
         case ExpenseHeadingType.education:
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.groups,
+            icon: ExpenseIcons.fiBrGraduationCap,
             iconColor: textColor,
           );
         case ExpenseHeadingType.finance:
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.reward,
+            icon: ExpenseIcons.fiBrDollar,
             iconColor: textColor,
           );
         case ExpenseHeadingType.home:
@@ -130,14 +130,14 @@ class ExpenseHeading extends StatelessWidget {
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.promotionCode,
+            icon: ExpenseIcons.giftOutline,
             iconColor: textColor,
           );
         case ExpenseHeadingType.health:
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.exercise,
+            icon: ExpenseIcons.weightLifter,
             iconColor: textColor,
           );
         case ExpenseHeadingType.entertainment:

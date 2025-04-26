@@ -135,16 +135,21 @@ class _ExpenseInputTextLineState extends State<ExpenseInputTextLine> {
     _controller = widget.controller ?? TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
 
-    _focusNode.addListener(() {
-      setState(() {
-        _isFocussed = _focusNode.hasFocus;
-      });
-    });
+    _focusNode.addListener(_handleFocusChange);
+    _controller.addListener(_handleTextChange);
+  }
 
-    _controller.addListener(() {
-      setState(() {
-        _isFilled = _controller.text.isNotEmpty;
-      });
+  void _handleFocusChange() {
+    if (!mounted) return;
+    setState(() {
+      _isFocussed = _focusNode.hasFocus;
+    });
+  }
+
+  void _handleTextChange() {
+    if (!mounted) return;
+    setState(() {
+      _isFilled = _controller.text.isNotEmpty;
     });
   }
 
@@ -362,5 +367,20 @@ class _ExpenseInputTextLineState extends State<ExpenseInputTextLine> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.removeListener(_handleFocusChange);
+    _controller.removeListener(_handleTextChange);
+
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
+    if (widget.focusNode == null) {
+      _focusNode.dispose();
+    }
+
+    super.dispose();
   }
 }

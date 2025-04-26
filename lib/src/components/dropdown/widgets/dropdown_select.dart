@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 
 import 'package:expense_core/core.dart';
@@ -23,9 +25,9 @@ class DropdownSelect {
           onFinish: onFinish,
         ),
       ],
-    );
-
-    onFinish();
+    ).then((_) {
+      onFinish();
+    });
   }
 }
 
@@ -56,6 +58,7 @@ class _ContentState extends State<_Content> {
     onSelectedOption() {
       Future.delayed(const Duration(milliseconds: 200), () {
         if (mounted) {
+          widget.onInit();
           Navigator.pop(context);
         }
 

@@ -94,7 +94,7 @@ class _ExpenseSwitchState extends State<ExpenseSwitch> {
         if (widget.inverse) {
           return Text(
             widget.label!,
-            style: aliasTokens.mixin.labelMd1.merge(TextStyle(
+            style: aliasTokens.mixin.labelLg3.merge(TextStyle(
               color: aliasTokens.color.inverse.labelColor,
             )),
           );
@@ -103,7 +103,7 @@ class _ExpenseSwitchState extends State<ExpenseSwitch> {
         if (widget.disabled) {
           return Text(
             widget.label!,
-            style: aliasTokens.mixin.labelMd1.merge(TextStyle(
+            style: aliasTokens.mixin.labelLg1.merge(TextStyle(
               color: aliasTokens.color.disabled.labelColor,
             )),
           );
@@ -111,9 +111,9 @@ class _ExpenseSwitchState extends State<ExpenseSwitch> {
 
         return Text(
           widget.label!,
-          style: aliasTokens.mixin.labelMd1.merge(
+          style: aliasTokens.mixin.labelLg3.merge(
             TextStyle(
-              color: aliasTokens.color.text.labelColor,
+              color: aliasTokens.color.text.headingColor,
             ),
           ),
         );

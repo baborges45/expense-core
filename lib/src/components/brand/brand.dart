@@ -44,7 +44,7 @@ class ExpenseBrand extends StatelessWidget {
     final heightChoice = height ?? size.s4x;
 
     if (type == ExpenseBrandType.logo) {
-      final brand = inverse ? ExpenseBrands.logoExpenseBlack : ExpenseBrands.logoExpenseWhite;
+      final brand = inverse ? ExpenseBrands.logoMudeBlack : ExpenseBrands.logoMudeWhite;
 
       return Semantics(
         label: semanticsLabel,

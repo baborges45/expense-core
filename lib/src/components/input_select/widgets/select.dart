@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:expense_core/core.dart';
 
@@ -54,8 +56,10 @@ class _ContentState extends State<_Content> {
   Widget build(BuildContext context) {
     onSelectedOption() {
       Future.delayed(const Duration(milliseconds: 200), () {
-        Navigator.pop(context);
-        widget.onInit();
+        if (mounted) {
+          widget.onInit();
+          Navigator.pop(context);
+        }
       });
     }
 
