@@ -6,11 +6,13 @@ class _ExpensePriceText extends StatelessWidget {
   final String price;
   final TextStyle defaultStyle;
   final bool hide;
+  final bool inverse;
 
   const _ExpensePriceText({
     required this.price,
     required this.defaultStyle,
     required this.hide,
+    required this.inverse,
   });
 
   @override
@@ -26,7 +28,7 @@ class _ExpensePriceText extends StatelessWidget {
         Text(
           priceShowValidation,
           style: defaultStyle.merge(TextStyle(
-            color: aliasTokens.color.text.labelColor,
+            color: inverse ? aliasTokens.color.selected.onBgColor : aliasTokens.color.text.labelColor,
           )),
         ),
         _ExpenseHideDot(

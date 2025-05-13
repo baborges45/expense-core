@@ -46,6 +46,8 @@ class ExpenseHeading extends StatelessWidget {
     var globalTokens = tokens.globals;
     var aliasTokens = tokens.alias;
     var sizing = globalTokens.shapes.size;
+    var shape = globalTokens.shapes;
+    var color = aliasTokens.color.elements;
 
     double getSize(ExpenseHeadingSize size) {
       switch (size) {
@@ -65,7 +67,7 @@ class ExpenseHeading extends StatelessWidget {
     }
 
     Color getTextColor() {
-      return inverse ? aliasTokens.color.inverse.headingColor : aliasTokens.color.text.headingColor;
+      return inverse ? aliasTokens.color.selected.onBgColor : aliasTokens.color.text.headingColor;
     }
 
     FontWeight getFontWeight() {
@@ -116,7 +118,7 @@ class ExpenseHeading extends StatelessWidget {
           return _ExpenseHeadingIcon(
             category: text,
             iconSize: ExpenseIconSize.lg,
-            icon: ExpenseIcons.fiBrDollar,
+            icon: ExpenseIcons.moneyAlt,
             iconColor: textColor,
           );
         case ExpenseHeadingType.home:
@@ -179,7 +181,23 @@ class ExpenseHeading extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          type != null ? getIcon() : const SizedBox(width: 0, height: 0),
+          type != null
+              ? Container(
+                  width: sizing.s4x,
+                  height: sizing.s4x,
+                  decoration: BoxDecoration(
+                    color: color.bgColor01,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: color.bgColor03,
+                      width: shape.border.widthSm,
+                    ),
+                  ),
+                  child: Center(
+                    child: getIcon(),
+                  ),
+                )
+              : const SizedBox(width: 0, height: 0),
           SizedBox(width: sizing.s1x),
           Text(
             text,

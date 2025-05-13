@@ -31,6 +31,10 @@ class ExpenseCurrency extends StatelessWidget {
   /// If you don't he will assume false.
   final bool hide;
 
+  /// A boolean parameter that specifies whether the link should have an inverse color scheme.
+  /// The default value is false.
+  final bool inverse;
+
   ///A string value that provides a descriptive label for accessibility purposes.
   ///The default value is null
   final String? semanticsLabel;
@@ -53,6 +57,7 @@ class ExpenseCurrency extends StatelessWidget {
     this.semanticsLabel,
     this.semanticsHint,
     this.excludeSemantics = false,
+    this.inverse = false,
   });
 
   @override
@@ -135,6 +140,7 @@ class ExpenseCurrency extends StatelessWidget {
             price: newPrice,
             defaultStyle: defaultStyle,
             hide: hide,
+            inverse: inverse,
           ),
         );
     }
