@@ -36,10 +36,12 @@ class BottomBarContainerWidget extends StatefulWidget {
   });
 
   @override
-  State<BottomBarContainerWidget> createState() => _ExpenseBottomBarContainerWidgetCircleState();
+  State<BottomBarContainerWidget> createState() =>
+      _ExpenseBottomBarContainerWidgetCircleState();
 }
 
-class _ExpenseBottomBarContainerWidgetCircleState extends State<BottomBarContainerWidget> {
+class _ExpenseBottomBarContainerWidgetCircleState
+    extends State<BottomBarContainerWidget> {
   double sizeTab = 0;
 
   GlobalKey tabKey = GlobalKey();
@@ -97,28 +99,29 @@ class _ExpenseBottomBarContainerWidgetCircleState extends State<BottomBarContain
           ),
           Row(
             children: [
-              ...widget.items.asMap().entries.map(
-                (tab) {
-                  String isActived = widget.currentIndex == tab.key ? 'ativado' : '';
+              ...widget.items.asMap().entries.map((tab) {
+                String isActived = widget.currentIndex == tab.key
+                    ? 'ativado'
+                    : '';
 
-                  String autoHint = '$isActived Tab ${tab.key + 1} de ${widget.items.length}';
+                String autoHint =
+                    '$isActived Tab ${tab.key + 1} de ${widget.items.length}';
 
-                  return BottomBarItemWidget(
-                    key: tab.key == 0 ? tabKey : null,
-                    label: tab.value.label,
-                    icon: tab.value.icon,
-                    active: widget.currentIndex == tab.key,
-                    activeInverse: widget.activeInverse,
-                    value: tab.key,
-                    onPressed: (v) => _onChanged(v),
-                    onlyIcon: widget.onlyIcon,
-                    onlyIconActive: widget.onlyIconActive,
-                    semanticsLabel: tab.value.semanticsLabel,
-                    semanticsHint: tab.value.semanticsHint ?? autoHint,
-                    textSize: aliasTokens.mixin.labelSm1,
-                  );
-                },
-              ),
+                return BottomBarItemWidget(
+                  key: tab.key == 0 ? tabKey : null,
+                  label: tab.value.label,
+                  icon: tab.value.icon,
+                  active: widget.currentIndex == tab.key,
+                  activeInverse: widget.activeInverse,
+                  value: tab.key,
+                  onPressed: (v) => _onChanged(v),
+                  onlyIcon: widget.onlyIcon,
+                  onlyIconActive: widget.onlyIconActive,
+                  semanticsLabel: tab.value.semanticsLabel,
+                  semanticsHint: tab.value.semanticsHint ?? autoHint,
+                  textSize: aliasTokens.mixin.labelSm1,
+                );
+              }),
             ],
           ),
         ],

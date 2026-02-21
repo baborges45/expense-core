@@ -47,17 +47,13 @@ class _ExpenseBottomBarFloatState extends State<ExpenseBottomBarFloat> {
     final circularRadius = globalTokens.shapes.border.radiusCircular;
 
     return Container(
-      constraints: BoxConstraints(
-        maxWidth: size.s40x,
-      ),
+      constraints: BoxConstraints(maxWidth: size.s40x),
       width: widget.width ?? size.s40x,
       height: size.s10x,
       padding: EdgeInsets.symmetric(horizontal: size.s2x),
       decoration: BoxDecoration(
-        color: aliasTokens.color.elements.bgColor02,
-        borderRadius: BorderRadius.circular(
-          circularRadius,
-        ),
+        color: Color(0xFF303138),
+        borderRadius: BorderRadius.circular(circularRadius),
       ),
       child: Stack(
         children: [
@@ -75,9 +71,7 @@ class _ExpenseBottomBarFloatState extends State<ExpenseBottomBarFloat> {
                   height: size.s7x,
                   decoration: BoxDecoration(
                     color: aliasTokens.color.selected.bgColor,
-                    borderRadius: BorderRadius.circular(
-                      circularRadius,
-                    ),
+                    borderRadius: BorderRadius.circular(circularRadius),
                   ),
                   child: Builder(
                     builder: (c) {
@@ -102,33 +96,30 @@ class _ExpenseBottomBarFloatState extends State<ExpenseBottomBarFloat> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: widget.items.asMap().entries.map<Widget>(
-                (tab) {
-                  String label = tab.value.label;
-                  String autoHint = 'Tab ${tab.key + 1} de ${widget.items.length}';
+              children: widget.items.asMap().entries.map<Widget>((tab) {
+                String label = tab.value.label;
+                String autoHint =
+                    'Tab ${tab.key + 1} de ${widget.items.length}';
 
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                        circularRadius,
-                      ),
-                    ),
-                    child: BottomBarItemWidget(
-                      label: label,
-                      icon: tab.value.icon,
-                      active: tab.key == widget.currentIndex,
-                      value: tab.key,
-                      onPressed: (v) => _onChanged(v),
-                      showNotification: tab.value.showNotification,
-                      inverse: true,
-                      semanticsLabel: tab.value.semanticsLabel,
-                      semanticsHint: tab.value.semanticsHint ?? autoHint,
-                      textSize: aliasTokens.mixin.labelMd2,
-                    ),
-                  );
-                },
-              ).toList(),
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(circularRadius),
+                  ),
+                  child: BottomBarItemWidget(
+                    label: label,
+                    icon: tab.value.icon,
+                    active: tab.key == widget.currentIndex,
+                    value: tab.key,
+                    onPressed: (v) => _onChanged(v),
+                    showNotification: tab.value.showNotification,
+                    inverse: true,
+                    semanticsLabel: tab.value.semanticsLabel,
+                    semanticsHint: tab.value.semanticsHint ?? autoHint,
+                    textSize: aliasTokens.mixin.labelMd2,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],

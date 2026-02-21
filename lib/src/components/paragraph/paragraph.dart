@@ -64,6 +64,7 @@ class ExpenseParagraph extends StatelessWidget {
         text,
         overflow: isExpanded ? TextOverflow.visible : overflow,
         maxLines: isExpanded ? null : maxLines ?? 3,
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: getColor(),
           fontFamily: globalTokens.typographys.fontFamilyBase,
