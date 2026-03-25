@@ -77,6 +77,10 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
     final size = globalTokens.shapes.size;
 
     Color getTextColor() {
+      if (widget.inverse && widget.active) {
+        return aliasTokens.color.selected.onLabelColor;
+      }
+
       if (widget.inverse) {
         return aliasTokens.color.inverse.labelColor;
       }
@@ -85,7 +89,9 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
         return aliasTokens.color.selected.onLabelColor;
       }
 
-      return widget.active ? aliasTokens.color.selected.labelColor : aliasTokens.color.text.labelColor;
+      return widget.active
+          ? aliasTokens.color.selected.labelColor
+          : aliasTokens.color.text.labelColor;
     }
 
     Widget getText() {
@@ -113,10 +119,7 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
       setState(() => _isPressed = false);
     }
 
-    double opacity({
-      required isPressed,
-      required BuildContext context,
-    }) {
+    double opacity({required isPressed, required BuildContext context}) {
       var tokens = Provider.of<ExpenseThemeManager>(context);
       var aliasTokens = tokens.alias;
 
@@ -126,7 +129,9 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
     }
 
     bool isOnlyIcon = widget.onlyIconActive || widget.onlyIcon;
-    String? labelSemantic = isOnlyIcon && widget.active ? widget.label : widget.semanticsLabel;
+    String? labelSemantic = isOnlyIcon && widget.active
+        ? widget.label
+        : widget.semanticsLabel;
 
     return Semantics(
       label: widget.active ? 'Ativo $labelSemantic' : labelSemantic,
@@ -135,30 +140,25 @@ class _BottomBarItemWidgetState extends State<BottomBarItemWidget> {
         duration: globalTokens.motions.durations.fast02,
         opacity: widget.active
             ? 1
-            : opacity(
-                isPressed: _isPressed,
-                context: context,
-              ),
+            : opacity(isPressed: _isPressed, context: context),
         child: GestureDetector(
           onTap: () => widget.onPressed(widget.value),
           onTapDown: onPressedDown,
           onTapUp: onPressedUp,
           onTapCancel: () => onPressedUp(null),
           child: Container(
-            constraints: BoxConstraints(
-              minWidth: size.s6x,
-            ),
+            constraints: BoxConstraints(minWidth: size.s6x),
             decoration: BoxDecoration(
-              color: _isPressed ? aliasTokens.mixin.pressedOutline : Colors.transparent,
+              color: _isPressed
+                  ? aliasTokens.mixin.pressedOutline
+                  : Colors.transparent,
               borderRadius: BorderRadius.circular(
                 globalTokens.shapes.border.radiusCircular,
               ),
             ),
             height: size.s6x,
             padding: widget.active
-                ? EdgeInsets.symmetric(
-                    horizontal: size.s2_5x,
-                  )
+                ? EdgeInsets.symmetric(horizontal: size.s2_5x)
                 : EdgeInsets.zero,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -203,12 +203,8 @@ class _FakeBottomBarWidget extends StatelessWidget {
     final size = globalTokens.shapes.size;
 
     return Container(
-      constraints: BoxConstraints(
-        minWidth: size.s6x,
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: size.s2_5x,
-      ),
+      constraints: BoxConstraints(minWidth: size.s6x),
+      padding: EdgeInsets.symmetric(horizontal: size.s2_5x),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -264,7 +260,9 @@ class _Icon extends StatelessWidget {
         return aliasTokens.color.selected.onIconColor;
       }
 
-      return active ? aliasTokens.color.selected.onBgColor : aliasTokens.color.elements.iconColor;
+      return active
+          ? aliasTokens.color.selected.onBgColor
+          : aliasTokens.color.elements.iconColor;
     }
 
     ExpenseIconData getIcon() {
@@ -276,10 +274,7 @@ class _Icon extends StatelessWidget {
     }
 
     return Center(
-      child: ExpenseIcon(
-        icon: getIcon(),
-        color: getColorIcon(),
-      ),
+      child: ExpenseIcon(icon: getIcon(), color: getColorIcon()),
     );
   }
 }

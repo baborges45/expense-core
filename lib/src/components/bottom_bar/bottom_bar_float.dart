@@ -52,7 +52,7 @@ class _ExpenseBottomBarFloatState extends State<ExpenseBottomBarFloat> {
       height: size.s10x,
       padding: EdgeInsets.symmetric(horizontal: size.s2x),
       decoration: BoxDecoration(
-        color: Color(0xFF303138),
+        color: aliasTokens.color.elements.bgColor01,
         borderRadius: BorderRadius.circular(circularRadius),
       ),
       child: Stack(
